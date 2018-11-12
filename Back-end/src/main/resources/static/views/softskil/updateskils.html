@@ -1,0 +1,280 @@
+<!-- 
+<div class="container" ng-controller="updateskilsCtrl">
+	<br>
+	<div class="card "
+		>
+		<div class="card-header" style="text-align: center;">
+			<h5>Update Skils {{skils.label}}</h5>
+		</div>
+		<div class="card-body formulaire" style="padding: 15px;">
+			<form name="formupdateskil" novalidate>
+				<div class="row">
+					<label class="col-md-2">libelle </label> <input type="text"
+						class="form-control col-md-6" ng-model="skils.label"
+						name="libelleSkils" placeholder="libelle skils" >
+
+				</div>
+				<div class="row">
+					<label class="col-md-2">type </label> 			
+						<div class="col-md-6" style="text-align: center;">
+							<label>Soft Skils</label> <input type="radio"
+						ng-model="skils.code" value="soft">
+						<label>Managerial Skils</label>
+                         <input type="radio"
+						ng-model="skils.code" value="managerial">
+						</div>
+				</div>
+				<div class="row">
+					<label class="col-md-2">level</label> <input type="text"
+						class="form-control col-md-6" ng-model="level.degree"
+						name="level" placeholder="meaninig level" >
+
+				</div>
+				<div class="row">
+					<label class="col-md-2">desciption</label> <input type="text"
+						class="form-control col-md-6" ng-model="level.mean"
+						name="desciption" placeholder="meaninig desciption" >
+
+				</div>
+		</div>
+		<div class="card-footer">
+			<div class="row">
+				<div class="col-md-12" style="text-align: center;">
+
+					<button type="submit" class="btn btn-success"
+						ng-disabled="formupdateskil.$invalid" type="button"
+						ng-click="update()">update</button>
+
+
+				</div>
+
+			</div>
+
+		
+
+
+			</form>
+
+		</div>
+
+
+	</div>
+	
+
+</div> -->
+<br>
+
+                  <div class="alert alert-success" ng-show="msgSucces" style="text-align: center;">
+					{{msgSucces}}
+
+					</div>
+					<div class="alert alert-danger" ng-show="msgError" style="text-align: center;">
+					{{msgError}}
+
+					</div>
+					
+
+<br>
+
+<div class="card ">
+		<div class="card-header" style="text-align: center;" >
+			<h5>Nouveau Level</h5>
+		</div>
+		<div class="card-body formulaire" >
+			<form name="formNewmeaning" novalidate>
+				<div class="row">
+<label for="mySelectskils" class="col-md-2">
+ <strong >skils :</strong>
+</label>
+<!-- <select name="mySelectskils" id="mySelect"  class="col-md-6" 
+      ng-options="option.label for option in allskils track by option.idSoftSkill"
+      ng-model="skils" ></select>  -->
+ <input type="text" class="form-control col-md-6" ng-model="skils.label"
+						name="skils" placeholder="skils" >
+				</div>
+				<br>
+				<div class="row">
+				<label class="col-md-2">type </label>
+				<div class="col-md-6" style="text-align: center;">
+							<label>Soft Skils</label> <input type="radio"
+						ng-model="skils.code" value="soft">
+						<label>Managerial Skils</label>
+                         <input type="radio"
+						ng-model="skils.code" value="managerial">
+						</div>
+				</div>
+				<!-- <div class="row">
+					<label class="col-md-2">level</label> <input type="text"
+						class="form-control col-md-6" ng-model="meaning.degree"
+						name="level" placeholder="meaninig level" >
+
+				</div>
+				<div class="row">
+					<label class="col-md-2">desciption</label> <input type="text"
+						class="form-control col-md-6" ng-model="meaning.mean"
+						name="desciption" placeholder="meaninig desciption" >
+
+				</div> -->
+		</div>
+		<br>
+		<div class="row">
+		<div class="col-md-12" style="text-align: center;">
+<!-- 		<button type="submit" class="btn btn-success "
+						ng-disabled="formNewskil.$invalid" type="button"
+						ng-click="ajouterLevel()">ajouter</button> -->
+						<button class="btn" data-toggle="modal" data-target="#myModal">
+							ajouter
+						</button>
+						<button type="submit" class="btn btn-success"
+						type="button"
+						ng-click="modifier()">modifier</button>
+		</div>
+		</div>
+		<div class="row">
+		<table class="table table-borderless table-striped table-earning col-md-11">
+		<thead>
+			<tr>
+				<th>level</th>
+				<th>desciption</th>
+				<th>action</th>
+			</tr>
+		</thead>
+		<tbody >
+			<tr ng-repeat="level in levels">
+
+				<td>{{ level.degree }}</td>
+				<td>{{ level.mean }}</td>
+				<td>
+						<button class="btn"  data-toggle="modal" data-target="#myModalUpdate"
+						ng-click="modifierLevel(level)" >
+							<i class="fa fa-edit"></i>
+						</button>
+					<button class="btn" data-toggle="modal" data-target="#myModalSup" ng-click="suppLevel(level)" >
+							<i class="fa fa-trash"></i>
+						</button>
+						</td> 
+			</tr>
+		</tbody>
+	</table>
+		
+		</div>
+		<div class="card-footer">
+			
+
+			</div>
+
+
+
+
+			</form>
+
+		</div>
+ <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" ng-show="modeNew"> New Level</h4>
+          <button type="button" class="close" data-dismiss="modal" ng-click="resetLevel()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          
+              <div class="row">
+					<label >level</label> <input type="text"
+						class="form-control" ng-model="meaning.degree"
+						name="level" placeholder="meaninig level" >
+
+				</div>
+				<div class="row">
+					<label >desciption</label> <input type="text"
+						class="form-control"  ng-model="meaning.mean"
+						name="desciption" placeholder="meaninig desciption" >
+
+				</div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+           <button type="button"  class="btn btn-default" data-dismiss="modal" ng-click="resetLevel()">Cancel</button>
+           <button type="button"  ng-show="modeNew" class="btn btn-default" data-dismiss="modal" ng-click="ajouterLevel()">New</button>
+         </div>
+        
+      </div>
+    </div>
+  </div>
+  
+<!--   update  -->
+  
+  <!-- The Modal -->
+  <div class="modal" id="myModalUpdate">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+           <h4 class="modal-title" ng-show="!modeNew">Update Level</h4>
+          <button type="button" class="close" data-dismiss="modal" ng-click="resetLevel()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          
+              <div class="row">
+					<label >level</label> <input type="text"
+						class="form-control" ng-model="meaning.degree"
+						name="level" placeholder="meaninig level" >
+
+				</div>
+				<div class="row">
+					<label >desciption</label> <input type="text"
+						class="form-control"  ng-model="meaning.mean"
+						name="desciption" placeholder="meaninig desciption" >
+
+				</div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+           <button type="button"  class="btn btn-default" data-dismiss="modal" ng-click="resetLevel()">Cancel</button>
+           <button type="button"  ng-show="!modeNew" class="btn btn-default" data-dismiss="modal" ng-click="updateLevel()">Update</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+ <!--  suppression  -->
+  
+  <!-- The Modal -->
+  <div class="modal" id="myModalSup">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+           <h4 class="modal-title" >Delete Level</h4>
+          <button type="button" class="close" data-dismiss="modal" >&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          
+				 Etes-vous sûr que vous voulez supprimer ?
+				
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+           <button type="button"  class="btn btn-default" data-dismiss="modal" >Cancel</button>
+           <button type="button"   class="btn btn-default" data-dismiss="modal" ng-click="suppSkil()">Delete</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  

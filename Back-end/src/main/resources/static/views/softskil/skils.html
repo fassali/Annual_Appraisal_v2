@@ -1,0 +1,50 @@
+
+<div class="container" ng-init="init()">
+<button class="btn" ui-sref="newskils">Nouveau</button>
+	<table class="table ">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>libelle</th>
+				<th>type</th>
+			</tr>
+		</thead>
+		<tbody >
+
+
+
+			<tr ng-repeat="sk in skils">
+
+				<td >{{ sk.idSoftSkill }}</td>
+				<td >{{ sk.label
+					}}</td>
+					<td >{{ sk.code}}</td>
+									<td><!-- " -->
+						<button class="btn"
+						ui-sref="updateskils({ id: sk.idSoftSkill})"
+							>
+							<i class="fa fa-edit"></i>
+						</button>
+	       <button class="btn" ng-click="suppSkil(sk)"><!-- data-toggle="modal" data-target="#myModal"  -->
+							<i class="fa fa-trash"></i>
+						</button> 
+					</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+<div class="container">
+		<ul class="nav nav-pills pagination">
+			<li class="page-item"><a class="page-link"
+				ng-click="gotoprevious()">&laquo;</a></li>
+			<li class="page-item" ng-class="{active:$index==currentPage}"
+				ng-repeat="i in pages track by $index"><a
+				class="clickable page-link" ng-click="gotopage($index)"> {{
+					$index}} </a></li>
+			<li class="page-item" id="linknext"><a class="page-link"
+				ng-click="gotonext()">&raquo;</a></li>
+		</ul>
+	</div>
+	
+	

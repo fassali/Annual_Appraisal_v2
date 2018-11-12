@@ -1,0 +1,251 @@
+<!-- <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Nouveau Skils">
+        <md-content class="md-padding container">
+          	
+          </md-content>
+      </md-tab>
+      <md-tab label="Nouveau meaning">
+        <md-content class="md-padding container">
+          		<div class="card ">
+		<div class="card-header" style="text-align: center;" >
+			<h5>Nouveau Level</h5>
+		</div>
+		<div class="card-body formulaire" >
+			<form name="formNewmeaning" novalidate>
+				<div class="row">
+<label for="mySelectskils" class="col-md-2">
+ <strong >skils :</strong>
+</label>
+<select name="mySelectskils" id="mySelect"  class="col-md-6" 
+      ng-options="option.label for option in allskils track by option.idSoftSkill"
+      ng-model="skils" ></select> 
+
+				</div>
+				<br>
+				<div class="row">
+					<label class="col-md-2">level</label> <input type="text"
+						class="form-control col-md-6" ng-model="meaning.degree"
+						name="level" placeholder="meaninig level" >
+
+				</div>
+				<div class="row">
+					<label class="col-md-2">desciption</label> <input type="text"
+						class="form-control col-md-6" ng-model="meaning.mean"
+						name="desciption" placeholder="meaninig desciption" >
+
+				</div>
+		</div>
+		<br>
+		<div class="row">
+		<div class="col-md-12" style="text-align: center;">
+		<button type="submit" class="btn btn-success "
+						ng-disabled="formNewskil.$invalid" type="button"
+						ng-click="ajouterLevel()">ajouter</button>
+		</div>
+		</div>
+		<div class="row">
+		<table class="table table-borderless table-striped table-earning col-md-11">
+		<thead>
+			<tr>
+				<th>level</th>
+				<th>desciption</th>
+			</tr>
+		</thead>
+		<tbody >
+			<tr ng-repeat="meaning in skils.levels">
+
+				<td>{{ meaning.degree }}</td>
+				<td>{{ meaning.mean }}</td>
+
+			</tr>
+		</tbody>
+	</table>
+		
+		</div>
+		<div class="card-footer">
+			
+
+			</div>
+
+
+
+
+			</form>
+
+		</div>
+          </md-content>
+      </md-tab>
+
+    </md-tabs>
+  </md-content>
+  
+   -->
+  <div class="card ">
+		<div class="card-header" style="text-align: center;">
+			<h5>Nouveau Skils</h5>
+		</div>
+		<div class="card-body formulaire" style="padding: 15px;">
+			<form name="formNewskil" novalidate>
+				<div class="row">
+					<label class="col-md-2">libelle </label> <input type="text"
+						class="form-control col-md-6" ng-model="newskils.label"
+						name="libelleSkils" placeholder="libelle skils" >
+
+				</div>
+				<br>
+				<div class="row">
+				<label class="col-md-2">type </label>
+				<div class="col-md-6" style="text-align: center;">
+							<label>Soft Skils</label> <input type="radio"
+						ng-model="newskils.code" value="soft">
+						<label>Managerial Skils</label>
+                         <input type="radio"
+						ng-model="newskils.code" value="managerial">
+						</div>
+				</div>
+		</div>
+		<div class="card-footer">
+			<div class="row">
+				<div class="col-md-12" style="text-align: center;">
+
+					<button type="submit" class="btn btn-success"
+						ng-disabled="formNewskil.$invalid" type="button"
+						ng-click="save()">Save</button>
+
+
+				</div>
+
+			</div>
+
+
+
+
+			</form>
+
+		</div>
+
+
+	</div>
+<!-- <div class="container" ng-controller="newSkilsCtrl">
+	<br>
+	<div class="card ">
+		<div class="card-header" style="text-align: center;">
+			<h5>Nouveau Skils</h5>
+		</div>
+		<div class="card-body formulaire" style="padding: 15px;">
+			<form name="formNewskil" novalidate>
+				<div class="row">
+					<label class="col-md-2">libelle </label> <input type="text"
+						class="form-control col-md-6" ng-model="newskils.label"
+						name="libelleSkils" placeholder="libelle skils" >
+
+				</div>
+				<br>
+				<div class="row">
+				<label class="col-md-2">type </label>
+				<div class="col-md-6" style="text-align: center;">
+							<label>Soft Skils</label> <input type="radio"
+						ng-model="newskils.code" value="soft">
+						<label>Managerial Skils</label>
+                         <input type="radio"
+						ng-model="newskils.code" value="managerial">
+						</div>
+				</div>
+		</div>
+		<div class="card-footer">
+			<div class="row">
+				<div class="col-md-12" style="text-align: center;">
+
+					<button type="submit" class="btn btn-success"
+						ng-disabled="formNewskil.$invalid" type="button"
+						ng-click="save()">Save</button>
+
+
+				</div>
+
+			</div>
+
+
+
+
+			</form>
+
+		</div>
+
+
+	</div>
+	
+	ggg
+	
+		<div class="card ">
+		<div class="card-header" style="text-align: center;" >
+			<h5>Nouveau meaning</h5>
+		</div>
+		<div class="card-body formulaire" >
+			<form name="formNewmeaning" novalidate>
+				<div class="row">
+<label for="mySelectskils" class="col-md-2">
+ <strong >skils :</strong>
+</label>
+<select name="mySelectskils" id="mySelect"  class="col-md-6" 
+      ng-options="option.label for option in allskils track by option.idSoftSkill"
+      ng-model="skils" ></select> 
+
+				</div>
+				<br>
+				<div class="row">
+					<label class="col-md-2">level</label> <input type="text"
+						class="form-control col-md-6" ng-model="meaning.degree"
+						name="level" placeholder="meaninig level" >
+
+				</div>
+				<div class="row">
+					<label class="col-md-2">desciption</label> <input type="text"
+						class="form-control col-md-6" ng-model="meaning.mean"
+						name="desciption" placeholder="meaninig desciption" >
+
+				</div>
+		</div>
+		<br>
+		<div class="row">
+		<button type="submit" class="btn btn-success"
+						ng-disabled="formNewskil.$invalid" type="button"
+						ng-click="ajouter()">ajouter</button>
+		
+		</div>
+		<div class="row">
+		<table class="table table-borderless table-striped table-earning col-md-12">
+		<thead>
+			<tr>
+				<th>level</th>
+				<th>desciption</th>
+			</tr>
+		</thead>
+		<tbody >
+			<tr ng-repeat="meaning in skils.levels">
+
+				<td>{{ meaning.degree }}</td>
+				<td>{{ meaning.mean }}</td>
+
+			</tr>
+		</tbody>
+	</table>
+		
+		</div>
+		<div class="card-footer">
+			
+
+			</div>
+
+
+
+
+			</form>
+
+		</div>
+
+
+	</div>
+</div>
+ -->
