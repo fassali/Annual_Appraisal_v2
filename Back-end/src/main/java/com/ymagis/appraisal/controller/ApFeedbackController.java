@@ -79,7 +79,7 @@ public class ApFeedbackController {
 }
 
 	//Mettre à jour la mention rating et commenatire pour les objectifs de l'année dernière
-	@RequestMapping(value = "/Objectives", method = RequestMethod.PUT)
+	@RequestMapping(value = "/Objectivess", method = RequestMethod.PUT)
 	public boolean saveApFeedb(@RequestBody List<FeedBackVO> listApFdb, @RequestBody ApEmploye apEmploye) {
 		if(null == listApFdb || listApFdb.isEmpty()){
 			throw new RuntimeException("list of feedbacks is empty");
