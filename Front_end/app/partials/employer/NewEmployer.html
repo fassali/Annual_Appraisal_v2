@@ -1,0 +1,80 @@
+<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/addEmployer.css">
+<body>
+      <header  class="w3-container w3-center w3-padding-48 w3-white" style="margin-top:2px">
+          <h1 style="margin-top:2px"><img src="img/Logo.png" alt="Girl Hat" style="width:20%;position: absolute;left: 78%; " class="w3-padding-16"></h1>
+      </header>
+<br><br><br>
+	<div  style="background:#45637f;width:98%; margin-top:70px">
+		<h2 style=" color: rgb(255, 255, 255);text-align: center";="">ANNUAL APPRAISAL</h2>
+	</div>
+<div class="container">
+<div class="alert alert-success margin-top-5" ng-show="ajoutMessage">{{ajoutMessage}}</div>
+<br>
+</div>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<div class="contact100-form-title" style="background-image: url(img/bg-01.jpg);">
+				<span class="contact100-form-title-1">
+					Add a new employer
+				</span>
+			</div>
+
+			<form class="contact100-form" name="employerForm" novalidate>
+         <br> 
+				<div class="wrap-input100 validate-input" ng-class="{ 'has-error' : employerForm.firstName.$invalid && !employerForm.quantite.$pristine }">
+					<span class="label-input100">First Name:</span>
+					<input class="input100" type="text" name="firstName" placeholder="Enter first name" ng-model="firstName" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Last Name is required">
+					<span class="label-input100">Last Name:</span>
+					<input class="input100" type="text" name="lastName" placeholder="Enter last name" ng-model="lastName" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input"
+					data-validate="Email is required ">
+					<span class="label-input100">Email:</span> <input
+						class="input100" type="email" name="email"
+						placeholder="Enter last name" ng-model="employer.email"
+						required> <span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Position is required">
+					<span class="label-input100">Position:</span>
+					<input class="input100" type="text" name="position" placeholder="Enter position" ng-model="employer.position" required>
+					<span class="focus-input100"></span>
+				</div>
+              <div class="wrap-input100 validate-input" data-validate = "The employer Team is required">
+					<span class="label-input100">Team:</span>
+					<input class="input100" type="text" name="team" placeholder="Enter the employer team" ng-model="employer.team" required>
+					<span class="focus-input100"></span>
+				</div>
+              <div class="wrap-input100 validate-input" data-validate = "The employer Team is required">
+					<span class="label-input100">Start date:</span>
+					<input class="input100" type="date" name="dateEntry" placeholder="Enter the employer team" ng-model="employer.dateEntry" required>
+					<span class="focus-input100"></span>
+				</div>
+				<br>
+                <br>
+
+				
+				 <div>
+                    <input type="checkbox" name="manager" ng-model="roles.manager"> Manager &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input type="checkbox" name="admin" ng-model="roles.admin">Admin
+				</div>
+               <br><br>
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" ng-click="addEmployer()" ng-disabled="employerForm.$invalid">
+						<span>
+							Save
+							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
