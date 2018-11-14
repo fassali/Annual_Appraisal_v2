@@ -8,11 +8,21 @@ public class FeedBackVO implements Serializable {
 
     private String code;
 
+    private Long idFdb;
+
     private String label;
 
     private String comment;
 
     private FeedBack feedBack;
+
+    public Long getIdFdb() {
+        return idFdb;
+    }
+
+    public void setIdFdb(Long idFdb) {
+        this.idFdb = idFdb;
+    }
 
     public String getCode() {
         return code;
