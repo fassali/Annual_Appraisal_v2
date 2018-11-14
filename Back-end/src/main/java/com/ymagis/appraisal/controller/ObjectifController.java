@@ -17,6 +17,7 @@ import java.time.Year;
 import java.util.*;
 
 @RestController
+@CrossOrigin
 public class ObjectifController {
 
     @Autowired
