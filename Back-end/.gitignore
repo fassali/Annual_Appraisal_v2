@@ -31,7 +31,7 @@ node_modules/
 /vendor
 
 # ignore components loaded via Bower
-bower_components/
+/bower_components
 
 # ignore packaged files
 *.7z
@@ -50,7 +50,3 @@ bower_components/
 *.exe
 *.o
 *.so
-/.metadata/
-
-/bin/
-.recommenders
