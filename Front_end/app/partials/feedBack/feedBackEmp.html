@@ -1,0 +1,35 @@
+<meta charset="UTF-8">
+<div class="container">
+
+
+	<table class="table table-striped table-hover" style="margin-bottom: 5px; margin-top:40px" >
+		<thead>
+		Employee's feedback
+		<tr>
+			<th>#</th>
+			<th>Feedback on the management</th>
+			<th>Comments</th>
+
+		</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="fdb in pageFdback">
+			<td></td>
+			<td>{{fdb.feedBack.label}}</td>
+			<td>
+				<textarea class="form-control rounded-0" rows="3" ng-model="fdb.comment" name="comment"></textarea>
+			</td>
+		</tr>
+		</tbody>
+		<tfoot style="background-color: rgb(220, 227, 230);">
+		<tr>
+			<td></td>
+			<td><button type="submit" class="btn btn-xs btn-primary" ng-click="saveFeedb()">Valider<span class="glyphicon glyphicon-send"></span></button>
+				<button type="sublit" class="btn btn-xs btn-warning" ng-click="annuler()"> <span class="class="glyphiconglyphicon-trash"></span>Annuler</button></td>
+
+		</tr>
+		</tfoot>
+	</table>
+	<div class="alert alert-success margin-top-5" ng-show="ajoutMessage">{{ajoutMessage}}</div>
+
+</div>

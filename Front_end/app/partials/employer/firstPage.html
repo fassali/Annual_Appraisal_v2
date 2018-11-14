@@ -1,0 +1,55 @@
+<link rel="stylesheet" type="text/css" href="../css/employersList.css">
+<link rel="stylesheet" type="text/css" href="../css/updateEmployer.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<header class="w3-container w3-center w3-padding-48 w3-white"
+	style="margin-top: 2px">
+	<h1 style="margin-top: 2px">
+		<img src="img/Logo.png" alt="Girl Hat"
+			style="width: 20%; position: absolute; left: 78%;"
+			class="w3-padding-16">
+	</h1>
+</header>
+<br><br><br>
+<div style="background: #45637f; width: 98%; margin-top: 70px">
+	<h2 style="color: rgb(255, 255, 255); text-align: center";="">ANNUAL
+		APPRAISAL</h2>
+</div>
+<div class="container-fluid">
+  <br><br><br>
+ <label style="font-size: 13px;margin-left:10px">Appraisal date:</label>
+ <label style="color: rgb(75, 116, 230); font-size: 13px;">{{dayAnn}}/{{monthAnn}}/{{yearAnn}}</label>
+  <br><br><br><br> 
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+                <h6 style="font-size: 15px;"><b>Employer</b></h6><br>
+				<label style="font-size: 15px;">Last Name:</label>
+				<label style="font-size: 15px;">&nbsp{{employer.lastName}}</label><br> 
+				<label style="font-size: 15px;">First Name:</label>
+				<label style="font-size: 15px;">&nbsp{{employer.firstName}}</label><br>
+				<label style="font-size: 15px;">Position:</label>
+				<label style=" font-size: 15px;">&nbsp{{employer.position}}</label><br>
+				<label style="font-size: 15px;">N+2:</label>
+				<label style="font-size: 15px;"></label><br>
+				<label style="font-size: 15px;">Start date in this position:</label>
+				<label style="font-size: 15px;">&nbsp{{date}}</label><br>
+			</div>
+      <div class="col-sm-6">
+      <h6 style="font-size: 15px;"><b>Manager</b></h6><br>
+                <label style="font-size: 13px;">Last Name:</label>
+                <label style="font-size: 15px;">&nbsp{{manager.lastName}}</label><br> 
+                <label style="font-size: 13px;">First Name:</label>
+                <label style="font-size: 15px;">&nbsp{{manager.firstName}}</label><br> 
+                <label style="font-size: 13px;">Position:</label>
+                <label style="font-size: 15px;">&nbsp{{manager.position}}</label><br> 
+      
+      </div>
+      
+      
+      
+      </div>
+    <br>
+    
+  </div>
+</div>
