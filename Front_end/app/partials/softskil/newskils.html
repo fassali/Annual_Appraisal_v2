@@ -1,0 +1,60 @@
+<div class="container"  ng-init="app.settings.pagetitle = 'Skils/new'">
+   <br>
+
+                  <div class="alert alert-success" ng-show="msgSucces" style="text-align: center;">
+					{{msgSucces}}
+
+					</div>
+					<div class="alert alert-danger" ng-show="msgError" style="text-align: center;">
+					{{msgError}}
+
+					</div>
+	<form name="formNewskil" novalidate>
+  <div class="card ">
+		<div class="card-header" style="text-align: center;">
+			<!--<h5>Nouveau Skils</h5>-->
+		</div>
+		<div class="card-body formulaire" style="padding: 15px;">
+
+				<div class="row">
+					<label class="col-md-2">libelle </label> <input type="text"
+						class="form-control col-md-6" ng-model="newskils.label"
+						name="libelleSkils" placeholder="libelle skils" >
+
+				</div>
+				<br>
+				<div class="row">
+				<label class="col-md-2">type </label>
+				<div class="col-md-6" style="text-align: center;">
+							<label>Soft Skils</label> <input type="radio"
+						ng-model="newskils.code" value="soft">
+						<label>Managerial Skils</label>
+                         <input type="radio"
+						ng-model="newskils.code" value="managerial">
+						</div>
+				</div>
+
+		<div class="card-footer">
+			<div class="row">
+				<div class="col-md-12" style="text-align: center;">
+
+					<button type="submit" class="btn btn-success"
+						ng-disabled="formNewskil.$invalid" type="button"
+						ng-click="save()">Save</button>
+
+
+				</div>
+
+			</div>
+
+
+
+
+
+
+		</div>
+
+
+	</div>
+	</form>
+</div>
