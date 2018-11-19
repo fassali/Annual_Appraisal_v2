@@ -101,22 +101,60 @@
     };
   }])
   ; 
-  app.controller('ModalInstanceCtrl', ['$scope', '$uibModalInstance', 'items', function($scope, $modalInstance, items) {
-    $scope.items = items;
-    $scope.selected = {
-      item: $scope.items[0]
-    };
+  app.controller('ModalInstanceCtrl', ['$scope', '$uibModalInstance', 'sk','skilsDataService','$state','$stateParams','$rootScope', function($scope, $modalInstance, sk,skilsDataService,$state,$stateParams,$rootScope) {
 
+    $scope.skils = sk;
+      $scope.meaning = {}
+console.log($stateParams)
+      $scope.ajouterLevel = function() {
+          $scope.modeNew = true;
+          $scope.skils.levels = [];
+          $scope.skils.levels.push($scope.meaning);
+          console.log($scope.skils)
+          skilsDataService.newLevel($scope.skils).then(function(data) {
+              skilsDataService.getSkils($scope.skils.idSoftSkill).then(function(data){
+                  $rootScope.skils.levels = [];
+                  $rootScope.skils.levels = data.levels;
+                  $rootScope.levels = $rootScope.skils.levels ;
+                  $rootScope.msgSucces = "Level est ajouter avec success ";
+                  stop = $rootScope.autoClose();
+                  $scope.meaning ={};
+                  $rootScope.levels.sort(function (a, b) {
+                      return b.degree - a.degree;
+                  });
+                  //$state.go(app.updateskils, {id : sk.idSoftSkill});
+                  $modalInstance.close("ok");
+              });
+          }, function(response) {
+              skilsDataService.getSkils($scope.skils.idSoftSkill).then(function(data){
+                  $rootScope.skils.levels = [];
+                  $rootScope.skils.levels = data.levels;
+                  $rootScope.levels = $rootScope.skils.levels ;
+                  $rootScope.msgError = response.data.message;
+                  $scope.meaning ={};
+                  stop = $rootScope.autoClose();
+                  $rootScope.levels.sort(function (a, b) {
+                      return b.degree - a.degree;
+                  });
+                  $modalInstance.close("ok");
+              });
+
+          });
+
+      };
     $scope.ok = function () {
-      $modalInstance.close($scope.selected.item);
+      console.log($scope.meaning)
+      $modalInstance.close("ok");
     };
 
     $scope.cancel = function () {
+        $scope.meaning = {}
       $modalInstance.dismiss('cancel');
     };
   }])
   ; 
-  app.controller('ModalDemoCtrl', ['$scope', '$uibModal', '$log', function($scope, $modal, $log) {
+  app.controller('ModalDemoCtrl', ['$scope', '$uibModal', '$log','$state', function($scope, $modal, $log,$state) {
+
     $scope.items = ['item1', 'item2', 'item3'];
     $scope.open = function (size,windowClass) {
       var modalInstance = $modal.open({
@@ -157,13 +195,13 @@
       });
     };
 
-    $scope.section_modal = function () {
+    $scope.section_modal = function (data) {
       var modalInstance = $modal.open({
         templateUrl: 'partials/ui-modal-section.html',
         controller: 'ModalInstanceCtrl',
         resolve: {
-          items: function () {
-            return $scope.items;
+          sk: function () {
+            return data;
           }
         }
       });
@@ -176,8 +214,106 @@
     };
 
 
+    $scope.section_modalDelete = function (idEmp) {	
+      var modalInstance = $modal.open({
+        templateUrl: 'partials/employer/deleteSection.html',
+        controller: 'DeleteModal',
+        resolve: {
+        items: function () {
+          return $scope.items;
+        },
+        idEmp: function () {
+          return idEmp;
+         },
+        }
+      });
+    
+      modalInstance.result.then(function (selectedItem) {
+        $scope.selected = selectedItem;
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+      };
+
+      $scope.section_modalUpdate = function (idEmp) {	
+        var modalInstance = $modal.open({
+          templateUrl: 'partials/employer/updateSection.html',
+          controller: 'UpdateModal',
+          resolve: {
+          items: function () {
+            return $scope.items;
+          },
+          idEmp: function () {
+            return idEmp;
+           },
+          }
+        });
+      
+        modalInstance.result.then(function (selectedItem) {
+          $scope.selected = selectedItem;
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });
+        };
+        $scope.section_modalApEmpl = function (idEmp) {	
+          var modalInstance = $modal.open({
+            templateUrl: 'partials/employer/apEmpViews.html',
+            controller: 'ApEmpModal',
+            resolve: {
+            items: function () {
+              return $scope.items;
+            },
+            idEmp: function () {
+              return idEmp;
+             },
+            }
+          });
+        
+          modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+          }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+          });
+          };
+  
+
+      $scope.testsmodal = function (data) {
+          var modalInstance = $modal.open({
+              templateUrl: 'partials/modaltest.html',
+              controller: 'ModalInstanceCtrl',
+              resolve: {
+                  sk: function () {
+                      return data;
+                  }
+              }
+          });
 
 
+      };
+      $scope.updateModal = function (data) {
+          var modalInstance = $modal.open({
+              templateUrl: 'partials/modalUpdateSk.html',
+              controller: 'ModalskilsUpdateCtrl',
+              resolve: {
+                  skilsdata: function () {
+                      return data;
+                  }
+              }
+          });
+
+      };
+      $scope.supModal = function (data) {
+          var modalInstance = $modal.open({
+              templateUrl: 'partials/modalSkilSup.html',
+              controller: 'ModalskilssuppCtrl',
+              resolve: {
+                  leveldata: function () {
+                      return data;
+                  }
+              }
+          });
+
+      };
   }])
   ; 
   app.controller('PaginationDemoCtrl', ['$scope', '$log', function($scope, $log) {

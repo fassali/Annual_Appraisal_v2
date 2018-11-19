@@ -43,9 +43,10 @@
 		<div class="row">
 		<div class="col-md-12" style="text-align: center;">
 
-						<button class="btn" data-toggle="modal" data-target="#myModal">
+						<button class="btn" ng-click="testsmodal(skils)">
 							ajouter
 						</button>
+
 						<button type="submit" class="btn btn-success"
 						type="button"
 						ng-click="modifier()">modifier</button>
@@ -67,10 +68,10 @@
 				<td>{{ level.mean }}</td>
 				<td>
 						<button class="btn"  data-toggle="modal" data-target="#myModalUpdate"
-						ng-click="modifierLevel(level)" >
+						ng-click="updateModal(level)" >
 							<i class="fa fa-edit"></i>
 						</button>
-					<button class="btn" data-toggle="modal" data-target="#myModalSup" ng-click="suppLevel(level)" >
+					<button class="btn" data-toggle="modal" data-target="#myModalSup" ng-click="supModal(level)" >
 							<i class="fa fa-trash"></i>
 						</button>
 						</td> 
@@ -200,3 +201,4 @@
   
 </div>
 </div>
+

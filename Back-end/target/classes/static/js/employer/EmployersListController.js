@@ -1,8 +1,8 @@
 (function() {
 
-	var app = angular.module('app');
+	var app = angular.module('myApp');
 	app.controller("EmployersListController",
-			function($scope,$rootScope,$http,EmployersDatasrv,$modal, $log,AppEmployerDatasrv,$interval) {
+			function($scope,$rootScope,$http,EmployersDatasrv,AppEmployerDatasrv,$interval) {
 		$scope.page = [];
 		$scope.pageCourante = 0;
 		$scope.size = 6;
@@ -10,8 +10,7 @@
 		$scope.employers=[];
 		$scope.count=0;
 		$rootScope.appEmp={};
-
-
+		
 		EmployersDatasrv.getEmployers($rootScope.user.idEmp,$scope.pageCourante,$scope.size)	
 		.then(function(data){
 			 $scope.employers=data.content;
@@ -82,16 +81,15 @@
 		 		        });
 		 		 	    }; 
 		 		 	    
-		 				 
-						  
-						 
-					  
-
-
-
-
-
-
+		 				 //find employer deleted
+		 				 $scope.removeFunction=function(id){
+		 					 EmployersDatasrv.editEmployer(id)
+		 						.then(function (data) {
+		 				 				$scope.employerDeleted= data.data;
+		 				 			}, function (err) {
+		 				 				console.log(err);
+		 				 			});
+		 				 };
 		 				 //find employer to start an annual
 		 				 $scope.startAnnual=function(id){
 		 					 EmployersDatasrv.editEmployer(id)
@@ -130,11 +128,21 @@
 		 						$interval.cancel(stop);
 		 						stop = undefined;
 		 						$scope.deleteMessage = null;
-		 						$rootScope.updateMessage=null;
+		 						$scope.updateMessage=null;
 		 						$scope.count=0;
 		 					}
 		 				};
-	
+		 			     
+		 			     
+		 			     
+		 				$scope.edit = function(id) {
+							EmployersDatasrv.editEmployer(id)
+							.then(function (data) {
+					 				$scope.employer= data.data;
+					 			}, function (err) {
+					 				console.log(err);
+					 			})
+					     };
 		 			     
 		 				//update employer
 			 	 	      $scope.updateEmployer=function(id){
@@ -150,16 +158,36 @@
 			 	 	 	    		restart();
 			 	 	 	    	});
 			 	 	 	       }
-								 
-					  
-				//find all session
-				$scope.allSession=function(){
-					EmployersDatasrv.allSession()
-					.then(function (data) {
-						console.log(data);
-					});
+			 	 	      
+			 	 	  $scope.newAppEmp=function(idEmp){
+			 	 		EmployersDatasrv.editEmployer(idEmp)
+						.then(function (data) {
+				 				$scope.employerSelected= data.data;
+				 				//find the session in progress
+				 				AppEmployerDatasrv.findSession()
+				 				.then(function (data) {
+				 					$scope.session=data;
+				 					AppEmployerDatasrv.addApEmp($scope.appEmp)
+				 					.then(function (data) {
+				 						$rootScope.appEmp.annualSession=$scope.session;
+				 						$rootScope.appEmp.employe=$scope.employerSelected;
+				 						$scope.id=data.data.idApEmp;
+				 						AppEmployerDatasrv.updateAppEmployer($rootScope.appEmp,$scope.id)
+				 						.then(function (data) {
+				 							$rootScope.appEmp=data;
+				 							document.location.href="http://localhost:8080/#!/annualAppraisal";
+				 							console.log($rootScope.appEmp);
+				 						});
 
-				}				
+				 					});
+				 				});
+				 				console.log($scope.employerSelected);
+				 			}, function (err) {
+				 				console.log(err);
+				 			})
+			 	 		  
+			 	 	  }    
+			 	 	      
 			 	 	  
 			 	 	      
 			  
