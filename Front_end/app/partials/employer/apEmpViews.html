@@ -1,0 +1,32 @@
+<div  role="dialog">
+    <div class="modal-header">
+            <h1><center>List of Sessions</center></h1>
+    </div>
+    <div class="modal-body">
+        
+        <table class="table table-striped" ui-jq="footable" data-filter="#filter" data-page-size="5" class="table table-striped">
+            <thead>
+            <tr></tr>             
+                <th>
+                    Session
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                  Actions
+                </th>                
+            </tr>
+            </thead>
+        </thead>
+        <tbody>
+        <tr ng-repeat="s in sessions">
+            
+            <td>{{s.label}}</td>
+            <td>{{s.status}}</td>            
+            <td>
+            <button ng-show="show==1" data-title="Delete" data-toggle="modal" data-target="#test" style="border: none"style="border: none" class="label label-secondary"  ng-click="newAppEmp()"><i class="fa fa-eye" ></i>Annual Appraisal</button> 
+            </td>
+        </tr>                                 
+        </tbody>
+    </div>

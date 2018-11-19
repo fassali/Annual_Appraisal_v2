@@ -61,7 +61,6 @@
 		this.editEmployer = function(idEmp) {
 			return $http.get('http://localhost:8080/employer/' + idEmp);
 		  };
-			
 			// ajouter un nv employeur
 			this.addEmployer = function(userForm) {
 				return $http.post("http://localhost:8080/employers/add", userForm)

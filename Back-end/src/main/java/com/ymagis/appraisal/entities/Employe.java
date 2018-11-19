@@ -70,8 +70,8 @@ public class Employe implements Serializable {
 
 	
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "employe", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+//    @JsonIgnore
+    @OneToMany(mappedBy = "employe", cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch=FetchType.LAZY)
     private Set<ApEmploye> apEmployes;
 
     public Employe() {

@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h4 class="modal-title">Update Level</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <label >level</label> <input type="text"
+                                     class="form-control" ng-model="meaning.degree"
+                                     name="level" placeholder="meaninig level" >
+
+    </div>
+    <div class="row">
+        <label >desciption</label> <input type="text"
+                                          class="form-control"  ng-model="meaning.mean"
+                                          name="desciption" placeholder="meaninig desciption" >
+
+    </div>
+</div>
+<div class="modal-footer">                  
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" ng-click="updateLevel()">OK</button>
+</div>
