@@ -199,6 +199,12 @@ angular.module('app')
                         templateUrl:'partials/feedBack/feedbacks.html',
                         controller:'feedbackCtrl'
                     })
+                    .state('app.competencies',
+                        {
+                            url : '/competencies',
+                            templateUrl : 'partials/hardSkill/hardSkills.html',
+                            controller: 'hardSkillController'
+                        })
                     .state('app.session',
                         {
                             url : '/session',
