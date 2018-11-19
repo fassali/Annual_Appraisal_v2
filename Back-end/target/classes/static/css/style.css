@@ -288,3 +288,21 @@ thead tr th {
 .test tbody:nth-child(even) {
     background:#F9F9F9;
 }
+caption{
+	caption-side: top;
+	text-align: center;
+	background-color: #a2d0d0;
+}
+.systh{
+	width: 100%;
+	height: 300px;
+	
+}
+.systh:focus  , .evolution:focus{
+	background-color: #c0c0c0;
+}
+
+.evolution{
+	width: 100%;
+	height: 200px;
+}

@@ -58,6 +58,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
            url: '/apskil/save',
            templateUrl: 'views/softskil/newAppSoftSkil.html',
            controller  :   "newApSoftSkilsCtrl"
+       })
+        .state('synthesis', {
+           url: '/sysnthesis',
+           templateUrl: 'views/Syntesis/syntesis.html',
+           controller  :  "syntesisCtrl"
+       })
+       .state('potentialEvolution', {
+           url: '/potentialEvolution',
+           templateUrl: 'views/Syntesis/potentialEvolution.html',
+           controller  :  "syntesisCtrl"
        });
 		
 	    $stateProvider.state('login',{
@@ -83,10 +93,22 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	        controller:'ProfilController'
 	    });
 	    
+	    $stateProvider.state('feedbacks',{
+	        url:'/feedback',
+	        templateUrl:'views/feedbacks.html',
+	        controller:'feedbackCtrl'
+	    });
+	    
 	    $stateProvider.state('apObjEmp',{
 	        url:'/apObjEmp',
 	        templateUrl:'views/ApObjEmp/ApObjEmp.html',
 	        controller:'ApObjController'
+	    });
+	    
+	    $stateProvider.state('fannualAppraisal',{
+	        url:'/annualAppraisal',
+	        templateUrl:'views/employer/firstPage.html',
+	        controller:'FirstPageController'
 	    });
 
 
