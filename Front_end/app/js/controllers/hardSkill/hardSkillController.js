@@ -1,76 +1,79 @@
 (function() {
 
-    var app = angular.module("app");
+    var app = angular.module("myApp");
     app.controller("hardSkillController", hardSkillController);
 
-    //controller pour client
-    function hardSkillController($scope, $window, hardSkillService, $state, $rootScope, $interval) {
+    // controller pour client
+    function hardSkillController($scope, hardSkillService) {
+        $scope.appraisalId = 1;
+        $scope.mode = "";
 
-        $scope.pageCompetencies = {};
-        $scope.hardSkill = {};
-        $scope.ratings = [];
-        $scope.idApEmp=1;
-        hardSkillService.getRatings().then(function(data) {
-            $scope.ratings = data;
+        hardSkillService.getRatings().then(function(response) {
+            $scope.ratings = response.data;
         });
 
-        hardSkillService.getCompetencies($scope.idApEmp).then(function(data) {
-                $scope.pageCompetencies = data;
-                console.log($scope.pageCompetencies);
+        hardSkillService.getByAppraisal($scope.appraisalId).then(
+            function(response) {
+                $scope.competencies = response.data;
+            }, function(err) {
+                console.log(err.response);
             });
 
-
-        $scope.ratingChanged = function(obj, rating) {
-            obj.rating = rating;
-        }
-
-        $scope.commentChanged = function(obj, comment) {
-            obj.comment = comment;
-        }
-        
-        $scope.addCompetency = function() {
-        	hardSkillService.addCompetencie($scope.hardSkill).then(function(data) {
-                    $scope.ajoutMessage = "successefuly added!";
-                    stop = $interval(function() {
-                        $scope.count = $scope.count + 1;
-                        if ($scope.count == 5)
-                            $scope.stopmsg();
-                    }, 500);
+        $scope.save = function(model) {
+            hardSkillService.save($scope.appraisalId, model).then(function(response) {
+                $scope.succes = "Competency added successfully!";
+                $scope.mode = "";
+                $scope.hardSkillSelected = {};
+                hardSkillService.getByAppraisal($scope.appraisalId).then(
+                    function(response) {
+                        $scope.competencies = response.data;
+                    }, function(err) {
+                        console.log(err.response);
+                    });
             }, function(err) {
-                    alert(err.message);
-                }
-            );
-        }
-
-        // update competencies
-        $scope.updateCompetencies = function() {
-        	hardSkillService.updateCompetencies($scope.pageCompetencies).then(function(data) {
-                    $scope.ajoutMessage = "update avec succés!";
-                    stop = $interval(function() {
-                        $scope.count = $scope.count + 1;
-                        if ($scope.count == 5)
-                            $scope.stopmsg();
-                    }, 500);
-            }, function(err) {
-                    alert(err.message);
-                }
-            );
-        }
-
-        // initialize
-        $scope.annuler = function() {
-        	hardSkillService.getCompetencies(1).then(function(data) {
-                    $scope.pageCompetencies = data.content;
-                });
-            $window.location.reload();
-        }
-
-        $scope.stopmsg = function() {
-            if (angular.isDefined(stop)) {
-                $interval.cancel(stop);
-                stop = undefined;
-                $scope.ajoutMessage = null;
-            }
+                console.log(err.response);
+            });
         };
+
+        $scope.update = function(id, model) {
+            hardSkillService.update(id, model).then(function(response) {
+                $scope.succes = "Competency updated successfully!";
+                $scope.mode = "";
+                $scope.hardSkill = {};
+                hardSkillService.getByAppraisal($scope.appraisalId).then(
+                    function(response) {
+                        $scope.competencies = response.data;
+                    }, function(err) {
+                        console.log(err.response);
+                    });
+            }, function(err) {
+                console.log(err.response);
+            });
+        };
+
+        $scope.remove = function(id) {
+            hardSkillService.remove(id).then(function(response) {
+                $scope.succes = "Competency deleted successfully!";
+                hardSkillService.getByAppraisal($scope.appraisalId).then(
+                    function(response) {
+                        $scope.competencies = response.data;
+                    }, function(err) {
+                        console.log(err.response);
+                    });
+            }, function(err) {
+                console.log(err.response);
+            });
+        };
+
+        $scope.editCompetencie = function(obj) {
+            $scope.hardSkillSelected = obj;
+            $scope.mode = "update";
+        }
+
+        $scope.createCompetencie = function() {
+            $scope.mode = "create";
+        }
+
+
     }
 })();
