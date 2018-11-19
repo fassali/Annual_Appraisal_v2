@@ -1,0 +1,5 @@
+{
+  "dashboard": {
+    "WELCOME": "Willkommen in {{appName}}"
+  }
+}

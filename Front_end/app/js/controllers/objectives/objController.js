@@ -4,7 +4,7 @@
     app.controller("objController", objController);
 
     //controller pour client
-    function objController($scope, $window, objService, $state, $rootScope, $interval) {
+    function objController($scope, $window, objService, $state, $rootScope, $interval, $filter) {
 
         $scope.pageLastObj = {};
         $scope.currentPage = 0;
@@ -13,8 +13,10 @@
         $scope.pages = [];
         $scope.ratings = [];
         $scope.count=0;
+        //$rootScope.appEmp;
+        //$rootScope.employerSelected;
         //$scope.year
-        //$scope.idEmp
+        //$scope.idE$rootScopemp
         objService.getRatings().then(function(data) {
             $scope.ratings = data;
         });
@@ -41,7 +43,8 @@
         // Modifier les objectifs d'un employé
         $scope.updateLastObj = function() {
             objService.updateObjectives($scope.pageLastObj).then(function(data) {
-                    $scope.ajoutMessage = "update avec succés!";
+                    //console.log($filter('translate')('MSG.UPDATE.SUCC'));
+                    $scope.ajoutMessage = $filter('translate')('MSG.UPDATE.SUCC');
                     stop = $interval(function() {
                         $scope.count = $scope.count + 1;
                         if ($scope.count == 5)

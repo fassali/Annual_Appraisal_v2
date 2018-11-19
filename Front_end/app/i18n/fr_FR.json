@@ -1,0 +1,24 @@
+{
+  "dashboard": {
+    "WELCOME": "Bienvenue dans {{appName}}"
+  },
+  "steps": {
+    "messages": {
+      "OBJ.DEF": "Définition de l'objectif",
+      "OBJ.IND": "Indicateur",
+      "OBJ.MEAN": "Signifier",
+      "OBJ.DLINE": "Date limite",
+      "OBJ.RATING": "Evaluation",
+      "OBJ.COM" : "Commentaires"
+    }
+  },
+  "buttons": {
+    "BTN.VALID" : "Valider",
+    "BTN.ANN" : "Annuler",
+    "BTN.PREV" : "Precedent",
+    "BTN.NEXT" : "Suivant"
+  },
+  "appMessages": {
+    "MSG.UPDATE.SUCC" : "modification effectuee avec succès"
+  }
+}

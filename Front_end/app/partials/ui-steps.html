@@ -31,12 +31,11 @@
                                 </uib-tab>
                                 <uib-tab disabled="step1.$invalid" active="steps.step2" select="steps.percent=40; steps.step1stat=true" class=" {{steps.step2stat ? 'complete' : ''}}">
                                     <uib-tab-heading class="tabhead">objctives</uib-tab-heading>
-                                    <h4 class='margin-top-30'>Profile Information</h4>
                                     <form name="step2" >
                                         <div ui-view="objctives"></div>
                                         <div class="">
-                                            <button type="button" class="btn btn-primary" ng-click="steps.step1=true">Prev</button>
-                                            <button type="submit"  class="btn btn-primary" ng-click="steps.step3=true">Next</button>
+                                            <button type="button" class="btn btn-primary" ng-click="steps.step1=true">{{ "buttons.BTN.PREV" | translate }}</button>
+                                            <button type="submit"  class="btn btn-primary" ng-click="steps.step3=true">{{ "buttons.BTN.NEXT" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
