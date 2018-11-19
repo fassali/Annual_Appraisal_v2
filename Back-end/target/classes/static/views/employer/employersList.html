@@ -76,13 +76,10 @@
 				<td>{{day}}/{{month}}/{{year}}</td>
 				<td>
 					<!--update and delete buttons-->
-					<button data-title="Delete" data-toggle="modal"
-						data-target="#delete" class="fa fa-trash-o"
-						style="color: #fd0202; font-size: 20px;"
-						ng-click="removeFunction(e.idEmp)"></button>
-					<button data-title="Update" data-toggle="modal"
-						data-target="#update" class="fa fa-edit"
-						style="color: #3002fd; font-size: 20px;" ng-click="edit(e.idEmp)"></button>
+					<button data-title="Annual" data-toggle="modal" data-target="#annual"  class="fa fa-cog"  style="color: #45637f; font-size: 20px;" ng-click="startAnnual(e.idEmp)"></button>
+					<button data-title="Delete" data-toggle="modal" data-target="#delete" class="fa fa-trash-o" style="color: #fd0202; font-size: 20px;"ng-click="removeFunction(e.idEmp)"></button>
+					<button data-title="Update" data-toggle="modal" data-target="#update" class="fa fa-edit"style="color: #3002fd; font-size: 20px;" ng-click="edit(e.idEmp)"></button>
+					
 
 
 				</td>
@@ -113,12 +110,38 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
-				<div class="alert alert-danger">Do you really want to delete
+					<div class="alert alert-danger">Do you really want to delete
 					this employer.</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" data-dismiss="modal" class="btn btn-success"
 					ng-click="removeEmployer(employerDeleted.idEmp)">
+					<span class="fa fa-check-circle-o"></span> Yes
+				</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">
+					<span class="fa  fa-close"></span> No
+				</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- Modal Annual-->
+<div class="modal fade" id="annual" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6>{{Annualemployer.firstName}}&nbsp{{Annualemployer.lastName}}</h6>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<div class="alert alert alert-info">Do you  want to start a new Annual Appraisal for 
+					" {{Annualemployer.firstName}}&nbsp{{Annualemployer.lastName}} ".</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" data-dismiss="modal" class="btn btn-success"
+					ng-click="newAppEmp(Annualemployer.idEmp)">
 					<span class="fa fa-check-circle-o"></span> Yes
 				</button>
 				<button type="button" class="btn btn-danger" data-dismiss="modal">

@@ -213,6 +213,70 @@ console.log($stateParams)
       });
     };
 
+
+    $scope.section_modalDelete = function (idEmp) {	
+      var modalInstance = $modal.open({
+        templateUrl: 'partials/employer/deleteSection.html',
+        controller: 'DeleteModal',
+        resolve: {
+        items: function () {
+          return $scope.items;
+        },
+        idEmp: function () {
+          return idEmp;
+         },
+        }
+      });
+    
+      modalInstance.result.then(function (selectedItem) {
+        $scope.selected = selectedItem;
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+      };
+
+      $scope.section_modalUpdate = function (idEmp) {	
+        var modalInstance = $modal.open({
+          templateUrl: 'partials/employer/updateSection.html',
+          controller: 'UpdateModal',
+          resolve: {
+          items: function () {
+            return $scope.items;
+          },
+          idEmp: function () {
+            return idEmp;
+           },
+          }
+        });
+      
+        modalInstance.result.then(function (selectedItem) {
+          $scope.selected = selectedItem;
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });
+        };
+        $scope.section_modalApEmpl = function (idEmp) {	
+          var modalInstance = $modal.open({
+            templateUrl: 'partials/employer/apEmpViews.html',
+            controller: 'ApEmpModal',
+            resolve: {
+            items: function () {
+              return $scope.items;
+            },
+            idEmp: function () {
+              return idEmp;
+             },
+            }
+          });
+        
+          modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+          }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+          });
+          };
+  
+
       $scope.testsmodal = function (data) {
           var modalInstance = $modal.open({
               templateUrl: 'partials/modaltest.html',
@@ -223,6 +287,7 @@ console.log($stateParams)
                   }
               }
           });
+
 
       };
       $scope.updateModal = function (data) {
