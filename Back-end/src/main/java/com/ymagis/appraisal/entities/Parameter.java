@@ -1,18 +1,20 @@
 package com.ymagis.appraisal.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.ymagis.appraisal.utils.Constantes;
+
+import javax.persistence.*;
 import java.io.Serializable;
 @Entity
 public class Parameter implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = Constantes.ID_PARAM)
     private Long idParam;
 
+    @Column(name = Constantes.CODE)
     private String code;
 
+    @Column(name = Constantes.LABEL)
     private String label;
 
     public Parameter() {

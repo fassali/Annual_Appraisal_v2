@@ -1,6 +1,6 @@
 package com.ymagis.appraisal.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ymagis.appraisal.utils.Constantes;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,22 +12,72 @@ import java.util.Set;
 public class Employe implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = Constantes.ID_EMP)
     private Long idEmp;
+
+    @Column(name = Constantes.FIRST_NAME)
     private String firstName;
+
+    @Column(name = Constantes.LAST_NAME)
     private String lastName;
+
+    @Column(name = Constantes.POSITION)
     private String position;
+
+    @Column(name = Constantes.TEAM)
     private String team;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = Constantes.DATE_ENTRY)
     private Date dateEntry;
+
+    @Column(name = Constantes.USER_NAME)
     private String username;
+
+    @Column(name = Constantes.EMAIL)
     private String email;
-    private String  manager;
+
+    @Column(name = Constantes.ADMIN)
     private String admin;
+
+    @Column(name = Constantes.REMOVE)
     private Integer remove;
-    private Integer idManager;
-    
-    
-    
+
+
+    @ManyToOne
+    @JoinColumn(name = Constantes.MANAGER)
+    private Employe manager;
+
+    @OneToMany(mappedBy = Constantes.MANAGER)
+    private Set<Employe> managerTeam = new HashSet<>();
+
+    //    @JsonIgnore
+    @OneToMany(mappedBy = Constantes.EMPLOYE, fetch=FetchType.LAZY)
+    //,cascade = { CascadeType.MERGE, CascadeType.PERSIST }
+    private Set<ApEmploye> apEmployes;
+
+    public Employe() {
+    }
+
+    public Employe(String firstName, String lastName, String position, String team, Date dateEntry, String username,
+                   String email, Employe manager, String admin, Integer remove, Integer idManager,
+                   Set<ApEmploye> apEmployes, Set<Employe> managerTeam) {
+        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.position = position;
+        this.team = team;
+        this.dateEntry = dateEntry;
+        this.username = username;
+        this.email = email;
+        this.manager = manager;
+        this.admin = admin;
+        this.remove = remove;
+        this.managerTeam = managerTeam;
+        this.apEmployes = apEmployes;
+    }
+
     public String getUsername() {
 		return username;
 	}
@@ -44,14 +94,6 @@ public class Employe implements Serializable {
 		this.email = email;
 	}
 
-	public String getManager() {
-		return manager;
-	}
-
-	public void setManager(String manager) {
-		this.manager = manager;
-	}
-
 	public String getAdmin() {
 		return admin;
 	}
@@ -66,34 +108,6 @@ public class Employe implements Serializable {
 
 	public void setRemove(Integer remove) {
 		this.remove = remove;
-	}
-
-	
-
-//    @JsonIgnore
-    @OneToMany(mappedBy = "employe", cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch=FetchType.LAZY)
-    private Set<ApEmploye> apEmployes;
-
-    public Employe() {
-    }
-
-
-
-    public Employe(String firstName, String lastName, String position, String team, Date dateEntry, String username,
-			String email, String manager, String admin, Integer remove, Integer idManager, Set<ApEmploye> apEmployes) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.position = position;
-		this.team = team;
-		this.dateEntry = dateEntry;
-		this.username = username;
-		this.email = email;
-		this.manager = manager;
-		this.admin = admin;
-		this.remove = remove;
-		this.idManager = idManager;
-		this.apEmployes = apEmployes;
 	}
 
 	public Long getIdEmp() {
@@ -152,11 +166,27 @@ public class Employe implements Serializable {
         this.apEmployes = apEmployes;
     }
 
-    public Integer getIdManager() {
+    /*public Integer getIdManager() {
         return idManager;
     }
 
     public void setIdManager(Integer idManager) {
         this.idManager = idManager;
+    }*/
+
+    public Employe getManager() {
+        return manager;
+    }
+
+    public void setManager(Employe manager) {
+        this.manager = manager;
+    }
+
+    public Set<Employe> getManagerTeam() {
+        return managerTeam;
+    }
+
+    public void setManagerTeam(Set<Employe> managerTeam) {
+        this.managerTeam = managerTeam;
     }
 }

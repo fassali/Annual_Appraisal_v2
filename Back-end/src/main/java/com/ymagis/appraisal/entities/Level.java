@@ -1,6 +1,7 @@
 package com.ymagis.appraisal.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ymagis.appraisal.utils.Constantes;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,22 +14,26 @@ import java.util.Set;
 public class Level implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = Constantes.ID_LEVEL)
 	private Long idLevel;
 
-
+	@Column(name = Constantes.DEGREE)
 	private int degree;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    @JoinColumn(name = "id_soft_skill")
+    @JoinColumn(name = Constantes.ID_SOFT_SKILL)
     private SoftSkill softSkill;
 
-
+	@Column(name = Constantes.MEAN)
 	private String mean;
+
+	@Column(name = Constantes.IS_REMOVED)
 	private boolean isRemoved;
+
     @JsonIgnore
-    @OneToMany(mappedBy = "level", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = Constantes.LEVEL, fetch=FetchType.LAZY)
     private Set<ApSoftSkill> apSoftSkills = new HashSet<>(0);
 
 
@@ -62,17 +67,13 @@ public class Level implements Serializable {
 		this.softSkill = softSkill;
 	}
 
-
-
 	public int getDegree() {
 		return degree;
 	}
 
-
 	public void setDegree(int degree) {
 		this.degree = degree;
 	}
-
 
 	public String getMean() {
 		return mean;
@@ -90,11 +91,9 @@ public class Level implements Serializable {
 		this.apSoftSkills = apSoftSkills;
 	}
 
-
 	public boolean isRemoved() {
 		return isRemoved;
 	}
-
 
 	public void setRemoved(boolean isRemoved) {
 		this.isRemoved = isRemoved;
