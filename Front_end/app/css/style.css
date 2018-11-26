@@ -11,7 +11,7 @@ caption{
 .systh{
 	width: 100%;
 	height: 300px;
-	
+	resize: none;
 }
 .systh:focus  , .evolution:focus{
 	background-color: #c0c0c0;
@@ -20,4 +20,14 @@ caption{
 .evolution{
 	width: 100%;
 	height: 200px;
+	resize: none;
+}
+.tests li a:before {
+display: none;
+}
+.tests li{
+	width: auto;
+}
+a{
+	cursor: pointer;
 }

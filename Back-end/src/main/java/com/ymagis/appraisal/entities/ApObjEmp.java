@@ -14,7 +14,7 @@ public class ApObjEmp implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idApObjEmp;
 
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
+    @ManyToOne( fetch = FetchType.LAZY)
     @JsonIgnore
     @JoinColumn(name = "id_ap_emp")
     private ApEmploye apEmploye;

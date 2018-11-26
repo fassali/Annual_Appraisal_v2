@@ -1,5 +1,4 @@
-<meta charset="UTF-8">
-<div class="container">
+
 
 	<div class="row">
 		<button class="btn btn-xs btn-warning" ng-click="createCompetencie()">
@@ -18,33 +17,38 @@
 		<tbody>
 		<tr ng-if="mode == 'create'">
 			<td><input type="text" class="form-control"
-					   ng-model="hardSkill.skill"></td>
+
+					   ng-model="hardSkill.skill" required></td>
 			<td><input type="text" class="form-control"
-					   ng-model="hardSkill.mean"></td>
+					   ng-model="hardSkill.mean" required></td>
+
 			<td><select ng-model="hardSkill.rating"
 						class="form-control selectpicker"
 						ng-options="r as r.code for r in ratings track by r.idRating"
 						required>
 			</select></td>
 			<td><textarea class="form-control" rows="2" cols="30"
-						  ng-model="hardSkill.comment"></textarea></td>
+
+						  ng-model="hardSkill.comment" required></textarea></td>
+
 			<td>
 				<button type="button" class="btn btn-primary"
 						ng-click="save(hardSkill)">Add</button>
 			</td>
 		</tr>
 
+
 		<tr ng-if="mode == 'update'">
 			<td><input type="text" class="form-control"
-					   ng-model="hardSkillSelected.skill"></td>
+					   ng-model="hardSkillSelected.skill" required></td>
 			<td><input type="text" class="form-control"
-					   ng-model="hardSkillSelected.mean"></td>
+					   ng-model="hardSkillSelected.mean" required></td>
 			<td><select ng-model="hardSkillSelected.rating"
 						class="form-control selectpicker"
-						ng-options="r as r.code for r in ratings track by r.idRating">
+						ng-options="r as r.code for r in ratings track by r.idRating" required>
 			</select></td>
 			<td><textarea class="form-control" rows="2" cols="30"
-						  ng-model="hardSkillSelected.comment"></textarea></td>
+						  ng-model="hardSkillSelected.comment" required></textarea></td>
 			<td>
 				<button type="button" class="btn btn-primary"
 						ng-click="update(hardSkillSelected.idApHdSkill, hardSkillSelected)">Edit</button>
@@ -67,6 +71,5 @@
 		</tr>
 		</tbody>
 	</table>
-	<div class="alert alert-success margin-top-5" ng-if="succes">{{succes}}</div>
 
-</div>
+

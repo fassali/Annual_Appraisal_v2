@@ -10,7 +10,8 @@ app.service("objService",function ($http,$location) {
        //alert("year: " + yr + " idEmp: " + idEmp + " page: " + currentPage + " size: " + size);
         var promise1    =   $http({
             method : "GET",
-            url : "http://localhost:8080/Objectifs?year="+yr+"&idEmp="+idEmp+"&page="+currentPage+"&size="+size
+            url : "http://localhost:8080/Objectifs/"+yr+"/empl/"+idEmp
+
         });
 
         var promise2 = promise1.then(function mySuccess(response) {
@@ -39,8 +40,8 @@ app.service("objService",function ($http,$location) {
     };
 
     // recuperer la liste des objectifs de l'année dernièr
-    this.updateObjectives = function(listObj){
-        return $http.put("http://localhost:8080/Objectives/",listObj)
+    this.updateObjectives = function(listObj,id){
+        return $http.put("http://localhost:8080/Objectives/"+id,listObj)
             .then(function mySuccess(response) {
                 //console.log("kkkkkkkkk " + response.data);
                 return response.data;

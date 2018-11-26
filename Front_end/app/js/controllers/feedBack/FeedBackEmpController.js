@@ -4,8 +4,8 @@
     app.controller("fdbController", fdbController);
 
     //controller pour les FeedBacks
-    function fdbController($scope, $window, feedBackService, $state, $rootScope, $interval) {
-        $scope.pageFdback = {};
+    function fdbController($scope, $window, feedbackService, $state, $rootScope, $interval) {
+        $rootScope.pageFdback = [];
         $scope.currentPage = 0;
         $scope.size = 3;
         $scope.totalePages = 0;
@@ -14,17 +14,20 @@
 
         //faire appel au service feedBack pour recuperer la liste des feedBack
 
-        feedBackService.getListFeedback(1, $scope.currentPage,
+        feedbackService.getListFeedback($rootScope.appEmp.idApEmp, $scope.currentPage,
             $scope.size).then(function(data) {
-            $scope.pageFdback = data.content;
+            $rootScope.pageFdback = data.data.content;
             $scope.totalePages = data.totalPages;
             $scope.pages = new Array(data.totalPages);
         });
 
         // Modifier les objectifs d'un employé
-        $scope.saveFeedb = function() {
-            objService.updateObjectives($scope.pageLastObj).then(function(data) {
-                    $scope.ajoutMessage = "update avec succés!";
+        $rootScope.saveFeedb = function() {
+console.log($rootScope.pageFdback)
+            feedbackService.saveApFeedbacks($rootScope.pageFdback, $rootScope.appEmp.idApEmp).then(function(data) {
+
+                console.log(data);
+                $scope.ajoutMessage = "feedBacks list is updated";
                     stop = $interval(function() {
                         $scope.count = $scope.count + 1;
                         if ($scope.count == 5)

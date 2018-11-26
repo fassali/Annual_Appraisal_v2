@@ -11,14 +11,14 @@ public class ApSoftSkill implements Serializable {
     private Long idApStSkill;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     //@JsonIgnore
     @JoinColumn(name = "id_level")
 
     private Level level;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    //@JsonIgnore
+    @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "id_ap_emp")
     private ApEmploye apEmploye;
 

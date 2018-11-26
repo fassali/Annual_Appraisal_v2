@@ -4,7 +4,8 @@
 	app.controller("FirstPageController",
 			function($scope,$rootScope, $http,EmployersDatasrv,AppEmployerDatasrv) {
 			
-        console.log($rootScope.appEmp);
+        console.log($rootScope.appEmp.annualSession.label);
+        console.log($rootScope.employerSelected.idEmp)
         $scope.employer=$rootScope.employerSelected;
 		 
 		var appDate = new Date();
