@@ -33,8 +33,11 @@ public class ApFeedbackController {
 
 	@Autowired
 	private IFeedBackService feedBackService;
+
 	@Autowired
 	private EmployeRepository employeRepository;
+
+
 	@GetMapping(value = "/apfeedbacks")
 	public List<ApFeedBack> getApFeedBacks() {
 		return repository.findAll();
@@ -56,49 +59,70 @@ public class ApFeedbackController {
 
 	@GetMapping(value = "/feedBackEmp")
 	public Page<FeedBackVO> listFeedBack(@RequestParam("idApEmp") Long idApEmp,
-										@RequestParam(name = "page", defaultValue = "0") int page,
-										@RequestParam(name = "size", defaultValue = "10") int size) throws ParseException {
+										 @RequestParam(name = "page", defaultValue = "0") int page,
+										 @RequestParam(name = "size", defaultValue = "10") int size) throws ParseException {
 		//IFeedBackService feedBackService = new FeedBackService();
 		ApEmploye apEmploye = apEmployeRepository.findApEmployeByIdApEmp(idApEmp);
 		if(null == apEmploye){
 			throw new RuntimeException("erreur interne");
 		}
-			//List<FeedBack> listFeedBack = new ArrayList<>(0);
-			List<FeedBackVO> listFeedBack = new ArrayList<>(0);
-			Set<ApFeedBack> apFeedBacks = apEmploye.getApFeedBacks();
-			if(null != apFeedBacks && !apFeedBacks.isEmpty()){
-				List<ApFeedBack> listFdb = new ArrayList<>(apFeedBacks);
-				listFeedBack = feedBackService.fillFeedBackVOFromApFds(listFdb);
-				Page<FeedBackVO> feedbackPage = new PageImpl<FeedBackVO>(listFeedBack, PageRequest.of(page, size), listFeedBack.size());
+		//List<FeedBack> listFeedBack = new ArrayList<>(0);
+		List<FeedBackVO> listFeedBack = new ArrayList<>(0);
+		Set<ApFeedBack> apFeedBacks = apEmploye.getApFeedBacks();
+		if(null != apFeedBacks && !apFeedBacks.isEmpty()){
+			List<ApFeedBack> listFdb = new ArrayList<>(apFeedBacks);
+			listFeedBack = feedBackService.fillFeedBackVOFromApFds(listFdb);
+			Page<FeedBackVO> feedbackPage = new PageImpl<FeedBackVO>(listFeedBack, PageRequest.of(page, size, Sort.by("idFdb").ascending()), listFeedBack.size());
+			return feedbackPage;
+		}else {
+			Page<FeedBackVO> feedbackPage = feedBackService.getFeedBacks(page, size);
+			if (null == feedbackPage) {
+				throw new RuntimeException("list of feedback is empty");
+			} else {
 				return feedbackPage;
-			}else {
-				Page<FeedBackVO> feedbackPage = feedBackService.getFeedBacks(page, size);
-				if (null == feedbackPage) {
-					throw new RuntimeException("list of feedback is empty");
-				} else {
-					return feedbackPage;
-				}
 			}
-}
+		}
+	}
 
 	//Mettre à jour la mention rating et commenatire pour les objectifs de l'année dernière
-	@RequestMapping(value = "/Objectivess", method = RequestMethod.PUT)
-	public boolean saveApFeedb(@RequestBody List<FeedBackVO> listApFdb, @RequestBody ApEmploye apEmploye) {
+
+	@PutMapping(value = "/saveApFeedbacks/{idApEmp}")
+	public boolean saveApFeedb(@RequestBody List<FeedBackVO> listApFdb, @PathVariable("idApEmp") Long idApEmp) {
+		ApEmploye apEmploye = apEmployeRepository.findApEmployeByIdApEmp(idApEmp);
+		Employe employe = apEmploye.getEmploye();
 		if(null == listApFdb || listApFdb.isEmpty()){
 			throw new RuntimeException("list of feedbacks is empty");
 		}else{
 			Set<ApFeedBack> apFeedbacksEmp = apEmploye.getApFeedBacks();
 			if(null != apFeedbacksEmp && !apFeedbacksEmp.isEmpty()){
 				Set<ApFeedBack> apFeedBackEmp = feedBackService.fillApFdbFromVO(apFeedbacksEmp, listApFdb, apEmploye);
-				repository.saveAll(apFeedBackEmp);
+				List<ApEmploye> appEmpList =new ArrayList<> (employe.getApEmployes());
+				for(int j = 0; j < appEmpList.size(); j++) {
+					if(appEmpList.get(j).getIdApEmp()==idApEmp) {
+						appEmpList.get(j).setApFeedBacks(apFeedBackEmp);
+					}
+				}
+				Set<ApEmploye> apEmps = appEmpList.stream().collect(Collectors.toSet());
+				employe.setApEmployes(apEmps);
+				employeRepository.save(employe);
+				//repository.saveAll(apFeedBackEmp);
 			}else{
 				Set<ApFeedBack> apFeedBackEmp = feedBackService.fillApFdbFromVO(null, listApFdb, apEmploye);
-				repository.saveAll(apFeedBackEmp);
+				List<ApEmploye> appEmpList =new ArrayList<> (employe.getApEmployes());
+				for(int j = 0; j < appEmpList.size(); j++) {
+					if(appEmpList.get(j).getIdApEmp()==idApEmp) {
+						appEmpList.get(j).setApFeedBacks(apFeedBackEmp);
+					}
+				}
+				Set<ApEmploye> apEmps = appEmpList.stream().collect(Collectors.toSet());
+				employe.setApEmployes(apEmps);
+				employeRepository.save(employe);
+				//repository.saveAll(apFeedBackEmp);
 			}
-
 			return true;
 		}
 	}
+
 
 	//Mettre à jour la mention rating et commenatire pour les objectifs de l'année dernière
 	@PutMapping(value = "/saveApFeedbacks/{idApEmp}")
@@ -137,4 +161,5 @@ public class ApFeedbackController {
 			return true;
 		}
 	}
+
 }

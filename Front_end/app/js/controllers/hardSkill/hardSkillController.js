@@ -1,5 +1,6 @@
 (function() {
 
+
     var app = angular.module('app');
     app.controller("hardSkillController",hardSkillController);
     function hardSkillController($scope, $rootScope, hardSkillService) {
@@ -79,5 +80,6 @@
 
 
             }
+
 
 })();

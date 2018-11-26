@@ -17,21 +17,26 @@
 		<tbody>
 		<tr ng-if="mode == 'create'">
 			<td><input type="text" class="form-control"
+
 					   ng-model="hardSkill.skill" required></td>
 			<td><input type="text" class="form-control"
 					   ng-model="hardSkill.mean" required></td>
+
 			<td><select ng-model="hardSkill.rating"
 						class="form-control selectpicker"
 						ng-options="r as r.code for r in ratings track by r.idRating"
 						required>
 			</select></td>
 			<td><textarea class="form-control" rows="2" cols="30"
+
 						  ng-model="hardSkill.comment" required></textarea></td>
+
 			<td>
 				<button type="button" class="btn btn-primary"
 						ng-click="save(hardSkill)">Add</button>
 			</td>
 		</tr>
+
 
 		<tr ng-if="mode == 'update'">
 			<td><input type="text" class="form-control"
