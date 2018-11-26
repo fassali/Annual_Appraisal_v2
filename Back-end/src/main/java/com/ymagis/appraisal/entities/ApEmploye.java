@@ -16,7 +16,7 @@ public class ApEmploye implements Serializable {
     private Long idApEmp;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JsonIgnore
+    //@JsonIgnore
 //    @JoinColumn(name="id_ann")
     private AnnualSession annualSession;
 
@@ -60,7 +60,7 @@ public class ApEmploye implements Serializable {
     private Set<ApObjEmp> apObjEmps;
 
 
-    @JsonIgnore
+    //@JsonIgnore
     @OneToMany(mappedBy = "apEmploye", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private Set<ApSoftSkill> apSoftSkills = new HashSet<>(0);
 

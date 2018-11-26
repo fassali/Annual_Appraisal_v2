@@ -1,7 +1,7 @@
 
-<div class="container" ng-init="init()">
 
-	<table class="table test table-hover">
+
+	<table class="table test table-hover" ng-init="init()">
 		<thead>
 			<tr >
 				<th>#</th>
@@ -27,30 +27,31 @@
 					 <td>
 					
 			<input  type="radio" name="{{ sk.label }}"  ng-checked="exist(meaning)"
-			 ng-click="selectedVa(meaning)">  
+			 ng-click="selectedVa(meaning)" required>
 			<!--  ng-checked="exist(meaning)" ng-click="toggleSelection(meaning)" -->
 					</td>
 			</tr>
 			
 			
 		</tbody>
+		<tfoot class="hide-if-no-paging">
+		<tr>
+			<td colspan="5" class="text-center">
+				<ul class="nav nav-pills pagination-centered tests">
+					<li class="page-item"><a class="page-link"
+											 ng-click="gotoprevious()">&laquo;</a></li>
+					<li class="page-item" ng-class="{active:$index==currentPage}"
+						ng-repeat="i in pages track by $index"><a
+							class="clickable page-link" ng-click="gotopage($index)"> {{
+						$index}} </a></li>
+					<li class="page-item" id="linknext"><a class="page-link"
+														   ng-click="gotonext()">&raquo;</a></li>
+				</ul>
 
+			</td>
+
+		</tr>
+		</tfoot>
 	</table>
 
-</div>
 
-<div class="container">
-
-	<ul class="pagination" >
-		<li class="page-item"><a class="page-link"
-								 ng-click="gotoprevious()">&laquo;</a></li>
-		<li class="page-item" ng-class="{active:$index==currentPage}"
-			ng-repeat="i in pages track by $index"><a
-				class="clickable page-link" ng-click="gotopage($index)"> {{
-			$index}} </a></li>
-		<li class="page-item" id="linknext"><a class="page-link"
-											   ng-click="gotonext()">&raquo;</a></li>
-	</ul>
-</div>
-
-	{{skilSelectedd}}

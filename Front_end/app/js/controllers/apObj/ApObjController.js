@@ -16,9 +16,9 @@
 
 
 						// methode pour ajouter un nv obj
-						$scope.addObjects = function() {
+                        $rootScope.addObjects = function() {
 							console.log($scope.objs);
-							 ApObjDatasrv.addNewObj($scope.objs).then(
+							 ApObjDatasrv.addNewObj($scope.objs,$rootScope.appEmp.idApEmp).then(
 									function(data) {
 										$scope.ajoutMessage = "The new objs are added successfully!";
 										stop = $interval(function() {
@@ -26,7 +26,7 @@
 											if ($scope.count == 5)
 												$scope.stopmsg();
 										}, 500);
-										location.reload(); 
+
 										
 										
 										console.log(data);

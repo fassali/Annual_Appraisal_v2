@@ -107,5 +107,15 @@ public class ApObjEmpController {
 		employeRepository.save(employeur);
 		return employeur;
 	}
+	@RequestMapping(method = RequestMethod.POST, value = "/objectives/add/{idapEmp}")
+	public List<ApObjEmp> saveEmployeur(@RequestBody List<ApObjEmp>  objs, @PathVariable("idapEmp") Long idapemp) {
+	ApEmploye apEmploye = apEmployeRepository.findById(idapemp).get() ;
+		for (int i = 0; i < objs.size(); i++) {
+			ApObjEmp obj = objs.get(i);
+			obj.setApEmploye(apEmploye);
+			apObjEmpRepository.save(obj);
+		}
+		return objs;
+	}
 
 }

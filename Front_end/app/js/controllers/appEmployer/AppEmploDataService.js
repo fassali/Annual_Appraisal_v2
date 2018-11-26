@@ -40,9 +40,13 @@ var data={};
 				});
 	            
 	         }
-			
-			
-			
+
+
+        //update
+        this.updateApEmpl=function(appEmployer,idApEmp){
+            return $http.put("http://localhost:8080/apEmpl/"+idApEmp,appEmployer);
+
+        }
 			
 			
 			

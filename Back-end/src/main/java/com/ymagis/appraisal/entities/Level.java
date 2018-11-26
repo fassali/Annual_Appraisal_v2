@@ -19,7 +19,7 @@ public class Level implements Serializable {
 
 	private int degree;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "id_soft_skill")
     private SoftSkill softSkill;
@@ -28,7 +28,7 @@ public class Level implements Serializable {
 	private String mean;
 	private boolean isRemoved;
     @JsonIgnore
-    @OneToMany(mappedBy = "level", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "level",  fetch=FetchType.LAZY)
     private Set<ApSoftSkill> apSoftSkills = new HashSet<>(0);
 
 
