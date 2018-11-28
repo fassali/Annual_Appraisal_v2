@@ -21,8 +21,9 @@
 
             //faire appel au service objectif pour recuperer les objectifs
 
-            objService.getLastObjs("2019", 1, $scope.currentPage,
+            objService.getLastObjs($rootScope.appEmp.annualSession.label,$rootScope.employerSelected.idEmp , $scope.currentPage,
                 $scope.size).then(function(data) {
+                    console.log(data)
                 $scope.pageLastObj = data.content;
                 $scope.totalePages = data.totalPages;
                 $scope.pages = new Array(data.totalPages);
@@ -39,16 +40,17 @@
         }
 
         // Modifier les objectifs d'un employé
-        $scope.updateLastObj = function() {
-            objService.updateObjectives($scope.pageLastObj).then(function(data) {
-                    $scope.ajoutMessage = "update avec succés!";
+        $rootScope.updateLastObj = function() {
+            console.log($scope.pageLastObj)
+            objService.updateObjectives($scope.pageLastObj,$rootScope.appEmp.idApEmp).then(function(data) {
+
                     stop = $interval(function() {
                         $scope.count = $scope.count + 1;
                         if ($scope.count == 5)
                             $scope.stopmsg();
                     }, 500);
             }, function(err) {
-                    alert(err.message);
+                   // alert(err.message);
                 }
             );
         }

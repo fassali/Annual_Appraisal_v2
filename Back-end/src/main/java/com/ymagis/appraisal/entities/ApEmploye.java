@@ -19,7 +19,7 @@ public class ApEmploye implements Serializable {
     private Long idApEmp;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    //@JsonIgnore
     @JoinColumn(name = Constantes.ID_ANN, nullable = false)
     private AnnualSession annualSession;
 
@@ -64,8 +64,7 @@ public class ApEmploye implements Serializable {
     @OneToMany(mappedBy = Constantes.AP_EMPLOYE, fetch=FetchType.EAGER)
     private Set<ApObjEmp> apObjEmps;
 
-
-    @JsonIgnore
+    //@JsonIgnore
     @OneToMany(mappedBy = Constantes.AP_EMPLOYE, fetch=FetchType.LAZY)
     private Set<ApSoftSkill> apSoftSkills = new HashSet<>(0);
 

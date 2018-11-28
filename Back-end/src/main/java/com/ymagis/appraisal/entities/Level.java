@@ -37,7 +37,6 @@ public class Level implements Serializable {
     private Set<ApSoftSkill> apSoftSkills = new HashSet<>(0);
 
 
-
 	public Level() {
 		super();
 		// TODO Auto-generated constructor stub

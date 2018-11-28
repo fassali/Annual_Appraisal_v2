@@ -44,7 +44,6 @@ public class Employe implements Serializable {
     @Column(name = Constantes.REMOVE)
     private Integer remove;
 
-
     @ManyToOne
     @JoinColumn(name = Constantes.MANAGER)
     private Employe manager;

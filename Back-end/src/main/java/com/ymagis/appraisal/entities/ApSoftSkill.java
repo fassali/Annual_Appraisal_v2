@@ -18,7 +18,7 @@ public class ApSoftSkill implements Serializable {
     private Level level;
 
     @ManyToOne
-    //@JsonIgnore
+    @JsonIgnore
     @JoinColumn(name = Constantes.ID_APEMP)
     private ApEmploye apEmploye;
 

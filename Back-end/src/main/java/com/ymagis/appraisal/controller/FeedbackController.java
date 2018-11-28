@@ -17,7 +17,7 @@ import com.ymagis.appraisal.repository.FeedbackRepository;
 
 @RestController
 @RequestMapping(value = "/feedback", produces = MediaType.APPLICATION_JSON_VALUE)
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin
 public class FeedbackController {
 
 	@Autowired

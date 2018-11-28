@@ -167,7 +167,12 @@ app.service("skilsDataService",function ($http,$location) {
 //                	return response;
 //                });
         };
-        //
+    // ajouter un apsoft
+    this.newApSkils = function(levels,idApem){
+
+        return $http.post("http://localhost:8080/apEmpl/"+idApem+"/soft",levels);
+
+    };
         
 })
 })();

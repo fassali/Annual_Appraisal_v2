@@ -5,11 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.ymagis.appraisal.entities.AnnualSession;
 import com.ymagis.appraisal.entities.ApEmploye;
@@ -18,6 +14,7 @@ import com.ymagis.appraisal.repository.AnnualSessionRepository;
 import com.ymagis.appraisal.repository.ApEmployeRepository;
 
 @RestController
+@CrossOrigin
 public class ApEmployeController {
 	@Autowired
 	private ApEmployeRepository apEmployeRepository;
@@ -69,7 +66,18 @@ public class ApEmployeController {
 		@RequestMapping(method = RequestMethod.GET, value = "/apEmp/{idApEmp}")
 		public Optional<ApEmploye> getObj(@PathVariable Long idApEmp) {
 			return apEmployeRepository.findById(idApEmp);
-		}	
+		}
 
+	//update an ApEmployer
+	@RequestMapping(value = "/apEmpl/{idApEmp}", method = RequestMethod.PUT)
+	public ApEmploye updateApEmp(@RequestBody ApEmploye appEmp, @PathVariable("idApEmp") Long idApEmp) {
+		ApEmploye apEmploye = apEmployeRepository.findById(idApEmp).get();
+		apEmploye.setStrength(appEmp.getStrength());
+		apEmploye.setTbImproved(appEmp.getTbImproved());
+		apEmploye.setWish(appEmp.getWish());
+		apEmploye.setOpinion(appEmp.getOpinion());
+		apEmployeRepository.save(apEmploye);
+		return apEmploye;
+	}
 }
 

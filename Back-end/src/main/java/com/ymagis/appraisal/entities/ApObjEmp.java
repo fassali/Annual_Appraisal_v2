@@ -16,6 +16,7 @@ public class ApObjEmp implements Serializable {
     @Column(name = Constantes.ID_APOBJEMP)
     private Long idApObjEmp;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @JoinColumn(name = Constantes.ID_APEMP)

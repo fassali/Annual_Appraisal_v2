@@ -11,9 +11,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SoftSkilsRepository extends JpaRepository<SoftSkill, Long> {
 
-	@Query("select c from SoftSkill c where c.isRemoved = false")
+	@Query("select c from SoftSkill c where c.isRemoved = false ")
 	public Page<SoftSkill> getoftSkill(Pageable pageable);
 	
 	@Query("select c from SoftSkill c where c.label = :lab and c.isRemoved = false")
 	public SoftSkill getsoftSkill(@Param("lab") String label);
+
+
 }
