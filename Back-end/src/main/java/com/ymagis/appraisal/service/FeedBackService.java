@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class FeedBackService implements IFeedBackService{
@@ -24,29 +25,25 @@ public class FeedBackService implements IFeedBackService{
     //Methode permet de remplir l'objet FeedBackVO depuis l'objet ApFeedBack
     public List<FeedBackVO> fillFeedBackVOFromApFds(List<ApFeedBack> apFeedBacks){
         List<FeedBackVO> listFeedBack = new ArrayList<>(0);
-        for(ApFeedBack aFdb : apFeedBacks){
+        apFeedBacks.stream().forEach((aFdb) -> {
             FeedBackVO feedBackVO = new FeedBackVO();
-            /*feedBackVO.setCode(aFdb.getFeedBack().getCode());*/
-            //feedBackVO.setLabel(aFdb.getFeedBack().getLabel());
             feedBackVO.setIdFdb(aFdb.getFeedBack().getIdFdBack());
             feedBackVO.setFeedBack(aFdb.getFeedBack());
             feedBackVO.setComment(aFdb.getComment());
             listFeedBack.add(feedBackVO);
-        }
+        });
         return listFeedBack;
     }
 
     //Methode permet de remplir l'objet FeedBackVO depuis l'objet FeedBack
     public List<FeedBackVO> fillFeedBackVOFromFds(List<FeedBack> feedBacks){
         List<FeedBackVO> listFeedBack = new ArrayList<>(0);
-        for(FeedBack fdb : feedBacks){
+        feedBacks.stream().forEach((fdb) -> {
             FeedBackVO feedBackVO = new FeedBackVO();
-            /*feedBackVO.setCode(fdb.getCode());
-            feedBackVO.setLabel(fdb.getLabel());*/
             feedBackVO.setIdFdb(fdb.getIdFdBack());
             feedBackVO.setFeedBack(fdb);
             listFeedBack.add(feedBackVO);
-        }
+        });
         return listFeedBack;
     }
 
@@ -66,18 +63,18 @@ public class FeedBackService implements IFeedBackService{
         List<ApFeedBack> apFeedBacks = new ArrayList<>();
         if(null != apFeedbacksEmp && !apFeedbacksEmp.isEmpty()){
             Map<Long, String> mapFdb = null != getMapFromList(listVO) ? getMapFromList(listVO) : new HashMap<>(0);
-            for(ApFeedBack vo : apFeedbacksEmp){
+            apFeedbacksEmp.stream().forEach((vo) -> {
                 String comment = mapFdb.get(vo.getFeedBack().getIdFdBack());
                 vo.setComment(comment);
-            }
+            });
         }else{
-            for(FeedBackVO vo : listVO){
+            listVO.stream().forEach((vo) -> {
                 ApFeedBack apFeedBack = new ApFeedBack();
                 apFeedBack.setApEmploye(apEmploye);
                 apFeedBack.setComment(vo.getComment());
                 apFeedBack.setFeedBack(vo.getFeedBack());
                 apFeedBacks.add(apFeedBack);
-            }
+            });
             Set<ApFeedBack> targetSet = new HashSet(apFeedBacks);
             return targetSet;
         }

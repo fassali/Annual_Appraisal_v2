@@ -18,10 +18,10 @@ public interface EmployeRepository extends JpaRepository<Employe, Long> {
     public Employe findEmployeByIdEmp(@Param("idEmp") Long idEmp);
     
     public Employe findByUsername (String username);
-    @Query("select e from Employe e where e.idManager  = :i and  e.remove=1")
+    @Query("select e from Employe e where e.manager.idEmp  = :i and  e.remove=1")
 	public Page<Employe> getEmployer(@Param("i") Integer idManager, Pageable pageable);
     
-    @Query("select e from Employe e where e.idManager  = :i  and e.firstName  = :f and  e.remove=1")
+    @Query("select e from Employe e where e.manager.idEmp  = :i  and e.firstName  = :f and  e.remove=1")
 	public Page<Employe> findEmployer(@Param("i") Integer idManager,@Param("f") String first, Pageable pageable);
 
     

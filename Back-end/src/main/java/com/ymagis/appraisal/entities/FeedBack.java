@@ -1,6 +1,8 @@
 package com.ymagis.appraisal.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ymagis.appraisal.utils.Constantes;
+import org.apache.tomcat.util.bcel.Const;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,15 +12,17 @@ import java.util.Set;
 @Entity
 public class FeedBack implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idFdBack;
 
+    @Column(name = Constantes.CODE)
     private String code;
 
+    @Column(name = Constantes.LABEL)
     private String label;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "feedBack", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = Constantes.FEEDBACK, fetch=FetchType.LAZY)
     private Set<ApFeedBack> apFeedBacks = new HashSet<>(0);
 
 

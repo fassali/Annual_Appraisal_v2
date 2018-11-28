@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ymagis.appraisal.dao.ApSoftSkillRepository;
-import com.ymagis.appraisal.dao.LevelRepository;
-import com.ymagis.appraisal.dao.SoftSkilsRepository;
+import com.ymagis.appraisal.repository.ApSoftSkillRepository;
+import com.ymagis.appraisal.repository.LevelRepository;
+import com.ymagis.appraisal.repository.SoftSkilsRepository;
 import com.ymagis.appraisal.entities.ApEmploye;
 import com.ymagis.appraisal.entities.ApSoftSkill;
 import com.ymagis.appraisal.entities.Level;

@@ -1,6 +1,7 @@
 package com.ymagis.appraisal.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ymagis.appraisal.utils.Constantes;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,32 +12,36 @@ import java.util.*;
 public class ApObjEmp implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = Constantes.ID_APOBJEMP)
     private Long idApObjEmp;
 
-    @ManyToOne( fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    @JoinColumn(name = "id_ap_emp")
+    @JoinColumn(name = Constantes.ID_APEMP)
     private ApEmploye apEmploye;
 
+    @Column(name = Constantes.INDICATOR)
     private String indicator;
 
+    @Column(name = Constantes.LABEL_OBJ)
     private String labelObj;
 
+    @Column(name = Constantes.MEAN)
     private String mean;
 
+    @Column(name = Constantes.DEAD_LINE)
     private Date deadLine;
 
+    @Column(name = Constantes.COMMENT)
     private String comment;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    //(cascade = CascadeType.ALL)
     //@JsonIgnore
-    @JoinColumn(name = "id_rating")
+    @JoinColumn(name = Constantes.ID_RATING)
     private Rating rating;
-
-    /*@JsonIgnore
-    @ManyToMany(mappedBy = "apObjEmps")
-    private Set<ApEmploye> apEmployes;*/
 
     public ApObjEmp() {
     }
