@@ -1,6 +1,9 @@
 {
   "dashboard": {
-    "WELCOME": "Welcome to {{appName}}"
+    "WELCOME": "Welcome to {{appName}}",
+    "APP.TEAM": "My teams",
+    "APP.APPRAISAL": "My appraisal",
+    "APP.SETTING": "Setting"
   },
   "steps": {
     "messages": {

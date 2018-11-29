@@ -1,6 +1,9 @@
 {
   "dashboard": {
-    "WELCOME": "Bienvenue dans {{appName}}"
+    "WELCOME": "Bienvenue dans {{appName}}",
+    "APP.TEAM": "Mon equipe",
+    "APP.APPRAISAL": "Mon évaluation",
+    "APP.SETTING": "Paramètrage"
   },
   "steps": {
     "messages": {
@@ -9,6 +12,12 @@
       "OBJ.MEAN": "Signifier",
       "OBJ.DLINE": "Date limite",
       "OBJ.RATING": "Evaluation",
+      "EMP.NOM" : "Commentaires",
+      "EMP.PRENOM" : "Commentaires",
+      "" : "Commentaires",
+      "OBJ.COM" : "Commentaires",
+      "OBJ.COM" : "Commentaires",
+      "OBJ.COM" : "Commentaires",
       "OBJ.COM" : "Commentaires"
     }
   },

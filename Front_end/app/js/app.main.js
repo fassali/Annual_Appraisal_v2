@@ -1,6 +1,6 @@
 'use strict';
-angular.module('app').controller('AppCtrl', ['$scope',
-    function($scope) {
+angular.module('app').controller('AppCtrl', ['$scope','$translate',
+    function($scope, $translate) {
 
         var menufold = false; 
         var screenWidth = window.innerWidth;
@@ -9,7 +9,7 @@ angular.module('app').controller('AppCtrl', ['$scope',
         }
 
         $scope.app = {
-            name: 'Annual appaissal | Angular',
+            name: 'Annual appaissal',
             version: '3.0.0',
             type: 'general', // general,hospital,university,music,crm,blog,socialmedia,freelancing,ecommerce
             color: {
@@ -28,9 +28,38 @@ angular.module('app').controller('AppCtrl', ['$scope',
                 chatFolded: true,
                 layoutBoxed: false,
                 searchFocus: false,
-                pagetitle: 'Annual appaissal \\ AngularJS',
+                pagetitle: 'Annual appaissal',
             }
         }
+
+
+        // angular translate
+        // ----------------------
+
+        $scope.language = {
+            // Handles language dropdown
+            listIsOpen : false,
+            // list of available languages
+            available : {
+                'en_EN' : 'English',
+                'fr_FR' : 'French'
+            },
+            // display always the current ui languagpagetitlee
+            init : function() {
+                var proposedLanguage = $translate.proposedLanguage() || $translate.use();
+                var preferredLanguage = $translate.preferredLanguage();
+                // we know we have set a preferred one in app.config
+                $scope.language.selected = $scope.language.available[(proposedLanguage || preferredLanguage)];
+            },
+            set : function(localeId, ev) {
+                $translate.use(localeId);
+                $scope.language.selected = $scope.language.available[localeId];
+                $scope.language.listIsOpen = !$scope.language.listIsOpen;
+            }
+        };
+
+        $scope.language.init();
+
         $scope.menuChatToggle = function(type, value) {
             if (type == "menu" && !value) {
                 $scope.app.settings.chatFolded = true;
