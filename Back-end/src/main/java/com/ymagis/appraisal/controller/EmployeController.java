@@ -78,13 +78,67 @@ public class EmployeController {
 		Employe employeur = employeRepository.findById(idEmp).get();
 		return employeur;
 	}
-	//get all sessions
-	@RequestMapping(value = "/allSessions",method = RequestMethod.GET)
-	public List<AnnualSession> getEmployeur() {
-		List<AnnualSession> sessions=annualSessionRepository.findAll();
-		return sessions;
-	}
 
+	//get sessions
+	@RequestMapping(value = "/sessions/{idEmp}",method = RequestMethod.GET)
+	public List<AnnualSession> getSession(@PathVariable Long idEmp) {
+		Boolean exist=false;
+		List<AnnualSession> sessions=new ArrayList<AnnualSession>();
+		//get employer by id
+		Employe employeur = employeRepository.findById(idEmp).get();
+		//get list of apEmp
+		List<ApEmploye> listAppEmp = new ArrayList<ApEmploye>(employeur.getApEmployes());
+		//get session en cour
+		AnnualSession sessionEnCour = annualSessionRepository.findAnnualSession();
+		//list of all sessions for this employer
+		for(int i=0;i<listAppEmp.size();i++) {
+			sessions.add(listAppEmp.get(i).getAnnualSession());
+		}
+		//test if the sessions en cour existe in the list 
+		for(int j=0;j<sessions.size();j++) {
+			if(sessions.get(j).getIdAnn()==sessionEnCour.getIdAnn()) {
+				 exist=true;
+			}
+		}
+		if(exist==true) {
+			return sessions;
+		}else {
+			sessions.add(sessionEnCour);
+			return sessions;
+		}
+		
+	}
+	//get apEmp for la session "en ours"
+	@RequestMapping(value = "/sessionEnCour/{idEmp}",method = RequestMethod.GET)
+	public Boolean findApEmp(@PathVariable Long idEmp) {
+		Boolean exist=false;
+		Employe employeur = employeRepository.findById(idEmp).get();
+		List<ApEmploye> listAppEmp = new ArrayList<ApEmploye>(employeur.getApEmployes());
+		AnnualSession sessionEnCour = annualSessionRepository.findAnnualSession();
+		for(int i=0;i<listAppEmp.size();i++) {
+			if(listAppEmp.get(i).getAnnualSession().getIdAnn()==sessionEnCour.getIdAnn()) {
+				exist=true;
+		
+			}
+		}
+		return exist;
+	}
+	
+	//get the session "cloruré"
+	@RequestMapping(value = "/sessionCloture/{idEmp}/{idAnn}",method = RequestMethod.GET)
+	public AnnualSession findSession_C(@PathVariable Long idEmp,@PathVariable Long idAnn) {
+		AnnualSession session=null;
+		Employe employeur = employeRepository.findById(idEmp).get();
+		List<ApEmploye> listAppEmp = new ArrayList<ApEmploye>(employeur.getApEmployes());
+		for(int i=0;i<listAppEmp.size();i++) {
+			if(listAppEmp.get(i).getAnnualSession().getIdAnn()==idAnn) {
+				session=listAppEmp.get(i).getAnnualSession();
+			}
+		}
+		
+		return session;
+	}
+	
 	// appEmp list
 	@RequestMapping(method = RequestMethod.GET, value = "/appEmployer/{idEmp}")
 	public ApEmploye getAppEmployer(@PathVariable Long idEmp) {

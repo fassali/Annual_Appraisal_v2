@@ -22,5 +22,7 @@ public interface ApEmployeRepository extends JpaRepository<ApEmploye, Long> {
 
     @Query("select apEmp from ApEmploye apEmp where apEmp.idApEmp = :idApEmp")
     public ApEmploye findApEmployeByIdApEmp(@Param("idApEmp") Long idApEmp);
+    
+    
 
 }

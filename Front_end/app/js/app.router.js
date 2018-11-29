@@ -194,6 +194,12 @@ angular.module('app')
                         controller:'EmployersListController'
 
                     })
+                    .state('app.gestionEmployer',{
+                        url:'/GestionEmployers',
+                        templateUrl:'partials/employer/gestionEmployer.html',
+                        controller:'EmployersListController'
+
+                    })
                     .state('app.feedbacks',{
                         url:'/feedback',
                         templateUrl:'partials/feedBack/feedbacks.html',

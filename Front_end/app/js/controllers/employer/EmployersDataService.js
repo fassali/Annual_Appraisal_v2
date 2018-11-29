@@ -85,12 +85,11 @@
 		     return promise2;
 		    }
 				
-			//all sessions
-			
-				this.allSession=function(){
+			//all sessions			
+				this.allSession=function(idEmp){
 					var promise1=$http({
 						method: 'GET',
-						url: "http://localhost:8080/allSessions"
+						url: "http://localhost:8080/sessions/"+idEmp
 						});
 					var promise2=promise1.then(function(response){
 						return response.data;
@@ -100,8 +99,34 @@
 					});
 				 return promise2;
 				}
-				
-			
+				//session en cour			
+				this.sessionEnCour=function(idEmp){
+					var promise1=$http({
+						method: 'GET',
+						url: "http://localhost:8080/sessionEnCour/"+idEmp
+						});
+					var promise2=promise1.then(function(response){
+						return response.data;
+					},function(err){
+						console.log(err);
+	
+					});
+				 return promise2;
+				}
+			//session cloturé
+			this.sessionCloture=function(idEmp,idAnn){
+				var promise1=$http({
+					method: 'GET',
+					url: "http://localhost:8080//sessionCloture/"+idEmp+"/"+idAnn
+					});
+				var promise2=promise1.then(function(response){
+					return response.data;
+				},function(err){
+					console.log(err);
+
+				});
+			 return promise2;
+			}
 			
 			
 			

@@ -16,7 +16,7 @@ public class ApEmploye implements Serializable {
     private Long idApEmp;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JsonIgnore
+    //@JsonIgnore
 //    @JoinColumn(name="id_ann")
     private AnnualSession annualSession;
 

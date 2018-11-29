@@ -13,67 +13,162 @@
 <br>
 <br>
 <br>
-<div style="background: #45637f; width: 98%; margin-top: 70px">
-	<h2 style="color: rgb(255, 255, 255); text-align: center";="">ANNUAL
-		APPRAISAL</h2>
-</div>
+
 <div class="container">
 
-	<div class="table-wrapper">
-		<div class="table-title"style="background-color: transparent;>
-			<div class="row">
+<br>
+<div class="alert alert-success margin-top-5" ng-show="ajoutMessage">{{ajoutMessage}}</div>
+<div class="alert alert-success margin-top-5" ng-show="deleteMessage">{{deleteMessage}}</div>
+<div class="alert alert-success margin-top-5" ng-show="updateMessage">{{updateMessage}}</div>
+<br><br>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+				<label style="font-size: 13px;">Name:</label>
+				<input style="font-size: 13px;margin-left:10px" ng-model="name" disabled/><br> 
+				<label style="font-size: 13px;">BU:</label>
+				<input style="font-size: 13px;margin-left:26px;" ng-model="bu" disabled/><br>
+				<label style="font-size: 13px;">Date:</label>
+				<input style=" font-size:13px;margin-left: 17px;" ng-model="date" disabled/><br>
+				
+			</div>
+      <div class="col-sm-6">
+                <label style="font-size: 13px;">N+1:</label>
+                <input style="font-size: 13px;margin-left: 150px" ng-model="nameManager" disabled/><br> 
+                <label style="font-size: 13px;">Division/Team:</label>
+                <input style="font-size: 13px;margin-left: 95px;"  disabled/><br> 
+                <label style="font-size: 13px;">Objectives applicable on year:</label>
+                <input style="font-size: 13px;margin-left: 7px" ng-model="sessionLabel" disabled/><br> 
+      
+      </div>
+      
+      
+      
+      </div>
+    <br>
+    
+  </div>
+    <div class="container">
+    <button ng-show="add==0" type="button" class="btn btn-primary btn-sm" ng-click="addObj()">New Objective </button>
+    <br><br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th><center>OBJECTIVES</center></th>         
+          <th><center>INDICATORS</center></th>
+          <th><center>MEANS</center></th>
+          <th><center>DEADLINE</center></th>
+          <th><center>Action</center></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-show="add==1">
+          <td><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="obj.labelObj"></textarea></td>
+          <td><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="obj.indicator"></textarea></td>
+          <td><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="obj.mean"></textarea></td>
+          <td><input type="date"class="form-control" ng-model="obj.deadLine" style="height: 75px"/></td>
+          <td>                                                
+						<button data-title="Delete" data-toggle="modal" data-target="#delete" style="border: none" class="label label-warning"  ng-click="addNewObj()"><i class="fa fa-plus-circle"></i> Add Objective</button>                                        
+          </td>
+        </tr>
+        <tr  ng-repeat="o in objs">
+           <td>{{$index+1}}</td>
+          <td><center>{{o.labelObj}}</center></td>
+          <td><center>{{o.indicator}}</center></td>
+          <td><center>{{o.mean}}</center></td>
+          <td><center>{{dayObj}}/{{monthObj}}/{{yearObj}}</center></td>
+          <td>&nbsp&nbsp
+             <button data-title="Delete" data-toggle="modal" data-target="#delete" class="fa fa-trash-o" style="color: #fd0202; font-size: 20px;" ng-click="findObj(o.idApObjEmp)"></button>
+			 &nbsp&nbsp
+			 <button data-title="Update" data-toggle="modal" data-target="#update" class="fa fa-edit"style="color: #3002fd; font-size: 20px;" ng-click="edit(o.idApObjEmp)"></button>
+          </td>
+        </tr>
+			</tbody>
+			<tfoot class="hide-if-no-paging">
+					<tr>
+							<td colspan="5" class="text-center">
+									<ul class="pagination"></ul>
+							</td>
+					</tr>
+					</tfoot>
+    </table>
+	
 
-				<div class="col-sm-12">
-				<button type="submit" class="btn btn-primary" ng-click="addObjects()" style="background-color: #45637f; color: #ffffff;font-size: 17px;width:90px"><i class="fa fa-forward"></i> <span>Save</span></button> 
 
-				</div>
+
+  </div>
+
+</div>
+
+<!-- Modal Delate-->
+<div class="modal fade" id="delete" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6>Delete Objective</h6>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+					<div class="alert alert-danger">Do you really want to delete
+					this objective{{objDeleted.idApObjEmp}}</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" data-dismiss="modal" class="btn btn-success"
+					ng-click="supprimer(objDeleted.idApObjEmp)">
+					<span class="fa fa-check-circle-o"></span> Yes
+				</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">
+					<span class="fa  fa-close"></span> No
+				</button>
 			</div>
 		</div>
 
-	
-<div class="alert alert-success margin-top-5" ng-show="ajoutMessage">{{ajoutMessage}}</div>
-
-	<table id="table" class="table table-striped table-hover">
-		<thead>
-			<tr>
-				<th>OBJECTIVES</th>
-				<th>INDICATORS</th>
-				<th>MEANS</th>
-				<th>DEADLINE</th>
-
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><input type="text" class="form-control"
-					ng-model="objs[0].labelObj"></td>
-				<td><input type="text" class="form-control"
-					ng-model="objs[0].indicator"></td>
-				<td><input type="text" class="form-control" ng-model="objs[0].mean"></td>
-				<td><input type="date" class="form-control"
-					ng-model="objs[0].deadLine"></td>
-				
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				
-				<td><button type="submit" ng-click="addRow()" style="margin-left: 100%">
-						<i class="fa fa-plus-circle"></i>
-					</button>
-			</tr>
-		</tfoot>
-	</table>
-
-
-
+	</div>
 </div>
 
-
-
+<!-- Modal Delate-->
+<div class="modal fade" id="update" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6>Update Objective</h6>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<form action="/action_page.php" style="font-family:Poppins-Regular;">
+					<div class="form-group">
+						<label>OBJECTIVES:</label> 
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="obj.labelObj"></textarea>
+					</div>
+					<div class="form-group">
+						<label>INDICATORS:</label> 
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="obj.indicator"></textarea>
+					</div>
+					<div class="form-group">
+						<label>MEANS:</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="obj.mean"></textarea>
+						
+					</div>
+					<div class="form-group">
+						<label>DEADLINE:</label> 
+						<input type="date"class="form-control" ng-model="obj.deadLine" style="height: 90px"/>
+					</div>
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-warning btn-lg"
+						style="width: 100%; color: #fdfdfd; font-weight: Bold;"
+						ng-click="updateObj(obj.idApObjEmp)" data-dismiss="modal">
+						<span class="fa fa-check "></span> Update
+					</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 
