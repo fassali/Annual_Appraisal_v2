@@ -12,13 +12,12 @@
       "OBJ.MEAN": "Signifier",
       "OBJ.DLINE": "Date limite",
       "OBJ.RATING": "Evaluation",
-      "EMP.NOM" : "Commentaires",
-      "EMP.PRENOM" : "Commentaires",
-      "" : "Commentaires",
-      "OBJ.COM" : "Commentaires",
-      "OBJ.COM" : "Commentaires",
-      "OBJ.COM" : "Commentaires",
-      "OBJ.COM" : "Commentaires"
+      "EMP.NOM" : "Nom",
+      "EMP.PRENOM" : "Prenom",
+      "EMP.POS" : "Position",
+      "EMP.DtDebut" : "Date debut",
+      "EMP.ACT" : "Action",
+      "ADD.NEW.EMP" : "Ajouter un nouveau Employer"
     }
   },
   "buttons": {
