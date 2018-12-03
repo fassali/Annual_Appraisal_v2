@@ -41,6 +41,9 @@ public class Employe implements Serializable {
     @Column(name = Constantes.ADMIN)
     private String admin;
 
+    @Column(name = Constantes.MANAGER)
+    private String manager;
+
     @Column(name = Constantes.REMOVE)
     private Integer remove;
 
@@ -64,9 +67,10 @@ public class Employe implements Serializable {
     }
 
     public Employe(String firstName, String lastName, String position, String team, Date dateEntry, String username,
-                   String email, Employe manager, String admin, Integer remove, Integer idManager,
+                   String email, String manager, String admin, Integer remove, Integer idManager,
                    Set<ApEmploye> apEmployes, Set<Employe> managerTeam) {
         super();
+        this.manager = manager;
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
@@ -178,5 +182,12 @@ public class Employe implements Serializable {
         this.idManager = idManager;
     }
 
+    public String getManager() {
+        return manager;
+    }
+
+    public void setManager(String manager) {
+        this.manager = manager;
+    }
 
 }
