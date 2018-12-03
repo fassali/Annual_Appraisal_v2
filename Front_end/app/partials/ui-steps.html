@@ -34,8 +34,8 @@
                                     <form name="step2" >
                                         <div ui-view="objctives"></div>
                                         <div class="">
-                                            <button type="button" class="btn btn-primary" ng-click="steps.step1=true">Prev</button>
-                                            <button type="submit"  ng-disabled="step2.$invalid"  class="btn btn-primary" ng-click="steps.step3=true;updateLastObj()">Next</button>
+                                            <button type="button" class="btn btn-primary" ng-click="steps.step1=true">{{ "buttons.BTN.PREV" | translate }}</button>
+                                            <button type="submit"  ng-disabled="step2.$invalid"  class="btn btn-primary" ng-click="steps.step3=true;updateLastObj()">{{ "buttons.BTN.NEXT" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
