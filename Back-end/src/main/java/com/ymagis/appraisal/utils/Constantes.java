@@ -50,6 +50,7 @@ public class Constantes {
     public static final String RATING = "rating";
     public static final String SOFTSKILL = "softSkill";
     public static final String ID_APFDBACK = "id_apfdback";
+    public static final String ID_MANAGER = "id_manager";
 
 
 

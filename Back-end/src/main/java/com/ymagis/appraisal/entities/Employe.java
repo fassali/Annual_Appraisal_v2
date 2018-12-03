@@ -44,12 +44,16 @@ public class Employe implements Serializable {
     @Column(name = Constantes.REMOVE)
     private Integer remove;
 
-    @ManyToOne
-    @JoinColumn(name = Constantes.MANAGER)
-    private Employe manager;
+    @Column(name = Constantes.ID_MANAGER)
+    private Integer idManager;
 
-    @OneToMany(mappedBy = Constantes.MANAGER)
-    private Set<Employe> managerTeam = new HashSet<>();
+
+//    @ManyToOne
+//    @JoinColumn(name = Constantes.MANAGER)
+//    private Employe manager;
+//
+//    @OneToMany(mappedBy = Constantes.MANAGER)
+//    private Set<Employe> managerTeam = new HashSet<>();
 
     //    @JsonIgnore
     @OneToMany(mappedBy = Constantes.EMPLOYE, fetch=FetchType.LAZY)
@@ -70,10 +74,11 @@ public class Employe implements Serializable {
         this.dateEntry = dateEntry;
         this.username = username;
         this.email = email;
-        this.manager = manager;
+        //this.manager = manager;
         this.admin = admin;
         this.remove = remove;
-        this.managerTeam = managerTeam;
+        //this.managerTeam = managerTeam;
+        this.idManager = idManager;
         this.apEmployes = apEmployes;
     }
 
@@ -165,27 +170,13 @@ public class Employe implements Serializable {
         this.apEmployes = apEmployes;
     }
 
-    /*public Integer getIdManager() {
+    public Integer getIdManager() {
         return idManager;
     }
 
     public void setIdManager(Integer idManager) {
         this.idManager = idManager;
-    }*/
-
-    public Employe getManager() {
-        return manager;
     }
 
-    public void setManager(Employe manager) {
-        this.manager = manager;
-    }
 
-    public Set<Employe> getManagerTeam() {
-        return managerTeam;
-    }
-
-    public void setManagerTeam(Set<Employe> managerTeam) {
-        this.managerTeam = managerTeam;
-    }
 }
