@@ -13,6 +13,7 @@ import javax.swing.text.DateFormatter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Year;
 import java.util.*;
 
@@ -37,8 +38,8 @@ public class ObjectifController {
 
 
     //Recuperer les objectifs de l'année passé pour un employé
-    @GetMapping(value = "/Objectifs")
-    public Page<ApObjEmp> listObjectifs(@RequestParam("year") String year, @RequestParam("idEmp") Long idEmp,
+    @GetMapping(value = "/Objectifs/{year}/empl/{idEmp}")
+    public Page<ApObjEmp> listObjectifs(@PathVariable("year") String year, @PathVariable("idEmp") Long idEmp,
                                        @RequestParam(name = "page", defaultValue = "0") int page,
                                        @RequestParam(name = "size", defaultValue = "10") int size) throws ParseException {
         Integer lastYear = Integer.parseInt(year) - 1;
@@ -68,11 +69,15 @@ public class ObjectifController {
     }
 
     //Mettre à jour la mention rating et commenatire pour les objectifs de l'année dernière
-    @RequestMapping(value = "/Objectives", method = RequestMethod.PUT)
-    public boolean updateObjEmp(@RequestBody List<ApObjEmp> listObj) {
+    @RequestMapping(value = "/Objectives/{idappEmp}", method = RequestMethod.PUT)
+    public boolean updateObjEmp(@RequestBody List<ApObjEmp> listObj,@PathVariable Long idappEmp) {
+        ApEmploye apEmploye = apEmployeRepository.findById(idappEmp).get();
         if(null == listObj || listObj.isEmpty()){
             throw new RuntimeException("list of objectives is empty");
         }else{
+            for(ApObjEmp apObjEmp:listObj)
+            apObjEmp.setApEmploye(apEmploye);
+
             objectifRepository.saveAll(listObj);
             return true;
         }

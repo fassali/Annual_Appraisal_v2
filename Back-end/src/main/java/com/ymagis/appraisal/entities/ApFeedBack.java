@@ -1,6 +1,7 @@
 package com.ymagis.appraisal.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ymagis.appraisal.utils.Constantes;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,19 +9,21 @@ import java.io.Serializable;
 @NamedQuery(name = "ApFeedBack.namedFindAllApFeedBacksByApEmploye", query = "select a from ApFeedBack a where a.apEmploye.idApEmp = :idApEmp")
 public class ApFeedBack implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idApFdBach;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = Constantes.ID_APFDBACK)
+    private Long idApFdBack;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(fetch = FetchType.LAZY)
     //@JsonIgnore
-    @JoinColumn(name = "id_fd_back")
+    @JoinColumn(name = Constantes.ID_FDBACK, nullable = false)
     private FeedBack feedBack;
 
     @JsonIgnore
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "id_ap_emp")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = Constantes.ID_APEMP, nullable = false)
     private ApEmploye apEmploye;
 
+    @Column(name = Constantes.COMMENT)
     private  String comment;
 
     public ApFeedBack() {
@@ -33,11 +36,11 @@ public class ApFeedBack implements Serializable {
     }
 
     public Long getIdApFdBach() {
-        return idApFdBach;
+        return idApFdBack;
     }
 
     public void setIdApFdBach(Long idApFdBach) {
-        this.idApFdBach = idApFdBach;
+        this.idApFdBack = idApFdBach;
     }
 
     public FeedBack getFeedBack() {

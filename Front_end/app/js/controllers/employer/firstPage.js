@@ -3,11 +3,10 @@
 	var app = angular.module('app');
 	app.controller("FirstPageController",
 			function($scope,$rootScope, $http,EmployersDatasrv,AppEmployerDatasrv) {
-
-		
-		
-        console.log($rootScope.appEmp);
-        $scope.employer=$rootScope.appEmp.data.employe;
+			
+        console.log($rootScope.appEmp.annualSession.label);
+        console.log($rootScope.employerSelected.idEmp)
+        $scope.employer=$rootScope.employerSelected;
 		 
 		var appDate = new Date();
 		$scope.dayAnn=appDate.getDate();
@@ -29,6 +28,8 @@
 				$scope.manager=data.data;
 				
 			});
+        
+        
 				
 				
 			

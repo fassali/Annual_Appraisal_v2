@@ -1,6 +1,7 @@
 package com.ymagis.appraisal.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ymagis.appraisal.utils.Constantes;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,16 +13,17 @@ import java.util.Set;
 public class AnnualSession implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAnn;
 
-    //@UniqueConstraint(columnNames={"label"})
+    @Column(name = Constantes.LABEL, nullable = false)
     private String label;
 
+    @Column(name = Constantes.STATUS, nullable = false)
     private String status;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "annualSession" ,cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = Constantes.ANNUAL_SESSION, fetch=FetchType.LAZY)
     private Set<ApEmploye> apEmployes;
 
     public AnnualSession(String label, String status, Set<ApEmploye> apEmployes) {

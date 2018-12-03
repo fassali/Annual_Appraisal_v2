@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+import com.ymagis.appraisal.repository.ApEmployeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ymagis.appraisal.dao.ApSoftSkillRepository;
-import com.ymagis.appraisal.dao.LevelRepository;
-import com.ymagis.appraisal.dao.SoftSkilsRepository;
+import com.ymagis.appraisal.repository.ApSoftSkillRepository;
+import com.ymagis.appraisal.repository.LevelRepository;
+import com.ymagis.appraisal.repository.SoftSkilsRepository;
 import com.ymagis.appraisal.entities.ApEmploye;
 import com.ymagis.appraisal.entities.ApSoftSkill;
 import com.ymagis.appraisal.entities.Level;
@@ -36,7 +38,8 @@ public class SoftSkilsController {
 	private LevelRepository LevelRepository;
 	@Autowired
 	private ApSoftSkillRepository apSoftSkillRepository;
-
+	@Autowired
+private ApEmployeRepository apEmployeRepository;
 	// ajouter skils
 	@RequestMapping(method = RequestMethod.POST, value = "/skils/save")
 	public SoftSkill saveSkils(@RequestBody SoftSkill skils) {
@@ -94,7 +97,19 @@ public class SoftSkilsController {
 	@RequestMapping(value = "/skill", method = RequestMethod.GET)
 	public Page<SoftSkill> getSoftSkill(@RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "size", defaultValue = "2") int size) {
-		return skilsRepository.getoftSkill(PageRequest.of(page, size));
+		Page<SoftSkill> softSkills = skilsRepository.getoftSkill(PageRequest.of(page, size));
+		for(SoftSkill softSkill: softSkills.getContent())
+		{
+			Set<Level> levels = new HashSet<>();
+			for (Level level : softSkill.getLevels())
+				if(!level.isRemoved())
+					levels.add(level);
+
+		  softSkill.setLevels(levels);
+		}
+
+
+		return softSkills;
 	}
 
 	// update skils
@@ -188,7 +203,27 @@ public class SoftSkilsController {
 		apSoftSkillRepository.save(apSoftSkill);
 		return apSoftSkill;
 	}
+	@RequestMapping(method = RequestMethod.POST, value = "/apEmpl/{idap}/soft")
+	public ApEmploye Appsoftsave(@RequestBody List<Level> levels,@PathVariable Long idap) {
+		Set<ApSoftSkill> apSoftSkills = new HashSet<>();
+     ApEmploye apEmploye = apEmployeRepository.findById(idap).get();
+List<ApSoftSkill> suppApSoftSkills = apSoftSkillRepository.getApSoftSkillByApEmploye(apEmploye);
+apSoftSkillRepository.deleteAll(suppApSoftSkills);
+		System.out.println(suppApSoftSkills.size());
+		for(Level level : levels)
+		{
+						ApSoftSkill apSoftSkill = new ApSoftSkill();
+						SoftSkill softSkill = LevelRepository.findById(level.getIdLevel()).get().getSoftSkill();
+			            level.setSoftSkill(softSkill);
+			            apSoftSkill.setLevel(level);
+			            apSoftSkill.setApEmploye(apEmploye);
+		 	            apSoftSkills.add(apSoftSkill);
 
+		        }
+        apEmploye.setApSoftSkills(apSoftSkills);
+		apEmployeRepository.save(apEmploye);
+		return apEmploye;
+	}
 	// recuperer skils
 	@RequestMapping(value = "/apskils", method = RequestMethod.GET)
 	public List<ApSoftSkill> getapSkils() {

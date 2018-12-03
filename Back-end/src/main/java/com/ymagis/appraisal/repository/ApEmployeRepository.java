@@ -17,6 +17,8 @@ public interface ApEmployeRepository extends JpaRepository<ApEmploye, Long> {
     
     @Query("select s from AnnualSession  s where s.status  = 'en cour'")
     public AnnualSession findAnnualSession();
+	@Query("select a from ApEmploye  a where a.employe.idEmp  = :idE and a.annualSession.idAnn=:idS")
+    public ApEmploye findApEmploye(@Param("idE")Long idE, @Param("idS")Long idS);
 
     @Query("select apEmp from ApEmploye apEmp where apEmp.idApEmp = :idApEmp")
     public ApEmploye findApEmployeByIdApEmp(@Param("idApEmp") Long idApEmp);

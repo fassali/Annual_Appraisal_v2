@@ -1,6 +1,7 @@
 package com.ymagis.appraisal.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ymagis.appraisal.utils.Constantes;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,19 +11,22 @@ import java.util.Set;
 @Entity
 public class Rating implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = Constantes.ID_RATING)
     private Long idRating;
 
+    @Column(name = Constantes.CODE)
     private String code;
 
+    @Column(name = Constantes.LABEL)
     private String label;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "rating",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = Constantes.RATING, fetch=FetchType.LAZY)
     private Set<ApHardSkill> apHardSkills = new HashSet<>(0);
 
     @JsonIgnore
-    @OneToMany(mappedBy = "rating", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = Constantes.RATING, fetch=FetchType.EAGER)
     private Set<ApObjEmp> apObjEmps = new HashSet<>(0);
 
     public Rating() {
