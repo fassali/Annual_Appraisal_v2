@@ -13,11 +13,11 @@
       "OBJ.DLINE": "Date limite",
       "OBJ.RATING": "Evaluation",
       "EMP.NOM" : "Nom",
-      "EMP.PRENOM" : "Prenom",
+      "EMP.PRENOM" : "Prénom",
       "EMP.POS" : "Position",
-      "EMP.DtDebut" : "Date debut",
+      "EMP.DtDebut" : "Date début",
       "EMP.ACT" : "Action",
-      "ADD.NEW.EMP" : "Ajouter un nouveau Employer"
+      "EMP.LIST" : "Liste des employés"
     }
   },
   "buttons": {
