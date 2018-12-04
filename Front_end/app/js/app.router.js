@@ -200,6 +200,12 @@ angular.module('app')
                         controller:'EmployersListController'
 
                     })
+                    .state('app.chooseEmployer',{
+                        url:'/selectEmployers',
+                        templateUrl:'partials/employer/chooseEmployers.html',
+                        controller:'SelectEmployer'
+
+                    })
                     .state('app.feedbacks',{
                         url:'/feedback',
                         templateUrl:'partials/feedBack/feedbacks.html',

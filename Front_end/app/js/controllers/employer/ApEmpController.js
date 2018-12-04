@@ -11,40 +11,35 @@
                 $scope.selected = {
                 item: $scope.items[0]
                 };
+                
                 EmployersDatasrv.allSession($scope.id)
-                .then(function (data) {                
-                    for(var i=0;i<data.length;i++){   
-                        $scope.session=data[i];                    
-                        if($scope.session.status=="EnCours"){
+                .then(function (data) {  
+                    $scope.mode=null; 
+                    $scope.years = data         
+                      $scope.years.forEach(function(item) {                     
+                        if(item.status=="EnCours"){
                             EmployersDatasrv.sessionEnCour($scope.id)
                             .then(function (resp) {
-                                if(resp==true){ 
-                                console.log(resp)                            
-                                $scope.session.title="Continue";
-                                 $scope.session.status="In progress";                                
-                                }else if(resp==false){  
-                               console.log(resp)                            
-                               $scope.session.title="Start";
-                                $scope.session.status="--------";                            
-                                }
-                               
-                               
+                                                   
+                                if(resp){ 
+                                    item.mode=0;                                                                                             
+                                    item.title="Continue";
+                                    item.status="In progress";                                
+                                }else{ 
+                                    item.mode=1;                                                            
+                                    item.title="Start";
+                                    item.status="--------";                            
+                                }                                                              
                             });
                           
-                        }else if($scope.session.status=="Cloturée"){
-                            
-                            $scope.session.title="Consult";
-                            $scope.session.status="Closed";
-
-                                                       
-                                                                              
+                        }else if(item.status=="Cloturée"){   
+                            item.mode=2;                      
+                            item.title="Consult";
+                            item.status="Closed"                                                                                                                                   
                         }
-                        $scope.years.push($scope.session)
-                       
-                    }             
-                   console.log( $scope.years);
+                    });
                 });
-
+               //apEmp "en cpur"
                 $scope.newAppEmp=function(){
                     EmployersDatasrv.appEmployer($scope.id)
                   .then(function (data) {	
@@ -61,6 +56,22 @@
                        console.log(err);
                    })
               } 
+            //apEmp for all sessions "cloturées"
+            $scope.oldAppEmp=function(idAnn){
+                EmployersDatasrv.sessionCloture($scope.id,idAnn)
+                .then(function (data) {
+                    $rootScope.appEmp=data;
+                    EmployersDatasrv.editEmployer($scope.id)
+                    .then(function (resp) {
+                        $modalInstance.close($scope.selected.item);
+                        $rootScope.employerSelected=resp.data;
+                        console.log($rootScope.employerSelected)
+                       document.location.href="http://localhost:8081/app/#/app/ui/steps";
+                    });
+                });
+            }
+
+
             })
 
         })();

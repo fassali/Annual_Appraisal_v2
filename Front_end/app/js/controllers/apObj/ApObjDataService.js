@@ -42,8 +42,8 @@
 		}
 		
 		 //update an obj
-        this.updateObj=function(obj,idEmp,idApEmp,idApObjEmp){
-       	 return $http.put("http://localhost:8080/objective/"+idEmp+"/"+idApEmp+"/"+idApObjEmp,obj)
+        this.updateObj=function(objective,idEmp,idApEmp,idApObjEmp){
+       	 return $http.put("http://localhost:8080/objective/"+idEmp+"/"+idApEmp+"/"+idApObjEmp,objective)
             .then(function(response){
             });
          }

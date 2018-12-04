@@ -48,20 +48,22 @@ public class EmployeController {
 	
 	// recuperer les employeurs d'un manager dans les pages
 	@RequestMapping(value = "/employers", method = RequestMethod.GET)
-	public Page<Employe> findEmployer(@RequestParam(name = "idManager", defaultValue = "")  Integer idManager,
-			@RequestParam(name = "page", defaultValue = "0") int page,
-			@RequestParam(name = "size", defaultValue = "6") int size) {
-		return employeRepository.getEmployer(idManager,new PageRequest(page, size));
+	public List<Employe> findEmployer(@RequestParam(name = "idManager", defaultValue = "")  Integer idManager) {
+		return employeRepository.getEmployer(idManager);
 	}
 	
-	// chercher un employeur par "first name"
-	@RequestMapping(value = "/findEmployers", method = RequestMethod.GET)
-	public Page<Employe> findEmployers(@RequestParam(name = "idManager", defaultValue = "") Integer idManager,
-			@RequestParam(name = "firstName", defaultValue = "") String firstName,
-			@RequestParam(name = "page", defaultValue = "0") int page,
-			@RequestParam(name = "size", defaultValue = "6") int size) {
-		
-		return employeRepository.findEmployer(idManager,firstName,new PageRequest(page, size));
+//	// chercher un employeur par "first name"
+//	@RequestMapping(value = "/findEmployers", method = RequestMethod.GET)
+//	public Page<Employe> findEmployers(@RequestParam(name = "idManager", defaultValue = "") Integer idManager,
+//			@RequestParam(name = "firstName", defaultValue = "") String firstName,
+//			@RequestParam(name = "page", defaultValue = "0") int page,
+//			@RequestParam(name = "size", defaultValue = "6") int size) {
+//		return employeRepository.findEmployer(idManager,firstName,new PageRequest(page, size));
+//	}
+	//get all employers without manager
+	@RequestMapping(value = "/employersWM", method = RequestMethod.GET)
+	public List<Employe> findEmployerWM() {
+		return employeRepository.findEmployers_WM();
 	}
 	
 	// mise à jour des informations d'un employeurs
@@ -124,20 +126,21 @@ public class EmployeController {
 		return exist;
 	}
 	
-	//get the session "cloruré"
-	@RequestMapping(value = "/sessionCloture/{idEmp}/{idAnn}",method = RequestMethod.GET)
-	public AnnualSession findSession_C(@PathVariable Long idEmp,@PathVariable Long idAnn) {
-		AnnualSession session=null;
+
+	// get the session "cloturé"
+	@RequestMapping(value = "/sessionCloture/{idEmp}/{idAnn}", method = RequestMethod.GET)
+	public ApEmploye findSession_C(@PathVariable Long idEmp, @PathVariable Long idAnn) {
+		ApEmploye apEmp = null;
 		Employe employeur = employeRepository.findById(idEmp).get();
 		List<ApEmploye> listAppEmp = new ArrayList<ApEmploye>(employeur.getApEmployes());
-		for(int i=0;i<listAppEmp.size();i++) {
-			if(listAppEmp.get(i).getAnnualSession().getIdAnn()==idAnn) {
-				session=listAppEmp.get(i).getAnnualSession();
+		for (int i = 0; i < listAppEmp.size(); i++) {
+			if (listAppEmp.get(i).getAnnualSession().getIdAnn() == idAnn) {
+				apEmp = listAppEmp.get(i);
 			}
 		}
-		
-		return session;
+		return apEmp;
 	}
+	
 	
 	// appEmp list
 	@RequestMapping(method = RequestMethod.GET, value = "/appEmployer/{idEmp}")

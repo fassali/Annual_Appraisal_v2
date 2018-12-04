@@ -20,10 +20,10 @@
 			
 		
 		//afficher des employeurs selon "idManager"
-		this.getEmployers=function(idManager,pageCourante,size){
+		this.getEmployers=function(idManager){
 	        var promise1=$http({
 	            method: 'GET',
-	            url: "http://localhost:8080/employers?idManager="+idManager+ "&page=" + pageCourante + "&size=" + size
+	            url: "http://localhost:8080/employers?idManager="+idManager
 	            });
 	        var promise2=promise1.then(function(response){
 	        	return response.data;
@@ -32,13 +32,27 @@
 
 	        });
 	     return promise2;
-	    }
+		}
+			//afficher des employeurs selon "idManager"
+			this.getEmployersWm=function(){
+				var promise1=$http({
+					method: 'GET',
+					url: "http://localhost:8080/employersWM"
+					});
+				var promise2=promise1.then(function(response){
+					return response.data;
+				},function(err){
+					console.log(err);
+	
+				});
+			 return promise2;
+			}
 		
 		//chercher un employeur
-		this.findEmployers=function(idEmp,firstName,pageCourante,size){
+		this.findEmployers=function(idEmp,firstName){
 	        var promise1=$http({
 	            method: 'GET',
-	            url: "http://localhost:8080/findEmployers?idManager="+idEmp+"&firstName="+firstName+"&page="+pageCourante+"&size="+size
+	            url: "http://localhost:8080/findEmployers?idManager="+idEmp+"&firstName="+firstName
 	            });
 	        var promise2=promise1.then(function(response){
 	        	return response.data;
@@ -51,10 +65,15 @@
 		
 		 //update un employeur
         this.saveEmployer=function(employer,idEmp){
-       	 console.log(employer);
+       	
        	 return $http.put("http://localhost:8080/employer/"+idEmp,employer)
             .then(function(response){
-            });
+				
+                console.log(response.data)
+            }), function (err) {
+				
+                    console.log(err);
+                };
          }
 		
 		//Edit function

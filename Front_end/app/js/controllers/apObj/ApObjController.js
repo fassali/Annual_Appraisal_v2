@@ -10,6 +10,13 @@
 		$scope.size = 4;
 		$scope.add=0;
 		
+		
+		$scope.session=$rootScope.appEmp.annualSession;
+		if($scope.session.status=="Cloturée"){
+			$scope.session.mode=1;
+		}else if($scope.session.status=="EnCours"){
+			$scope.session.mode=0;
+		}
 	    //en tete
 		$scope.name=$rootScope.employerSelected.firstName+" "+$rootScope.employerSelected.lastName;
 		var d=new Date($rootScope.employerSelected.dateEntry);
@@ -24,11 +31,7 @@
 			   $scope.nameManager=$scope.manager.firstName+" "+$scope.manager.lastName;
              });
 		
-		   //session information
-		   AppEmployerDatasrv.findSession()
-		   .then(function(data){
-			   $scope.sessionLabel=data.label;
-             });
+		   
 	
 		   ApObjDatasrv.appObjs($rootScope.appEmp.idApEmp,$scope.pageCourante,$scope.size)	
 			.then(function(data){

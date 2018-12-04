@@ -14,7 +14,7 @@
 <br>
 <br>
 
-<div class="container">
+
 
 <br>
 <div class="alert alert-success margin-top-5" ng-show="ajoutMessage">{{ajoutMessage}}</div>
@@ -23,7 +23,7 @@
 <br><br>
 <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-5">
 				<label style="font-size: 13px;">Name:</label>
 				<input style="font-size: 13px;margin-left:10px" ng-model="name" disabled/><br> 
 				<label style="font-size: 13px;">BU:</label>
@@ -32,13 +32,13 @@
 				<input style=" font-size:13px;margin-left: 17px;" ng-model="date" disabled/><br>
 				
 			</div>
-      <div class="col-sm-6">
+      <div class="col-sm-7">
                 <label style="font-size: 13px;">N+1:</label>
-                <input style="font-size: 13px;margin-left: 150px" ng-model="nameManager" disabled/><br> 
+                <input style="font-size: 13px;margin-left: 160px" ng-model="nameManager" disabled/><br> 
                 <label style="font-size: 13px;">Division/Team:</label>
                 <input style="font-size: 13px;margin-left: 95px;"  disabled/><br> 
                 <label style="font-size: 13px;">Objectives applicable on year:</label>
-                <input style="font-size: 13px;margin-left: 7px" ng-model="sessionLabel" disabled/><br> 
+                <input style="font-size: 13px;margin-left: 1px" ng-model="session.label" disabled/><br> 
       
       </div>
       
@@ -48,8 +48,8 @@
     <br>
     
   </div>
-    <div class="container">
-    <button ng-show="add==0" type="button" class="btn btn-primary btn-sm" ng-click="addObj()">New Objective </button>
+ 
+    <button ng-show="add==0 && session.mode==0" type="button" class="btn btn-primary btn-sm" ng-click="addObj()">New Objective </button>
     <br><br>
     <table class="table">
       <thead>
@@ -59,11 +59,12 @@
           <th><center>INDICATORS</center></th>
           <th><center>MEANS</center></th>
           <th><center>DEADLINE</center></th>
-          <th><center>Action</center></th>
+          <th ng-show="session.mode==0" ><center>Action</center></th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-show="add==1">
+        <tr ng-show="add==1 && session.mode==0">
+		<td></td>
           <td><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="obj.labelObj"></textarea></td>
           <td><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="obj.indicator"></textarea></td>
           <td><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="obj.mean"></textarea></td>
@@ -73,15 +74,16 @@
           </td>
         </tr>
         <tr  ng-repeat="o in objs">
+				
            <td>{{$index+1}}</td>
           <td><center>{{o.labelObj}}</center></td>
           <td><center>{{o.indicator}}</center></td>
           <td><center>{{o.mean}}</center></td>
           <td><center>{{dayObj}}/{{monthObj}}/{{yearObj}}</center></td>
           <td>&nbsp&nbsp
-             <button data-title="Delete" data-toggle="modal" data-target="#delete" class="fa fa-trash-o" style="color: #fd0202; font-size: 20px;" ng-click="findObj(o.idApObjEmp)"></button>
+             <button ng-show="session.mode==0" data-title="Delete" data-toggle="modal" data-target="#delete" class="fa fa-trash-o" style="color: #fd0202; font-size: 20px;" ng-click="section_modalDeleteApObj(o.idApObjEmp)"></button>
 			 &nbsp&nbsp
-			 <button data-title="Update" data-toggle="modal" data-target="#update" class="fa fa-edit"style="color: #3002fd; font-size: 20px;" ng-click="edit(o.idApObjEmp)"></button>
+			 <button ng-show="session.mode==0" data-title="Update" data-toggle="modal" data-target="#update" class="fa fa-edit"style="color: #3002fd; font-size: 20px;" ng-click="section_modalUpdateApObj(o.idApObjEmp)"></button>
           </td>
         </tr>
 			</tbody>
@@ -97,9 +99,9 @@
 
 
 
-  </div>
 
-</div>
+
+
 
 <!-- Modal Delate-->
 <div class="modal fade" id="delete" role="dialog">
