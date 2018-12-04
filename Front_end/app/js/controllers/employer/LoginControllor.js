@@ -12,12 +12,13 @@
 					$scope.errorMessage="Authentication failed.Please try Again..."
 				}else {
 					$rootScope.user=data;
-					 if($rootScope.user.manager=="Yes"){
+					console.log($rootScope.user)
+					 if($rootScope.user.profil=="M"){
 						//document.location.href="http://localhost:8081/#!/app/employers";
                          $state.go("app.employersList", {}, {
 
                          });
-					}else if($rootScope.user.manager=="No"){
+					}else if($rootScope.user.profil=="E"){
 						//document.location.href="http://localhost:8081/#!/app/myProfil";
                          $state.go("app.profile", {}, {
 
