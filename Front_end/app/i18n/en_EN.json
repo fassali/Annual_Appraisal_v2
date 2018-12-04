@@ -12,7 +12,13 @@
       "OBJ.MEAN": "Means",
       "OBJ.DLINE": "Deadline",
       "OBJ.RATING": "Rating",
-      "OBJ.COM" : "Comments"
+      "OBJ.COM" : "Comments",
+      "EMP.NOM" : "First Name",
+      "EMP.PRENOM" : "Last Name",
+      "EMP.POS" : "Position",
+      "EMP.DtDebut" : "Start date",
+      "EMP.ACT" : "Action",
+      "EMP.LIST" : "List of employees"
     }
   },
   "buttons": {
