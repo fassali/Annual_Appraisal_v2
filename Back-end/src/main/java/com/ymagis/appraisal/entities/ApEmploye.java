@@ -1,10 +1,8 @@
 package com.ymagis.appraisal.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.ymagis.appraisal.utils.Constantes;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -14,58 +12,56 @@ import java.util.Set;
 public class ApEmploye implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = Constantes.ID_APEMP)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idApEmp;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     //@JsonIgnore
-    @JoinColumn(name = Constantes.ID_ANN, nullable = false)
+//    @JoinColumn(name="id_ann")
     private AnnualSession annualSession;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    //(cascade = CascadeType.ALL)
-    @NotNull
+    @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
-    @JoinColumn(name=Constantes.ID_EMP, nullable = false)
+//    @JoinColumn(name="id_emp")
     private Employe employe;
 
-    @Column(name = Constantes.ADD_FDBACK)
     private String addFBack;
 
-    @Column(name = Constantes.STATUS)
     private String status;
 
-    @Column(name = Constantes.WISH)
     private String wish;
 
-    @Column(name = Constantes.OPINION)
     private String opinion;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = Constantes.DATE_ENTRED)
     private Date dateEntred;
 
-    @Column(name = Constantes.STRENGTH)
     private String strength;
 
-    @Column(name = Constantes.TB_IMPROVED)
     private String tbImproved;
 
     //@JsonIgnore
-    @OneToMany(mappedBy = Constantes.AP_EMPLOYE, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "apEmploye", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private Set<ApFeedBack> apFeedBacks = new HashSet<>(0);
 
     @JsonIgnore
-    @OneToMany(mappedBy = Constantes.AP_EMPLOYE, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "apEmploye", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private Set<ApHardSkill> apHardSkills = new HashSet<>(0);
 
+    //@JsonIgnore
+    //@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    /*@JoinTable(name = "apEmploye_apObjEmp", joinColumns = @JoinColumn(name = "id_Ap_Emp", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id_ap_obj_emp", referencedColumnName = "id"))*/
+    //@JoinTable(name = "ap_employe_ap_objEmp", joinColumns = @JoinColumn(name = "id_ap_amp"), inverseJoinColumns = @JoinColumn(name = "id_ap_obj_emp"))
+    //private Set<ApObjEmp> apObjEmps;
+
+
    // @JsonIgnore
-    @OneToMany(mappedBy = Constantes.AP_EMPLOYE, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "apEmploye", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private Set<ApObjEmp> apObjEmps;
 
-    //@JsonIgnore
-    @OneToMany(mappedBy = Constantes.AP_EMPLOYE, fetch=FetchType.LAZY)
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "apEmploye", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private Set<ApSoftSkill> apSoftSkills = new HashSet<>(0);
 
     public ApEmploye() {
