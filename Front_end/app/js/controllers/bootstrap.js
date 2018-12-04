@@ -275,8 +275,33 @@ console.log($stateParams)
             $log.info('Modal dismissed at: ' + new Date());
           });
           };
-  
 
+      $scope.newFeed = function () {
+          var modalInstance = $modal.open({
+              templateUrl: 'partials/modalnewFeedBack.html',
+              controller: 'Modalfeednew',
+              resolve: {
+                  feed: function () {
+                      return null;
+                  }
+              }
+          });
+
+
+      };
+      $scope.updateFeed = function (data) {
+          var modalInstance = $modal.open({
+              templateUrl: 'partials/modalupdateFeedBack.html',
+              controller: 'Modalfeednew',
+              resolve: {
+                  feed: function () {
+                      return data;
+                  }
+              }
+          });
+
+
+      };
       $scope.testsmodal = function (data) {
           var modalInstance = $modal.open({
               templateUrl: 'partials/modaltest.html',

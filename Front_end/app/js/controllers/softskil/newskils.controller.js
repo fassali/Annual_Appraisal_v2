@@ -20,7 +20,7 @@ function newSkilsCtrl($scope,skilsDataService,$http,$location,$window,$statePara
 		$scope.newskils.isRemoved = false;
 		$scope.newskils.levels = [];		
 		skilsDataService.newSkils($scope.newskils).then(function(data) {
-			$state.go("app.updateskils", {id: data.idSoftSkill}, {
+			$state.go("app.updateskils", {id: data.data.idSoftSkill}, {
 			});
 			
 		},function myError(response) {

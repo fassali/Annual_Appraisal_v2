@@ -1,7 +1,7 @@
 var app = angular.module("app");
 app.service('feedbackService', function($http) {
 	var that = this;
-	that.baseUrl = "/feedback";
+	that.baseUrl = "http://localhost:8080/feedback";
 
 	that.getAll = function() {
 		return $http.get(that.baseUrl + "/");
