@@ -16,9 +16,9 @@
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <uib-progressbar value="steps.percent" class="progress-xs primary" type="success"></uib-progressbar>
                             </div>
-                            <uib-tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false, step3:false, step4:false, step5:false, step1stat:false, step2stat:false, step3stat:false, step4stat:false, step5stat:false }">
-                                <uib-tab active="steps.step1" select="steps.percent=20" class=" {{steps.step1stat ? 'complete' : ''}} ">
-                                    <uib-tab-heading class="tabhead">General</uib-tab-heading>
+                            <uib-tabset class="tab-container" ng-init="steps={percent:0, step1:true, step2:false, step3:false, step4:false, step5:false, step1stat:false, step2stat:false, step3stat:false, step4stat:false, step5stat:false }">
+                                <uib-tab active="steps.step1" select="steps.percent=0" class=" {{steps.step1stat ? 'complete' : ''}} ">
+                                    <uib-tab-heading class="tabhead">Employer</uib-tab-heading>
 
 
                                     <form name="step1" >
@@ -29,81 +29,81 @@
                                     </form>
 
                                 </uib-tab>
-                                <uib-tab disabled="step1.$invalid" active="steps.step2" select="steps.percent=40; steps.step1stat=true" class=" {{steps.step2stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">objctives</uib-tab-heading>
-                                    <h4 class='margin-top-30'>Profile Information</h4>
+                                <uib-tab  active="steps.step2" select="steps.percent=15; steps.step1stat=true" class=" {{steps.step2stat ? 'complete' : ''}}">
+                                    <uib-tab-heading class="tabhead">last objctives</uib-tab-heading>
                                     <form name="step2" >
                                         <div ui-view="objctives"></div>
                                         <div class="">
-                                            <button type="button" class="btn btn-primary" ng-click="steps.step1=true">Prev</button>
-                                            <button type="submit"  class="btn btn-primary" ng-click="steps.step3=true">Next</button>
+                                            <button type="button" class="btn btn-primary" ng-click="steps.step1=true">{{ "buttons.BTN.PREV" | translate }}</button>
+                                            <button type="submit"  ng-disabled="step2.$invalid"  class="btn btn-primary" ng-click="steps.step3=true;updateLastObj()">{{ "buttons.BTN.NEXT" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
-                                <uib-tab disabled="step2.$invalid" active="steps.step3" select="steps.percent=60; steps.step2stat=true" class=" {{steps.step3stat ? 'complete' : ''}}">
+                                <uib-tab disabled="step2.$invalid" active="steps.step3" select="steps.percent=30; steps.step2stat=true" class=" {{steps.step3stat ? 'complete' : ''}}">
                                     <uib-tab-heading class="tabhead">Competence</uib-tab-heading>
 
                                     <form name="step3" >
                                         <div ui-view="hard"></div>
                                         <div class="">
                                             <button type="button" class="btn btn-primary" ng-click="steps.step2=true">Prev</button>
-                                            <button type="submit"  class="btn btn-primary" ng-click="steps.step4=true">Next</button>
+                                            <button type="submit" ng-disabled="step3.$invalid"   class="btn btn-primary" ng-click="steps.step4=true">Next</button>
                                         </div>
                                     </form>
                                 </uib-tab>
-                                <uib-tab disabled="step3.$invalid" active="steps.step4" select="steps.percent=80; steps.step3stat=true" class=" {{steps.step4stat ? 'complete' : ''}}">
+                                <uib-tab disabled="step3.$invalid" active="steps.step4" select="steps.percent=45; steps.step3stat=true" class=" {{steps.step4stat ? 'complete' : ''}}">
                                     <uib-tab-heading class="tabhead">Soft</uib-tab-heading>
 
                                     <form name="step4" >
-
+                                            <div class="content-wrapper" >
                                         <div ui-view="soft"></div>
-                                        <div class="">
+                                            </div>
+                                        <div class="" >
                                             <button type="button" class="btn btn-primary" ng-click="steps.step3=true">Prev</button>
-                                            <button type="submit" class="btn btn-primary" ng-click="steps.step5=true">Next</button>
+                                            <button type="submit" ng-disabled="step4.$invalid"  class="btn btn-primary" ng-click="steps.step5=true;save()">Next</button>
                                         </div>
                                     </form>
                                 </uib-tab>
-                                <uib-tab disabled="step4.$invalid" active="steps.step5" select="steps.percent=100; steps.step4stat=true" class=" {{steps.step5stat ? 'complete' : ''}}">
+                                <uib-tab disabled="step4.$invalid" active="steps.step5" select="steps.percent=58; steps.step4stat=true" class=" {{steps.step5stat ? 'complete' : ''}}">
                                     <uib-tab-heading class="tabhead">Synthesis</uib-tab-heading>
 
                                     <form name="step5" >
                                         <div ui-view="synthesis"></div>
                                         <div class="">
                                             <button type="button" class="btn btn-primary" ng-click="steps.step4=true">Prev</button>
-                                            <button type="submit"  class="btn btn-primary" ng-click="steps.percent=100;steps.step6=true">Next</button>
+                                            <button type="submit"  ng-disabled="step5.$invalid"  class="btn btn-primary" ng-click="steps.step6=true;updateApempl()">Next</button>
                                         </div>
                                     </form>
                                 </uib-tab>
-                                <uib-tab disabled="step4.$invalid" active="steps.step6" select="steps.percent=100; steps.step5stat=true" class=" {{steps.step6stat ? 'complete' : ''}}">
+                                <uib-tab disabled="step5.$invalid" active="steps.step6" select="steps.percent=72; steps.step5stat=true" class=" {{steps.step6stat ? 'complete' : ''}}">
                                     <uib-tab-heading class="tabhead">feedback</uib-tab-heading>
 
-                                    <form name="step5" >
+                                    <form name="step6" >
                                         <div ui-view="feedback"></div>
                                         <div class="">
                                             <button type="button" class="btn btn-primary" ng-click="steps.step5=true">Prev</button>
-                                            <button type="submit"  class="btn btn-primary" ng-click="steps.percent=100;steps.step7=true">Next</button>
+                                            <button type="submit" ng-disabled="step6.$invalid"  class="btn btn-primary" ng-disabled="step6.$invalid" ng-click="steps.step7=true;saveFeedb()">Next</button>
                                         </div>
                                     </form>
                                 </uib-tab>
-                                <uib-tab disabled="step4.$invalid" active="steps.step7" select="steps.percent=100; steps.step6stat=true" class=" {{steps.step7stat ? 'complete' : ''}}">
+                                <uib-tab disabled="step6.$invalid" active="steps.step7" select="steps.percent=85; steps.step6stat=true" class=" {{steps.step7stat ? 'complete' : ''}}">
                                     <uib-tab-heading class="tabhead">objectives</uib-tab-heading>
 
-                                    <form name="step5" >
+                                    <form name="step7" >
                                         <div ui-view="newObj"></div>
                                         <div class="">
                                             <button type="button" class="btn btn-primary" ng-click="steps.step6=true">Prev</button>
-                                            <button type="submit"  class="btn btn-primary" ng-click="steps.percent=100;steps.step8=true">Next</button>
+                                            <button type="submit" ng-disabled="step7.$invalid"  class="btn btn-primary" ng-click="steps.step8=true;addObjects()">Next</button>
                                         </div>
                                     </form>
                                 </uib-tab>
-                                <uib-tab disabled="step4.$invalid" active="steps.step8" select="steps.percent=100; steps.step7stat=true" class=" {{steps.step8stat ? 'complete' : ''}}">
+                                <uib-tab disabled="step7.$invalid" active="steps.step8"  select="steps.percent=100;  steps.step7stat=true" class=" {{steps.step8stat ? 'complete' : ''}}">
                                     <uib-tab-heading class="tabhead">wish</uib-tab-heading>
 
-                                    <form name="step5" >
+                                    <form name="step8" >
                                         <div ui-view="wish"></div>
                                         <div class="">
                                             <button type="button" class="btn btn-primary" ng-click="steps.step7=true">Prev</button>
-                                            <button type="submit"  class="btn btn-primary" ng-click="steps.percent=100;steps.step8=true ;steps.step8stat=true">Finish</button>
+                                            <button type="submit" ng-disabled="step8.$invalid"  class="btn btn-primary" ng-click="steps.step8=true ;steps.step8stat=true;updateApempl()">Finish</button>
                                         </div>
                                     </form>
                                 </uib-tab>
@@ -116,3 +116,4 @@
 
     </div>
 </div>
+

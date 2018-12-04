@@ -21,14 +21,14 @@
         <ul class="info-menu right-links list-inline list-unstyled">
             <li>
                 <a ui-sref="app.employersList"><span class="label">
-                    <i class="fa fa-users"></i> My teams</span></a>
+                    <i class="fa fa-users" translate="dashboard.APP.TEAM"></i></span></a>
             </li>
             <li>
-                <a href="#"><span class="label"><i class="fa fa-level-up "></i> My apparissal</span></a>
+                <a href="#"><span class="label"><i class="fa fa-level-up " translate="dashboard.APP.APPRAISAL"></i></span></a>
             </li>
             <li class="dropdown tab" uib-dropdown>
                 <a href class="dropdown-toggle toggle" uib-dropdown-toggle>
-                    <span class="label"><i class="fa fa-level-up "></i> Paramettrage</span>
+                    <span class="label"><i class="fa fa-level-up " translate="dashboard.APP.SETTING"></i></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right animated fadeIn">
                     <li>
@@ -69,6 +69,19 @@
 
     <div class='pull-right quickright'>
         <ul class="info-menu right-links list-inline list-unstyled">
+
+            <!-- start: LANGUAGE SWITCHER -->
+            <i class="fas fa-globe"></i>
+            <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+                <a href class="dropdown-toggle" uib-dropdown-toggle style="color: white"> {{language.selected}} </a>
+                <ul role="menu" class="dropdown-menu dropdown-light fadeInUpShort">
+                    <li ng-repeat="(localeId, langName) in language.available">
+                        <a ng-click="language.set(localeId, $event)" class="menu-toggler" style="cursor: pointer"> {{langName}} </a>
+                    </li>
+                </ul>
+            </li>
+            &nbsp;&nbsp;
+            <!-- start: LANGUAGE SWITCHER -->
 
             <li class="dropdown profile tab" uib-dropdown>
                 <a href class="dropdown-toggle toggle" uib-dropdown-toggle>

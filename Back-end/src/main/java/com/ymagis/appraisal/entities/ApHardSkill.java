@@ -1,5 +1,7 @@
 package com.ymagis.appraisal.entities;
 
+import com.ymagis.appraisal.utils.Constantes;
+
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
@@ -7,22 +9,26 @@ import java.io.Serializable;
 public class ApHardSkill implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = Constantes.ID_APHDSKILL)
     private Long idApHdSkill;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(fetch = FetchType.LAZY)
     //@JsonIgnore
-    @JoinColumn(name = "id_ap_emp")
+    @JoinColumn(name = Constantes.ID_APEMP, nullable = false)
     private ApEmploye apEmploye;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_rating")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = Constantes.ID_RATING)
     private Rating rating;
 
+    @Column(name = Constantes.SKILL)
     private String skill;
 
+    @Column(name = Constantes.MEAN)
     private String mean;
 
+    @Column(name = Constantes.COMMENT)
     private String comment;
 
     public ApHardSkill() {

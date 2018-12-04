@@ -25,7 +25,5 @@ public interface EmployeRepository extends JpaRepository<Employe, Long> {
 	public List<Employe> findEmployer(@Param("i") Integer idManager,@Param("f") String first);
     
     @Query("select e from Employe e where e.idManager = null")
-   	public List<Employe> findEmployers_WM();
-
-    
+   	public List<Employe> findEmployers_WM();    
 }

@@ -1,0 +1,33 @@
+{
+  "dashboard": {
+    "WELCOME": "Welcome to {{appName}}",
+    "APP.TEAM": "My teams",
+    "APP.APPRAISAL": "My appraisal",
+    "APP.SETTING": "Setting"
+  },
+  "steps": {
+    "messages": {
+      "OBJ.DEF": "Definition of the objective",
+      "OBJ.IND": "Indicators",
+      "OBJ.MEAN": "Means",
+      "OBJ.DLINE": "Deadline",
+      "OBJ.RATING": "Rating",
+      "OBJ.COM" : "Comments",
+      "EMP.NOM" : "First Name",
+      "EMP.PRENOM" : "Last Name",
+      "EMP.POS" : "Position",
+      "EMP.DtDebut" : "Start date",
+      "EMP.ACT" : "Action",
+      "EMP.LIST" : "List of employees"
+    }
+  },
+  "buttons": {
+    "BTN.VALID" : "Validate",
+    "BTN.ANN" : "Cancel",
+    "BTN.PREV" : "PREV",
+    "BTN.NEXT" : "NEXT"
+  },
+  "appMessages": {
+    "MSG.UPDATE.SUCC" : "successful modification"
+  }
+}

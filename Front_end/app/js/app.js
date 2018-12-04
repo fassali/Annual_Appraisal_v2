@@ -3,11 +3,11 @@
 // Declare app level module which depends on views, and components
 angular.module('app', [
     'ngAnimate',
-//    'ngCookies',
+   'ngCookies',
 //    'ngResource',
     'ngSanitize',
     'ngTouch',
-//    'ngStorage',
+    'ngStorage',
     'ui.router',
     'ui.bootstrap',
     'ui.utils',
@@ -16,5 +16,6 @@ angular.module('app', [
     'oc.lazyLoad',
     'perfect_scrollbar',
     'angular-inview',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'pascalprecht.translate'
 ]);
