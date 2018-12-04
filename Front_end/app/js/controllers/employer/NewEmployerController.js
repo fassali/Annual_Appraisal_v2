@@ -27,7 +27,7 @@
 			//ajouter username a l'employeur
 			$scope.employer.username=$scope.username;
 			//ajouter les roles à un employeur
-			if($scope.roles.manager==true){
+/*			if($scope.roles.manager==true){
 				$scope.employer.manager="Yes";
 			}else{
 				$scope.employer.manager="No";
@@ -36,8 +36,19 @@
 				$scope.employer.admin="Yes";
 			}else{
 				$scope.employer.admin="No";
-			}
-			
+			}*/
+
+            if($scope.roles.manager==true)
+                if($scope.roles.admin==true)
+                    $scope.employer.profil = "AM"
+				else
+                    $scope.employer.profil = "M"
+			else
+                 if($scope.roles.admin==true)
+                     $scope.employer.profil = "A"
+			     else
+                     $scope.employer.profil = "E"
+
 			//ajouter le manager
 			$scope.employer.idManager=$rootScope.user.idEmp;
 			//ajouter "remove" variable : 1 par defaut;

@@ -1,5 +1,6 @@
 package com.ymagis.appraisal.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ymagis.appraisal.utils.Constantes;
 
 import javax.persistence.*;
@@ -50,6 +51,7 @@ public class Employe implements Serializable {
     @Column(name = Constantes.ID_MANAGER)
     private Integer idManager;
 
+    private  String profil;
 
 //    @ManyToOne
 //    @JoinColumn(name = Constantes.MANAGER)
@@ -57,6 +59,14 @@ public class Employe implements Serializable {
 //
 //    @OneToMany(mappedBy = Constantes.MANAGER)
 //    private Set<Employe> managerTeam = new HashSet<>();
+@JsonIgnore
+     @ManyToOne(cascade={CascadeType.ALL})
+     @JoinColumn(name="manager_id")
+      private Employe boss;
+
+
+    @OneToMany(mappedBy="boss")
+    private Set<Employe> managerTeam = new HashSet<Employe>();
 
     //    @JsonIgnore
     @OneToMany(mappedBy = Constantes.EMPLOYE, fetch=FetchType.LAZY)
@@ -190,4 +200,27 @@ public class Employe implements Serializable {
         this.manager = manager;
     }
 
+    public Employe getBoss() {
+        return boss;
+    }
+
+    public void setBoss(Employe boss) {
+        this.boss = boss;
+    }
+
+    public Set<Employe> getManagerTeam() {
+        return managerTeam;
+    }
+
+    public void setManagerTeam(Set<Employe> managerTeam) {
+        this.managerTeam = managerTeam;
+    }
+
+    public String getProfil() {
+        return profil;
+    }
+
+    public void setProfil(String profil) {
+        this.profil = profil;
+    }
 }
