@@ -227,6 +227,7 @@ console.log($stateParams)
          },
         }
       });
+      
     
       modalInstance.result.then(function (selectedItem) {
         $scope.selected = selectedItem;
@@ -276,6 +277,78 @@ console.log($stateParams)
           });
           };
 
+          $scope.section_modalDeleteApObj = function (idApObj) {	
+            var modalInstance = $modal.open({
+              templateUrl: 'partials/ApObjEmp/apObjDelete.html',
+              controller: 'DeleteApObjModal',
+              resolve: {
+              items: function () {
+                return $scope.items;
+              },
+              idApObj: function () {
+                return idApObj;
+               },
+              }
+            });          
+            modalInstance.result.then(function (selectedItem) {
+              $scope.selected = selectedItem;
+            }, function () {
+              $log.info('Modal dismissed at: ' + new Date());
+            });
+            };
+            $scope.section_modalUpdateApObj = function (idApObj) {	
+              var modalInstance = $modal.open({
+                templateUrl: 'partials/ApObjEmp/apObjUpdate.html',
+                controller: 'UpdateApObjModal',
+                resolve: {
+                items: function () {
+                  return $scope.items;
+                },
+                idApObj: function () {
+                  return idApObj;
+                 },
+                }
+              });          
+              modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+              }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+              });
+              };
+              $scope.section_modalUpdateProfil = function () {	
+                var modalInstance = $modal.open({
+                  templateUrl: 'partials/employer/updateProfil.html',
+                  controller: 'UpdateProfilModal',
+                  resolve: {
+                  items: function () {
+                    return $scope.items;
+                  }
+                  }
+                });          
+                modalInstance.result.then(function (selectedItem) {
+                  $scope.selected = selectedItem;
+                }, function () {
+                  $log.info('Modal dismissed at: ' + new Date());
+                });
+                };
+
+                $scope.section_modalNewEmployers = function () {	
+                  var modalInstance = $modal.open({
+                    templateUrl: 'partials/employer/newEmployerModale.html',
+                    controller: 'NewEmployersModal',
+                    resolve: {
+                    items: function () {
+                      return $scope.items;
+                    }
+                    }
+                  });          
+                  modalInstance.result.then(function (selectedItem) {
+                    $scope.selected = selectedItem;
+                  }, function () {
+                    $log.info('Modal dismissed at: ' + new Date());
+                  });
+                  };
+
       $scope.newFeed = function () {
           var modalInstance = $modal.open({
               templateUrl: 'partials/modalnewFeedBack.html',
@@ -286,7 +359,6 @@ console.log($stateParams)
                   }
               }
           });
-
 
       };
       $scope.updateFeed = function (data) {

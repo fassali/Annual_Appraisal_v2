@@ -20,12 +20,17 @@
             </thead>
         </thead>
         <tbody>
-        <tr ng-repeat="s in sessions">
+        <tr ng-repeat="y in years">
             
-            <td>{{s.label}}</td>
-            <td>{{s.status}}</td>            
+            <td>{{y.label}}</td>
+            <td>{{y.status}}</td>            
             <td>
-            <button ng-show="show==1" data-title="Delete" data-toggle="modal" data-target="#test" style="border: none"style="border: none" class="label label-secondary"  ng-click="newAppEmp()"><i class="fa fa-eye" ></i>Annual Appraisal</button> 
+            <button ng-show="y.mode==0" data-toggle="modal"  style="border: none;font-family: 'Courier New', Courier, monospace;font-size: 16px" class="label label-danger" ng-click="newAppEmp()">
+                <i class="fa fa-power-off" > &nbsp {{y.title}}</i></button>
+            <button ng-show="y.mode==1" data-toggle="modal"  style="border: none;font-family: 'Courier New', Courier, monospace;font-size: 16px" class="label label-warning" ng-click="newAppEmp()">
+                    <i class="fa fa-toggle-right" > &nbsp {{y.title}}</i></button>  
+            <button ng-show="y.mode==2" data-toggle="modal"  style="border: none;font-family: 'Courier New', Courier, monospace;font-size: 16px" class="label label-secondary"  ng-click="oldAppEmp(y.idAnn)">
+                    <i class="fa fa-eye" > &nbsp {{y.title}}</i></button>   
             </td>
         </tr>                                 
         </tbody>

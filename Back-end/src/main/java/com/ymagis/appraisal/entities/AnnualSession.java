@@ -23,7 +23,7 @@ public class AnnualSession implements Serializable {
     private String status;
 
     @JsonIgnore
-    @OneToMany(mappedBy = Constantes.ANNUAL_SESSION, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "annualSession", fetch=FetchType.LAZY)
     private Set<ApEmploye> apEmployes;
 
     public AnnualSession(String label, String status, Set<ApEmploye> apEmployes) {
