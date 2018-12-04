@@ -14,7 +14,7 @@
 
 		EmployersDatasrv.getEmployers($rootScope.user.idEmp,$scope.pageCourante,$scope.size)	
 		.then(function(data){
-			 $scope.employers=data.content;
+			 $scope.employers=data;
 			 console.log($scope.employers);
 			 for(var j = 0; j < $scope.employers.length; j++){
 			 var appday=$scope.employers[j].dateEntry;
