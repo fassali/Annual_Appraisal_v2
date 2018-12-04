@@ -2,6 +2,7 @@ package com.ymagis.appraisal.controller;
 
 import com.ymagis.appraisal.entities.*;
 import com.ymagis.appraisal.repository.*;
+import com.ymagis.appraisal.service.IObjectifService;
 import com.ymagis.appraisal.utils.Constantes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -36,28 +37,36 @@ public class ObjectifController {
     @Autowired
     private ObjectifRepository objectifRepository;
 
+    @Autowired
+    private IObjectifService objectifService;
+
 
     //Recuperer les objectifs de l'année passé pour un employé
     @GetMapping(value = "/Objectifs/{year}/empl/{idEmp}")
     public Page<ApObjEmp> listObjectifs(@PathVariable("year") String year, @PathVariable("idEmp") Long idEmp,
                                        @RequestParam(name = "page", defaultValue = "0") int page,
-                                       @RequestParam(name = "size", defaultValue = "10") int size) throws ParseException {
-        Integer lastYear = Integer.parseInt(year) - 1;
-        AnnualSession annualSession = annualSessionRepository.findAnnualSessionByLabel(lastYear.toString());
-        Employe employe = employeRepository.findEmployeByIdEmp(idEmp);
-        ApEmploye apEmploye = apEmployeRepository.findApEmployeByAnnualSessionAndEmploye(annualSession, employe);
-        if(null != apEmploye){
-            Set<ApObjEmp> apObjEmps = apEmploye.getApObjEmps();
-            if(null != apObjEmps && !apObjEmps.isEmpty()){
+                                       @RequestParam(name = "size", defaultValue = "10") int size) throws Exception {
 
-                List<ApObjEmp> listObj = new ArrayList<>(apObjEmps);
-                //Recuperer la liste des pages des objectifs definient l'année dernière
-                Page<ApObjEmp> objectivePage = new PageImpl<ApObjEmp>(listObj, PageRequest.of(page, size), apObjEmps.size());
-                return objectivePage;
-            } else{
-                throw new RuntimeException("list of objectives is empty");
-            }
+        Page<ApObjEmp> objectivePage = objectifService.getPageObjectifs(year, idEmp, page, size);
+        if(null == objectivePage){
+            throw new RuntimeException("list of objectives is empty");
         }
+//        Integer lastYear = Integer.parseInt(year) - 1;
+//        AnnualSession annualSession = annualSessionRepository.findAnnualSessionByLabel(lastYear.toString());
+//        Employe employe = employeRepository.findEmployeByIdEmp(idEmp);
+//        ApEmploye apEmploye = apEmployeRepository.findApEmployeByAnnualSessionAndEmploye(annualSession, employe);
+//        if(null != apEmploye){
+//            Set<ApObjEmp> apObjEmps = apEmploye.getApObjEmps();
+//            if(null != apObjEmps && !apObjEmps.isEmpty()){
+//
+//                List<ApObjEmp> listObj = new ArrayList<>(apObjEmps);
+//                //Recuperer la liste des pages des objectifs definient l'année dernière
+//                Page<ApObjEmp> objectivePage = new PageImpl<ApObjEmp>(listObj, PageRequest.of(page, size), apObjEmps.size());
+//                return objectivePage;
+//            } else{
+//                throw new RuntimeException("list of objectives is empty");
+//            }
+//        }
         return null;
     }
 
