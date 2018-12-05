@@ -12,9 +12,9 @@
 		
 		
 		$scope.session=$rootScope.appEmp.annualSession;
-		if($scope.session.status=="Cloturée"){
+		if($scope.session.status=="C"){
 			$scope.session.mode=1;
-		}else if($scope.session.status=="EnCours"){
+		}else if($scope.session.status=="E"){
 			$scope.session.mode=0;
 		}
 	    //en tete
@@ -24,12 +24,7 @@
 		   $scope.month=d.getMonth()+1;
 		   $scope.year=d.getFullYear();
 		   $scope.date=$scope.day+"/"+$scope.month+"/"+$scope.year;
-		   
-		   EmployersDatasrv.editEmployer($rootScope.employerSelected.idManager)
-		   .then(function(data){
-			   $scope.manager=data.data;
-			   $scope.nameManager=$scope.manager.firstName+" "+$scope.manager.lastName;
-             });
+		  $scope.nameManager=$rootScope.user.firstName+" "+$rootScope.user.lastName;
 		
 		   
 	
@@ -46,107 +41,26 @@
 	           
 	        });
 		
-		   
-		//changer les pages
-	       $scope.gotopage = function (p) {
-	    	$scope.pageCourante = p;
-	        $scope.init(); 	   
-	       }  
-		
-	  	 $scope.init=function(){
-	  		ApObjDatasrv.appObjs($rootScope.appEmp.idApEmp,$scope.pageCourante,$scope.size)	
-			.then(function(data){
-				 $scope.objs=data.content;
-		         $scope.pages = new Array(data.totalPages);
-	           
-	        });
-		 }
+	
 		
 		
 		$scope.addNewObj=function(){
-			ApObjDatasrv.addNewObj($rootScope.employerSelected.idEmp,$rootScope.appEmp.idApEmp,$scope.obj)
-			.then(function(data) {
-				$scope.ajoutMessage = "The new objective  is added successfully!";
-				stop = $interval(function() {
-					$scope.count = $scope.count + 1;
-					if ($scope.count == 5)
-						$scope.stopmsg();
-				}, 500);
-				$scope.init();
-			}, function(err) {
-				console.log(err.data);
-			});
-			
+			ApObjDatasrv.addNewObj($rootScope.employerSelected.idEmp,$rootScope.appEmp.idApEmp,$scope.obj);
 			$scope.obj=null;
 			
 		}
-		   $scope.stopmsg = function() {
-				if (angular.isDefined(stop)) {
-					$interval.cancel(stop);
-					stop = undefined;
-					$scope.ajoutMessage = null;
-					$scope.deleteMessage=null;
-					$scope.updateMessage=null;
-					$scope.count=0;
-				}
-			};
-		
-		$scope.reset=function(){
-			ApObjDatasrv.appObjs($rootScope.appEmp.idApEmp)	
-			.then(function(data){
-			       
-			    	   $scope.objs=data;
-			       
-	        });
-		}
-		
-		$scope.supprimer=function(idApEmpObj){
-			ApObjDatasrv.deleteObj(idApEmpObj)
-			.then(function(data){
-				$scope.deleteMessage= "The objective has been deleted successfully!";
-				stop = $interval(function() {
-					$scope.count = $scope.count + 1;
-					if ($scope.count == 5)
-						$scope.stopmsg();
-				}, 500);
-				$scope.init();
-	        });
-		}
-		
-		//get obj by id
-		$scope.findObj=function(idApObjEmp){
-			ApObjDatasrv.findObj(idApObjEmp) 
-			.then(function(data){
-			      $scope.objDeleted=data.data;
-			      
-	        });
-		}
+
+
 		
 		$scope.addObj=function(){
 			$scope.add=1;
 		}
 		
-		//update employer
-	      $scope.updateObj=function(idApObjEmp){
-	    	  ApObjDatasrv.updateObj($scope.obj,$rootScope.employerSelected.idEmp,$rootScope.appEmp.idApEmp,idApObjEmp)
-	 	    	.then(function(){
-	 	    		$scope.updateMessage = "The obj has been updated successfully!";
-					stop = $interval(function() {
-						$scope.count = $scope.count + 1;
-						if ($scope.count == 5)
-							$scope.stopmsg();
-					}, 500);
-					$scope.init();
-	 	    	});
-	 	       }
-	      $scope.edit = function(idApObjEmp) {
-	    	  ApObjDatasrv.findObj(idApObjEmp) 
-				.then(function(data){
-				      $scope.obj=data.data;
-				      
-		        });
-			 };
-			 
-			})	 
+
+		
+		
+		
+
+	})
 
 })();

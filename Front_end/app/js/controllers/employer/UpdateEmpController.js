@@ -2,10 +2,7 @@
 
 	var app = angular.module('app');
 	app.controller("UpdateModal",
-			function($scope,idEmp,items,$rootScope,$http,EmployersDatasrv,$modal, $log,$interval,items,$modalInstance) {
-                $scope.page = [];
-		        $scope.pageCourante = 0;
-		        $scope.size = 6;
+			function($scope,idEmp,items,$rootScope,$http,EmployersDatasrv,$modal, $log,$interval,items,$modalInstance) {		        
                 $scope.id=idEmp;
                 $scope.items = items;
                 $scope.selected = {
@@ -21,18 +18,15 @@
                      })
           //update Function
           $scope.updateEmployer=function(){
-            EmployersDatasrv.saveEmployer($scope.employer,$scope.id)
-              .then(function(){               
-                $rootScope.updateMessage = "The employer is updated successfully!";
-                 stop = $interval(function() {
-                     $scope.count = $scope.count + 1;
-                     if ($scope.count == 5)
-                         $scope.stopmsg();
-                 }, 500);
-              });
+            $scope.employer.manager=$rootScope.user;
+            EmployersDatasrv.saveEmployer($scope.employer,$scope.id,$rootScope.user);
+                        
+                $modalInstance.close($scope.selected.item);
+                
+              
              }
 
-      //function restart
+      
          
 
 
