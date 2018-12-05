@@ -39,17 +39,10 @@ public class Employe implements Serializable {
     @Column(name = Constantes.EMAIL)
     private String email;
 
-    @Column(name = Constantes.ADMIN)
-    private String admin;
-
-    @Column(name = Constantes.MANAGER)
-    private String manager;
 
     @Column(name = Constantes.REMOVE)
     private Integer remove;
 
-    @Column(name = Constantes.ID_MANAGER)
-    private Integer idManager;
 
     private  String profil;
 
@@ -62,10 +55,10 @@ public class Employe implements Serializable {
 @JsonIgnore
      @ManyToOne(cascade={CascadeType.ALL})
      @JoinColumn(name="manager_id")
-      private Employe boss;
+      private Employe manager;
 
 
-    @OneToMany(mappedBy="boss")
+    @OneToMany(mappedBy="manager")
     private Set<Employe> managerTeam = new HashSet<Employe>();
 
     //    @JsonIgnore
@@ -77,22 +70,18 @@ public class Employe implements Serializable {
     }
 
     public Employe(String firstName, String lastName, String position, String team, Date dateEntry, String username,
-                   String email, String manager, String admin, Integer remove, Integer idManager,
-                   Set<ApEmploye> apEmployes, Set<Employe> managerTeam) {
+                   String email,Integer remove,Set<ApEmploye> apEmployes,Employe manager, Set<Employe> managerTeam) {
         super();
-        this.manager = manager;
+        
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
         this.team = team;
         this.dateEntry = dateEntry;
         this.username = username;
-        this.email = email;
-        //this.manager = manager;
-        this.admin = admin;
+        this.email = email; 
         this.remove = remove;
-        //this.managerTeam = managerTeam;
-        this.idManager = idManager;
+        this.manager=manager;
         this.apEmployes = apEmployes;
     }
 
@@ -112,13 +101,7 @@ public class Employe implements Serializable {
 		this.email = email;
 	}
 
-	public String getAdmin() {
-		return admin;
-	}
 
-	public void setAdmin(String admin) {
-		this.admin = admin;
-	}
 
 	public Integer getRemove() {
 		return remove;
@@ -184,28 +167,12 @@ public class Employe implements Serializable {
         this.apEmployes = apEmployes;
     }
 
-    public Integer getIdManager() {
-        return idManager;
-    }
-
-    public void setIdManager(Integer idManager) {
-        this.idManager = idManager;
-    }
-
-    public String getManager() {
+    public Employe getManager() {
         return manager;
     }
 
-    public void setManager(String manager) {
+    public void setManager(Employe manager) {
         this.manager = manager;
-    }
-
-    public Employe getBoss() {
-        return boss;
-    }
-
-    public void setBoss(Employe boss) {
-        this.boss = boss;
     }
 
     public Set<Employe> getManagerTeam() {

@@ -11,7 +11,7 @@ public interface AnnualSessionRepository extends JpaRepository<AnnualSession, Lo
 
     public AnnualSession findAnnualSessionByLabel(@Param("year") String year);
     
-    @Query("select s from AnnualSession  s where s.status  = 'EnCours'")
+    @Query("select s from AnnualSession  s where s.status  = 'E'")
     public AnnualSession findAnnualSession();
     
 }
