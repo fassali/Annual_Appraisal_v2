@@ -62,7 +62,7 @@ public class Employe implements Serializable {
     private Set<Employe> managerTeam = new HashSet<Employe>();
 
     //    @JsonIgnore
-    @OneToMany(mappedBy = Constantes.EMPLOYE, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = Constantes.EMPLOYE, fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     //,cascade = { CascadeType.MERGE, CascadeType.PERSIST }
     private Set<ApEmploye> apEmployes;
 

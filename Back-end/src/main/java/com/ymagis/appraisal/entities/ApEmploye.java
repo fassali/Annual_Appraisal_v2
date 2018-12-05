@@ -53,7 +53,7 @@ public class ApEmploye implements Serializable {
     private String tbImproved;
 
     //@JsonIgnore
-    @OneToMany(mappedBy = Constantes.AP_EMPLOYE, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = Constantes.AP_EMPLOYE, fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     private Set<ApFeedBack> apFeedBacks = new HashSet<>(0);
 
     @JsonIgnore

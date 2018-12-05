@@ -13,7 +13,7 @@ public class ApFeedBack implements Serializable {
     @Column(name = Constantes.ID_APFDBACK)
     private Long idApFdBack;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     //@JsonIgnore
     @JoinColumn(name = Constantes.ID_FDBACK, nullable = false)
     private FeedBack feedBack;
