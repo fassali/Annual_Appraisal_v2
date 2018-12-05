@@ -15,31 +15,12 @@
                                         $scope.employerDeleted= data.data;
                                         $scope.employerDeleted.remove=0;
                                         EmployersDatasrv.saveEmployer( $scope.employerDeleted,$scope.id)
-                                        .then(function(){
+                                       
                                             $modalInstance.close($scope.selected.item);
-                                            $rootScope.deleteMessage = "The new employer is added successfully!";
-                                            stop = $interval(function() {
-                                                $scope.count = $scope.count + 1;
-                                                if ($scope.count == 5)
-                                                    $scope.stopmsg();
-                                            }, 500);
-                                            console.log($scope.deleteMessage);
-                                          });
-
-                                    }, function (err) {
-                                        console.log(err);
                                     });
                         };
 
-                        $scope.stopmsg = function() {
-                            if (angular.isDefined(stop)) {
-                                $interval.cancel(stop);
-                                stop = undefined;
-                                $scope.deleteMessage = null;
-                                $scope.updateMessage=null;
-                                $scope.count=0;
-                            }
-                        };
+                    
                          
 
 

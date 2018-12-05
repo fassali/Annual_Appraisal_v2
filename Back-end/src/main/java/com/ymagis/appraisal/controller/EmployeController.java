@@ -66,7 +66,8 @@ public class EmployeController {
 	// mise à jour des informations d'un employeurs
 	@RequestMapping(value = "/employer/{idEmp}", method = RequestMethod.PUT)
 	public Employe updateEmployer(@RequestBody Employe employeur, @PathVariable("idEmp") Long idEmp) {
-		employeur.setIdEmp(idEmp);
+		Employe employe = employeRepository.findById(idEmp).get();
+		employeur.setManager(employe.getManager());
 		employeRepository.save(employeur);
 		return employeur;
 	}

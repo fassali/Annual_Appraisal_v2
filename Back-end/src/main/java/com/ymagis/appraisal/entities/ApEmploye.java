@@ -61,7 +61,7 @@ public class ApEmploye implements Serializable {
     private Set<ApHardSkill> apHardSkills = new HashSet<>(0);
 
    // @JsonIgnore
-    @OneToMany(mappedBy = Constantes.AP_EMPLOYE, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "apEmploye", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private Set<ApObjEmp> apObjEmps;
 
     //@JsonIgnore
