@@ -16,16 +16,8 @@
 
           //update Function
           $scope.addEmployers=function(){
-            for(var j = 0; j <$rootScope.employersSelected.length; j++){
-              $rootScope.employersSelected[j].idManager=$rootScope.user.idEmp;
-              EmployersDatasrv.saveEmployer($rootScope.employersSelected[j],$rootScope.employersSelected[j].idEmp);
-                                      
-                $modalInstance.close($scope.selected.item); 
-                
-              
-            }
-           
-             
+          EmployersDatasrv.chooseEmployers($rootScope.employersSelected,$rootScope.user.idEmp);                                 
+          $modalInstance.close($scope.selected.item); 
              }
 
 

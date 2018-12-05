@@ -3,6 +3,7 @@ package com.ymagis.appraisal.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.ymagis.appraisal.entities.AnnualSession;
 import com.ymagis.appraisal.entities.ApEmploye;
+import com.ymagis.appraisal.entities.ApObjEmp;
 import com.ymagis.appraisal.entities.Employe;
 import com.ymagis.appraisal.repository.AnnualSessionRepository;
 import com.ymagis.appraisal.repository.ApEmployeRepository;
@@ -46,12 +48,7 @@ public class EmployeController {
 		return employer;
 	}
 	
-	// recuperer les employeurs d'un manager dans les pages
-	@RequestMapping(value = "/employers", method = RequestMethod.GET)
-	public List<Employe> findEmployer(@RequestParam(name = "idManager", defaultValue = "")  Integer idManager) {
-		return employeRepository.getEmployer(idManager);
-	}
-	
+
 //	// chercher un employeur par "first name"
 //	@RequestMapping(value = "/findEmployers", method = RequestMethod.GET)
 //	public Page<Employe> findEmployers(@RequestParam(name = "idManager", defaultValue = "") Integer idManager,
@@ -68,7 +65,7 @@ public class EmployeController {
 	
 	// mise à jour des informations d'un employeurs
 	@RequestMapping(value = "/employer/{idEmp}", method = RequestMethod.PUT)
-	public Employe update(@RequestBody Employe employeur, @PathVariable("idEmp") Long idEmp) {
+	public Employe updateEmployer(@RequestBody Employe employeur, @PathVariable("idEmp") Long idEmp) {
 		employeur.setIdEmp(idEmp);
 		employeRepository.save(employeur);
 		return employeur;
@@ -176,6 +173,36 @@ public class EmployeController {
 		}
 
 	}
+	//affecte employers to a manager
+	
+	@RequestMapping(value = "/employersSelect/{idEmp}", method = RequestMethod.PUT)
+	public Employe update(@PathVariable("idEmp") Long idEmp,@RequestBody List<Employe> employers) {
+		System.out.println(employers.get(0).getFirstName());
+		Employe employeur=employeRepository.findEmployeByIdEmp(idEmp);
+		//get manager list of employers
+		List<Employe> listEmployers = new ArrayList<Employe>(employeur.getManagerTeam());
+		//update employer
+		for (int j = 0; j < employers.size(); j++) {
+			employers.get(j).setManager(employeur);
+			employers.get(j).setIdEmp(employers.get(j).getIdEmp());
+			employeRepository.save(employers.get(j));
+		}
+		//add employers selected by manager
+		for (int i = 0; i < employers.size(); i++) {
+			listEmployers.add(employers.get(i));
+			
+		}
+		//transform list to a set
+		Set<Employe> employersSelected = listEmployers.stream().collect(Collectors.toSet());
+		employeur.setIdEmp(idEmp);
+		employeur.setManagerTeam(employersSelected);
+		employeRepository.save(employeur);
+		return employeur;
+		
+	}
+	
+	
+	
 	
 	
 	

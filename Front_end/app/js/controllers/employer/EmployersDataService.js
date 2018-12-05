@@ -146,7 +146,19 @@
 				});
 			 return promise2;
 			}
-			
+		//add employers to a manager
+		
+			 this.chooseEmployers=function(employers,idEmp){
+       	
+				return $http.put("http://localhost:8080/employersSelect/"+idEmp,employers)
+				.then(function(response){
+					
+					console.log(response.data)
+				}), function (err) {
+					
+						console.log(err);
+					};
+			 }	
 			
 			
 			
