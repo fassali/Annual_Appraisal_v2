@@ -72,11 +72,15 @@ public class ObjectifController {
     @RequestMapping(value = "/Objectives/{idappEmp}", method = RequestMethod.PUT)
     public boolean updateObjEmp(@RequestBody List<ApObjEmp> listObj,@PathVariable Long idappEmp) {
         ApEmploye apEmploye = apEmployeRepository.findById(idappEmp).get();
+        Integer lastYear = Integer.parseInt(apEmploye.getAnnualSession().getLabel()) - 1;
+        AnnualSession annualSession = annualSessionRepository.findAnnualSessionByLabel(lastYear.toString());
+        Employe employe = apEmploye.getEmploye();
+        ApEmploye apEmployeLast = apEmployeRepository.findApEmployeByAnnualSessionAndEmploye(annualSession, employe);
         if(null == listObj || listObj.isEmpty()){
             throw new RuntimeException("list of objectives is empty");
         }else{
             for(ApObjEmp apObjEmp:listObj)
-            apObjEmp.setApEmploye(apEmploye);
+            apObjEmp.setApEmploye(apEmployeLast);
 
             objectifRepository.saveAll(listObj);
             return true;

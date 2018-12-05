@@ -17,6 +17,14 @@
         //$rootScope.employerSelected;
         //$scope.year
         //$scope.idE$rootScopemp
+
+        $scope.session=$rootScope.appEmp.annualSession;
+        if($scope.session.status=="C"){
+            $scope.session.mode=1;
+        }else if($scope.session.status=="E"){
+            $scope.session.mode=0;
+        }
+
         objService.getRatings().then(function(data) {
             $scope.ratings = data;
         });
