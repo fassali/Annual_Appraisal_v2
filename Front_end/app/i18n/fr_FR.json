@@ -12,6 +12,7 @@
       "OBJ.MEAN": "Signifier",
       "OBJ.DLINE": "Date limite",
       "OBJ.RATING": "Evaluation",
+      "OBJ.COM" : "Commentaire",
       "EMP.NOM" : "Nom",
       "EMP.PRENOM" : "Prénom",
       "EMP.POS" : "Position",
