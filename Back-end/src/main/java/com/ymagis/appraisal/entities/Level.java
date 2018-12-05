@@ -21,7 +21,7 @@ public class Level implements Serializable {
 	@Column(name = Constantes.DEGREE)
 	private int degree;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JsonIgnore
     @JoinColumn(name = Constantes.ID_SOFT_SKILL)
     private SoftSkill softSkill;

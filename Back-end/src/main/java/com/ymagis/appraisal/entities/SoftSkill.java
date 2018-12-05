@@ -27,7 +27,7 @@ public class SoftSkill implements Serializable {
 
 
     //@JsonIgnore
-    @OneToMany(mappedBy = Constantes.SOFTSKILL, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = Constantes.SOFTSKILL, cascade=CascadeType.ALL,  fetch=FetchType.LAZY)
     private Set<Level> levels;
 
 

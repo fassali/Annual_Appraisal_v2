@@ -13,7 +13,7 @@ public class ApHardSkill implements Serializable {
     @Column(name = Constantes.ID_APHDSKILL)
     private Long idApHdSkill;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     //@JsonIgnore
     @JoinColumn(name = Constantes.ID_APEMP, nullable = false)
     private ApEmploye apEmploye;
