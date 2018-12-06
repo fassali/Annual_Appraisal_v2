@@ -56,7 +56,7 @@ public class ApEmploye implements Serializable {
     @OneToMany(mappedBy = Constantes.AP_EMPLOYE, fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     private Set<ApFeedBack> apFeedBacks = new HashSet<>(0);
 
-    @JsonIgnore
+    //@JsonIgnore
     @OneToMany(mappedBy = Constantes.AP_EMPLOYE,cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private Set<ApHardSkill> apHardSkills = new HashSet<>(0);
 
