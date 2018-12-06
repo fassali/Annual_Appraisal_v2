@@ -20,9 +20,25 @@
                 $rootScope.appEmp.idApEmp,$scope.id)
                .then(function(){
                 $modalInstance.close($scope.selected.item);
+                   ApObjDatasrv.appObjs($rootScope.appEmp.idApEmp,$rootScope.currentPage,$rootScope.size)
+                       .then(function(data){
+                           $rootScope.objs=data.content;
+                           console.log(data)
+                           for(var j = 0; j < $rootScope.objs.length; j++){
+                               var dObj = new Date($rootScope.objs[j].deadLine);
+                               $rootScope.dayObj=dObj.getDate();
+                               $rootScope.monthObj=dObj.getMonth()+1;
+                               $rootScope.yearObj=dObj.getFullYear();
+                           }
+                           $rootScope.pages = new Array(data.totalPages);
+
+                       });
                });
               }
-            
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
             })
 
         })();
