@@ -8,69 +8,38 @@
 	app.controller("ApEmpModal",
 
 			function($scope,idEmp,$rootScope,$http,EmployersDatasrv,$modal, $log,$interval,items,$modalInstance) {         
-
                 $scope.id=idEmp;
-
                 $scope.sessions=[];
-
                 $scope.years=[];
-
                 var session={};       
-
                 $scope.items = items;
-
                 $scope.selected = {
-
                 item: $scope.items[0]
-
                 };
 
-                
-
                 EmployersDatasrv.allSession($scope.id)
-
                 .then(function (data) {  
-
                     $scope.mode=null; 
-
                     $scope.years = data         
-
                       $scope.years.forEach(function(item) {                     
-
-                        if(item.status=="E"){
-
+                       if(item.status=="E"){ 
+                           
                             EmployersDatasrv.sessionEnCour($scope.id)
-
                             .then(function (resp) {
                                 if(resp){ 
                                     item.mode=0;                                                                                             
-
                                     item.title="Continue";
-
                                     item.status="In progress";                                
-
                                 }else{ 
-
                                     item.mode=1;                                                            
-
                                     item.title="Start";
-
                                     item.status="--------";                            
-
                                 }                                                              
-
                             });
-
-                          
-
-                        }else if(item.status=="C"){   
-
+                      }else if(item.status=="C"){   
                             item.mode=2;                      
-
                             item.title="Consult";
-
                             item.status="Closed"                                                                                                                                   
-
                         }
 
                     });

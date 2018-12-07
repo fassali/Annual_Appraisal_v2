@@ -103,7 +103,21 @@
 		        });
 		     return promise2;
 		    }
-				
+			//get employer manager			
+			this.getEmployerManager=function(id){
+			var promise1=$http({
+					method: 'GET',
+					     url: "http://localhost:8080/employerManager/"+id
+					});
+					var promise2=promise1.then(function(response){
+					return response.data;
+					},function(err){
+						console.log(err);
+			
+					});
+						 return promise2;
+					}
+								
 			//all sessions			
 				this.allSession=function(idEmp){
 					var promise1=$http({

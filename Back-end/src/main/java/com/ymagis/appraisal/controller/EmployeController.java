@@ -202,8 +202,15 @@ public class EmployeController {
 		
 	}
 	
+	//get employer manager
 	
-	
+	// recuperer un employeur par son id
+	@RequestMapping(method = RequestMethod.GET, value = "/employerManager/{idEmp}")
+	public Employe getEmployeurManager(@PathVariable Long idEmp) {
+		Employe employeur = employeRepository.findById(idEmp).get();
+		Employe manager=employeur.getManager();
+		return manager;
+	}
 	
 	
 	
