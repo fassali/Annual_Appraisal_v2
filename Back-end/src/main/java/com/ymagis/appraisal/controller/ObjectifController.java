@@ -1,21 +1,10 @@
 package com.ymagis.appraisal.controller;
 
 import com.ymagis.appraisal.entities.*;
-import com.ymagis.appraisal.repository.*;
 import com.ymagis.appraisal.service.IObjectifService;
-import com.ymagis.appraisal.utils.Constantes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
-
-import javax.swing.text.DateFormatter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Year;
 import java.util.*;
 
 @RestController
@@ -46,8 +35,8 @@ public class ObjectifController {
 
     //Mettre à jour la mention rating et commenatire pour les objectifs de l'année dernière
     @RequestMapping(value = "/Objectives/{idappEmp}", method = RequestMethod.PUT)
-    public boolean updateObjEmp(@RequestBody List<ApObjEmp> listObj,@PathVariable Long idapmp) {
-        return objectifService.updateObjEmp(listObj, idapmp);
+    public boolean updateObjEmp(@RequestBody List<ApObjEmp> listObj,@PathVariable Long idappEmp) {
+        return objectifService.updateObjEmp(listObj, idappEmp);
     }
 
     @PostMapping(value = "/StartNewSess")
