@@ -206,6 +206,12 @@ angular.module('app')
                         controller:'SelectEmployer'
 
                     })
+                    .state('app.myEvaluation',{
+                        url:'/evaluation',
+                        templateUrl:'partials/employerApEmp/myEvaluation.html',
+                        controller:'MyEvaluation'
+
+                    })
                     .state('app.feedbacks',{
                         url:'/feedback',
                         templateUrl:'partials/feedBack/feedbacks.html',

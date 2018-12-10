@@ -199,11 +199,15 @@ public class EmployeController {
 		employeur.setManagerTeam(employersSelected);
 		employeRepository.save(employeur);
 		return employeur;
-		
 	}
 	
-	
-	
+	//get employer manager
+	@RequestMapping(method = RequestMethod.GET, value = "/employerManager/{idEmp}")
+	public Employe getEmployeurManager(@PathVariable Long idEmp) {
+		Employe employeur = employeRepository.findById(idEmp).get();
+		Employe manager=employeur.getManager();
+		return manager;
+	}
 	
 	
 	

@@ -26,8 +26,10 @@
 				<td>{{ meaning.mean }}</td>
 					 <td>
 					
-			<input  type="radio" name="{{ sk.label }}"  ng-checked="exist(meaning)"
-			 ng-click="selectedVa(meaning)" required>
+			<input  ng-show="appEmp.mode==0" type="radio" name="{{ sk.label }}"  ng-checked="exist(meaning)"
+			 ng-click="selectedVa(meaning)" required >
+			 <input  ng-show="appEmp.mode==1 || appEmp.mode==2"type="radio" name="{{ sk.label }}"  ng-checked="exist(meaning)"
+			 ng-click="selectedVa(meaning)" required disabled>
 			<!--  ng-checked="exist(meaning)" ng-click="toggleSelection(meaning)" -->
 					</td>
 			</tr>

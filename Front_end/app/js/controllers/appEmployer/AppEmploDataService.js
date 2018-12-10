@@ -2,52 +2,39 @@
 
 	var app = angular.module('app');
 	app.service("AppEmployerDatasrv", function($http) {
-var data={};
+	  //get annual appraisal by employer id
+		this.employerApEmp=function(id){
+	        var promise1=$http({
+	            method: 'GET',
+	            url: "http://localhost:8080/annualAppraisal/"+id
+	            });
+	        var promise2=promise1.then(function(response){
+	        	return response.data;
+	        },function(err){
+	            console.log(err);
 
-			//get la session en cour
-			this.findSession=function(){
-		        var promise1=$http({
-		            method: 'GET',
-		            url: "http://localhost:8080/session"
-		            });
-		        var promise2=promise1.then(function(response){
-		        	return response.data;
-		        },function(err){
-		            console.log(err);
-
-		        });
-		     return promise2;
-		    }
-			
-		  // ajouter un nv obj
-			this.addApEmp = function(appEmp) {
-				return $http.post("http://localhost:8080/apEmploye/add", appEmp)
-						.then(function(response) {
-							return response;
-						}, function(err) {
-							return err.data.message;
+	        });
+	     return promise2;
+	    }
+		
+	//get apEmp by id
+				this.getAppEmployer=function(id){
+					var promise1=$http({
+						method: 'GET',
+						url: "http://localhost:8080/apEmp//"+id
 						});
-			}	
-			
-			 //update un employeur
-	        this.updateAppEmployer=function(appEmployer,idApEmp){
-	       	 console.log(appEmployer);
-	       	 return $http.put("http://localhost:8080/apEmployer/"+idApEmp,appEmployer)
-	            .then(function(response){
-	            	return response;
-	            }, function(err) {
-					return err.data.message;
-				});
-	            
-	         }
+					var promise2=promise1.then(function(response){
+						return response.data;
+					},function(err){
+						console.log(err);
+	
+					});
+				 return promise2;
+				}
+		
 
 
-        //update
-        this.updateApEmpl=function(appEmployer,idApEmp){
-            return $http.put("http://localhost:8080/apEmpl/"+idApEmp,appEmployer);
 
-        }
-			
 			
 			
 	})

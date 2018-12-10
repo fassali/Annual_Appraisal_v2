@@ -3,11 +3,15 @@
 	var app = angular.module('app');
 	app.controller("FirstPageController",
 			function($scope,$rootScope, $http,EmployersDatasrv,AppEmployerDatasrv) {
+		
+		//get Employer manager
+		EmployersDatasrv.getEmployerManager($rootScope.employerSelected.idEmp)
+		.then(function(data){
+			$scope.manager=data;
 			
-        console.log($rootScope.appEmp.annualSession.label);
-        console.log($rootScope.employerSelected.idEmp)
+		});
+
         $scope.employer=$rootScope.employerSelected;
-		 
 		var appDate = new Date();
 		$scope.dayAnn=appDate.getDate();
 		$scope.monthAnn=appDate.getMonth()+1;
@@ -21,13 +25,9 @@
 			$scope.year=d.getFullYear();
 			$scope.date=$scope.day+"/"+$scope.month+"/"+$scope.year;
 			
-		//find the manager	
-			
-			EmployersDatasrv.editEmployer($scope.employer.idManager)
-			.then(function(data){
-				$scope.manager=data.data;
-				
-			});
+	$scope.bu="  "+$scope.employer.bu;
+	$scope.team="  "+$scope.employer.team;
+	$scope.session="  "+$rootScope.appEmp.annualSession.label
         
         
 				
