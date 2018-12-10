@@ -11,12 +11,7 @@
 		$scope.add=0;
 		
 		
-		$scope.session=$rootScope.appEmp.annualSession;
-		if($scope.session.status=="C"){
-			$scope.session.mode=1;
-		}else if($scope.session.status=="E"){
-			$scope.session.mode=0;
-		}
+		
 	    //en tete
 		$scope.name=$rootScope.employerSelected.firstName+" "+$rootScope.employerSelected.lastName;
 		var d=new Date($rootScope.employerSelected.dateEntry);

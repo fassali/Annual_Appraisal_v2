@@ -8,7 +8,10 @@
             .then(function(data){
                 $scope.session=[];
                 $scope.appEmps=data;
-               
+                
+                if($rootScope.user.profil=="M"){
+                    $rootScope.user.profil="E";
+                }
                 $scope.appEmps.forEach(function(item) {                     
                     if(item.annualSession.status=="E"){                         
                         item.annualSession.mode=0;                                                                                                                                                   

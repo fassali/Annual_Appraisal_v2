@@ -14,8 +14,7 @@
                                .then(function (data) {
                                         $scope.employerDeleted= data.data;
                                         $scope.employerDeleted.remove=0;
-                                        EmployersDatasrv.saveEmployer( $scope.employerDeleted,$scope.id)
-                                       
+                                        EmployersDatasrv.saveEmployer( $scope.employerDeleted,$scope.id)                                      
                                             $modalInstance.close($scope.selected.item);
                                     });
                         };
