@@ -14,13 +14,13 @@
 					$rootScope.user=data;
 					console.log($rootScope.user)
 					 if($rootScope.user.profil=="M"){
-						//document.location.href="http://localhost:8081/#!/app/employers";
+						$rootScope.user.mode=1;
                          $state.go("app.employersList", {}, {
 
                          });
 					}else if($rootScope.user.profil=="E"){
-						//document.location.href="http://localhost:8081/#!/app/myProfil";
-                         $state.go("app.profile", {}, {
+						$rootScope.user.mode=2;
+                         $state.go("app.myEvaluation", {}, {
 
                          });
 					}

@@ -28,7 +28,7 @@
         }else if(($scope.session.status=="E")&&( $scope.utilisateur.profil=="E")){
             $rootScope.appEmp.mode=2; 
         }       
-        else {
+        else { 
         $rootScope.appEmp.mode=1;
         }
      

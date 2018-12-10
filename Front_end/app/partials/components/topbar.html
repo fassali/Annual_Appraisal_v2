@@ -19,14 +19,14 @@
     </div>
     <div class="pull-left quickleft" style=''>
         <ul class="info-menu right-links list-inline list-unstyled">
-            <li>
+            <li ng-show="user.mode==1">
                 <a ui-sref="app.employersList"><span class="label">
                     <i class="fa fa-users" translate="dashboard.APP.TEAM"></i></span></a>
             </li>
             <li>
                 <a ui-sref="app.myEvaluation"><span class="label"><i class="fa fa-level-up " translate="dashboard.APP.APPRAISAL"></i></span></a>
             </li>
-            <li class="dropdown tab" uib-dropdown>
+            <li ng-show="user.mode==1 || user.mode==0"class="dropdown tab" uib-dropdown>
                 <a href class="dropdown-toggle toggle" uib-dropdown-toggle>
                     <span class="label"><i class="fa fa-level-up " translate="dashboard.APP.SETTING"></i></span>
                 </a>
@@ -36,7 +36,7 @@
                             <i class="material-icons">settings</i> Gérer Skils
                         </a>
                     </li>
-                    <li>
+                    <li ng-show="user.mode==1">
                         <a ui-sref="app.gestionEmployer">
                             <i class="material-icons">settings</i> Gérer Employers
                         </a>
@@ -53,17 +53,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="hidden-md hidden-sm hidden-xs searchform" searchgroup>
-                <div class="input-group">
-                    <span class="input-group-addon input-focus">
-                            <i class="material-icons">search</i>
-                        </span>
-                    <form action="search-page.html" method="post">
-                        <input type="text" class="form-control animated fadeIn" placeholder="">
-                        <input type='submit' value="">
-                    </form>
-                </div>
-            </li>
+
         </ul>
     </div>
 

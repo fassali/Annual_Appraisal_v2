@@ -21,15 +21,7 @@
 				   $scope.year=d.getFullYear();
 			}
 					  
-				//find all session
-				$scope.allSession=function(){
-					EmployersDatasrv.allSession()
-					.then(function (data) {
-						console.log(data);
-					});
-
-				}				
-			 	 	  
+			app.se
 			 	 	      
 			  
 	
