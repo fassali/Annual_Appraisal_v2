@@ -7,12 +7,12 @@ env:
   - PGPORT=5432
   
 before_script:
-- psql -c 'create database db_annualAppraisal;' -U postgres
+- psql -c 'create database annualAppraisaldb;' -U postgres
 - psql -c "CREATE USER foo WITH PASSWORD '';" -U postgres
 - psql -h localhost --username=postgres --list
 test:
   adapter: postgresql
-  database: db_annualAppraisal
+  database: annualAppraisaldb
   username: postgres
   encoding: utf8
 script:
