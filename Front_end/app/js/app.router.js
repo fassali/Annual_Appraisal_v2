@@ -212,6 +212,18 @@ angular.module('app')
                         controller:'MyEvaluation'
 
                     })
+                    .state('app.teamsList',{
+                        url:'/teamsList',
+                        templateUrl:'partials/employer/teamList.html',
+                        controller:'TeamsList'
+
+                    })
+                    .state('app.employersListByTeam',{
+                        url:'/employersList',
+                        templateUrl:'partials/employer/employersListAdmin.html',
+                        controller:'EmployerListAdmin'
+
+                    })
                     .state('app.feedbacks',{
                         url:'/feedback',
                         templateUrl:'partials/feedBack/feedbacks.html',

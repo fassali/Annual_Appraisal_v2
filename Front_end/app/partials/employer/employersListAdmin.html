@@ -1,0 +1,83 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Dashboard'; ">
+        <section class="box nobox margin-top-15 margin-bottom-0">
+            <div class="content-body">
+                <div class="col-lg-12">
+                    <section class="box ">
+                        <header class="panel_header">
+                            <h2 class="title pull-left">{{team}}</h2>
+                            
+                        </header>
+                        <div class="alert alert-success margin-top-5" ng-show="updateMessage">{{updateMessage}}</div>
+                        <div class="content-body padding-bottom-0">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <input id="filter" type="text" class="form-control" placeholder="Search" />
+                                </div>
+                                <div class="clearfix"></div><br>
+                                <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                                    <table class="table table-striped" ui-jq="footable" data-filter="#filter" data-page-size="5" class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th translate="steps.messages.EMP.NOM">
+                                                First Name
+                                            </th>
+                                            <th translate="steps.messages.EMP.PRENOM">
+                                                Last Name
+                                            </th>
+                                            <th translate="steps.messages.EMP.POS">
+                                              Position
+                                            </th>
+                                            <th translate="steps.messages.EMP.DtDebut">
+                                                Start date
+                                            </th>
+    
+                                            
+    
+                                            <th translate="steps.messages.EMP.ACT">
+                                           <center>Action</center>
+    
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="e in employers">
+                                            <td>{{$index+1}}</td>
+                                            <td>{{e.firstName}}</td>
+                                            <td>{{e.lastName}}</td>
+                                            <td >{{e.position}}</td>
+                                            <td>{{day}}/{{month}}/{{year}}</span></td>
+                                            <td>
+                                                <button style="border: none" class="label label-warning"  ng-click="section_modalDelete(e.idEmp)"><i class="fa fa-trash-o"></i>Delete</button>                                        
+                                                <button style="border: none"style="border: none" class="label label-secondary"  ng-click="section_modalUpdate(e.idEmp)"><i class="fa fa-edit" ></i>Update</button> 
+                                            </td>
+                                        </tr>                                 
+                                        </tbody>
+                                        <tfoot class="hide-if-no-paging">
+                                        <tr>
+                                            <td colspan="5" class="text-center">
+                                                <ul class="pagination"></ul>
+                                            </td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </section>
+                </div>
+    
+            </div>
+        </section>
+     
+        <div class="clearfix"></div>
+    
+    
+        <div class="clearfix"></div>
+    
+        <div class="clearfix"></div>
+    
+    
+    </div>
+    

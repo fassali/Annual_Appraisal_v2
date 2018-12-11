@@ -8,6 +8,13 @@
                 $scope.selected = {
                 item: $scope.items[0]
                 };
+                //teams List
+                $scope.teams=$rootScope.teamsList;
+                //get bu list
+                EmployersDatasrv.BuList()
+                .then(function (data) {
+                    $scope.buList= data;
+                })
                 //get employer selected
                 EmployersDatasrv.editEmployer($scope.id)
                 .then(function (data) {
