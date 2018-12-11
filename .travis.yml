@@ -6,11 +6,11 @@ env:
   global:
   - PGPORT=5432
 before_script:
-  - psql -c 'create database db_annualAppraisal;' -U postgres
+  - psql -c 'create database db_annualappraisal;' -U postgres
   - psql -h localhost --username=postgres --list
 test:
     adapter: postgresql
-    database: db_annualAppraisal
+    database: db_annualappraisal
     username: postgres
     encoding: utf8
 script:
