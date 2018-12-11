@@ -14,13 +14,10 @@ import org.springframework.data.domain.Pageable;
 
 @Repository
 public interface EmployeRepository extends JpaRepository<Employe, Long> {
-
     public Employe findEmployeByIdEmp(@Param("idEmp") Long idEmp);
-    
     public Employe findByUsername (String username);
-
-
-    
-    @Query("select e from Employe e where e.manager = null")
-   	public List<Employe> findEmployers_WM();    
+    @Query("select e from Employe e where e.manager = 'E'")
+   	public List<Employe> findEmployers_WM();   
+    @Query("select e from Employe  e where e.team  = :team")
+    public List<Employe>  findEmployeByTeam(@Param("team")String team);
 }
