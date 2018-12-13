@@ -7,14 +7,20 @@
                             <h2 class="title pull-left">{{team}}</h2>
                             
                         </header>
-                        <div class="alert alert-success margin-top-5" ng-show="updateMessage">{{updateMessage}}</div>
-                        <div class="content-body padding-bottom-0">
+                        <br><br>
+                        
+                        &nbsp<button ng-click="back()" style="border: none" class="label label-primary"><i class="fa fa-arrow-left"></i>Back to the list</button>
+                              
+                         
+                        <div class="alert alert-danger margin-top-5" ng-show="mode==1">{{messageTeamNull}}&nbsp&nbsp{{team.label}}&nbsp&nbsp{{msg}}&nbsp</div>
+                       
+                        <div ng-show="mode==0" class="content-body padding-bottom-0">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <input id="filter" type="text" class="form-control" placeholder="Search" />
                                 </div>
                                 <div class="clearfix"></div><br>
-                                <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                                <div ng-show="mode==0"class="col-md-12 col-sm-12 col-xs-12 table-responsive">
                                     <table class="table table-striped" ui-jq="footable" data-filter="#filter" data-page-size="5" class="table table-striped">
                                         <thead>
                                         <tr>
@@ -48,8 +54,10 @@
                                             <td >{{e.position}}</td>
                                             <td>{{day}}/{{month}}/{{year}}</span></td>
                                             <td>
-                                                <button style="border: none" class="label label-warning"  ng-click="section_modalDelete(e.idEmp)"><i class="fa fa-trash-o"></i>Delete</button>                                        
-                                                <button style="border: none"style="border: none" class="label label-secondary"  ng-click="section_modalUpdate(e.idEmp)"><i class="fa fa-edit" ></i>Update</button> 
+                                                <button style="border: none" class="label label-warning"  ng-click="section_modalDelete(e.idEmp)">
+                                                    <i class="fa fa-trash-o"></i>Delete</button>                                        
+                                                <button style="border: none" class="label label-secondary"  ng-click="section_modalUpdate(e.idEmp)">
+                                                    <i class="fa fa-edit" ></i>Update</button> 
                                             </td>
                                         </tr>                                 
                                         </tbody>

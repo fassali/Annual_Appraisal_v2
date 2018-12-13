@@ -23,7 +23,4 @@ public class BusinessUnitController {
 		return businessUnitRepository.findAll();
 	}
 	
-	
-	
-	
 }

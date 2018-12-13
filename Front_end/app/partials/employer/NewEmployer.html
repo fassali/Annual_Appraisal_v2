@@ -573,7 +573,13 @@ option {
           <option value="" disabled selected >Choose Employer's Team</option>
         </select>				
         </div>
-        
+        <div class="wrap-input100 validate-input" data-validate = "The employer Team is required">
+            <span class="label-input100">Manager:</span>
+            <select class="input100"  ng-model="manager" class="form-control selectpicker"
+            ng-options="m.firstName  + ' ' + m.lastName for m in managerList track by m.idEmp" required>	
+            <option value="" disabled selected >Choose Employer's Manager</option>
+          </select>				
+          </div>
         <div class="wrap-input100 validate-input" data-validate = "The employer Team is required">
 					<span class="label-input100">BU:</span>
           <select ng-model="employer.bu" class="form-control selectpicker"
