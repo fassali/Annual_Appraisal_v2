@@ -42,10 +42,10 @@
                                         <tbody>
                                         <tr ng-repeat="t in teamsList">
                                             <td>{{$index+1}}</td>
-                                            <td>{{t.label}}</td>
+                                            <td>{{t}}</td>
                                             
                                             <td>
-                                               <button style="border:none" class="label label-success" ng-click="employersList(t.idTeam)"><i class="fa fa-list"></i>&nbsp&nbsp&nbsp
+                                               <button style="border:none" class="label label-success" ng-click="employersList(t)"><i class="fa fa-list"></i>&nbsp&nbsp&nbsp
                                                 Consult</button>
                                             </td>
                                         </tr>                                 

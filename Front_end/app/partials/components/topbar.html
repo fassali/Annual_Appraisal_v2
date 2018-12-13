@@ -30,32 +30,37 @@
             <li>
                 <a ui-sref="app.myEvaluation"><span class="label"><i class="fa fa-level-up " translate="dashboard.APP.APPRAISAL"></i></span></a>
             </li>
-            <li ng-show="user.mode==1 || user.mode==0 || user.mode==3"class="dropdown tab" uib-dropdown>
+            <li>
+                    <a ng-show="user.mode==1" ui-sref="app.gestionEmployer"><span class="label"><i class="fa fa-level-up "></i>Gérer Employers</span></a>
+                </li>
+           
+            <li ng-show="user.mode==0 || user.mode==3" class="dropdown tab" uib-dropdown>
                 <a href class="dropdown-toggle toggle" uib-dropdown-toggle>
                     <span class="label"><i class="fa fa-level-up " translate="dashboard.APP.SETTING"></i></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right animated fadeIn">
-                    <li>
+                    <li ng-show="user.mode==0 || user.mode==3" >
                         <a ui-sref="app.skils">
                             <i class="material-icons">settings</i> Gérer Skils
                         </a>
                     </li>
-                    <li>
-                        <a ng-show="user.mode==1 || user.mode==3" ui-sref="app.gestionEmployer">
-                            <i class="material-icons">settings</i> Gérer Employers
-                        </a>
-                    </li>
-                    <li>
-                        <a ng-show="user.mode==0 || user.mode==3" ui-sref="app.newEmployer">
+                    <li  ng-show="user.mode==3">
+                            <a ui-sref="app.gestionEmployer">
+                                <i class="material-icons">settings</i> Gérer Employers
+                            </a>
+                        </li>
+                   
+                    <li ng-show="user.mode==0 || user.mode==3">
+                        <a  ui-sref="app.newEmployer">
                                 <i class="material-icons">settings</i> Ajouter un Employer
                             </a>
                         </li>
-                    <li>
+                    <li ng-show="user.mode==0 || user.mode==3">
                         <a ui-sref="app.feedbacks">
                             <i class="material-icons">settings</i> Gérer feed back
                         </a>
                     </li>
-                    <li class="last">
+                    <li ng-show="user.mode==0 || user.mode==3"  class="last">
                         <a ui-sref="app.session">
                             <i class="material-icons">settings</i> Gérer Session
                         </a>

@@ -20,4 +20,6 @@ public interface EmployeRepository extends JpaRepository<Employe, Long> {
    	public List<Employe> findEmployers_WM();   
     @Query("select e from Employe  e where e.team  = :team")
     public List<Employe>  findEmployeByTeam(@Param("team")String team);
+    @Query("select e from Employe  e where e.profil  = 'M' or e.profil  = 'AM'")
+    public List<Employe>  getManagerList();
 }
