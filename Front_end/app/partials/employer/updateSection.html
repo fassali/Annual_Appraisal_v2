@@ -18,9 +18,17 @@
 							ng-model="employer.position">
 					</div>
 					<div class="form-group">
-						<label>Team:</label> <input type="text" class="form-control"
-							ng-model="employer.team">
+						<label>Team:</label> 
+						<select ng-show="user.mode==0 || user.mode==3" ng-model="employer.team" class="form-control selectpicker"
+						ng-options="t.label as t.label for t in teams">
+					</select>
 					</div>
+					<div class="form-group">
+							<label>BU:</label> 
+							<select ng-show="user.mode==0 || user.mode==3" ng-model="employer.bu" class="form-control selectpicker"
+							ng-options="b.label as b.label for b in buList">
+						</select>
+						</div>
 					<div class="form-group">
 						<label>Start date:</label> <input style="font-family:Poppins-Regular;" type="date" class="form-control"
 							ng-model="employer.dateEntry">

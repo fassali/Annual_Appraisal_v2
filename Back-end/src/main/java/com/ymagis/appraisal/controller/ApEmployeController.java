@@ -85,7 +85,7 @@ public class ApEmployeController {
 		return apEmploye;
 	}
 	//get list of apEmp by employer id
-	@RequestMapping(method = RequestMethod.GET, value = "/annualAppraisal//{idEmp}")
+	@RequestMapping(method = RequestMethod.GET, value = "/annualAppraisal/{idEmp}")
 	public List<ApEmploye> getApEmp(@PathVariable Long idEmp) {
 		Employe employer=employeRepository.findEmployeByIdEmp(idEmp);
 		List<ApEmploye> listApEmp=new ArrayList<ApEmploye>(employer.getApEmployes()); 

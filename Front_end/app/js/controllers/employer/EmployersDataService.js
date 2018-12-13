@@ -160,10 +160,8 @@
 				});
 			 return promise2;
 			}
-		//add employers to a manager
-		
-			 this.chooseEmployers=function(employers,idEmp){
-       	
+		//add employers to a manager		
+			 this.chooseEmployers=function(employers,idEmp){     	
 				return $http.put("http://localhost:8080/employersSelect/"+idEmp,employers)
 				.then(function(response){
 					
@@ -173,11 +171,47 @@
 						console.log(err);
 					};
 			 }	
+	
+			//get list of all teams
+			this.TeamsList=function(){
+				var promise1=$http({
+					method: 'GET',
+					url: "http://localhost:8080/teamDivList"
+					});
+				var promise2=promise1.then(function(response){
+					return response.data;
+				},function(err){
+					console.log(err);
+				});
+			 return promise2;
+			}
+			//get list of bu
+				this.BuList=function(){
+					var promise1=$http({
+						method: 'GET',
+						url: "http://localhost:8080/buList"
+						});
+					var promise2=promise1.then(function(response){
+						return response.data;
+					},function(err){
+						console.log(err);
+					});
+				 return promise2;
+				}
 			
-			
-			
-			
-			
+			//employers list by team
+			this.EmployersListByTeams=function(idTeam){
+				var promise1=$http({
+					method: 'GET',
+					url: "http://localhost:8080/employersList/"+idTeam
+					});
+				var promise2=promise1.then(function(response){
+					return response.data;
+				},function(err){
+					console.log(err);
+				});
+			 return promise2;
+			}
 			
 			
 			

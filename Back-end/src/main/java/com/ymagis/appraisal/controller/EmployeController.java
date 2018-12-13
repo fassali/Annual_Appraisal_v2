@@ -2,9 +2,11 @@ package com.ymagis.appraisal.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,9 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import com.ymagis.appraisal.entities.AnnualSession;
 import com.ymagis.appraisal.entities.ApEmploye;
 import com.ymagis.appraisal.entities.ApObjEmp;
+import com.ymagis.appraisal.entities.DivTeams;
 import com.ymagis.appraisal.entities.Employe;
 import com.ymagis.appraisal.repository.AnnualSessionRepository;
 import com.ymagis.appraisal.repository.ApEmployeRepository;
+import com.ymagis.appraisal.repository.DivTeamsRepository;
 import com.ymagis.appraisal.repository.EmployeRepository;
 
 @RestController
@@ -26,8 +30,9 @@ public class EmployeController {
 	@Autowired
 	private AnnualSessionRepository annualSessionRepository;
 	@Autowired
-	private ApEmployeRepository apEmployer;
-	
+	private ApEmployeRepository apEmployer;	
+	@Autowired
+	private DivTeamsRepository divTeamsRepository;
 	
 	// ajouter un nouvel employé
 	@RequestMapping(method = RequestMethod.POST, value = "/employers/add")
@@ -47,16 +52,6 @@ public class EmployeController {
 		Employe employer = employeRepository.findByUsername(username);
 		return employer;
 	}
-	
-
-//	// chercher un employeur par "first name"
-//	@RequestMapping(value = "/findEmployers", method = RequestMethod.GET)
-//	public Page<Employe> findEmployers(@RequestParam(name = "idManager", defaultValue = "") Integer idManager,
-//			@RequestParam(name = "firstName", defaultValue = "") String firstName,
-//			@RequestParam(name = "page", defaultValue = "0") int page,
-//			@RequestParam(name = "size", defaultValue = "6") int size) {
-//		return employeRepository.findEmployer(idManager,firstName,new PageRequest(page, size));
-//	}
 	//get all employers without manager
 	@RequestMapping(value = "/employersWM", method = RequestMethod.GET)
 	public List<Employe> findEmployerWM() {
@@ -209,6 +204,12 @@ public class EmployeController {
 		return manager;
 	}
 	
+	//list of employers by teams	
+	@RequestMapping(method = RequestMethod.GET, value = "/employersList/{idTeam}")
+	public List<Employe> getEmployeurByTeam(@PathVariable Long idTeam) {	
+		Optional<DivTeams> team=divTeamsRepository.findById(idTeam);
+		return employeRepository.findEmployeByTeam(team.get().getLabel());
+	}
 	
 	
 }

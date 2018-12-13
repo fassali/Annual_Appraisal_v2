@@ -2,13 +2,21 @@
 
 	var app = angular.module('app');
 	app.controller("EmployerController",
-			function($scope,$rootScope,$http,EmployersDatasrv,$window,$interval) {
+		function($scope,$rootScope,$http,EmployersDatasrv,$window,$interval) {
 		   $scope.roles={};
            $scope.employers=[];
            $scope.count=0;
            $scope.manager=null;
-		
-		
+		//get bu list
+		EmployersDatasrv.BuList()
+		.then(function (data) {
+			$scope.buList=data;
+		});
+		//get teams list
+		EmployersDatasrv.TeamsList()
+		.then(function (data) {
+			$scope.teamsList=data;
+		});
 		  //methode pour ajouter un nv employeur
 		$scope.addEmployer = function() {
 			//employer name
@@ -26,18 +34,6 @@
 			$scope.username=fisrtChar+minLastName;
 			//ajouter username a l'employeur
 			$scope.employer.username=$scope.username;
-			//ajouter les roles à un employeur
-/*			if($scope.roles.manager==true){
-				$scope.employer.manager="Yes";
-			}else{
-				$scope.employer.manager="No";
-			}
-			if($scope.roles.admin==true){
-				$scope.employer.admin="Yes";
-			}else{
-				$scope.employer.admin="No";
-			}*/
-
             if($scope.roles.manager==true)
                 if($scope.roles.admin==true)
                     $scope.employer.profil = "AM"
