@@ -20,50 +20,54 @@
     <div class="pull-left quickleft" style=''>
         <ul class="info-menu right-links list-inline list-unstyled">
             <li>
-                <a ui-sref="app.employersList"><span class="label">
+                <a ng-show="user.mode==1 || user.mode==3"ui-sref="app.employersList"><span class="label">
                     <i class="fa fa-users" translate="dashboard.APP.TEAM"></i></span></a>
             </li>
             <li>
-                <a href="#"><span class="label"><i class="fa fa-level-up " translate="dashboard.APP.APPRAISAL"></i></span></a>
+                <a ng-show="user.mode==0 || user.mode==3"ui-sref="app.teamsList"><span class="label">
+                        <i class="fa fa-users"></i>All Teams</span></a>
+         </li>
+            <li>
+                <a ui-sref="app.myEvaluation"><span class="label"><i class="fa fa-level-up " translate="dashboard.APP.APPRAISAL"></i></span></a>
             </li>
-            <li class="dropdown tab" uib-dropdown>
+            <li>
+                    <a ng-show="user.mode==1" ui-sref="app.gestionEmployer"><span class="label"><i class="fa fa-level-up "></i>Gérer Employers</span></a>
+                </li>
+           
+            <li ng-show="user.mode==0 || user.mode==3" class="dropdown tab" uib-dropdown>
                 <a href class="dropdown-toggle toggle" uib-dropdown-toggle>
                     <span class="label"><i class="fa fa-level-up " translate="dashboard.APP.SETTING"></i></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right animated fadeIn">
-                    <li>
+                    <li ng-show="user.mode==0 || user.mode==3" >
                         <a ui-sref="app.skils">
                             <i class="material-icons">settings</i> Gérer Skils
                         </a>
                     </li>
-                    <li>
-                        <a ui-sref="app.gestionEmployer">
-                            <i class="material-icons">settings</i> Gérer Employers
-                        </a>
-                    </li>
-                    <li>
+                    <li  ng-show="user.mode==3">
+                            <a ui-sref="app.gestionEmployer">
+                                <i class="material-icons">settings</i> Gérer Employers
+                            </a>
+                        </li>
+                   
+                    <li ng-show="user.mode==0 || user.mode==3">
+                        <a  ui-sref="app.newEmployer">
+                                <i class="material-icons">settings</i> Ajouter un Employer
+                            </a>
+                        </li>
+                    <li ng-show="user.mode==0 || user.mode==3">
                         <a ui-sref="app.feedbacks">
                             <i class="material-icons">settings</i> Gérer feed back
                         </a>
                     </li>
-                    <li class="last">
+                    <li ng-show="user.mode==0 || user.mode==3"  class="last">
                         <a ui-sref="app.session">
                             <i class="material-icons">settings</i> Gérer Session
                         </a>
                     </li>
                 </ul>
             </li>
-            <li class="hidden-md hidden-sm hidden-xs searchform" searchgroup>
-                <div class="input-group">
-                    <span class="input-group-addon input-focus">
-                            <i class="material-icons">search</i>
-                        </span>
-                    <form action="search-page.html" method="post">
-                        <input type="text" class="form-control animated fadeIn" placeholder="">
-                        <input type='submit' value="">
-                    </form>
-                </div>
-            </li>
+
         </ul>
     </div>
 
@@ -90,11 +94,7 @@
                     <span class="profile-status available"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right profile animated fadeIn">
-                    <li>
-                        <a ui-sref="app.dashboard">
-                            <i class="material-icons">settings</i> Settings
-                        </a>
-                    </li>
+                    
                     <li>
                         <a ui-sref="app.profile">
                             <i class="material-icons">person</i> Profile

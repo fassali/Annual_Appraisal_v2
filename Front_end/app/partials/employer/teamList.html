@@ -1,0 +1,80 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'All Teams'; ">
+        <section class="box nobox margin-top-15 margin-bottom-0">
+            <div class="content-body">
+                <center> 
+                 <div style="margin-top: -4%;">
+                    <img src="data/bu/logoymagis.png" style="width: 12%;"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <img src="data/bu/eclaire.png" style="width: 12%;"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <img src="data/bu/cinemaNext.png" style="width: 12%;"/>
+                    </div>
+                  </center> <br>
+                <div class="col-lg-12">
+                    <section class="box">
+                            <header class="panel_header">
+                                    <h2 class="title pull-left">List of All teams
+                                        <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                                    </h2><br>
+                                  
+                                </header>
+                        <div class="content-body padding-bottom-0">
+                               
+                            <div class="row">
+                                <br>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <input id="filter" type="text" class="form-control" placeholder="Search"/>
+                                    </div>
+                                <div class="clearfix"></div><br>
+                                
+                                <div class="col-md-10 col-sm-10 col-xs-10 table-responsive" style="margin-left: 10%">
+                                        <center>    
+                                   <table  class=" table table-striped"  ui-jq="footable" data-page-size="5" >
+                                        <thead>
+                                        <tr>                                       
+                                            <th></th>
+                                            <th>
+                                                Business Unit
+                                            </th>
+                                            <th>
+                                                List Of Employers
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="t in teamsList">
+                                            <td>{{$index+1}}</td>
+                                            <td>{{t}}</td>
+                                            
+                                            <td>
+                                               <button style="border:none" class="label label-success" ng-click="employersList(t)"><i class="fa fa-list"></i>&nbsp&nbsp&nbsp
+                                                Consult</button>
+                                            </td>
+                                        </tr>                                 
+                                        </tbody>
+                                        <tfoot class="hide-if-no-paging">
+                                                <tr>
+                                                    <td colspan="5" class="text-center">
+                                                        <ul class="pagination"></ul>
+                                                    </td>
+                                                </tr>
+                                                </tfoot>
+                                    </table></center>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </section>
+                </div>
+    
+            </div>
+        </section>
+     
+        <div class="clearfix"></div>
+    
+    
+        <div class="clearfix"></div>
+    
+        <div class="clearfix"></div>
+    
+    
+    </div>
+     

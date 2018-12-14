@@ -51,6 +51,14 @@ public class Constantes {
     public static final String SOFTSKILL = "softSkill";
     public static final String ID_APFDBACK = "id_apfdback";
     public static final String ID_MANAGER = "id_manager";
+	public static final String ID_BU = "id_Bu";
+	public static final String Bu_LABEL = "label_bu";
+	public static final String ID_DIVTEAM  = "id_Team";
+	public static final String DIVTEAM_LABEL = "label_divTeam";
+	public static final String PROFIL_EMPLOYER="profil";
+	public static final String BUSINESS_UNIT = "business_unit";
+	public static final String STATUS_ENCOURS = "E";
+
 
 
 

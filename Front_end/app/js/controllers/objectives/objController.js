@@ -6,7 +6,7 @@
     //controller pour client
     function objController($scope, $window, objService, $state, $rootScope, $interval, $filter) {
 
-        $scope.pageLastObj = {};
+        $scope.pageLastObj = {}; 
         $scope.currentPage = 0;
         $scope.size = 3;
         $scope.totalePages = 0;
@@ -17,14 +17,21 @@
         //$rootScope.employerSelected;
         //$scope.year
         //$scope.idE$rootScopemp
-
+   //gestion d'affichage selon status de la session
         $scope.session=$rootScope.appEmp.annualSession;
-        if($scope.session.status=="C"){
-            $scope.session.mode=1;
-        }else if($scope.session.status=="E"){
-            $scope.session.mode=0;
-        }
+        $scope.utilisateur=$rootScope.user;
 
+
+
+        if(($scope.session.status=="E")&&( $scope.utilisateur.profil=="M")){
+            $rootScope.appEmp.mode=0; 
+        }else if(($scope.session.status=="E")&&( $scope.utilisateur.profil=="E")){
+            $rootScope.appEmp.mode=2; 
+        }       
+        else {
+        $rootScope.appEmp.mode=1;
+        }
+     
         objService.getRatings().then(function(data) {
             $scope.ratings = data;
         });

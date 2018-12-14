@@ -1,6 +1,7 @@
 package com.ymagis.appraisal.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import com.ymagis.appraisal.entities.AnnualSession;
 import com.ymagis.appraisal.entities.ApEmploye;
 import com.ymagis.appraisal.entities.ApObjEmp;
+import com.ymagis.appraisal.entities.Employe;
 import com.ymagis.appraisal.repository.AnnualSessionRepository;
 import com.ymagis.appraisal.repository.ApEmployeRepository;
+import com.ymagis.appraisal.repository.EmployeRepository;
 
 @RestController
 @CrossOrigin
@@ -20,6 +23,8 @@ public class ApEmployeController {
 	private ApEmployeRepository apEmployeRepository;
 	@Autowired
 	private AnnualSessionRepository annualSessionRepository ;
+	@Autowired
+	private EmployeRepository employeRepository;
 	//get session en cour
 		@RequestMapping(method = RequestMethod.GET, value = "/session")
 		public AnnualSession getSession() {
@@ -62,7 +67,7 @@ public class ApEmployeController {
 		return apEmployeRepository.findAll();
 	}
 		
-	// find obj by id
+	// find apEmp by id
 		@RequestMapping(method = RequestMethod.GET, value = "/apEmp/{idApEmp}")
 		public Optional<ApEmploye> getObj(@PathVariable Long idApEmp) {
 			return apEmployeRepository.findById(idApEmp);
@@ -79,5 +84,16 @@ public class ApEmployeController {
 		apEmployeRepository.save(apEmploye);
 		return apEmploye;
 	}
+	//get list of apEmp by employer id
+	@RequestMapping(method = RequestMethod.GET, value = "/annualAppraisal/{idEmp}")
+	public List<ApEmploye> getApEmp(@PathVariable Long idEmp) {
+		Employe employer=employeRepository.findEmployeByIdEmp(idEmp);
+		List<ApEmploye> listApEmp=new ArrayList<ApEmploye>(employer.getApEmployes()); 
+		return listApEmp;
+	}
+
+	
+	
+	
 }
 

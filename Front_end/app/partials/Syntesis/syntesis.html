@@ -14,10 +14,15 @@
   </thead>
   <tr style="height: 300px;"> 
     <td >
-              <textarea class="systh" ng-model="appEmp.strength" ng-change="changed()" required></textarea>
-    </td>
+
+              <textarea ng-show="appEmp.mode==0"  class="systh" ng-model="appEmp.strength" ng-change="changed()" required></textarea>
+              <textarea ng-show="appEmp.mode==1 || appEmp.mode==2"  class="systh" ng-model="appEmp.strength" ng-change="changed()" disabled></textarea>
+
+            </td>
     <td >
-              <textarea class="systh" ng-model="appEmp.tbImproved" ng-change="isChange = true" required></textarea>
+              <textarea ng-show="appEmp.mode==0" class="systh" ng-model="appEmp.tbImproved" ng-change="changed()" required></textarea>
+              <textarea ng-show="appEmp.mode==1 || appEmp.mode==2" class="systh" ng-model="appEmp.tbImproved" ng-change="changed()" disabled></textarea>
+
     </td>
   </tr>
   

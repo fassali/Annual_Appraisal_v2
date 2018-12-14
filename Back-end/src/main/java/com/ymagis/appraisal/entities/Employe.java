@@ -43,9 +43,11 @@ public class Employe implements Serializable {
     @Column(name = Constantes.REMOVE)
     private Integer remove;
 
-
+    @Column(name = Constantes.PROFIL_EMPLOYER)
     private  String profil;
-
+    @Column(name = Constantes.BUSINESS_UNIT) 
+     private String bu;
+    
 //    @ManyToOne
 //    @JoinColumn(name = Constantes.MANAGER)
 //    private Employe manager;
@@ -69,23 +71,30 @@ public class Employe implements Serializable {
     public Employe() {
     }
 
-    public Employe(String firstName, String lastName, String position, String team, Date dateEntry, String username,
-                   String email,Integer remove,Set<ApEmploye> apEmployes,Employe manager, Set<Employe> managerTeam) {
-        super();
-        
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.position = position;
-        this.team = team;
-        this.dateEntry = dateEntry;
-        this.username = username;
-        this.email = email; 
-        this.remove = remove;
-        this.manager=manager;
-        this.apEmployes = apEmployes;
-    }
 
-    public String getUsername() {
+
+    public Employe(String firstName, String lastName, String position, String team, Date dateEntry, String username,
+			String email, Integer remove, String profil, String bu, Employe manager, Set<Employe> managerTeam,
+			Set<ApEmploye> apEmployes) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.position = position;
+		this.team = team;
+		this.dateEntry = dateEntry;
+		this.username = username;
+		this.email = email;
+		this.remove = remove;
+		this.profil = profil;
+		this.bu = bu;
+		this.manager = manager;
+		this.managerTeam = managerTeam;
+		this.apEmployes = apEmployes;
+	}
+
+
+
+	public String getUsername() {
 		return username;
 	}
 
@@ -190,4 +199,17 @@ public class Employe implements Serializable {
     public void setProfil(String profil) {
         this.profil = profil;
     }
+
+
+
+	public String getBu() {
+		return bu;
+	}
+
+
+
+	public void setBu(String bu) {
+		this.bu = bu;
+	}
+    
 }
