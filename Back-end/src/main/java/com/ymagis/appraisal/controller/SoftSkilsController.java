@@ -1,10 +1,6 @@
 package com.ymagis.appraisal.controller;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 import com.ymagis.appraisal.repository.ApEmployeRepository;
@@ -93,11 +89,30 @@ private ApEmployeRepository apEmployeRepository;
 
 		return skilsRepository.findAll();
 	}
-
-	@RequestMapping(value = "/skill", method = RequestMethod.GET)
-	public Page<SoftSkill> getSoftSkill(@RequestParam(name = "page", defaultValue = "0") int page,
-			@RequestParam(name = "size", defaultValue = "2") int size) {
+	@RequestMapping(value = "/allSkill", method = RequestMethod.GET)
+	public Page<SoftSkill> getAllSoftSkill(@RequestParam(name = "page", defaultValue = "0") int page,
+										@RequestParam(name = "size", defaultValue = "2") int size) {
 		Page<SoftSkill> softSkills = skilsRepository.getoftSkill(PageRequest.of(page, size));
+		for(SoftSkill softSkill: softSkills.getContent())
+		{
+			Set<Level> levels = new HashSet<>();
+			for (Level level : softSkill.getLevels())
+				if(!level.isRemoved())
+					levels.add(level);
+
+			softSkill.setLevels(levels);
+		}
+
+
+		return softSkills;
+	}
+	@RequestMapping(value = "/skill", method = RequestMethod.GET)
+	public Map<String , Page<SoftSkill>> getSoftSkill(@RequestParam(name = "page", defaultValue = "1") int page,
+			@RequestParam(name = "size", defaultValue = "3") int size) {
+		Map<String , Page<SoftSkill>> mapSoft = new HashMap<>();
+		Page<SoftSkill> softSkills = skilsRepository.getSoftSkill(PageRequest.of(page, size));
+		Page<SoftSkill> managSkills = skilsRepository.getManageSkill(PageRequest.of(page, size));
+
 		for(SoftSkill softSkill: softSkills.getContent())
 		{
 			Set<Level> levels = new HashSet<>();
@@ -108,8 +123,20 @@ private ApEmployeRepository apEmployeRepository;
 		  softSkill.setLevels(levels);
 		}
 
+		for(SoftSkill managSkill: managSkills.getContent())
+		{
+			Set<Level> managlevels = new HashSet<>();
+			for (Level levelM : managSkill.getLevels())
+				if(!levelM.isRemoved())
+					managlevels.add(levelM);
 
-		return softSkills;
+			managSkill.setLevels(managlevels);
+		}
+
+		mapSoft.put("soft",softSkills);
+		mapSoft.put("manag",managSkills);
+		return mapSoft;
+				//softSkills;
 	}
 
 	// update skils
@@ -204,14 +231,36 @@ private ApEmployeRepository apEmployeRepository;
 		return apSoftSkill;
 	}
 	@RequestMapping(method = RequestMethod.POST, value = "/apEmpl/{idap}/soft")
-	public ApEmploye Appsoftsave(@RequestBody List<Level> levels,@PathVariable Long idap) {
+	public ApEmploye Appsoftsave(@RequestBody Map<String,List<Level>> levels,@PathVariable Long idap) {
 		Set<ApSoftSkill> apSoftSkills = new HashSet<>();
+		Map<String,List<ApSoftSkill>> listAppsoft = new HashMap<>();
+		List<ApSoftSkill> softlist = new ArrayList<>();
+		List<ApSoftSkill> managlist = new ArrayList<>();
      ApEmploye apEmploye = apEmployeRepository.findById(idap).get();
 List<ApSoftSkill> suppApSoftSkills = apSoftSkillRepository.getApSoftSkillByApEmploye(apEmploye);
-apSoftSkillRepository.deleteAll(suppApSoftSkills);
-		System.out.println(suppApSoftSkills.size());
-		for(Level level : levels)
+for(ApSoftSkill apSoftSkill : suppApSoftSkills)
+	if(apSoftSkill.getLevel().getSoftSkill().getCode().equals("soft"))
+		softlist.add(apSoftSkill);
+
+	else
+		managlist.add(apSoftSkill);
+		listAppsoft.put("managerial",managlist);
+		listAppsoft.put("soft",softlist);
+
+	if(levels.get("soft").size() != 0) {
+		System.out.println("soft : " + listAppsoft.get("soft").size());
+		apSoftSkillRepository.deleteAll(listAppsoft.get("soft"));
+	}
+	if(levels.get("manag").size() != 0)
+	{
+		System.out.println("managerial : "+listAppsoft.get("managerial").size());
+		apSoftSkillRepository.deleteAll(listAppsoft.get("managerial"));
+	}
+	System.out.println(levels.keySet());
+	for( String key : levels.keySet())
+		for(Level level : levels.get(key))
 		{
+			System.out.println("level "+level.getIdLevel());
 						ApSoftSkill apSoftSkill = new ApSoftSkill();
 						SoftSkill softSkill = LevelRepository.findById(level.getIdLevel()).get().getSoftSkill();
 			            level.setSoftSkill(softSkill);

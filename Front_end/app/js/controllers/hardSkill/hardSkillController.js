@@ -37,7 +37,7 @@
                 };
 
                 $scope.update = function(id, model) {
-                    hardSkillService.update(id, model).then(function(response) {
+                    hardSkillService.update(id, model,$scope.appraisalId).then(function(response) {
                         $scope.succes = "Competency updated successfully!";
                         $scope.mode = "";
                         $scope.hardSkill = {};

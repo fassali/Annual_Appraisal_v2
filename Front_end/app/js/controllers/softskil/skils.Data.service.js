@@ -26,11 +26,11 @@ app.service("skilsDataService",function ($http,$location) {
         return promise2;
         };
         // recuperer la liste des clients
-        this.getsoftSkill = function(currentPage,size){
+        this.getSkillAll = function(currentPage,size){
 
         var promise1    =   $http({
             method : "GET",
-            url : "http://localhost:8080/skill?page="+currentPage+"&size="+size
+            url : "http://localhost:8080/allSkill?page="+currentPage+"&size="+size
         });
 
         var promise2 = promise1.then(function mySuccess(response) {
@@ -43,6 +43,23 @@ app.service("skilsDataService",function ($http,$location) {
 
         return promise2;
         };
+    this.getsoftSkill = function(currentPage,size){
+
+        var promise1    =   $http({
+            method : "GET",
+            url : "http://localhost:8080/skill?page="+currentPage+"&size="+size
+        });
+
+        var promise2 = promise1.then(function mySuccess(response) {
+
+            return response.data;
+
+        }, function myError(response) {
+            return response;
+        });
+
+        return promise2;
+    };
         // recuperer un skils
         this.getSkils = function (id) {
             var promise1    =   $http({

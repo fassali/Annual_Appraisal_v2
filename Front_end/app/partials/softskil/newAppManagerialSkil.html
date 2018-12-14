@@ -11,7 +11,7 @@
 				<th>desciption</th>
 			</tr>
 		</thead>
-		<tbody ng-repeat="(id, sk) in softskils">
+		<tbody ng-repeat="(id, sk) in managskils">
 
 			<tr >
 				<td rowspan="{{sk.levels.length + 1}}">{{ sk.idSoftSkill }}</td>
@@ -26,10 +26,8 @@
 				<td>{{ meaning.mean }}</td>
 					 <td>
 					
-			<input  ng-show="appEmp.mode==0" type="radio" name="{{ sk.label }}"  ng-checked="exist(meaning)"
-			 ng-click="selectedVa(meaning)" required >
-			 <input  ng-show="appEmp.mode==1 || appEmp.mode==2"type="radio" name="{{ sk.label }}"  ng-checked="exist(meaning)"
-			 ng-click="selectedVa(meaning)" required disabled>
+			<input  type="radio" name="{{ sk.label }}"  ng-checked="exist(meaning)"
+			 ng-click="toggleSelection(meaning)"  required>
 			<!--  ng-checked="exist(meaning)" ng-click="toggleSelection(meaning)" -->
 					</td>
 			</tr>
@@ -43,7 +41,7 @@
 					<li class="page-item"><a class="page-link"
 											 ng-click="gotoprevious()">&laquo;</a></li>
 					<li class="page-item" ng-class="{active:$index==currentPage}"
-						ng-repeat="i in pages.soft track by $index"><a
+						ng-repeat="i in pages.manag track by $index"><a
 							class="clickable page-link" ng-click="gotopage($index)"> {{
 						$index + 1}} </a></li>
 					<li class="page-item" id="linknext"><a class="page-link"
@@ -55,4 +53,6 @@
 		</tr>
 		</tfoot>
 	</table>
+
+
 

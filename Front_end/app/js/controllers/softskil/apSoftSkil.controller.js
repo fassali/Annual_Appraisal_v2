@@ -6,40 +6,51 @@
 	function newApSoftSkilsCtrl($scope, skilsDataService, $http, $location,
 			$window,$rootScope) {
 		$scope.skils = {};
+        $scope.managskils = {};
+        $scope.softskils = {}
 		$scope.skilSelected = [];
 		$scope.skilSelectedd = [];
 		$scope.apsoftskil = {};
 		$scope.currentPage = 0;
 		$scope.size = 3;
-		$scope.totalePages = 0;
-		$scope.pages = [];
+		$scope.totalePages ={};
+		$scope.pages = {};
         console.log($rootScope.appEmp);
 		console.log($scope.skilSelectedd)
 		$scope.init = function() {
-
 			skilsDataService.getsoftSkill($scope.currentPage, $scope.size)
 					.then(function(data) {
 
-						$scope.skils = data.content;
+						$scope.softskils = data.soft.content;
+                        $scope.managskils = data.manag.content;
 
-
-                                //apsoft.level.skil = elementt.idSoftSkill;
-                              //  delete apsoft.idApStSkill;
-                                //$scope.skilSelectedd.push(apsoft.level)
-                            $scope.skils.forEach(function(elementt) {
+                            $scope.softskils.forEach(function(elementt) {
 
                                 elementt.levels.sort(function (a, b) {
                                     return b.degree - a.degree;
                                 });
                                 elementt.levels.forEach(function(element,ind) {
                                 		element.skil = elementt.idSoftSkill;
+                                    element.skilType = elementt.code;
                                 });
                             });
+                        $scope.managskils.forEach(function(elementt) {
 
-console.log($scope.skils)
+                            elementt.levels.sort(function (a, b) {
+                                return b.degree - a.degree;
+                            });
+                            elementt.levels.forEach(function(element,ind) {
+                                element.skil = elementt.idSoftSkill;
+                                element.skilType = elementt.code;
+                            });
+                        });
 
-						$scope.totalePages = data.totalPages;
-                        $scope.pages = new Array(data.totalPages);
+
+                        $scope.pages.soft = new Array(data.soft.totalPages);
+                        $scope.pages.manag = new Array(data.manag.totalPages);
+                        console.log($scope.pages)
+                        console.log($scope.softskils )
+                        console.log($scope.managskils )
 					});
 		}
 //		skilsDataService.gestAllSkils().then(function(data) {
@@ -49,7 +60,8 @@ console.log($scope.skils)
 //		});
 
         skilsDataService.gestAllSkils().then(function(data){
-
+            //$scope.skils = data;
+			console.log($rootScope.appEmp)
             $rootScope.appEmp.apSoftSkills.forEach(function(apsoft,index){
             data.forEach(function(skils) {
 
@@ -57,12 +69,14 @@ console.log($scope.skils)
                     if(level.idLevel == apsoft.level.idLevel)
                     {
                         apsoft.level.skil = skils.idSoftSkill;
+                        apsoft.level.skilType = skils.code;
                         $scope.skilSelectedd.push(apsoft.level)
                     }
 
                 });
             });
             });
+            console.log($scope.skilSelectedd)
         });
 
 		$scope.exist = function(item) {
@@ -77,30 +91,44 @@ console.log($scope.skils)
 		}
 
 		$scope.toggleSelection = function(item) {
-         console.log(item)
-			var idx = -1;
-			for (var i = 0; i < $scope.skilSelectedd.length; i++) {
+            var idx = false;
+            $scope.managskils.forEach(function(element) {
+                if(item.skil == element.idSoftSkill){
 
-				console.log($scope.skilSelectedd[i].idLevel+" / ")
-				if ($scope.skilSelectedd[i].idLevel == item.idLevel) {
-					idx = i;
-				}
+                    element.levels.forEach(function(element,idex) {
+                        if (element.idLevel != item.idLevel)
+                        {
+                            for (var i = 0; i < $scope.skilSelectedd.length; i++) {
+                                if ($scope.skilSelectedd[i].idLevel == element.idLevel) {
+                                    $scope.skilSelectedd.splice(i, 1);
+                                    element.checked = false;
+                                    item.checked = false;
 
-			}
-			console.log(idx)
-			if(idx > -1){
-				$scope.skilSelectedd.splice(idx, 1);
-			}
-			else{
-				$scope.skilSelectedd.push(item);
-			}
+                                }
+                            }
+                        }
+                        else{
+                            $scope.skilSelectedd.push(item);
+                            element.checked = true;
+                            item.checked = true;
+                            idx = true;
+                        }
 
-			
-		}
+
+
+
+                    });
+                }
+            });
+
+            console.log($scope.skilSelectedd)
+
+            $rootScope.isChange = true;
+        }
 //
 		$scope.selectedVa = function(item) {
 		var idx = false;
-			$scope.skils.forEach(function(element) {
+			$scope.softskils.forEach(function(element) {
 				if(item.skil == element.idSoftSkill){
 				
 				element.levels.forEach(function(element,idex) {
@@ -128,15 +156,9 @@ console.log($scope.skils)
 				});
 				}
 			});
-//			if(item.checked){
-//				$scope.skilSelectedd.splice(idx, 1);
-//				item.checked = false;
-//			}
-//			else{
-//				$scope.skilSelectedd.push(item);
-//				item.checked = true;
-//			}
 
+			console.log($scope.skilSelectedd)
+            $rootScope.isChange = true;
 		}
 		// fonction permet d'incrementer les numero de la page
 		$scope.gotonext = function() {
@@ -167,10 +189,29 @@ console.log($scope.skils)
 			$scope.init();
 		}
         $rootScope.save = function() {
-          skilsDataService.newApSkils($scope.skilSelectedd,$rootScope.appEmp.idApEmp).then(function(data){
+            console.log($scope.skilSelectedd)
+			var soft = [];
+			var manag = [];
+			var level = {}
+            $scope.skilSelectedd.forEach(function(element){
+            	console.log(element)
+            	if(element.skilType == "soft")
+            		soft.push(element)
+				else
+                    manag.push(element)
+            })
+			level.soft = soft;
+			level.manag = manag;
+console.log(level)
+			console.log($scope.skilSelectedd)
+          skilsDataService.newApSkils(level,$rootScope.appEmp.idApEmp).then(function(data){
 
           })
 		}
+
+        $scope.changed = function(){
+            $rootScope.isChange = true;
+        }
 	}
 
 })();

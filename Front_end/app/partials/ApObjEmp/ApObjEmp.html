@@ -12,7 +12,7 @@
  
     <button ng-show="add==0 && appEmp.mode==0" type="button" class="btn btn-primary btn-sm" ng-click="addObj()">New Objective </button>
     <br><br>
-    <table class="table">
+    <table class="table" ng-init="init()">
       <thead>
         <tr>
           <th>#</th>
@@ -26,10 +26,10 @@
       <tbody>
         <tr ng-show="add==1 && appEmp.mode==0">
 		<td></td>
-          <td><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="obj.labelObj"></textarea></td>
-          <td><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="obj.indicator"></textarea></td>
-          <td><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="obj.mean"></textarea></td>
-          <td><input type="date"class="form-control" ng-model="obj.deadLine" style="height: 75px"/></td>
+          <td><textarea class="form-control"  rows="3" ng-change="isChange = true"  ng-model="obj.labelObj"></textarea></td>
+          <td><textarea class="form-control"  rows="3" ng-change="isChange = true"  ng-model="obj.indicator"></textarea></td>
+          <td><textarea class="form-control"  rows="3" ng-change="isChange = true"  ng-model="obj.mean"></textarea></td>
+          <td><input type="date"class="form-control" ng-change="isChange = true" ng-model="obj.deadLine" style="height: 75px"/></td>
           <td>                                                
 						<button data-title="Delete" data-toggle="modal" data-target="#delete" style="border: none" class="label label-warning"  ng-click="addNewObj()"><i class="fa fa-plus-circle"></i> Add Objective</button>                                        
           </td>
@@ -48,12 +48,23 @@
           </td>
         </tr>
 			</tbody>
-			<tfoot class="hide-if-no-paging">
-					<tr>
-							<td colspan="5" class="text-center">
-									<ul class="pagination"></ul>
-							</td>
-					</tr>
-					</tfoot>
+        <tfoot class="hide-if-no-paging" ng-show="totalpage > 0">
+        <tr>
+            <td colspan="5" class="text-center" >
+                <ul class="nav nav-pills pagination-centered tests">
+                    <li class="page-item"><a class="page-link"
+                                             ng-click="gotoprevious()">&laquo;</a></li>
+                    <li class="page-item" ng-class="{active:$index==currentPage}"
+                        ng-repeat="i in pages track by $index"><a
+                            class="clickable page-link" ng-click="gotopage($index)"> {{
+                        $index + 1}} </a></li>
+                    <li class="page-item" id="linknext"><a class="page-link"
+                                                           ng-click="gotonext()">&raquo;</a></li>
+                </ul>
+
+            </td>
+
+        </tr>
+        </tfoot>
     </table>
 	

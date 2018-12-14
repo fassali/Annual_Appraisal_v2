@@ -1,3 +1,3 @@
-app.controller('StepsPageCtrl', ['$scope', 'filterFilter', function ($scope, filterFilter) {
-
+app.controller('StepsPageCtrl', ['$scope','$rootScope',  function($scope,$rootScope) {
+    $rootScope.isChange = false;
 }]);

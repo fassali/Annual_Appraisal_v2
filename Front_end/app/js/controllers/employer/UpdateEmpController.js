@@ -48,6 +48,11 @@
                 $modalInstance.close($scope.selected.item);                          
              }
 
+
+                $scope.changed = function(){
+                    $rootScope.isChange = true;
+                }
+
              $scope.updateEmployerManager=function(){
                  $scope.employerSelected=[];
                 //affect an employer to manager
@@ -60,13 +65,6 @@
                                
                     $modalInstance.close($scope.selected.item);                          
                  }
-
-      
-         
-
-
-
-
 
 
 
