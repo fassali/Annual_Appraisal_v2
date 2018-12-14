@@ -23,19 +23,19 @@
         <td>{{obj.deadLine | date:'MM/dd/yyyy'}}</td>
         <td>
             <select ng-show="session.mode==0" ng-model="obj.rating"
-                name="rating" class="form-control selectpicker"
+                name="rating" class="form-control selectpicker" ng-change="isChange = true"
                 ng-options="r as r.code for r in ratings track by r.idRating"  required>
             </select>
 
             <select ng-show="session.mode==1" ng-model="obj.rating"
-                    name="rating" class="form-control selectpicker"
+                    name="rating" class="form-control selectpicker" ng-change="isChange = true"
                     ng-options="r as r.code for r in ratings track by r.idRating"  required disabled>
             </select>
 
         </td>
         <td>
-            <textarea ng-show="session.mode==0" class="form-control rounded-0" rows="3" ng-model="obj.comment" name="comment" required></textarea>
-            <textarea ng-show="session.mode==1" class="form-control rounded-0" rows="3" ng-model="obj.comment" name="comment" required disabled></textarea>
+            <textarea ng-show="session.mode==0" class="form-control rounded-0" rows="3" ng-model="obj.comment" name="comment" ng-change="isChange = true"  required></textarea>
+            <textarea ng-show="session.mode==1" class="form-control rounded-0" rows="3" ng-model="obj.comment" name="comment" ng-change="isChange = true" required disabled></textarea>
             <!--<input type="textarea" ng-model="comment" name="comment"
                    ng-keyup="keyUp($event)" placeholder="comment" ng-blur="commentChanged(obj, comment)">-->
         </td>

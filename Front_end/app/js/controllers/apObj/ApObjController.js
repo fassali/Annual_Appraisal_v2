@@ -102,9 +102,11 @@
             $rootScope.currentPage = p;
             $scope.init();
         }
-		
-		
 
+
+        $scope.changed = function(){
+            $rootScope.isChange = true;
+        }
 	})
 
 })();

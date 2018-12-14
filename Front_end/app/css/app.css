@@ -8652,7 +8652,7 @@ border-left: 3px solid transparent;
     top: 14px;
     left: 66px;
     height: 3px;
-    width: 85%;
+    width: 89%;
     margin: 7px 0;
     z-index: 1;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.0), 0 2px 2px rgba(0, 0, 0, 0.1);
@@ -8696,7 +8696,7 @@ border-left: 3px solid transparent;
     border-radius: 50%;
     position: relative;
     text-align: right;
-    width: 12%;
+    width: 11%;
     margin: 0 !important;
     left: 66px;
 }

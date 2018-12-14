@@ -14,10 +14,10 @@
   </thead>
   <tr style="height: 300px;"> 
     <td >
-              <textarea class="systh" ng-model="appEmp.strength" required></textarea>
+              <textarea class="systh" ng-model="appEmp.strength" ng-change="changed()" required></textarea>
     </td>
     <td >
-              <textarea class="systh" ng-model="appEmp.tbImproved" required></textarea>
+              <textarea class="systh" ng-model="appEmp.tbImproved" ng-change="isChange = true" required></textarea>
     </td>
   </tr>
   
@@ -27,5 +27,4 @@
  toBeImproved : {{appEmp.tbImproved}}-->
 
 
-	
 	

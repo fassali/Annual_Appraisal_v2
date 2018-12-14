@@ -26,7 +26,9 @@
               
              }
 
-      
+                $scope.changed = function(){
+                    $rootScope.isChange = true;
+                }
          
 
 

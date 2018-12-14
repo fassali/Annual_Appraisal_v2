@@ -6,20 +6,20 @@
             <form action="/action_page.php" style="font-family:Poppins-Regular;">
                 <div class="form-group">
                     <label>OBJECTIVES:</label> 
-                    <textarea class="form-control"  rows="3"  ng-model="objective.labelObj"></textarea>
+                    <textarea class="form-control"  rows="3" ng-change="isChange = true"  ng-model="objective.labelObj"></textarea>
                 </div>
                 <div class="form-group">
                     <label>INDICATORS:</label> 
-                    <textarea class="form-control"  rows="3"  ng-model="objective.indicator"></textarea>
+                    <textarea class="form-control"  rows="3" ng-change="isChange = true" ng-model="objective.indicator"></textarea>
                 </div>
                 <div class="form-group">
                     <label>MEANS:</label>
-                    <textarea class="form-control"  rows="3"  ng-model="objective.mean"></textarea>
+                    <textarea class="form-control"  rows="3" ng-change="isChange = true" ng-model="objective.mean"></textarea>
                     
                 </div>
                 <div class="form-group">
                     <label>DEADLINE:</label> 
-                    <input type="date"class="form-control" ng-model="obj.deadLine" style="height: 90px"/>
+                    <input type="date"class="form-control" ng-change="isChange = true" ng-model="obj.deadLine" style="height: 90px"/>
                 </div>
                 
             </form>

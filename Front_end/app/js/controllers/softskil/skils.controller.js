@@ -18,7 +18,7 @@ function skilsCtrl($scope,skilsDataService,$http,$location,$window) {
 	});
 	$scope.init = function() {
 		
-		skilsDataService.getsoftSkill($scope.currentPage,
+		skilsDataService.getSkillAll($scope.currentPage,
 				$scope.size).then(function(data) {
 					$scope.skils
 					console.log(data)

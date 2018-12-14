@@ -16,7 +16,7 @@
 			<td></td>
 			<td>{{fdb.feedBack.label}}</td>
 			<td>
-				<textarea class="form-control rounded-0" rows="3" ng-model="fdb.comment" name="comment" required></textarea>
+				<textarea class="form-control rounded-0" rows="3" ng-model="fdb.comment" name="comment" ng-change="changed()" required></textarea>
 			</td>
 		</tr>
 		</tbody>

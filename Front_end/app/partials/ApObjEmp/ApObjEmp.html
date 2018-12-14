@@ -65,10 +65,10 @@
       <tbody>
         <tr ng-show="add==1 && session.mode==0">
 		<td></td>
-          <td><textarea class="form-control"  rows="3"  ng-model="obj.labelObj"></textarea></td>
-          <td><textarea class="form-control"  rows="3"  ng-model="obj.indicator"></textarea></td>
-          <td><textarea class="form-control"  rows="3"  ng-model="obj.mean"></textarea></td>
-          <td><input type="date"class="form-control" ng-model="obj.deadLine" style="height: 75px"/></td>
+          <td><textarea class="form-control"  rows="3" ng-change="isChange = true"  ng-model="obj.labelObj"></textarea></td>
+          <td><textarea class="form-control"  rows="3" ng-change="isChange = true"  ng-model="obj.indicator"></textarea></td>
+          <td><textarea class="form-control"  rows="3" ng-change="isChange = true"  ng-model="obj.mean"></textarea></td>
+          <td><input type="date"class="form-control" ng-change="isChange = true" ng-model="obj.deadLine" style="height: 75px"/></td>
           <td>                                                
 						<button data-title="Delete" data-toggle="modal" data-target="#delete" style="border: none" class="label label-warning"  ng-click="addNewObj()"><i class="fa fa-plus-circle"></i> Add Objective</button>                                        
           </td>
