@@ -21,6 +21,7 @@ import com.ymagis.appraisal.repository.AnnualSessionRepository;
 import com.ymagis.appraisal.repository.ApEmployeRepository;
 import com.ymagis.appraisal.repository.DivTeamsRepository;
 import com.ymagis.appraisal.repository.EmployeRepository;
+import com.ymagis.appraisal.utils.Constantes;
 
 @RestController
 @CrossOrigin
@@ -163,7 +164,7 @@ public class EmployeController {
 			return appSession;
 		} else {
 			ApEmploye appEmp = new ApEmploye();
-			appEmp.setStatus("en cour");
+			appEmp.setStatus(Constantes.STATUS_ENCOURS);
 			appEmp.setAnnualSession(session);
 			appEmp.setEmploye(employeur);
 			apEmployer.save(appEmp);

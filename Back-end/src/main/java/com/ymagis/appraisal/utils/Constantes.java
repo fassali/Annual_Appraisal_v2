@@ -57,6 +57,7 @@ public class Constantes {
 	public static final String DIVTEAM_LABEL = "label_divTeam";
 	public static final String PROFIL_EMPLOYER="profil";
 	public static final String BUSINESS_UNIT = "business_unit";
+	public static final String STATUS_ENCOURS = "E";
 
 
 
