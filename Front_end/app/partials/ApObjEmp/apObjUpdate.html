@@ -5,20 +5,20 @@
     <div class="modal-body">
             <form action="/action_page.php" style="font-family:Poppins-Regular;">
                 <div class="form-group">
-                    <label>OBJECTIVES:</label> 
+                    <label translate="steps.messages.EMP.OBJ">OBJECTIVES:</label> 
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="objective.labelObj"></textarea>
                 </div>
                 <div class="form-group">
-                    <label>INDICATORS:</label> 
+                    <label translate="steps.messages.EMP.OBJ_INDICATORS">INDICATORS:</label> 
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="objective.indicator"></textarea>
                 </div>
                 <div class="form-group">
-                    <label>MEANS:</label>
+                    <label translate="steps.messages.EMP.OBJ_MEAN">MEANS:</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model="objective.mean"></textarea>
                     
                 </div>
                 <div class="form-group">
-                    <label>DEADLINE:</label> 
+                    <label translate="steps.messages.EMP.OBJ_DEADLINE">DEADLINE:</label> 
                     <input type="date"class="form-control" ng-model="obj.deadLine" style="height: 90px"/>
                 </div>
                 
@@ -28,7 +28,7 @@
 
     </div>
     <div class="modal-footer">                  
-        <button class="btn btn-default" ng-click="cancel()">No</button>
-        <button class="btn btn-primary" ng-click="updateObj()">Yes</button>
+        <button class="btn btn-default" ng-click="cancel()" >{{"buttons.BTN.NO"|translate}}</button>
+        <button class="btn btn-primary" ng-click="updateObj()">{{"buttons.BTN.UPDATE"|translate}}</button>
     </div>
     </div>

@@ -37,7 +37,7 @@
                 EmployersDatasrv.editEmployer($scope.id)
                 .then(function (data) {
                          $scope.employer= data.data;
-                         
+                         $scope.employerName=$scope.employer.firstName+" "+$scope.employer.lastName;
                      }, function (err) {
                          console.log(err);
                      })

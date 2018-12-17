@@ -23,14 +23,18 @@
         <tr ng-repeat="y in years">
             
             <td>{{y.label}}</td>
-            <td>{{y.status}}</td>            
+            <td>
+                <label ng-show="y.mode==0" translate"=steps.messages.EMP.SESSION_STATUS"></label>
+                <label ng-show="y.mode==1">--------</label>
+                <label ng-show="y.mode==2" translate"=steps.messages.EMP.SESSION_FERMER"></label>
+            </td>            
             <td>
             <button ng-show="y.mode==0" data-toggle="modal"  style="border: none;font-family: 'Courier New', Courier, monospace;font-size: 16px" class="label label-danger" ng-click="newAppEmp()">
-                <i class="fa fa-power-off" > &nbsp {{y.title}}</i></button>
+                <i class="fa fa-caret-right" ></i>{{"buttons.BTN.SESSION_ENCOURS" |translate}}</button>
             <button ng-show="y.mode==1" data-toggle="modal"  style="border: none;font-family: 'Courier New', Courier, monospace;font-size: 16px" class="label label-warning" ng-click="newAppEmp()">
-                    <i class="fa fa-toggle-right" > &nbsp {{y.title}}</i></button>  
+                    <i class="fa fa-caret-right" > &nbsp{{"buttons.BTN.SESSION_START" |translate}}</i></button>  
             <button ng-show="y.mode==2" data-toggle="modal"  style="border: none;font-family: 'Courier New', Courier, monospace;font-size: 16px" class="label label-secondary"  ng-click="oldAppEmp(y.idAnn)">
-                    <i class="fa fa-eye" > &nbsp {{y.title}}</i></button>   
+                    <i class="fa fa-eye" > &nbsp {{"buttons.BTN.CONSULT" |translate}}</i></button>   
             </td>
         </tr>                                 
         </tbody>

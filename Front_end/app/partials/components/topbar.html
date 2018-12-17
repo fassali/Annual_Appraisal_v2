@@ -1,4 +1,5 @@
 <!-- START TOPBAR -->
+<meta charset="utf-8">
 <div class='logo-area'>
 </div>
 <div class='quick-area'>
@@ -12,12 +13,19 @@
             </li>
         </ul>
     </div>
-    <div class="pull-left pagetitle">
+    <div class="pull-left pagetitle" style="font-size: 25px;">
         <span class='line'></span>
-        <h1>{{app.settings.pagetitle}}</h1>
+        <h1 ng-show="user.menu==1" translate="dashboard.APP.TEAM"></h1>
+        <h1 ng-show="user.menu==0" translate="dashboard.APP.ALLTEAMS"></h1>
+        <h1 ng-show="user.menu==2" translate="dashboard.APP.APPRAISAL"></h1>
+        <h1 ng-show="user.menu==3" translate="dashboard.APP.SKILS"></h1>
+        <h1 ng-show="user.menu==5" translate="dashboard.APP.NEWEMPLOYER"></h1>
+        <h1 ng-show="user.menu==4" translate="dashboard.APP.GESTIONEMPLOYER"></h1>
+        <h1 ng-show="user.menu==6" translate="dashboard.APP.FEEDBACK"></h1>
+        <h1 ng-show="user.menu==7" translate="dashboard.APP.SESSION"></h1>
         <div></div>
     </div>
-    <div class="pull-left quickleft" style=''>
+    <div class="pull-left quickleft">
         <ul class="info-menu right-links list-inline list-unstyled">
             <li>
                 <a ng-show="user.mode==1 || user.mode==3"ui-sref="app.employersList"><span class="label">
@@ -25,44 +33,52 @@
             </li>
             <li>
                 <a ng-show="user.mode==0 || user.mode==3"ui-sref="app.teamsList"><span class="label">
-                        <i class="fa fa-users"></i>All Teams</span></a>
+                        <i class="fa fa-users" translate="dashboard.APP.ALLTEAMS"></i></span></a>
          </li>
             <li>
-                <a ui-sref="app.myEvaluation"><span class="label"><i class="fa fa-level-up " translate="dashboard.APP.APPRAISAL"></i></span></a>
+                <a ui-sref="app.myEvaluation"><span class="label">
+                    <i class="fa fa-list-ul" translate="dashboard.APP.APPRAISAL"></i></span></a>
             </li>
             <li>
-                    <a ng-show="user.mode==1" ui-sref="app.gestionEmployer"><span class="label"><i class="fa fa-level-up "></i>Gérer Employers</span></a>
+                    <a ng-show="user.mode==1" ui-sref="app.gestionEmployer"><span class="label">
+                        <i class="fa fa-cog" translate="dashboard.APP.EMPLOYERMANAGEMENT"></i></span></a>
                 </li>
            
             <li ng-show="user.mode==0 || user.mode==3" class="dropdown tab" uib-dropdown>
                 <a href class="dropdown-toggle toggle" uib-dropdown-toggle>
-                    <span class="label"><i class="fa fa-level-up " translate="dashboard.APP.SETTING"></i></span>
+                    <span class="label"><i class="fa  fa-cogs " translate="dashboard.APP.SETTING"></i></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right animated fadeIn">
                     <li ng-show="user.mode==0 || user.mode==3" >
                         <a ui-sref="app.skils">
-                            <i class="material-icons">settings</i> Gérer Skils
+                            <i class="fa fa-cog"></i> 
+                           <span  translate="dashboard.APP.SKILSMANAGEMENT"></span>
                         </a>
                     </li>
                     <li  ng-show="user.mode==3">
-                            <a ui-sref="app.gestionEmployer">
-                                <i class="material-icons">settings</i> Gérer Employers
+                            <a ui-sref="app.gestionEmployer" >
+                                    <i class="fa fa-cog"></i> 
+                                    <span translate="dashboard.APP.EMPLOYERMANAGEMENT"></span>
                             </a>
                         </li>
                    
                     <li ng-show="user.mode==0 || user.mode==3">
-                        <a  ui-sref="app.newEmployer">
-                                <i class="material-icons">settings</i> Ajouter un Employer
+                        <a  ui-sref="app.newEmployer" >
+                                <i class="fa fa-cog"></i> 
+                                <span translate="dashboard.APP.NEWEMPLOYER"></span>
                             </a>
                         </li>
                     <li ng-show="user.mode==0 || user.mode==3">
                         <a ui-sref="app.feedbacks">
-                            <i class="material-icons">settings</i> Gérer feed back
+                                <i class="fa fa-cog"></i> 
+                                <span translate="dashboard.APP.FEEDBACKMANAGEMENT"></span>
                         </a>
                     </li>
                     <li ng-show="user.mode==0 || user.mode==3"  class="last">
+                            
                         <a ui-sref="app.session">
-                            <i class="material-icons">settings</i> Gérer Session
+                                <i class="fa fa-cog"></i> 
+                                <span translate="dashboard.APP.STARTSESSION"></span>
                         </a>
                     </li>
                 </ul>

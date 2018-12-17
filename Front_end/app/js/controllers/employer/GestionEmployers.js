@@ -8,7 +8,7 @@
 		$scope.employers=[];
 		$scope.count=0;
 		$rootScope.appEmp={};
-
+        $rootScope.user.menu=4;
 
 		$scope.employers=$rootScope.user.managerTeam;
             

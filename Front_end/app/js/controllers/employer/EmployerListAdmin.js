@@ -4,6 +4,7 @@
 	app.controller("EmployerListAdmin",
 			function($scope,$rootScope,$http,EmployersDatasrv,$modal, $log,$interval,$state) {
 				$rootScope.user.profil="A";
+				$rootScope.user.menu=0;
 			   $scope.employers=$rootScope.employersListByTeam;
 			   if($scope.employers!=0){
 				   $scope.mode=0;

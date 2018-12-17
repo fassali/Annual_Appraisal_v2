@@ -3,8 +3,8 @@
 	var app = angular.module("app");
 	app.controller("feedbackCtrl", feedbackCtrl);
 
-	function feedbackCtrl($scope, feedbackService,$rootScope) {
-
+	function feedbackCtrl($scope,$rootScope, feedbackService,$rootScope) {
+		$rootScope.user.menu=6;
 		$scope.save = function(model) {
 			feedbackService.save(model).then(function(response) {
 				$scope.succes = "Feedback added successfully!";

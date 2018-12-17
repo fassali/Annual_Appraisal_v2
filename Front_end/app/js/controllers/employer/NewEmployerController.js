@@ -7,6 +7,7 @@
            $scope.employers=[];
            $scope.count=0;
 		   $scope.manager=null;
+		    $rootScope.user.menu=5;
 		   
 		//get bu list
 		EmployersDatasrv.BuList()

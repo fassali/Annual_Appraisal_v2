@@ -1,9 +1,10 @@
+
 <div class='content-wrapper' ng-init="app.settings.pagetitle = 'Steps ';">
     <div class="col-lg-12">
         <div class="col-lg-12">
             <section class="box ">
                 <header class="panel_header">
-                    <h2 class="title pull-left">Steps Appraissal</h2>
+                    <h2 class="title pull-left" translate="steps.messages.EMP.ANN_TITLE"></h2>
                     <div class="actions panel_actions pull-right">
                         <i class="box_toggle material-icons">expand_more</i>
                         <i class="box_setting material-icons" ng-click="section_modal()">mode_edit</i>
@@ -18,7 +19,7 @@
                             </div>
                             <uib-tabset class="tab-container" ng-init="steps={percent:0, step1:true, step2:false, step3:false, step4:false, step5:false, step1stat:false, step2stat:false, step3stat:false, step4stat:false, step5stat:false }">
                                 <uib-tab active="steps.step1" select="steps.percent=0" class=" {{steps.step1stat ? 'complete' : ''}} ">
-                                    <uib-tab-heading class="tabhead">Employer</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.EMPLOYER_STEP"></uib-tab-heading>
 
 
                                     <form name="step1" >
@@ -30,7 +31,7 @@
 
                                 </uib-tab>
                                 <uib-tab  active="steps.step2" select="steps.percent=15; steps.step1stat=true" class=" {{steps.step2stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">last_obj</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.LASTOBJ_STEP"></uib-tab-heading>
                                     <form name="step2" >
                                         <div ui-view="objctives"></div>
                                         <div class="">
@@ -40,7 +41,7 @@
                                     </form>
                                 </uib-tab>
                                 <uib-tab disabled="step2.$invalid" active="steps.step3" select="steps.percent=30; steps.step2stat=true" class=" {{steps.step3stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">Competence</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.COMP_STEP">Competence</uib-tab-heading>
 
                                     <form name="step3" >
                                         <div ui-view="hard"></div>
@@ -51,7 +52,9 @@
                                     </form>
                                 </uib-tab>
                                 <uib-tab disabled="step3.$invalid" active="steps.step4" select="steps.percent=45; steps.step3stat=true" class=" {{steps.step4stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">Soft</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.SOFT_STEP">
+
+                                    </uib-tab-heading>
 
                                     <form name="step4" >
                                             <div class="content-wrapper" >
@@ -64,7 +67,7 @@
                                     </form>
                                 </uib-tab>
                                 <uib-tab disabled="step4.$invalid" active="steps.step5" select="steps.percent=58; steps.step4stat=true" class=" {{steps.step5stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">Synthesis</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.SYN_STEP" >Synthesis</uib-tab-heading>
 
                                     <form name="step5" >
                                         <div ui-view="synthesis"></div>
@@ -75,7 +78,7 @@
                                     </form>
                                 </uib-tab>
                                 <uib-tab disabled="step5.$invalid" active="steps.step6" select="steps.percent=72; steps.step5stat=true" class=" {{steps.step6stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">feedback</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.FEEDBACK_STEP">feedback</uib-tab-heading>
 
                                     <form name="step6" >
                                         <div ui-view="feedback"></div>
@@ -86,7 +89,7 @@
                                     </form>
                                 </uib-tab>
                                 <uib-tab disabled="step6.$invalid" active="steps.step7" select="steps.percent=85; steps.step6stat=true" class=" {{steps.step7stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">objectives</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.OBJ">objectives</uib-tab-heading>
 
                                     <form name="step7" >
                                         <div ui-view="newObj"></div>
@@ -97,7 +100,7 @@
                                     </form>
                                 </uib-tab>
                                 <uib-tab disabled="step7.$invalid" active="steps.step8"  select="steps.percent=100;  steps.step7stat=true" class=" {{steps.step8stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">wish</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead"translate="steps.messages.EMP.WISH_STEP" >wish</uib-tab-heading>
 
                                     <form name="step8" >
                                         <div ui-view="wish"></div>

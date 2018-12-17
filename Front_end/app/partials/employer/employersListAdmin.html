@@ -4,21 +4,18 @@
                 <div class="col-lg-12">
                     <section class="box ">
                         <header class="panel_header">
-                            <h2 class="title pull-left">{{team}}</h2>
+                            <h2 class="title pull-left">{{ "steps.messages.EMP.TEAM" | translate }}'{{team}}'</h2>
                             
                         </header>
                         <br><br>
                         
-                        &nbsp<button ng-click="back()" style="border: none" class="label label-primary"><i class="fa fa-arrow-left"></i>Back to the list</button>
-                              
-                         
-                        <div class="alert alert-danger margin-top-5" ng-show="mode==1">{{messageTeamNull}}&nbsp&nbsp{{team.label}}&nbsp&nbsp{{msg}}&nbsp</div>
-                       
+                        &nbsp<button ng-click="back()" style="border: none" class="label label-primary"><i class="fa fa-arrow-left"></i>{{ "buttons.BTN.BACK" | translate }}</button>
                         <div ng-show="mode==0" class="content-body padding-bottom-0">
                             <div class="row">
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <input id="filter" type="text" class="form-control" placeholder="Search" />
-                                </div>
+                                    <br>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <input id="filter" type="text" class="form-control" placeholder="{{'placeholder.P.SEARCH'|translate}}"/>
+                                        </div>
                                 <div class="clearfix"></div><br>
                                 <div ng-show="mode==0"class="col-md-12 col-sm-12 col-xs-12 table-responsive">
                                     <table class="table table-striped" ui-jq="footable" data-filter="#filter" data-page-size="5" class="table table-striped">
@@ -55,9 +52,9 @@
                                             <td>{{day}}/{{month}}/{{year}}</span></td>
                                             <td>
                                                 <button style="border: none" class="label label-warning"  ng-click="section_modalDelete(e.idEmp)">
-                                                    <i class="fa fa-trash-o"></i>Delete</button>                                        
+                                                    <i class="fa fa-trash-o"></i> {{ "buttons.BTN.DELETE" | translate }}</button>                                        
                                                 <button style="border: none" class="label label-secondary"  ng-click="section_modalUpdate(e.idEmp)">
-                                                    <i class="fa fa-edit" ></i>Update</button> 
+                                                    <i class="fa fa-edit" ></i>{{ "buttons.BTN.UPDATE" | translate }}</button> 
                                             </td>
                                         </tr>                                 
                                         </tbody>
