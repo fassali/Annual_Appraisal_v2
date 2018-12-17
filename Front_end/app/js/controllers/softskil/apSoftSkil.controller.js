@@ -5,6 +5,7 @@
 
 	function newApSoftSkilsCtrl($scope, skilsDataService, $http, $location,
 			$window,$rootScope) {
+	 $rootScope.user.menu=3;
 		$scope.skils = {};
         $scope.managskils = {};
         $scope.softskils = {}
@@ -13,8 +14,10 @@
 		$scope.apsoftskil = {};
 		$scope.currentPage = 0;
 		$scope.size = 3;
+
 		$scope.totalePages ={};
 		$scope.pages = {};
+
         console.log($rootScope.appEmp);
 		console.log($scope.skilSelectedd)
 		$scope.init = function() {

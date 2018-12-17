@@ -3,7 +3,7 @@
 	var app = angular.module('app');
 	app.controller("MyEvaluation",
 		function($scope,$rootScope,$http,AppEmployerDatasrv,EmployersDatasrv) { 
-           
+           $rootScope.user.menu=2;
             AppEmployerDatasrv.employerApEmp($rootScope.user.idEmp)
             .then(function(data){
                 $scope.session=[];

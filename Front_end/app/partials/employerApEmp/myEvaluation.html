@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <section class="box ">
                     <header class="panel_header">
-                        <h2 class="title pull-left" translate="steps.messages.EMP.LIST"></h2>
+                        <h2 class="title pull-left" translate="steps.messages.ANN.ANNUAL_APPRAISAL"></h2>
                         <div class="actions panel_actions pull-right">
                             <i class="box_toggle material-icons">expand_more</i>
                             <i class="box_setting material-icons" ng-click="section_modal()">mode_edit</i>
@@ -22,10 +22,10 @@
                                     <thead>
                                     <tr>
                                         <th></th>
-                                        <th>
-                                            Year
+                                        <th translate="steps.messages.ANN.YEAR">
+                                            Year:
                                         </th>
-                                        <th>
+                                        <th translate="steps.messages.ANN.STATUS">
                                            Status
                                         </th>
                                         <th translate="steps.messages.EMP.ACT">
@@ -40,8 +40,10 @@
                                         <td>{{a.annualSession.label}}</td>
                                         <td>{{a.status}}</td>
                                         <td>
-                                            <button ng-show="a.annualSession.mode==0" style="border:none" class="label label-success" ng-click="getApEmp(a.idApEmp)"><i class="fa fa-pencil"></i>&nbspFill</button>
-                                            <button ng-show="a.annualSession.mode==1" style="border: none;" class="label label-secondary"ng-click="getApEmp(a.idApEmp)"><i class="fa fa-eye"></i>Consult</button>
+                                            <button ng-show="a.annualSession.mode==0" style="border:none" class="label label-success" ng-click="getApEmp(a.idApEmp)"><i class="fa fa-pencil"></i>
+                                                &nbsp{{"buttons.BTN.FILL"|translate}}</button>
+                                            <button ng-show="a.annualSession.mode==1" style="border: none;" class="label label-secondary"ng-click="getApEmp(a.idApEmp)">
+                                                <i class="fa fa-eye"></i>&nbsp{{"buttons.BTN.CONSULT"|translate}}</button>
                                         </td>
                                     </tr>                                 
                                     </tbody>

@@ -1,12 +1,12 @@
 <div  role="dialog">
     <div class="modal-header">
-        <h4 class="modal-title">Confirmation</h4>
+        <h4 class="modal-title" translate="modals.delete.MOD.CONFIRM"></h4>
     </div>
-    <div class="modal-body">
-            Are you sure you want to delete this Objective?
+    <div class="modal-body" translate="modals.delete.MOD.DELETE_OBJ">
+            
     </div>
     <div class="modal-footer">                  
-        <button class="btn btn-default" ng-click="cancel()">No</button>
-        <button class="btn btn-primary" ng-click="deleteObj()">Yes</button>
+        <button class="btn btn-default" ng-click="cancel()">{{"buttons.BTN.NO"|translate}}</button>
+        <button class="btn btn-primary" ng-click="deleteObj()">{{"buttons.BTN.DELETE"|translate}}</button>
     </div>
     </div>

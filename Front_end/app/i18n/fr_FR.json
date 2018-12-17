@@ -1,9 +1,22 @@
 {
-  "dashboard": {
+  "dashboard": { 
     "WELCOME": "Bienvenue dans {{appName}}",
-    "APP.TEAM": "Mon equipe",
-    "APP.APPRAISAL": "Mon évaluation",
-    "APP.SETTING": "Paramètrage"
+    "APP.TEAM": "  Mon equipe",
+    "APP.APPRAISAL": "  Mon évaluation",
+    "APP.ALLTEAMS": "  Equipes",
+    "APP.SETTING": "  Paramètrage",
+    "APP.SKILS":"Compétences",
+    "APP.NEWEMPLOYER":"Nouvel employé",
+    "App.GESTIONEMPLOYER":"Gestion d'employés",
+    "APP.FEEDBACK":"Rétroactions",
+    "APP.SESSION":"Session",
+    "APP.SKILSMANAGEMENT":"Gestion des compétences",
+    "APP.EMPLOYERMANAGEMENT":"Gestion des employés",
+    "APP.FEEDBACKMANAGEMENT":"Gestions des rétroactions",
+    "APP.STARTSESSION":"   Démarrer une session",
+    "APP.FORMAT_PDF":"Exporter en PDF",
+    "APP.PRINT":"Imprimer"
+
   },
   "steps": {
     "messages": {
@@ -18,16 +31,76 @@
       "EMP.POS" : "Position",
       "EMP.DtDebut" : "Date début",
       "EMP.ACT" : "Action",
-      "EMP.LIST" : "Liste des employés"
+      "EMP.TEAMSLIST_TITLE" : "Liste des équipes",
+      "EMP.LIST" : "Liste des employés",
+      "EMP.TEAM_NAME":"Equipe",
+      "EMP.TEAM":"Equipe   :",
+      "EMP.MANAGER":"Manager",
+      "EMP.BU":"UB",
+      "ANN.ANNUAL_APPRAISAL":"Liste des évaluations annuelles",
+      "ANN.YEAR":"Année",
+      "ANN.STATUS":"Statut",
+      "EMP.OBJ":"Objectifs",
+      "EMP.OBJ_INDICATORS":"Indicateurs",
+      "EMP.OBJ_MEAN":"Signification",
+      "EMP.OBJ_DEADLINE":"Date Limite",
+      "EMP.SESSION":"Session",
+      "EMP.SESSION_STATUS":"En cours",
+      "EMP.SESSION_FERMER":"Fermée",
+      "EMP.ANN_TITLE":"Étapes d'évaluation annuelle",
+      "EMP.EMPLOYER_STEP":"Employeur",
+      "EMP.LASTOBJ_STEP":"Derniers_Objectifs",
+      "EMP.COMP_STEP":"Compétence",
+      "EMP.SOFT_STEP":"Compétences_Générales",
+      "EMP.SYN_STEP":"Synthèse",
+      "EMP.FEEDBACK_STEP":"Rétroaction",
+      "EMP.WISH_STEP":"Voeux"
+
+     
+       
+
+      
     }
+    
   },
   "buttons": {
     "BTN.VALID" : "Valider",
     "BTN.ANN" : "Annuler",
     "BTN.PREV" : "Precedent",
-    "BTN.NEXT" : "Suivant"
+    "BTN.NEXT" : "Suivant",
+    "BTN.CONSULT":"Consulter",
+    "BTN.DELETE":"Suprimer",
+    "BTN.UPDATE":"Modifier",
+    "BTN.BACK":"Retour",
+    "BTN.NO":"Non",
+    "BTN.FILL":"Remplir",
+    "BTN.NEW_OBJ":"Nouvel objectif",
+    "BTN.ADD_OBJ":"Ajouter un objectif",
+    "BTN.ANN_APP":"Evaluation annuelle",
+    "BTN.SESSION_ENCOURS":"Continuer",
+    "BTN.SESSION_START":"Commencer"
+    
+    
+
   },
   "appMessages": {
     "MSG.UPDATE.SUCC" : "modification effectuee avec succès"
+  },
+  "placeholder": {
+    "P.SEARCH" : "Chercher"
+  },
+  "modals":{
+    "delete":{
+      "MOD.CONFIRM":"Confirmation",
+      "MOD.MSG":"Êtes-vous sûr de vouloir supprimer cet employeur?",
+      "MOD.INFO":"Informations",
+      "MOD.DELETE_OBJ":"Êtes-vous sûr de vouloir supprimer cet objectif?"
+    },
+    "update":{
+      "MOD.MSG":"Modifier les informations de  :"
+    },
+    "apEmployer":{
+      "MOD.SESSION":"Liste des sessions"
+    }
   }
 }

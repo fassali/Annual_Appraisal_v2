@@ -15,14 +15,14 @@
                     <div class="content-body padding-bottom-0">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <input id="filter" type="text" class="form-control" placeholder="Search" />
+                                <input id="filter" type="text" class="form-control" placeholder="{{'placeholder.P.SEARCH'|translate}}" />
                             </div>
                             <div class="clearfix"></div><br>
                             <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
                                 <table class="table table-striped" ui-jq="footable" data-filter="#filter" data-page-size="5" class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th></th>
                                         <th translate="steps.messages.EMP.NOM">
                                             First Name
                                         </th>
@@ -52,7 +52,8 @@
                                         <td >{{e.position}}</td>
                                         <td>{{day}}/{{month}}/{{year}}</span></td>
                                         <td>
-                                            <button style="border: none" class="label label-success" ng-click="section_modalApEmpl(e.idEmp)"><i class="fa fa-book"></i>Annual Appraisal</button>
+                                            <button style="border: none" class="label label-success" ng-click="section_modalApEmpl(e.idEmp)">
+                                                <i class="fa fa-book"></i>{{"buttons.BTN.ANN_APP"|translate}}</button>
                                         </td>
                                     </tr>                                 
                                     </tbody>

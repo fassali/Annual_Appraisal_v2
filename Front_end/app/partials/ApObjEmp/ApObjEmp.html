@@ -1,26 +1,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <br>
 
-<div class="alert alert-success margin-top-5" ng-show="ajoutMessage">{{ajoutMessage}}</div>
-<div class="alert alert-success margin-top-5" ng-show="deleteMessage">{{deleteMessage}}</div>
-<div class="alert alert-success margin-top-5" ng-show="updateMessage">{{updateMessage}}</div>
+
 
 
 
     
   </div>
  
-    <button ng-show="add==0 && appEmp.mode==0" type="button" class="btn btn-primary btn-sm" ng-click="addObj()">New Objective </button>
+    <button ng-show="add==0 && appEmp.mode==0" type="button" class="btn btn-primary btn-sm" ng-click="addObj()">
+      {{"buttons.BTN.NEW_OBJ" | translate}}</button>
     <br><br>
     <table class="table" ng-init="init()">
       <thead>
         <tr>
-          <th>#</th>
-          <th><center>OBJECTIVES</center></th>         
-          <th><center>INDICATORS</center></th>
-          <th><center>MEANS</center></th>
-          <th><center>DEADLINE</center></th>
-          <th ng-show="appEmp.mode==0" ><center>Action</center></th>
+          <th></th>
+          <th translate="steps.messages.EMP.OBJ"><center></center></th>         
+          <th translate="steps.messages.EMP.OBJ_INDICATORS"><center></center></th>
+          <th translate="steps.messages.EMP.OBJ_MEAN"><center></center></th>
+          <th translate="steps.messages.EMP.OBJ_DEADLINE"><center></center></th>
+          <th ng-show="appEmp.mode==0" ><center></center></th>
         </tr>
       </thead>
       <tbody>
@@ -31,7 +30,8 @@
           <td><textarea class="form-control"  rows="3" ng-change="isChange = true"  ng-model="obj.mean"></textarea></td>
           <td><input type="date"class="form-control" ng-change="isChange = true" ng-model="obj.deadLine" style="height: 75px"/></td>
           <td>                                                
-						<button data-title="Delete" data-toggle="modal" data-target="#delete" style="border: none" class="label label-warning"  ng-click="addNewObj()"><i class="fa fa-plus-circle"></i> Add Objective</button>                                        
+            <button data-title="Delete" data-toggle="modal" data-target="#delete" style="border: none" class="label label-warning"  ng-click="addNewObj()"><i class="fa fa-plus-circle"></i>
+              {{"buttons.BTN.ADD_OBJ" | translate}}</button>                                        
           </td>
         </tr>
         <tr  ng-repeat="o in objs">

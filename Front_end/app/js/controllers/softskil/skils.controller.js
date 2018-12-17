@@ -5,7 +5,8 @@ var app = angular.module("app");
 app.controller("skilsCtrl",skilsCtrl);
 
 
-function skilsCtrl($scope,skilsDataService,$http,$location,$window) {
+function skilsCtrl($scope,$rootScope,skilsDataService,$http,$location,$window) {
+	$rootScope.user.menu=3;
 	$scope.skils = {};
 	$scope.currentPage = 0;
 	$scope.size = 3;

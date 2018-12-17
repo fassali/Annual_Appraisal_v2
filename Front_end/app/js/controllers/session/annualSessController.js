@@ -4,8 +4,8 @@
     app.controller("annualSessController", annualSessController);
 
     //controller pour client
-    function annualSessController($scope, $window, objService, $state, $rootScope, $interval) {
-
+    function annualSessController($scope,$rootScope, $window, objService, $state, $rootScope, $interval) {
+         $rootScope.user.menu=7;
         $scope.count=0;
 
         //faire appel au service objectif pour recuperer les objectifs

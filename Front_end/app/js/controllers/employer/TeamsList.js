@@ -5,6 +5,7 @@
 			function($scope,$rootScope,$http,EmployersDatasrv,$window,$interval,$state) {
 				
 				$scope.teamsList=[];
+				$rootScope.user.menu=0;
               //get teams employers
 			  EmployersDatasrv.getAllEmployersList()
 			  .then(function (data) {

@@ -6,7 +6,8 @@ app.controller("newSkilsCtrl",newSkilsCtrl);
 
 
 function newSkilsCtrl($scope,skilsDataService,$http,$location,$window,$stateParams,$state,$interval,$modal,$rootScope) {
-    $rootScope.skils = {};
+	
+	$rootScope.skils = {};
 	$scope.newskils = {};
 	$scope.meaning ={};
 	$scope.listmeaning =[];
