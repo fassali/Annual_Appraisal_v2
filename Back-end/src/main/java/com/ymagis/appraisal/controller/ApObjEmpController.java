@@ -30,6 +30,16 @@ public class ApObjEmpController {
 	@Autowired
 	private ApEmployeRepository apEmployeRepository;
 
+
+	@RequestMapping(method = RequestMethod.POST, value = "/appEm/{idApEmp}/objectives/")
+	public Set<ApObjEmp> saveObjectives(@PathVariable Long idApEmp, @RequestBody ApObjEmp obj) {
+		ApEmploye apEmploye = apEmployeRepository.findById(idApEmp).get();
+		obj.setApEmploye(apEmploye);
+		apObjEmpRepository.save(obj);
+		apEmploye.getApObjEmps().add(obj);
+		return apEmploye.getApObjEmps();
+	}
+
 	// ajouter un nv obj
 
 	@RequestMapping(method = RequestMethod.POST, value = "/objectives/{idEmp}/{idApEmp}")

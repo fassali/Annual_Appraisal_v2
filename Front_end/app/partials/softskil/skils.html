@@ -41,7 +41,7 @@
 			<li class="page-item" ng-class="{active:$index==currentPage}"
 				ng-repeat="i in pages track by $index"><a
 				class="clickable page-link" ng-click="gotopage($index)"> {{
-					$index}} </a></li>
+					$index + 1}} </a></li>
 			<li class="page-item" id="linknext"><a class="page-link"
 				ng-click="gotonext()">&raquo;</a></li>
 		</ul>

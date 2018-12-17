@@ -6,12 +6,8 @@
 		
 		// ajouter un nv obj
 		this.addNewObj = function(idEmp,idApEmp,objs) {
-			return $http.post("http://localhost:8080/objectives/"+idEmp+"/"+idApEmp,objs)
-					.then(function(response) {
-						return response;
-					}, function(err) {
-						return err.data.message;
-					});
+			return $http.post("http://localhost:8080/appEm/"+idApEmp+"/objectives/",objs);
+
 		}
 		
 		//get tt les objs d'un oemp pour une session

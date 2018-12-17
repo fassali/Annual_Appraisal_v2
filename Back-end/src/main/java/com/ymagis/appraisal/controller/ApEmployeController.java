@@ -81,6 +81,7 @@ public class ApEmployeController {
 		apEmploye.setTbImproved(appEmp.getTbImproved());
 		apEmploye.setWish(appEmp.getWish());
 		apEmploye.setOpinion(appEmp.getOpinion());
+		apEmploye.setStatus(appEmp.getStatus());
 		apEmployeRepository.save(apEmploye);
 		return apEmploye;
 	}

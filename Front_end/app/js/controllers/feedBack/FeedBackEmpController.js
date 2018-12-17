@@ -59,6 +59,8 @@ console.log($rootScope.pageFdback)
                 $scope.ajoutMessage = null;
             }
         };
-
+        $scope.changed = function(){
+            $rootScope.isChange = true;
+        }
     }
 })();

@@ -1,7 +1,6 @@
 'use strict';
-angular.module('app').controller('AppCtrl', ['$scope','$translate',
-    function($scope, $translate) {
-
+angular.module('app').controller('AppCtrl', ['$scope','$translate','$rootScope',
+    function($scope, $translate,$rootScope) {
         var menufold = false; 
         var screenWidth = window.innerWidth;
         if (screenWidth < 767){

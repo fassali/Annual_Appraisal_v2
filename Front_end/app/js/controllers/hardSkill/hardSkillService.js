@@ -15,8 +15,8 @@ app.service("hardSkillService", function($http, $location) {
         return $http.get("http://localhost:8080/competencies/" + id);
     };
 
-    this.update = function(id, model) {
-        return $http.put("http://localhost:8080/competencies/" + id, model);
+    this.update = function(id, model,idapp) {
+        return $http.put("http://localhost:8080/appraisal/"+idapp+"/competencies/" + id, model);
     };
 
     this.remove = function(id) {

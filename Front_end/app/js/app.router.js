@@ -289,8 +289,7 @@ angular.module('app')
                         },*/
                         views : {
                             '' : {
-                                templateUrl: 'partials/ui-steps.html'
-
+                                templateUrl: 'partials/ui-steps.html',
                             },
                             'first@app.ui.steps' : {
                                 templateUrl:'partials/employer/firstPage.html',
@@ -306,28 +305,11 @@ angular.module('app')
                             },
                             'soft@app.ui.steps' : {
                                 templateUrl: 'partials/softskil/newAppSoftSkil.html',
-                                controller  :   "newApSoftSkilsCtrl",
-                                resolve: {
-                                    deps: ['$ocLazyLoad',
-                                        function($ocLazyLoad) {
-                                            return $ocLazyLoad.load('chart.js').then(
-                                                function() {
-                                                    return $ocLazyLoad.load('js/controllers/softskil/apSoftSkil.controller.js');
-                                                }
-                                            )
-                                                .then(
-                                                    function(){
-                                                        return $ocLazyLoad.load('../bower_components/font-awesome/css/font-awesome.css');
-                                                    }
-                                                )/*.then(
-                                          function(){
-                                                return $ocLazyLoad.load('js/directives/ui-todowidget.js');
-                                         }
-                                      )*/
-                                                ;
-                                        }
-                                    ]
-                                },
+                                controller  :   "newApSoftSkilsCtrl"
+                            },
+                            'managerial@app.ui.steps' : {
+                                templateUrl: 'partials/softskil/newAppManagerialSkil.html',
+                                controller  :   "newApSoftSkilsCtrl"
                             },
                             'synthesis@app.ui.steps' : {
                                 templateUrl: 'partials/Syntesis/syntesis.html',

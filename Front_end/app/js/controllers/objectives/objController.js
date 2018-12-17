@@ -92,6 +92,9 @@
                 $scope.ajoutMessage = null;
             }
         };
+        $scope.changed = function(){
+            $rootScope.isChange = true;
+        }
 
     }
 })();

@@ -143,7 +143,7 @@ console.log($stateParams)
 
       };
     $scope.ok = function () {
-      console.log($scope.meaning)
+      console.log(sk)
       $modalInstance.close("ok");
     };
 
@@ -152,8 +152,101 @@ console.log($stateParams)
       $modalInstance.dismiss('cancel');
     };
   }])
-  ; 
-  app.controller('ModalDemoCtrl', ['$scope', '$uibModal', '$log','$state', function($scope, $modal, $log,$state) {
+  ;
+app.controller('ModalconfirmationCtrl', ['$scope', '$uibModalInstance','$state','$stateParams','$rootScope','steps','stepNum', function($scope, $modalInstance, $state,$stateParams,$rootScope,steps,stepNum) {
+console.log(steps)
+    $scope.steps = steps;
+    console.log($scope.steps)
+    console.log($rootScope.isChange)
+    $scope.ok = function () {
+        switch(stepNum) {
+
+            case 2:
+                $rootScope.updateLastObj();
+                $scope.steps.step3=true;
+                break;
+            case 3:
+                //$rootScope.alert(stepNum)
+                $scope.steps.step4=true;
+                break;
+            case 4:
+                $rootScope.save();
+                $scope.steps.step5=true;
+                break;
+            case 5:
+                $rootScope.save();
+                $scope.steps.step6=true;
+                break;
+            case 6:
+                $rootScope.updateApempl();
+                $scope.steps.step7=true;
+                break;
+            case 7:
+                $rootScope.saveFeedb();
+                $scope.steps.step8=true;
+                break;
+            case 8:
+                $rootScope.addObjects();
+                $scope.steps.step9=true;
+                break;
+            case 9:
+                $rootScope.updateApempl();
+                $scope.steps.step9=true;
+                $scope.steps.step9stat=true
+                break;
+            default:
+                alert("test")
+
+        }
+        $rootScope.isChange = false;
+        $modalInstance.close("ok");
+    };
+
+    $scope.cancel = function () {
+        switch(stepNum) {
+
+            case 2:
+                $scope.steps.step3=true;
+                break;
+            case 3:
+                //$rootScope.alert(stepNum)
+                $scope.steps.step4=true;
+                break;
+            case 4:
+
+                $scope.steps.step5=true;
+                break;
+            case 5:
+
+                $scope.steps.step6=true;
+                break;
+            case 6:
+
+                $scope.steps.step7=true;
+                break;
+            case 7:
+
+                $scope.steps.step8=true;
+                break;
+            case 8:
+
+                $scope.steps.step9=true;
+                break;
+            case 9:
+
+                $scope.steps.step9=true;
+                $scope.steps.step9stat=true
+                break;
+            default:
+                alert("test")
+
+        }
+        $rootScope.isChange = false;
+        $modalInstance.dismiss('cancel');
+    };
+}])
+;
+app.controller('ModalDemoCtrl', ['$scope', '$uibModal', '$log','$state', function($scope, $modal, $log,$state) {
 
     $scope.items = ['item1', 'item2', 'item3'];
     $scope.open = function (size,windowClass) {
@@ -236,7 +329,28 @@ console.log($stateParams)
       });
       };
 
-      $scope.section_modalUpdate = function (idEmp) {	
+      $scope.stepSave = function (data,numero) {
+          var modalInstance = $modal.open({
+              templateUrl: 'partials/confirstep.html',
+              controller: 'ModalconfirmationCtrl',
+              resolve: {
+                  steps: function () {
+                      return data;
+                  },
+                  stepNum: function () {
+                      return numero;
+                  },
+              }
+          });
+
+
+          modalInstance.result.then(function (selectedItem) {
+              $scope.selected = selectedItem;
+          }, function () {
+              $log.info('Modal dismissed at: ' + new Date());
+          });
+      };
+      $scope.section_modalUpdate = function (idEmp) {
         var modalInstance = $modal.open({
           templateUrl: 'partials/employer/updateSection.html',
           controller: 'UpdateModal',

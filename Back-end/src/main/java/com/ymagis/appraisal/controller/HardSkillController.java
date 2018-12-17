@@ -55,8 +55,10 @@ public class HardSkillController {
 		return null;
 	}
 
-	@RequestMapping(value = "/competencies/{id}", method = RequestMethod.PUT)
-	public ApHardSkill update(@RequestBody ApHardSkill model, @PathVariable("id") Long id) {
+	@RequestMapping(value = "/appraisal/{idapp}/competencies/{id}", method = RequestMethod.PUT)
+	public ApHardSkill update(@RequestBody ApHardSkill model, @PathVariable("id") Long id,@PathVariable("idapp") Long idapp) {
+		ApEmploye apEmploye = appRepository.findById(idapp).get();
+		model.setApEmploye(apEmploye);
 		model.setIdApHdSkill(id);
 		repository.save(model);
 		return model;

@@ -1,5 +1,6 @@
 package com.ymagis.appraisal.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ymagis.appraisal.utils.Constantes;
 
 import javax.persistence.*;
@@ -13,8 +14,8 @@ public class ApHardSkill implements Serializable {
     @Column(name = Constantes.ID_APHDSKILL)
     private Long idApHdSkill;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
-    //@JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY,cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH})
+    @JsonIgnore
     @JoinColumn(name = Constantes.ID_APEMP, nullable = false)
     private ApEmploye apEmploye;
 
