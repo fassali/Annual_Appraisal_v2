@@ -8,14 +8,14 @@
                                     <table class="table table-striped" ui-jq="footable" data-filter="#filter" data-page-size="5" class="table table-striped">
                                         <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>
+                                            <th></th>
+                                            <th translate="steps.messages.EMP.NOM">
                                                 First Name
                                             </th>
-                                            <th>
+                                            <th translate="steps.messages.EMP.PRENOM">
                                                 Last Name
                                             </th>
-                                            <th>
+                                            <th translate="steps.messages.EMP.POS">
                                               Position
                                             </th>
                                         
@@ -41,7 +41,7 @@
                             </div>
                         </div>
         <div class="modal-footer">                  
-            <button class="btn btn-default" ng-click="cancel()">No</button>
-            <button class="btn btn-primary" ng-click="addEmployers()">Yes</button>
+            <button class="btn btn-default" ng-click="cancel()">{{"buttons.BTN.NO"|translate}}</button>
+            <button class="btn btn-primary" ng-click="addEmployers()">{{"buttons.BTN.UPDATE"|translate}}</button>
         </div>
         </div>

@@ -7,15 +7,16 @@
                             <h2 class="title pull-left">{{ "steps.messages.EMP.TEAM" | translate }}'{{team}}'</h2>
                             
                         </header>
-                        <br><br>
                         
-                        &nbsp<button ng-click="back()" style="border: none" class="label label-primary"><i class="fa fa-arrow-left"></i>{{ "buttons.BTN.BACK" | translate }}</button>
+                        
+                       
                         <div ng-show="mode==0" class="content-body padding-bottom-0">
                             <div class="row">
                                     <br>
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         <input id="filter" type="text" class="form-control" placeholder="{{'placeholder.P.SEARCH'|translate}}"/>
-                                        </div>
+                                        </div><br>
+                                        &nbsp<button ng-click="back()" style="border: none" class="label label-primary"><i class="fa fa-arrow-left"></i>{{ "buttons.BTN.BACK" | translate }}</button>
                                 <div class="clearfix"></div><br>
                                 <div ng-show="mode==0"class="col-md-12 col-sm-12 col-xs-12 table-responsive">
                                     <table class="table table-striped" ui-jq="footable" data-filter="#filter" data-page-size="5" class="table table-striped">

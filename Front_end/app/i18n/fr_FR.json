@@ -50,12 +50,46 @@
       "EMP.ANN_TITLE":"Étapes d'évaluation annuelle",
       "EMP.EMPLOYER_STEP":"Employeur",
       "EMP.LASTOBJ_STEP":"Derniers_Objectifs",
-      "EMP.COMP_STEP":"Compétence",
+      "EMP.COMP_STEP":"Compétences",
       "EMP.SOFT_STEP":"Compétences_Générales",
       "EMP.SYN_STEP":"Synthèse",
       "EMP.FEEDBACK_STEP":"Rétroaction",
-      "EMP.WISH_STEP":"Voeux"
-
+      "EMP.WISH_STEP":"Voeux",
+      "EMP.MANAGER_STEP":"Gestion",
+      "EMP.DIVISION":"Division / Equipe",
+      "EMP.FIRSTPAGE_TITLE":"Objectifs applicables à l'année:",
+      "ANN.DATE":"Date d'évaluation",
+      "ANN.STARTDATE":"Date de début à ce poste :",
+      "EMP.PRO_SOFT":"Compétences professionnelles",
+      "EMP.SKILL_MEAN":"Sens",
+      "EMP.SKILL_RATING":"Évaluation",
+      "EMP.SKILL_LABEL":"Label",
+      "EMP.SKILL_TYPE":"Type", 
+      "EMP.SKILL_LEVEL":"Niveau",
+      "EMP.SKILL_DISC":"Description",
+      "EMP.MANAGER_SKILLS":"Compétences de gestion",
+      "EMP.WISHES":"Souhait de l'employé",
+      "EMP.MANAGER_OPINION":"Opinion du gérant",
+      "EMP.SYN":"Synthèse globale",
+      "EMP.STRENGHTS":"Points forts",
+      "EMP.IMPROVE":"A améliorer",
+      "EMP.CHOOSE_ADD":"Ajouter un nouvel employeur",
+      "EMP.CHOOSE":"Ajouter à mon équipe",
+      "EMP.FIRSTNAME":"Nom :",
+      "EMP.LastNAME":"Prénom :",
+      "EMP.EMAIL":"Email :",
+      "EMP.POSITION":"Position :",
+      "EMP.EMP_MANAGER":"Manager :",
+      "EMP.STARDATE":"Date de début :",
+      "EMP.ADMIN_PROFIL":"Administrateur",
+      "EMP.CHOOSE_TEAM":"Choisissez l'équipe de l'employeur",
+      "EMP.CHOOSE_MANAGER":"Choisissez le manager de l'employeur",
+      "EMP.CHOOSE_BU":"Choisissez l'Unité opérationnelle d'Employeur",
+      "EMP.MODIFICATION":"Modifications",
+      "EMP.SAVE_MODIFICATIONS":"Voulez-vous enregistrer vos modifications ?"
+     
+      
+      
      
        
 
@@ -78,7 +112,14 @@
     "BTN.ADD_OBJ":"Ajouter un objectif",
     "BTN.ANN_APP":"Evaluation annuelle",
     "BTN.SESSION_ENCOURS":"Continuer",
-    "BTN.SESSION_START":"Commencer"
+    "BTN.SESSION_START":"Commencer",
+    "BTN.SAVE":"Enregistrer",
+    "BTN.ADD":"Ajouter",
+    "BTN.EDIT":"Modifier",
+    "BTN.NEW":"Nouveau",
+    "BTN.CREATE":"Créer"
+    
+    
     
     
 
@@ -87,7 +128,11 @@
     "MSG.UPDATE.SUCC" : "modification effectuee avec succès"
   },
   "placeholder": {
-    "P.SEARCH" : "Chercher"
+    "P.SEARCH" : "Chercher",
+    "P.FIRST_NAME":"Enterez le nom",
+    "P.LAST_NAME":"Entrez le prénom",
+    "P.EMAIL":"Enterez l'Email",
+    "P.POS":"Enterez la position"
   },
   "modals":{
     "delete":{
@@ -97,7 +142,9 @@
       "MOD.DELETE_OBJ":"Êtes-vous sûr de vouloir supprimer cet objectif?"
     },
     "update":{
-      "MOD.MSG":"Modifier les informations de  :"
+      "MOD.MSG":"Modifier les informations de  :",
+      "MOD.PROFIL":"Changer mes informations",
+      "MOD.CONFIRM_PROFIL":" Êtes-vous certain de vouloir modifier vos informations ?"
     },
     "apEmployer":{
       "MOD.SESSION":"Liste des sessions"

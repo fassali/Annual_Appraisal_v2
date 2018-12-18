@@ -1,7 +1,7 @@
 
 
 	<div class="row">
-		
+		<br><br>
 		<button ng-show="appEmp.mode==0" class="btn btn-xs btn-warning" ng-click="createCompetencie()">
 			Create</button>
 	</div>
@@ -9,10 +9,10 @@
 		   style="margin-bottom: 5px; margin-top: 40px">
 		<thead>
 		<tr>
-			<th>Professional competencies</th>
-			<th>Meaning</th>
-			<th>Rating</th>
-			<th colspan="2">Comments</th>
+			<th translate="steps.messages.EMP.PRO_SOFT">Professional competencies</th>
+			<th translate="steps.messages.EMP.SKILL_MEAN">Meaning</th>
+			<th translate="steps.messages.EMP.SKILL_RATING">Rating</th>
+			<th colspan="2" translate="steps.messages.OBJ.COM">Comments</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -34,7 +34,7 @@
 
 			<td>
 				<button type="button" class="btn btn-primary"
-						ng-click="save(hardSkill)">Add</button>
+						ng-click="save(hardSkill)">{{"buttons.BTN.ADD" | translate}}</button>
 			</td>
 		</tr>
 
@@ -52,7 +52,7 @@
 						  ng-model="hardSkillSelected.comment" required></textarea></td>
 			<td>
 				<button type="button" class="btn btn-primary"
-						ng-click="update(hardSkillSelected.idApHdSkill, hardSkillSelected)">Edit</button>
+						ng-click="update(hardSkillSelected.idApHdSkill, hardSkillSelected)">{{"buttons.BTN.EDIT" | translate}}</button>
 			</td>
 		</tr>
 

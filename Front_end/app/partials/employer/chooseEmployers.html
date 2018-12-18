@@ -286,7 +286,7 @@ input[type="radio"] .styled:checked + label::after {
                 <div class="col-lg-12">
                     <section class="box ">
                         <header class="panel_header">
-                            <h2 class="title pull-left">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspEmployers List</h2>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <h2 class="title pull-left" translate="steaps.messages.EMP.LIST"></h2>
                             <div class="actions panel_actions pull-right">
                                 <i class="box_toggle material-icons">expand_more</i>
                                 <i class="box_setting material-icons" ng-click="section_modal()">mode_edit</i>
@@ -299,7 +299,7 @@ input[type="radio"] .styled:checked + label::after {
                                     <div class="row">               
                                         <div class="col-sm-12">                                    
                                                 <button  data-toggle="modal"  style="border: none;background-color: #5bc0de;" class="label"  ng-click="section_modalNewEmployers()">
-                                                    <i class="fa fa-plus-circle"></i>Add</button>
+                                                    <i class="fa fa-plus-circle"></i>{{"buttons.BTN.ADD"| translate}}</button>
                                         </div>                                 
                                     </div>                                   
                                 </div><br><br>
@@ -313,22 +313,22 @@ input[type="radio"] .styled:checked + label::after {
                                     <table class="table table-striped" ui-jq="footable" data-filter="#filter" data-page-size="5" class="table table-striped">
                                         <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>
+                                            <th></th>
+                                            <th translate="steps.messages.EMP.NOM">
                                                 First Name
                                             </th>
-                                            <th>
+                                            <th translate="steps.messages.EMP.PRENOM">
                                                 Last Name
                                             </th>
-                                            <th>
+                                            <th translate="steps.messages.EMP.POS">
                                               Position
                                             </th>
-                                            <th>
+                                            <th translate="steps.messages.EMP.DtDebut">
                                                 Start date
-                                            </th>
-                                            <th>
-                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                            &nbspAdd to my team
+                                            </th> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp
+                                            <th translate="steps.messages.EMP.CHOOSE">
+                                           
                                             </th>
                                         </tr>
                                         </thead>
@@ -349,10 +349,7 @@ input[type="radio"] .styled:checked + label::after {
                                                     </div>
                                            
 
-                                            </td>
-                                           
-                                            
-                                           
+                                            </td>                                        
                                         </tr>                                 
                                         </tbody>
                                         <tfoot class="hide-if-no-paging">
@@ -382,5 +379,6 @@ input[type="radio"] .styled:checked + label::after {
     
     
     </div>
+  
     
     

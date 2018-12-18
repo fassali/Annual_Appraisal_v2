@@ -3,7 +3,7 @@
 	<br>
 	<div class="row">
 	
-	<strong>Employee's wish :</strong>
+	<strong translate="steps.messages.EMP.MANAGER_OPINION">Employee's wish :</strong>
 
 	    <textarea ng-show="appEmp.mode==2"class="evolution" ng-change="changed()" ng-model="appEmp.wish" required></textarea>
 		<textarea ng-show="appEmp.mode==1 || appEmp.mode==0"class="evolution" ng-change="changed()" ng-model="appEmp.wish" disabled></textarea>
@@ -12,7 +12,7 @@
 	<hr>
 		<div class="row">
 	
-	<strong>Manager's opinion :</strong>
+	<strong translate="steps.messages.EMP.MANAGER_OPINION">Manager's opinion :</strong>
       
 	    <textarea ng-show="appEmp.mode==0" class="evolution" ng-model="appEmp.opinion" ng-change="changed()" required></textarea>
 		<textarea ng-show="appEmp.mode==1 ||appEmp.mode==2 " class="evolution" ng-model="appEmp.opinion" ng-change="changed()" disabled ></textarea>

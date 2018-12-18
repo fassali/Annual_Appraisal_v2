@@ -26,17 +26,17 @@
       "OBJ.DLINE": "Deadline",
       "OBJ.RATING": "Rating",
       "OBJ.COM" : "Comments",
-      "EMP.NOM" : "First Name",
-      "EMP.PRENOM" : "Last Name",
-      "EMP.POS" : "Position",
+      "EMP.NOM" : "First Name ",
+      "EMP.PRENOM" : "Last Name ",
+      "EMP.POS" : "Position ",
       "EMP.DtDebut" : "Start date",
       "EMP.ACT" : "Action",
       "EMP.TEAMSLIST_TITLE":"Teams List",
       "EMP.LIST" : "List of employees",
       "EMP.TEAM_NAME":"Team",
-      "EMP.TEAM":"Team  :",
+      "EMP.TEAM":"Team :",
       "EMP.MANAGER":"Manager",
-      "EMP.BU":"BU",
+      "EMP.BU":"BU :",
       "ANN.ANNUAL_APPRAISAL":"List of Annual Appraisal",
       "ANN.YEAR":"Year",
       "ANN.STATUS":"Status",
@@ -53,7 +53,45 @@
       "EMP.SOFT_STEP":"Soft_Skils",
       "EMP.SYN_STEP":"Synthesis",
       "EMP.FEEDBACK_STEP":"Feedback",
-      "EMP.WISH_STEP":"Wishes "
+      "EMP.WISH_STEP":"Wishes ",
+      "EMP.MANAGER_STEP":"Managerial",
+      "EMP.DIVISION":"Division / Team",
+      "EMP.FIRSTPAGE_TITLE":"Objectives applicable on year:",
+      "ANN.DATE":"Appraisal date",
+      "ANN.STARTDATE":"Start date in this position :",
+      "EMP.PRO_SOFT":"Professional competencies",
+      "EMP.SKILL_MEAN":"Meaning",
+      "EMP.SKILL_RATING":"Rating",
+      "EMP.SKILL_LABEL":"Label",
+      "EMP.SKILL_TYPE":"Type",
+      "EMP.SKILL_LEVEL":"Level",
+      "EMP.SKILL_DISC":"Desciption",
+      "EMP.MANAGER_SKILLS":"Managerial Skils",
+      "EMP.WISHES":"Employee's wish",
+      "EMP.MANAGER_OPINION":"Manager's opinion",
+      "EMP.SYN":"Global synthesis",
+      "EMP.STRENGHTS":"Strengths",
+      "EMP.IMPROVE":"To be improved",
+      "EMP.CHOOSE_ADD":"Add new employer",
+      "EMP.CHOOSE":"Add to my Team",
+      "EMP.FIRSTNAME":"First Name :",
+      "EMP.LastNAME":"Last Name :",
+      "EMP.EMAIL":"Email :",
+      "EMP.POSITION":"Position :",
+      "EMP.EMP_MANAGER":"Manager :",
+      "EMP.STARDATE":"Start date :",
+      "EMP.ADMIN_PROFIL":"Admin",
+      "EMP.CHOOSE_TEAM":"Choose Employer's Team",
+      "EMP.CHOOSE_MANAGER":"Choose Employer's Manager",
+      "EMP.CHOOSE_BU":"Choose Employer's Business Unit",
+      "EMP.MODIFICATION":"Modifications",
+      "EMP.SAVE_MODIFICATIONS":"Do you want to save your modifications ?"
+
+      
+
+
+      
+       
       
     }
   },
@@ -73,7 +111,12 @@
     "BTN.ANN_APP":"Annual Appraisal",
     "BTN.SESSION_ENCOURS":"Continue",
     "EMP.SESSION_FERMER":"Closed",
-    "BTN.SESSION_START":"Start"
+    "BTN.SESSION_START":"Start",
+    "BTN.SAVE":"Save",
+    "BTN.ADD":"Add",
+    "BTN.EDIT":"Edit",
+    "BTN.NEW":"New",
+    "BTN.CREATE":"Create"
 
     
   },
@@ -81,7 +124,14 @@
     "MSG.UPDATE.SUCC" : "successful modification"
   },
   "placeholder": {
-    "P.SEARCH" : "Search"
+    "P.SEARCH" : "Search",
+    "P.FIRST_NAME":"Enter first name",
+    "P.LAST_NAME":"Enter last name",
+    "P.EMAIL":"Enter Email",
+    "P.POS":"Enter position"
+    
+
+
   },
   "modals":{
     "delete":{
@@ -89,9 +139,12 @@
       "MOD.MSG":"Are you sure you want to delete this employer?",
       "MOD.INFO":"Informations",
       "MOD.DELETE_OBJ":"Are you sure you want to delete this Objective?"
+      
     },
     "update":{
-      "MOD.MSG":"Update the information of   :"
+      "MOD.MSG":"Update the information of   :",
+      "MOD.PROFIL":"Change My Informations",
+      "MOD.CONFIRM_PROFIL":" Are you sure you want to change  your informations ?"
     },
     "apEmployer":{
       "MOD.SESSION":"List of Sessions"

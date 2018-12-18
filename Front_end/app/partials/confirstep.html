@@ -1,12 +1,14 @@
 <div  role="dialog">
 <div class="modal-header">
-    <h4 class="modal-title">Section Settings</h4>
+    <h4 class="modal-title"><center>{{"steps.messages.EMP.MODIFICATION" | translate}}</center>
+
+    </h4>
 </div>
-<div class="modal-body">
-	Your Settings here... {{items.code}}
+<div class="modal-body" translate="steps.messages.EMP.SAVE_MODIFICATIONS">
+	
 </div>
 <div class="modal-footer">                  
-    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
-    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-default" ng-click="cancel()">{{"buttons.BTN.NO" | translate}}</button>
+    <button class="btn btn-primary" ng-click="ok()">{{"buttons.BTN.SAVE" | translate}}</button>
 </div>
 </div>

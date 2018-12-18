@@ -26,44 +26,44 @@
                                     <form name="step1" >
                                         <div ui-view="first"></div>
                                         <div class="">
-                                            <button type="submit"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,1) : steps.step2=true">Next</button>
-                                            <button type="button" class="btn btn-primary"  ng-click="validerStep()" ng-disabled="isNotDisabled">valider</button>
+                                            <button type="submit"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,1) : steps.step2=true">{{"buttons.BTN.NEXT"|translate}}</button>
+                                            <button type="button" class="btn btn-primary"  ng-click="validerStep()" ng-disabled="isNotDisabled">{{"buttons.BTN.VALID"|translate}}</button>
                                         </div>
                                     </form>
 
                                 </uib-tab>
 
                                 <uib-tab  active="steps.step2" select="steps.percent=14; steps.step1stat=true" class=" {{steps.step2stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">last_obj</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.LASTOBJ_STEP">last_obj</uib-tab-heading>
 
                                     <form name="step2" >
                                         <div ui-view="objctives"></div>
                                         <div class="">
                                             <button type="button" class="btn btn-primary" ng-click="steps.step1=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit"  ng-disabled="step2.$invalid"  class="btn btn-primary" ng-click="!isChange ? stepSave(steps,2) : steps.step3=true">{{ "buttons.BTN.NEXT" | translate }}</button>
-                                            <button type="button" class="btn btn-primary" ng-click="updateLastObj()">save</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">valider</button>
+                                            <button type="button" class="btn btn-primary" ng-click="updateLastObj()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
 
                                 <uib-tab disabled="step2.$invalid" active="steps.step3" select="steps.percent=25; steps.step2stat=true" class=" {{steps.step3stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">Competence</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.COMP_STEP">Competence</uib-tab-heading>
 
 
                                     <form name="step3" >
                                         <div ui-view="hard"></div>
                                         <div class="">
-                                            <button type="button" class="btn btn-primary" ng-click="steps.step2=true">Prev</button>
-                                            <button type="submit" ng-disabled="step3.$invalid"   class="btn btn-primary" ng-click="steps.step4=true">Next</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">valider</button>
+                                            <button type="button" class="btn btn-primary" ng-click="steps.step2=true">{{ "buttons.BTN.PREV" | translate }}</button>
+                                            <button type="submit" ng-disabled="step3.$invalid"   class="btn btn-primary" ng-click="steps.step4=true">{{ "buttons.BTN.NEXT" | translate }}</button>
+                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
 
                                         </div>
                                     </form>
                                 </uib-tab>
 
                                 <uib-tab disabled="step3.$invalid" active="steps.step4" select="steps.percent=38; steps.step3stat=true" class=" {{steps.step4stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">Soft</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.SOFT_STEP">Soft</uib-tab-heading>
 
 
                                     <form name="step4" >
@@ -71,86 +71,86 @@
                                         <div ui-view="soft"></div>
                                             </div>
                                         <div class="" >
-                                            <button type="button" class="btn btn-primary" ng-click="steps.step3=true">Prev</button>
+                                            <button type="button" class="btn btn-primary" ng-click="steps.step3=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit" ng-disabled="step4.$invalid"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,4) : steps.step5=true">Next</button>
-                                            <button type="button" class="btn btn-primary" ng-click="save()">save</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">valider</button>
+                                            <button type="button" class="btn btn-primary" ng-click="save()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
 
 
                                 <uib-tab disabled="step4.$invalid" active="steps.step5" select="steps.percent=50; steps.step4stat=true" class=" {{steps.step5stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">Managerial</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.MANAGER_STEP"></uib-tab-heading>
 
 
                                     <form name="step5" >
                                         <div ui-view="managerial"></div>
                                         <div class="">
-                                            <button type="button" class="btn btn-primary" ng-click="steps.step4=true">Prev</button>
+                                            <button type="button" class="btn btn-primary" ng-click="steps.step4=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit"  ng-disabled="step5.$invalid"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,5) : steps.step6=true">Next</button>
-                                            <button type="button" class="btn btn-primary" ng-click="save()">save</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">valider</button>
+                                            <button type="button" class="btn btn-primary" ng-click="save()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
 
                                 <uib-tab disabled="step5.$invalid" active="steps.step6" select="steps.percent=62; steps.step5stat=true" class=" {{steps.step6stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">Synthesis</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.SYN_STEP">Synthesis</uib-tab-heading>
 
 
                                     <form name="step6" >
                                         <div ui-view="synthesis"></div>
                                         <div class="">
-                                            <button type="button" class="btn btn-primary" ng-click="steps.step5=true">Prev</button>
+                                            <button type="button" class="btn btn-primary" ng-click="steps.step5=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit" ng-disabled="step6.$invalid"  class="btn btn-primary" ng-disabled="step6.$invalid" ng-click="isChange ? stepSave(steps,6) : steps.step7=true">Next</button>
-                                            <button type="button" class="btn btn-primary" ng-click="updateApempl()">save</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">valider</button>
+                                            <button type="button" class="btn btn-primary" ng-click="updateApempl()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
 
                                 <uib-tab disabled="step6.$invalid" active="steps.step7" select="steps.percent=74; steps.step6stat=true" class=" {{steps.step7stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">feedback</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.FEEDBACK_STEP">feedback</uib-tab-heading>
 
 
                                     <form name="step7" >
                                         <div ui-view="feedback"></div>
                                         <div class="">
-                                            <button type="button" class="btn btn-primary" ng-click="steps.step6=true">Prev</button>
+                                            <button type="button" class="btn btn-primary" ng-click="steps.step6=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit" ng-disabled="step7.$invalid"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,7) : steps.step8=true">Next</button>
-                                            <button type="button" class="btn btn-primary" ng-click="saveFeedb()">save</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">valider</button>
+                                            <button type="button" class="btn btn-primary" ng-click="saveFeedb()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
 
                                 <uib-tab disabled="step7.$invalid" active="steps.step8"  select="steps.percent=87;  steps.step7stat=true" class=" {{steps.step8stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">objectives</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.OBJ">objectives</uib-tab-heading>
 
 
                                     <form name="step8" >
                                         <div ui-view="newObj"></div>
                                         <div class="">
-                                            <button type="button" class="btn btn-primary" ng-click="steps.step7=true">Prev</button>
+                                            <button type="button" class="btn btn-primary" ng-click="steps.step7=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit" ng-disabled="step8.$invalid"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,8) : steps.step9=true">Next</button>
-                                            <button type="button" class="btn btn-primary" ng-click="addObjects()">save</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">valider</button>
+                                            <button type="button" class="btn btn-primary" ng-click="addObjects()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
                                 <uib-tab disabled="step8.$invalid" active="steps.step9" select="steps.percent=100; steps.step8stat=true" class=" {{steps.step9stat ? 'complete' : ''}}">
-                                    <uib-tab-heading class="tabhead">wish</uib-tab-heading>
+                                    <uib-tab-heading class="tabhead" translate="steps.messages.EMP.WISH_STEP">wish</uib-tab-heading>
 
                                     <form name="step9" >
                                         <div class="content-wrapper" >
                                             <div ui-view="wish"></div>
                                         </div>
                                         <div class="" >
-                                            <button type="button" class="btn btn-primary" ng-click="steps.step8=true">Prev</button>
+                                            <button type="button" class="btn btn-primary" ng-click="steps.step8=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit" ng-disabled="step8.$invalid"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,9) : steps.step9stat=true ">Finish</button>
-                                            <button type="button" class="btn btn-primary" ng-click="updateApempl()">save</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">valider</button>
+                                            <button type="button" class="btn btn-primary" ng-click="updateApempl()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>

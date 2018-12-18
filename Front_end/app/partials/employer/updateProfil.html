@@ -1,12 +1,12 @@
 <div  role="dialog">
         <div class="modal-header">
-            <h4 class="modal-title">Change My Informations</h4>
+            <h4 class="modal-title" translate="modals.update.MOD.PROFIL"></h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" translate="modals.update.MOD.CONFIRM_PROFIL">
                 Are you sure you want to change  your informations?
         </div>
         <div class="modal-footer">                  
-            <button class="btn btn-default" ng-click="cancel()">No</button>
-            <button class="btn btn-primary" ng-click="updateEmployer()">Yes</button>
+            <button class="btn btn-default" ng-click="cancel()" >{{"buttons.BTN.NO" | translate}}</button>
+            <button class="btn btn-primary" ng-click="updateEmployer()">{{"buttons.BTN.UPDATE" | translate}}</button>
         </div>
         </div>
