@@ -68,7 +68,9 @@ public class EmployeController {
 	public Employe updateEmployer(@RequestBody Employe employeur, @PathVariable("idEmp") Long idEmp) {
 		Employe employe = employeRepository.findById(idEmp).get();
 		employeur.setManager(employe.getManager());
+		employeur.setApEmployes(employe.getApEmployes());
 		employeRepository.save(employeur);
+		
 		return employeur;
 	}
 
