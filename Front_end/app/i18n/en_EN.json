@@ -85,7 +85,14 @@
       "EMP.CHOOSE_MANAGER":"Choose Employer's Manager",
       "EMP.CHOOSE_BU":"Choose Employer's Business Unit",
       "EMP.MODIFICATION":"Modifications",
-      "EMP.SAVE_MODIFICATIONS":"Do you want to save your modifications ?"
+      "EMP.SAVE_MODIFICATIONS":"Do you want to save your modifications ?",
+      "EMP.ADD_NEWEMP":"The new employer is added successfully!",
+      "EMP.UPDATE_MPROFIL":"The informations has been changed successfully!!",
+      "EMP.DELETE_MPROFIL":"The employer  has been deleted successfully!!",
+      "EMP.ADD_EMPMANAGER":"You had added the new employers to your team successfully!!",
+      "EMP.TEAMLIST_MPTY":"The list of employees of this team is empty now.You must add new employees to the team if you want to access it",
+      "EMP.NEWFEEDBACK":"New feedback"
+     
 
       
 

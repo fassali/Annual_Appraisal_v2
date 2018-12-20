@@ -1,15 +1,15 @@
 <div class="modal-header">
-    <h4 class="modal-title">New Feedback</h4>
+    <h4 class="modal-title" translate="steps.messages.EMP.NEWFEEDBACK">New Feedback</h4>
 </div>
 <div class="modal-body">
     <div class="row">
-        <label class="badge">Feedback :</label>
-        <input type="text"   class="form-control" ng-model="feedback.label">
+        <label class="badge" translate="steps.messages.EMP.FEEDBACK_STEP" style="width: 30">Feedback :</label>
+        <input type="text" class="form-control" ng-model="feedback.label">
     </div>
 
 
 </div>
 <div class="modal-footer">
-    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
-    <button class="btn btn-primary" ng-click="save(feedback)">New</button>
+    <button class="btn btn-default" ng-click="cancel()">{{"buttons.BTN.NO"|translate}}</button>
+    <button class="btn btn-primary" ng-click="save(feedback)">{{"buttons.BTN.ADD"|translate}}</button>
 </div>

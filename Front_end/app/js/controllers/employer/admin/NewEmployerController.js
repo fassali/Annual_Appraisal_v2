@@ -59,7 +59,7 @@
 			EmployersDatasrv.addEmployer($scope.employer,$scope.manager.idEmp)
 			.then(function(data) {	
 			
-			$scope.ajoutMessage = "The new employer is added successfully!";
+			$scope.ajoutMessage = true;
 					 				
 				stop = $interval(function() {
 					$scope.count = $scope.count + 1;
@@ -78,7 +78,7 @@
 			if (angular.isDefined(stop)) {
 				$interval.cancel(stop);
 				stop = undefined;
-				$scope.ajoutMessage = null;
+				$scope.ajoutMessage = false;
 				$scope.count=0;
 			}
 		};

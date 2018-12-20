@@ -37,13 +37,13 @@ public class EmployeController {
 
 	// ajouter un nouvel employé
 	@RequestMapping(method = RequestMethod.POST, value = "/employers/add/{idManager}")
-	public Employe saveEmployeur( @PathVariable("idManager") Long idManager,@RequestBody Employe employeur) {
+	public Employe saveEmployeur(@PathVariable("idManager") Long idManager, @RequestBody Employe employeur) {
 		if (employeur.getLastName() == null || employeur.getFirstName() == null || employeur.getTeam() == null
 				|| employeur.getPosition() == null || employeur.getEmail() == null || employeur.getUsername() == null) {
 			throw new RuntimeException(
 					"Vous devez saisir tous les éléments d'un nouvel employé avant l'enregistrement, Veuillez réessayer");
 		}
-		Employe manager=employeRepository.findEmployeByIdEmp(idManager);
+		Employe manager = employeRepository.findEmployeByIdEmp(idManager);
 		employeur.setManager(manager);
 		employeRepository.save(employeur);
 
@@ -70,7 +70,7 @@ public class EmployeController {
 		employeur.setManager(employe.getManager());
 		employeur.setApEmployes(employe.getApEmployes());
 		employeRepository.save(employeur);
-		
+
 		return employeur;
 	}
 
@@ -78,8 +78,16 @@ public class EmployeController {
 	@RequestMapping(method = RequestMethod.GET, value = "/employer/{idEmp}")
 	public Employe getEmployeur(@PathVariable Long idEmp) {
 		Employe employeur = employeRepository.findById(idEmp).get();
+		
 		return employeur;
 	}
+	// recuperer un employeur par son id
+		@RequestMapping(method = RequestMethod.GET, value = "/managerTeams/{idManager}")
+		public List<Employe> getEmployeursList(@PathVariable Long idManager) {
+			  List<Employe> listEmployers=employeRepository.getManagerTeams(idManager);
+			
+			return listEmployers;
+		}
 
 	// get sessions
 	@RequestMapping(value = "/sessions/{idEmp}", method = RequestMethod.GET)
@@ -210,7 +218,7 @@ public class EmployeController {
 	}
 
 	// list of employers by teams
-	@RequestMapping(method = RequestMethod.GET, value = "/employersList/{team}")
+	@RequestMapping(method = RequestMethod.GET, value = "/employersListByTeam/{team}")
 	public List<Employe> getEmployeurByTeam(@PathVariable String team) {
 		return employeRepository.findEmployeByTeam(team);
 	}
@@ -225,9 +233,10 @@ public class EmployeController {
 	// get list of all employers
 	@RequestMapping(method = RequestMethod.GET, value = "/allEmployers")
 	public List<Employe> getAllEmployer() {
-		return employeRepository.findAll();
+		List<Employe> listEmployersExiste=employeRepository.getEmployersNotDeleted();
+		return listEmployersExiste;
 	}
-
+   
 	// get list of manager
 	@RequestMapping(method = RequestMethod.GET, value = "/managers")
 	public List<Employe> getManagerList() {

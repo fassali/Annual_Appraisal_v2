@@ -1,15 +1,20 @@
-
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Dashboard'; ">
+        <section class="box nobox margin-top-15 margin-bottom-0">
+            <div class="content-body">
 <div class="container">
 
     <table>
         <tr>
-            <td>
-                <button type="sublit" class="btn btn-xs btn-warning" ng-click="startNewSess()">
-                    <span class="glyphiconglyphicon-trash"></span>Start New Session</button>
-            </td>
+            <td><center>
+                <button type="sublit" class="label" ng-click="startNewSess()"
+                style="background-color:#37474F;border:none;border-radius: 25px;width: 260px;
+                height: 36px;">
+                    <span translate="dashboard.APP.STARTSESSION" style="font-size: 15px;">Start New Session</span></button>
+                </center> </td>
         </tr>
     </table>
     <div class="alert alert-success margin-top-5" ng-show="msgSuccess">{{msgSuccess}}</div>
     <div class="alert alert-danger margin-top-5" ng-show="msgError">{{msgError}}</div>
 
 </div>
+</div></section></div>

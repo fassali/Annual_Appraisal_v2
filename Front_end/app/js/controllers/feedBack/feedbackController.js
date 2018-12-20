@@ -60,7 +60,7 @@
 	}
 
     app.controller('Modalfeednew', ['$scope', '$uibModalInstance', '$state','$stateParams','$rootScope','feedbackService','feed', function($scope, $modalInstance, $state,$stateParams,$rootScope,feedbackService,feed) {
-alert("tttt")
+
         $scope.feedback = {}
         $scope.feedbackselcted = feed
         $scope.save = function(model) {

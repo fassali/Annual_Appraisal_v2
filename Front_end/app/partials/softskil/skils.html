@@ -1,6 +1,11 @@
-<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Skils'; init()">
+
+
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Dashboard'; ">
+        <section class="box nobox margin-top-15 margin-bottom-0">
+            <div class="content-body">
 <div class="container" >
-<button class="btn" ui-sref="app.newskils">{{"buttons.BTN.NEW"}}</button>
+<button class="label label-warning" style="background-color:#37474F;border: 
+none;border-radius: 25px; height: 32px; width: 10%;" ui-sref="app.newskils"><i class="fa fa-plus-circle"></i>{{"buttons.BTN.NEW"|translate}}</button>
 	<table class="table ">
 		<thead>
 			<tr>
@@ -47,4 +52,4 @@
 		</ul>
 	</div>
 	
-</div>
+</div></section></div>

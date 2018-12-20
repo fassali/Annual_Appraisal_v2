@@ -190,19 +190,19 @@ angular.module('app')
                     })
                     .state('app.employersList',{
                         url:'/employers',
-                        templateUrl:'partials/employer/employersList.html',
+                        templateUrl:'partials/employer/manager/employersList.html',
                         controller:'EmployersListController'
 
                     })
                     .state('app.gestionEmployer',{
                         url:'/GestionEmployers',
-                        templateUrl:'partials/employer/gestionEmployer.html',
-                        controller:'EmployersListController'
+                        templateUrl:'partials/employer/manager/gestionEmployer.html',
+                        controller:'EmployersManager'
 
                     })
                     .state('app.chooseEmployer',{
                         url:'/selectEmployers',
-                        templateUrl:'partials/employer/chooseEmployers.html',
+                        templateUrl:'partials/employer/manager/chooseEmployers.html',
                         controller:'SelectEmployer'
 
                     })
@@ -214,13 +214,13 @@ angular.module('app')
                     })
                     .state('app.teamsList',{
                         url:'/teamsList',
-                        templateUrl:'partials/employer/teamList.html',
+                        templateUrl:'partials/employer/admin/teamList.html',
                         controller:'TeamsList'
 
                     })
                     .state('app.employersListByTeam',{
                         url:'/employersList',
-                        templateUrl:'partials/employer/employersListAdmin.html',
+                        templateUrl:'partials/employer/admin/employersListAdmin.html',
                         controller:'EmployerListAdmin'
 
                     })
@@ -243,13 +243,13 @@ angular.module('app')
                         })
                     .state('app.newEmployer',{
                         url:'/newEmployer',
-                        templateUrl:'partials/employer/NewEmployer.html',
+                        templateUrl:'partials/employer/admin/NewEmployer.html',
                         resolve: {
                             deps: ['$ocLazyLoad',
                                 function($ocLazyLoad) {
                                     return $ocLazyLoad.load('chart.js').then(
                                         function() {
-                                            return $ocLazyLoad.load('js/controllers/employer/NewEmployerController.js');
+                                            return $ocLazyLoad.load('js/controllers/employer/admin/NewEmployerController.js');
                                         }
                                     )
                                         .then(

@@ -6,14 +6,14 @@
     "APP.ALLTEAMS": "  Equipes",
     "APP.SETTING": "  Paramètrage",
     "APP.SKILS":"Compétences",
-    "APP.NEWEMPLOYER":"Nouvel employé",
+    "APP.NEWEMPLOYER":"Nouvel employé", 
     "App.GESTIONEMPLOYER":"Gestion d'employés",
     "APP.FEEDBACK":"Rétroactions",
     "APP.SESSION":"Session",
     "APP.SKILSMANAGEMENT":"Gestion des compétences",
     "APP.EMPLOYERMANAGEMENT":"Gestion des employés",
     "APP.FEEDBACKMANAGEMENT":"Gestions des rétroactions",
-    "APP.STARTSESSION":"   Démarrer une session",
+    "APP.STARTSESSION":"Démarrer une session",
     "APP.FORMAT_PDF":"Exporter en PDF",
     "APP.PRINT":"Imprimer"
 
@@ -86,7 +86,13 @@
       "EMP.CHOOSE_MANAGER":"Choisissez le manager de l'employeur",
       "EMP.CHOOSE_BU":"Choisissez l'Unité opérationnelle d'Employeur",
       "EMP.MODIFICATION":"Modifications",
-      "EMP.SAVE_MODIFICATIONS":"Voulez-vous enregistrer vos modifications ?"
+      "EMP.SAVE_MODIFICATIONS":"Voulez-vous enregistrer vos modifications ?",
+      "EMP.ADD_NEWEMP":"Le nouvel employeur est ajouté avec succès!",
+      "EMP.UPDATE_MPROFIL":"Les informations ont été modifiées avec succès!!",
+      "EMP.DELETE_MPROFIL":"L'employeur a été supprimé avec succès!!",
+      "EMP.ADD_EMPMANAGER":"You had added the new employers to your team successfully!!",
+      "EMP.TEAMLIST_MPTY":"La list des employés de cette equipe est vide maintenant.Vous devez ajouter des nouveaux employés à l'équipe si vous voulez l'accédez",
+      "EMP.NEWFEEDBACK":"Nouvelle  rétroaction"
      
       
       
@@ -130,7 +136,7 @@
   "placeholder": {
     "P.SEARCH" : "Chercher",
     "P.FIRST_NAME":"Enterez le nom",
-    "P.LAST_NAME":"Entrez le prénom",
+    "P.LAST_NAME":"Entrez le nom de famille",
     "P.EMAIL":"Enterez l'Email",
     "P.POS":"Enterez la position"
   },
