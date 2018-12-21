@@ -8,7 +8,7 @@
            $scope.count=0;
 		   $scope.manager=null;
 		    $rootScope.user.menu=5;
-		   
+			$rootScope.user.profil=="A"
 		//get bu list
 		EmployersDatasrv.BuList()
 		.then(function (data) {

@@ -18,20 +18,7 @@
         //$scope.year
         //$scope.idE$rootScopemp
    //gestion d'affichage selon status de la session
-        $scope.session=$rootScope.appEmp.annualSession;
-        $scope.utilisateur=$rootScope.user;
-
-
-
-        if(($scope.session.status=="E")&&( $scope.utilisateur.profil=="M")){
-            $rootScope.appEmp.mode=0; 
-        }else if(($scope.session.status=="E")&&( $scope.utilisateur.profil=="E")){
-            $rootScope.appEmp.mode=2; 
-        }       
-        else {
-        $rootScope.appEmp.mode=1;
-        }
-     
+   alert($rootScope.isChange)
         objService.getRatings().then(function(data) {
             $scope.ratings = data;
         });
@@ -93,6 +80,7 @@
             }
         };
         $scope.changed = function(){
+            alert($rootScope.isChange)
             $rootScope.isChange = true;
         }
 

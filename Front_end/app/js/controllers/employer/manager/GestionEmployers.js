@@ -12,7 +12,7 @@
 				$rootScope.appEmp={};
 		
 			$rootScope.user.menu=4;
-
+			$rootScope.user.profil=="M"
 			EmployersDatasrv.getManagersTeamList($rootScope.user.idEmp)
 		    .then(function (data) {
 			$rootScope.employers=data;

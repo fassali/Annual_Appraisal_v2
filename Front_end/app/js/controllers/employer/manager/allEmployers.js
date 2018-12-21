@@ -6,7 +6,7 @@
          
             $scope.Checked=false;
             $rootScope.employersSelected=[];
-
+            $rootScope.user.profil=="M"
 		   EmployersDatasrv.getAllEmployersList()	
 		    .then(function(data){ 
                 for(var j = 0; j < $rootScope.user.managerTeam.length; j++){

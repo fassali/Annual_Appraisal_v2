@@ -10,7 +10,7 @@
 				$scope.teamsList=[];
 				$rootScope.user.menu=0;
 				$scope.count=0;
-				
+				$rootScope.user.profil=="A"
 				
 				
               //get teams employers

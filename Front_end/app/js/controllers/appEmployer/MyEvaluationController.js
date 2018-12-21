@@ -9,7 +9,7 @@
                 $scope.session=[];
                 $scope.appEmps=data;
                 
-                if($rootScope.user.profil=="M"){
+                if($rootScope.user.profil=="M" ||$rootScope.user.profil=="AM" || $rootScope.user.profil=="A"  ){
                     $rootScope.user.profil="E";
                 }
                 $scope.appEmps.forEach(function(item) {                     

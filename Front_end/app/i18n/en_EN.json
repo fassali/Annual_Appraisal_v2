@@ -13,7 +13,7 @@
     "APP.SKILSMANAGEMENT":"Skills management",
     "APP.EMPLOYERMANAGEMENT":"Employee management",
     "APP.FEEDBACKMANAGEMENT":"FeedBack management",
-    "APP.STARTSESSION":"   Start new session",
+    "APP.STARTSESSION":"Start new session",
     "APP.FORMAT_PDF":"Export to PDF",
     "APP.PRINT":"Print"
   
@@ -49,7 +49,7 @@
       "EMP.ANN_TITLE":"Steps Appraisal",
       "EMP.EMPLOYER_STEP":"Employer",
       "EMP.LASTOBJ_STEP":"Last_Objectives",
-      "EMP.COMP_STEP":"Competence",
+      "EMP.COMP_STEP":"Skills",
       "EMP.SOFT_STEP":"Soft_Skils",
       "EMP.SYN_STEP":"Synthesis",
       "EMP.FEEDBACK_STEP":"Feedback",

@@ -26,7 +26,7 @@
                                     <form name="step1" >
                                         <div ui-view="first"></div>
                                         <div class="">
-                                            <button type="submit"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,1) : steps.step2=true">{{"buttons.BTN.NEXT"|translate}}</button>
+                                            <button type="submit"  class="btn btn-primary" ng-click="!isChange ? stepSave(steps,1) : steps.step2=true">{{"buttons.BTN.NEXT"|translate}}</button>
                                             <button type="button" class="btn btn-primary"  ng-click="validerStep()" ng-disabled="isNotDisabled">{{"buttons.BTN.VALID"|translate}}</button>
                                         </div>
                                     </form>
@@ -40,9 +40,9 @@
                                         <div ui-view="objctives"></div>
                                         <div class="">
                                             <button type="button" class="btn btn-primary" ng-click="steps.step1=true">{{ "buttons.BTN.PREV" | translate }}</button>
-                                            <button type="submit"  ng-disabled="step2.$invalid"  class="btn btn-primary" ng-click="!isChange ? stepSave(steps,2) : steps.step3=true">{{ "buttons.BTN.NEXT" | translate }}</button>
-                                            <button type="button" class="btn btn-primary" ng-click="updateLastObj()">{{ "buttons.BTN.SAVE" | translate }}</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
+                                            <button type="submit"  ng-disabled="step2.$invalid"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,2) : steps.step3=true">{{ "buttons.BTN.NEXT" | translate }}</button>
+                                            <button type="button" ng-show="appEmp.mode==0" class="btn btn-primary" ng-click="updateLastObj()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button  ng-show="appEmp.mode==0" type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
@@ -56,7 +56,7 @@
                                         <div class="">
                                             <button type="button" class="btn btn-primary" ng-click="steps.step2=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit" ng-disabled="step3.$invalid"   class="btn btn-primary" ng-click="steps.step4=true">{{ "buttons.BTN.NEXT" | translate }}</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
+                                            <button  ng-show="appEmp.mode==0" type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
 
                                         </div>
                                     </form>
@@ -73,8 +73,8 @@
                                         <div class="" >
                                             <button type="button" class="btn btn-primary" ng-click="steps.step3=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit" ng-disabled="step4.$invalid"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,4) : steps.step5=true">Next</button>
-                                            <button type="button" class="btn btn-primary" ng-click="save()">{{ "buttons.BTN.SAVE" | translate }}</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
+                                            <button ng-show="appEmp.mode==0" type="button" class="btn btn-primary" ng-click="save()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button  ng-show="appEmp.mode==0" type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
@@ -89,8 +89,8 @@
                                         <div class="">
                                             <button type="button" class="btn btn-primary" ng-click="steps.step4=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit"  ng-disabled="step5.$invalid"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,5) : steps.step6=true">Next</button>
-                                            <button type="button" class="btn btn-primary" ng-click="save()">{{ "buttons.BTN.SAVE" | translate }}</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
+                                            <button ng-show="appEmp.mode==0" type="button" class="btn btn-primary" ng-click="save()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button  ng-show="appEmp.mode==0" type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
@@ -104,8 +104,8 @@
                                         <div class="">
                                             <button type="button" class="btn btn-primary" ng-click="steps.step5=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit" ng-disabled="step6.$invalid"  class="btn btn-primary" ng-disabled="step6.$invalid" ng-click="isChange ? stepSave(steps,6) : steps.step7=true">Next</button>
-                                            <button type="button" class="btn btn-primary" ng-click="updateApempl()">{{ "buttons.BTN.SAVE" | translate }}</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
+                                            <button ng-show="appEmp.mode==0" type="button" class="btn btn-primary" ng-click="updateApempl()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button ng-show="appEmp.mode==0" type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
@@ -119,8 +119,8 @@
                                         <div class="">
                                             <button type="button" class="btn btn-primary" ng-click="steps.step6=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit" ng-disabled="step7.$invalid"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,7) : steps.step8=true">Next</button>
-                                            <button type="button" class="btn btn-primary" ng-click="saveFeedb()">{{ "buttons.BTN.SAVE" | translate }}</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
+                                            <button ng-show="appEmp.mode==1" type="button" class="btn btn-primary" ng-click="saveFeedb()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button ng-show="appEmp.mode==1"  type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
@@ -134,8 +134,8 @@
                                         <div class="">
                                             <button type="button" class="btn btn-primary" ng-click="steps.step7=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit" ng-disabled="step8.$invalid"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,8) : steps.step9=true">Next</button>
-                                            <button type="button" class="btn btn-primary" ng-click="addObjects()">{{ "buttons.BTN.SAVE" | translate }}</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
+                                            <button ng-show="appEmp.mode==0"  type="button" class="btn btn-primary" ng-click="addObjects()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button ng-show="appEmp.mode==0"  type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>
@@ -149,8 +149,8 @@
                                         <div class="" >
                                             <button type="button" class="btn btn-primary" ng-click="steps.step8=true">{{ "buttons.BTN.PREV" | translate }}</button>
                                             <button type="submit" ng-disabled="step8.$invalid"  class="btn btn-primary" ng-click="isChange ? stepSave(steps,9) : steps.step9stat=true ">Finish</button>
-                                            <button type="button" class="btn btn-primary" ng-click="updateApempl()">{{ "buttons.BTN.SAVE" | translate }}</button>
-                                            <button type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
+                                            <button ng-show="appEmp.mode==1"type="button" class="btn btn-primary" ng-click="updateApempl()">{{ "buttons.BTN.SAVE" | translate }}</button>
+                                            <button ng-show="appEmp.mode==1"type="button" class="btn btn-primary" ng-click="validerStep()" ng-disabled="isNotDisabled">{{ "buttons.BTN.VALID" | translate }}</button>
                                         </div>
                                     </form>
                                 </uib-tab>

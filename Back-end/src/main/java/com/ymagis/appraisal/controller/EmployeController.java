@@ -192,8 +192,9 @@ public class EmployeController {
 		List<Employe> listEmployers = new ArrayList<Employe>(employeur.getManagerTeam());
 		// update employer
 		for (int j = 0; j < employers.size(); j++) {
+			Employe employe = employeRepository.findById(employers.get(j).getIdEmp()).get();
 			employers.get(j).setManager(employeur);
-			employers.get(j).setIdEmp(employers.get(j).getIdEmp());
+			employers.get(j).setApEmployes(employe.getApEmployes());
 			employeRepository.save(employers.get(j));
 		}
 		// add employers selected by manager
@@ -205,6 +206,7 @@ public class EmployeController {
 		Set<Employe> employersSelected = listEmployers.stream().collect(Collectors.toSet());
 		employeur.setIdEmp(idEmp);
 		employeur.setManagerTeam(employersSelected);
+		employeur.setApEmployes(employeur.getApEmployes());
 		employeRepository.save(employeur);
 		return employeur;
 	}
