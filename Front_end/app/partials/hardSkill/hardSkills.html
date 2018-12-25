@@ -2,8 +2,8 @@
 
 	<div class="row">
 		<br><br>
-		<button ng-show="appEmp.mode==0" class="btn btn-xs btn-warning" ng-click="createCompetencie()">
-			Create</button>
+		<button style="margin-left: 2%;" ng-show="appEmp.mode==0  && appEmp.show==0" class="btn btn-primary btn-sm" ng-click="createCompetencie()">
+			<center><span style="font-size: 14px;" translate="buttons.BTN.CREATE"></span></center></button>
 	</div>
 	<table class="table table-striped table-hover"
 		   style="margin-bottom: 5px; margin-top: 40px">
@@ -62,10 +62,10 @@
 			<td>{{obj.rating.code}}</td>
 			<td>{{obj.comment}}</td>
 			<td>
-				<button  ng-show="appEmp.mode==0"  class="btn" ng-click="editCompetencie(obj)">
+				<button  ng-show="appEmp.mode==0 && appEmp.show==0"  class="btn" ng-click="editCompetencie(obj)">
 					<i class="fa fa-edit"></i>
 				</button>
-				<button  ng-show="appEmp.mode==0"  class="btn" ng-click="remove(obj.idApHdSkill)">
+				<button  ng-show="appEmp.mode==0 && appEmp.show==0"  class="btn" ng-click="remove(obj.idApHdSkill)">
 					<i class="fa fa-trash"></i>
 				</button>
 			</td>

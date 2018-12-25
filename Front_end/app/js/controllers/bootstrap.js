@@ -326,6 +326,44 @@ app.controller('ModalDemoCtrl', ['$scope', '$uibModal', '$log','$state', functio
         $log.info('Modal dismissed at: ' + new Date());
       });
       };
+      
+
+      $scope.section_modalUpdateSessionOpned = function (idSession) {	
+        var modalInstance = $modal.open({
+          templateUrl: 'partials/session/updateOpenedSession.html',
+          controller: 'updateSession',
+          resolve: {
+          items: function () {
+            return $scope.items;
+          },
+          idSession: function () {
+            return idSession;
+           },
+          }
+        });  
+        modalInstance.result.then(function (selectedItem) {
+          $scope.selected = selectedItem;
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });
+        };
+        $scope.section_modalStartNweSession = function () {	
+          var modalInstance = $modal.open({
+            templateUrl: 'partials/session/startNewSession.html',
+            controller: 'newSession',
+            resolve: {
+            items: function () {
+              return $scope.items;
+            }
+            }
+          });  
+          modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+          }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+          });
+          };
+      //delete modal
       $scope.section_modalDeleteEmployerByTeam = function (idEmp) {	
         var modalInstance = $modal.open({
           templateUrl: 'partials/employer/admin/deleteSection.html',

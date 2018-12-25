@@ -4,7 +4,7 @@
 	app.controller("UpdateEmpManagerProfil",
 			function($scope,idEmp,items,$rootScope,$http,EmployersDatasrv,$modal, $log,$interval,items,$modalInstance,$state) {		        
                 $scope.id=idEmp;
-                $scope.count=0;
+                $scope.count=0; 
                 $scope.items = items;
                 $scope.selected = {
                 item: $scope.items[0]

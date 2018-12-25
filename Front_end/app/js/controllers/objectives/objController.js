@@ -18,7 +18,7 @@
         //$scope.year
         //$scope.idE$rootScopemp
    //gestion d'affichage selon status de la session
-   alert($rootScope.isChange)
+  
         objService.getRatings().then(function(data) {
             $scope.ratings = data;
         });
@@ -80,7 +80,7 @@
             }
         };
         $scope.changed = function(){
-            alert($rootScope.isChange)
+           
             $rootScope.isChange = true;
         }
 

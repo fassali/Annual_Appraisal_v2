@@ -5,7 +5,7 @@
     <thead>
     <tr>
         <th></th>
-        {{appEmp.mode}}<th translate="steps.messages.OBJ.DEF">Definition of the objective</th>
+        <th translate="steps.messages.OBJ.DEF">Definition of the objective</th>
         <th translate="steps.messages.OBJ.IND">Indicators</th>
         <th translate="steps.messages.OBJ.MEAN">Means</th>
         <th translate="steps.messages.OBJ.DLINE">Deadline</th>
@@ -24,12 +24,12 @@
         <td>
 
               
-            <select ng-show="appEmp.mode==0" ng-model="obj.rating"
+            <select ng-show="appEmp.mode==0 && appEmp.show==0" ng-model="obj.rating"
                 name="rating" class="form-control selectpicker" ng-change="changed()"
                 ng-options="r as r.code for r in ratings track by r.idRating" style="height: 70px;" required>
             </select>
 
-            <select ng-show="appEmp.mode==1 || appEmp.mode==2" ng-model="obj.rating"
+            <select ng-show="appEmp.mode==1 || appEmp.mode==2 || appEmp.show!=0" ng-model="obj.rating"
                     name="rating" class="form-control selectpicker" 
                     ng-options="r as r.code for r in ratings track by r.idRating" style="height: 70px;" disabled>
             </select>
@@ -37,8 +37,8 @@
         </td>
         <td>
 
-            <textarea ng-show="appEmp.mode==0" class="form-control rounded-0" rows="3" ng-model="obj.comment" name="comment" ng-change="changed()" required></textarea>
-            <textarea ng-show="appEmp.mode==1 || appEmp.mode==2" class="form-control rounded-0" rows="3" ng-model="obj.comment" name="comment"  disabled></textarea>
+            <textarea ng-show="appEmp.mode==0 && appEmp.show==0" class="form-control rounded-0" rows="3" ng-model="obj.comment" name="comment" ng-change="changed()" required></textarea>
+            <textarea ng-show="appEmp.mode==1 || appEmp.mode==2 || appEmp.show!=0" class="form-control rounded-0" rows="3" ng-model="obj.comment" name="comment"  disabled></textarea>
 
             <!--<input type="textarea" ng-model="comment" name="comment"
                    ng-keyup="keyUp($event)" placeholder="comment" ng-blur="commentChanged(obj, comment)">-->

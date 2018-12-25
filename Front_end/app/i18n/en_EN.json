@@ -91,7 +91,19 @@
       "EMP.DELETE_MPROFIL":"The employer  has been deleted successfully!!",
       "EMP.ADD_EMPMANAGER":"You had added the new employers to your team successfully!!",
       "EMP.TEAMLIST_MPTY":"The list of employees of this team is empty now.You must add new employees to the team if you want to access it",
-      "EMP.NEWFEEDBACK":"New feedback"
+      "EMP.NEWFEEDBACK":"New feedback",
+      "EMP.FEEDBACK_ONMANAGEMENT":"Feedback on the management",
+      "EMP.ADD_FEEDBACK":"Additional feedback :",
+      "SE.CLOSED":"Closed",
+      "SE.ENCOURS":"Opened",     
+      "EM.OPEN_SESSION":"Open",
+      "EMP.CLOSE_SESSION":"Close",
+      "Emp.START_SESSION":"Start",
+      "SE.MSG_CLOSESESSION":"You closed the session successfully!!",
+      "SE.MSG_OPENSESSION":"You started the new session successfully!!"
+      
+      
+
      
 
       
@@ -123,7 +135,8 @@
     "BTN.ADD":"Add",
     "BTN.EDIT":"Edit",
     "BTN.NEW":"New",
-    "BTN.CREATE":"Create"
+    "BTN.CREATE":"Create",
+    "BTN.FINISH":"Finish" 
 
     
   },
@@ -155,6 +168,15 @@
     },
     "apEmployer":{
       "MOD.SESSION":"List of Sessions"
+    },
+    "session":{
+      "SE.UPDATE_SESSIONOPENED":"Closing an opened session",
+      "SE.UPDATE_STARTSESSION":"Start new session",
+      "SE.MSG_SESSIONOPENED":"Are you sure you want to close this session??",
+      "SE.SESSION":"session",
+      "SE.MSG_SESSIONCLOSED":"This session is  closed , are you sure you want to open it again??",
+      "SE.MSG_SESSIONSTART":"You will start a new Session "
+
     }
   }
 }

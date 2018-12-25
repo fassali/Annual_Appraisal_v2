@@ -92,8 +92,19 @@
       "EMP.DELETE_MPROFIL":"L'employeur a été supprimé avec succès!!",
       "EMP.ADD_EMPMANAGER":"You had added the new employers to your team successfully!!",
       "EMP.TEAMLIST_MPTY":"La list des employés de cette equipe est vide maintenant.Vous devez ajouter des nouveaux employés à l'équipe si vous voulez l'accédez",
-      "EMP.NEWFEEDBACK":"Nouvelle  rétroaction"
+      "EMP.NEWFEEDBACK":"Nouvelle  rétroaction",
+      "EMP.FEEDBACK_ONMANAGEMENT":"Rétroactionons sur la gestion",
+      "EMP.ADD_FEEDBACK":"Rétroaction supplémentaire :",
+      "SE.CLOSED":"Fermée",
+      "SE.ENCOURS":"Overte",
+      "EM.OPEN_SESSION":"Ouvrir",
+      "EMP.CLOSE_SESSION":"Fermer",
+      "Emp.START_SESSION":"Démarer",
+      "SE.MSG_CLOSESESSION":"Vous avez fermé la session avec succès!!",
+      "SE.MSG_OPENSESSION":"Vous avez démarré la nouvelle session avec succès!!"
+
      
+
       
       
      
@@ -123,7 +134,8 @@
     "BTN.ADD":"Ajouter",
     "BTN.EDIT":"Modifier",
     "BTN.NEW":"Nouveau",
-    "BTN.CREATE":"Créer"
+    "BTN.CREATE":"Créer",
+    "BTN.FINISH":"Terminer"
     
     
     
@@ -154,6 +166,15 @@
     },
     "apEmployer":{
       "MOD.SESSION":"Liste des sessions"
+    },
+    "session":{
+      "SE.UPDATE_SESSIONCLOSED":"Ouverir d'une session cloturée",
+      "SE.UPDATE_SESSIONOPENED":"Fermer une session ouverte",
+      "SE.UPDATE_STARTSESSION":"Démarer une nouvelle session",
+      "SE.MSG_SESSIONOPENED":"Êtes-vous sûr de vouloir fermer cette session ??",
+      "SE.SESSION":"session",
+      "SE.MSG_SESSIONCLOSED" :"Cette session est fermée, êtes-vous sûr de vouloir l'ouvrir à nouveau??",
+      "SE.MSG_SESSIONSTART":"Vous allez commencer une nouvelle session"
     }
   }
 }

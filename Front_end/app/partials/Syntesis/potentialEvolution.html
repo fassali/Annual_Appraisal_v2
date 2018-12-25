@@ -1,21 +1,21 @@
 
 
 	<br>
-	<div class="row">
+	<div class="row"> 
 	
-	<strong translate="steps.messages.EMP.MANAGER_OPINION">Employee's wish :</strong>
+	<strong translate="steps.messages.EMP.WISHES">Employee's wish :</strong>
 
-	    <textarea ng-show="appEmp.mode==2"class="evolution" ng-change="changed()" ng-model="appEmp.wish" required></textarea>
-		<textarea ng-show="appEmp.mode==1 || appEmp.mode==0"class="evolution" ng-change="changed()" ng-model="appEmp.wish" disabled></textarea>
+	    <textarea ng-show="appEmp.mode==2 && appEmp.show==1"class="evolution" ng-change="changed()" ng-model="appEmp.wish" required></textarea>
+		<textarea ng-show="appEmp.mode==1 || appEmp.mode==0 || appEmp.show==2"class="evolution" ng-change="changed()" ng-model="appEmp.wish" disabled></textarea>
 
 	</div>
 	<hr>
-		<div class="row">
+		<div class="row"> 
 	
 	<strong translate="steps.messages.EMP.MANAGER_OPINION">Manager's opinion :</strong>
       
-	    <textarea ng-show="appEmp.mode==0" class="evolution" ng-model="appEmp.opinion" ng-change="changed()" required></textarea>
-		<textarea ng-show="appEmp.mode==1 ||appEmp.mode==2 " class="evolution" ng-model="appEmp.opinion" ng-change="changed()" disabled ></textarea>
+	    <textarea ng-show="appEmp.mode==2 && appEmp.show==1" class="evolution" ng-model="appEmp.opinion" ng-change="changed()" required></textarea>
+		<textarea ng-show="appEmp.mode==1 || appEmp.mode==0 || appEmp.show==2" class="evolution" ng-model="appEmp.opinion" ng-change="changed()" disabled ></textarea>
 
 	</div>
 

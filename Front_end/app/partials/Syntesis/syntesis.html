@@ -15,13 +15,13 @@
   <tr style="height: 300px;"> 
     <td >
 
-              <textarea ng-show="appEmp.mode==0"  class="systh" ng-model="appEmp.strength" ng-change="changed()" required></textarea>
-              <textarea ng-show="appEmp.mode==1 || appEmp.mode==2"  class="systh" ng-model="appEmp.strength" ng-change="changed()" disabled></textarea>
+              <textarea ng-show="appEmp.mode==0 && appEmp.show==0"  class="systh" ng-model="appEmp.strength" ng-change="changed()" required></textarea>
+              <textarea ng-show="appEmp.mode==1 || appEmp.mode==2 ||appEmp.show!=0"  class="systh" ng-model="appEmp.strength" disabled></textarea>
 
             </td>
     <td >
-              <textarea ng-show="appEmp.mode==0" class="systh" ng-model="appEmp.tbImproved" ng-change="changed()" required></textarea>
-              <textarea ng-show="appEmp.mode==1 || appEmp.mode==2" class="systh" ng-model="appEmp.tbImproved" ng-change="changed()" disabled></textarea>
+              <textarea ng-show="appEmp.mode==0 && appEmp.show==0" class="systh" ng-model="appEmp.tbImproved" ng-change="changed()" required></textarea>
+              <textarea ng-show="appEmp.mode==1 || appEmp.mode==2 || appEmp.show!=0" class="systh" ng-model="appEmp.tbImproved"  disabled></textarea>
 
     </td>
   </tr>
