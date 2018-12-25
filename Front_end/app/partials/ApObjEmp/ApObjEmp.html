@@ -1,14 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <br>
-
-
-
-
-
-    
-  </div>
- 
-    <button ng-show="add==0 && appEmp.mode==0" type="button" class="btn btn-primary btn-sm" ng-click="addObj()">
+  </div><br><br>
+    <button ng-show="add==0 && appEmp.mode==0 && appEmp.show==0" type="button" class="btn btn-primary btn-sm" ng-click="addObj()">
       {{"buttons.BTN.NEW_OBJ" | translate}}</button>
     <br><br>
     <table class="table" ng-init="init()">
@@ -19,11 +12,11 @@
           <th translate="steps.messages.EMP.OBJ_INDICATORS"><center></center></th>
           <th translate="steps.messages.EMP.OBJ_MEAN"><center></center></th>
           <th translate="steps.messages.EMP.OBJ_DEADLINE"><center></center></th>
-          <th ng-show="appEmp.mode==0" ><center></center></th>
+          <th ng-show="appEmp.mode==0 && appEmp.show==0" ><center></center></th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-show="add==1 && appEmp.mode==0">
+        <tr ng-show="add==1 && appEmp.mode==0 && appEmp.show==0">
 		<td></td>
           <td><textarea class="form-control"  rows="3" ng-change="isChange = true"  ng-model="obj.labelObj"></textarea></td>
           <td><textarea class="form-control"  rows="3" ng-change="isChange = true"  ng-model="obj.indicator"></textarea></td>
@@ -42,9 +35,9 @@
           <td><center>{{o.mean}}</center></td>
           <td><center>{{dayObj}}/{{monthObj}}/{{yearObj}}</center></td>
           <td>&nbsp&nbsp
-             <button ng-show="appEmp.mode==0" data-title="Delete" data-toggle="modal" data-target="#delete" class="fa fa-trash-o" style="color: #fd0202; font-size: 20px;" ng-click="section_modalDeleteApObj(o.idApObjEmp)"></button>
+             <button ng-show="appEmp.mode==0 && appEmp.show==0" data-title="Delete" data-toggle="modal" data-target="#delete" class="fa fa-trash-o" style="color: #fd0202; font-size: 20px;" ng-click="section_modalDeleteApObj(o.idApObjEmp)"></button>
 			 &nbsp&nbsp
-			 <button ng-show="appEmp.mode==0" data-title="Update" data-toggle="modal" data-target="#update" class="fa fa-edit"style="color: #3002fd; font-size: 20px;" ng-click="section_modalUpdateApObj(o.idApObjEmp)"></button>
+			 <button ng-show="appEmp.mode==0 && appEmp.show==0" data-title="Update" data-toggle="modal" data-target="#update" class="fa fa-edit"style="color: #3002fd; font-size: 20px;" ng-click="section_modalUpdateApObj(o.idApObjEmp)"></button>
           </td>
         </tr>
 			</tbody>

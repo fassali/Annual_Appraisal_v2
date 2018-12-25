@@ -3,19 +3,25 @@
             <div class="content-body">
                 <div class="col-lg-12">
                     <section class="box ">
+                            <div class="alert alert-success margin-top-5" ng-show="$rootScope.closeSession==true">
+                                    <span translate="steps.messages."></span>
+                            </div>
+                            <div class="alert alert-success margin-top-5" ng-show="UpdateEmpManagerProfil==true">
+                                    <span translate="steps.messages.EMP.UPDATE_MPROFIL"></span>
+                            </div>
                         <header class="panel_header">
-                            <h2 class="title pull-left">{{ "steps.messages.EMP.TEAM" | translate }}'{{team}}'</h2>
-                            
+                            <h2 class="title pull-left">{{ "steps.messages.EMP.TEAM" | translate }}'{{team}}'</h2>              
                         </header>
-                        <br><br>
                         
-                        &nbsp<button ng-click="back()" style="border: none" class="label label-primary"><i class="fa fa-arrow-left"></i>{{ "buttons.BTN.BACK" | translate }}</button>
+                        
+                       
                         <div ng-show="mode==0" class="content-body padding-bottom-0">
                             <div class="row">
                                     <br>
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         <input id="filter" type="text" class="form-control" placeholder="{{'placeholder.P.SEARCH'|translate}}"/>
-                                        </div>
+                                        </div><br><br>
+                                        &nbsp<button ng-click="back()" style="border: none" class="label label-primary"><i class="fa fa-arrow-left"></i>{{ "buttons.BTN.BACK" | translate }}</button>
                                 <div class="clearfix"></div><br>
                                 <div ng-show="mode==0"class="col-md-12 col-sm-12 col-xs-12 table-responsive">
                                     <table class="table table-striped" ui-jq="footable" data-filter="#filter" data-page-size="5" class="table table-striped">
@@ -51,9 +57,9 @@
                                             <td >{{e.position}}</td>
                                             <td>{{day}}/{{month}}/{{year}}</span></td>
                                             <td>
-                                                <button style="border: none" class="label label-warning"  ng-click="section_modalDelete(e.idEmp)">
+                                                <button style="border: none" class="label label-warning"  ng-click="section_modalDeleteEmployerByTeam(e.idEmp)">
                                                     <i class="fa fa-trash-o"></i> {{ "buttons.BTN.DELETE" | translate }}</button>                                        
-                                                <button style="border: none" class="label label-secondary"  ng-click="section_modalUpdate(e.idEmp)">
+                                                <button style="border: none" class="label label-secondary"  ng-click="section_modalUpdateEmployerByTeam(e.idEmp)">
                                                     <i class="fa fa-edit" ></i>{{ "buttons.BTN.UPDATE" | translate }}</button> 
                                             </td>
                                         </tr>                                 

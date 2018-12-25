@@ -1,0 +1,51 @@
+<div  role="dialog">
+        <div class="modal-header">
+            <h4 class="modal-title">{{"modals.update.MOD.MSG"|translate}}&nbsp"{{employerName}}"</h4>
+        </div>
+        <div class="modal-body">
+               <form action="/action_page.php" style="font-family:Poppins-Regular;">
+					<div class="form-group">
+						<label translate="steps.messages.EMP.NOM"> </label>
+						 <input style="font-family:Poppins-Regular;" type="text" class="form-control"
+							ng-model="employer.firstName">
+					</div>
+					<div class="form-group">
+						<label translate="steps.messages.EMP.PRENOM"></label> 
+						<input style="font-family:Poppins-Regular;" type="text" class="form-control"
+							ng-model="employer.lastName">
+					</div>
+					<div class="form-group">
+						<label translate="steps.messages.EMP.POS"></label> 
+						<input style="font-family:Poppins-Regular;" type="text" class="form-control"
+							ng-model="employer.position">
+					</div>
+					<div ng-show="user.mode==0 || user.mode==3" class="form-group">
+						<label translate="steps.messages.EMP.TEAM_NAME" ></label> 
+						<select  ng-model="employer.team" class="form-control selectpicker"
+						ng-options="t.label as t.label for t in teams">
+					</select>
+					</div>
+					<div ng-show="user.mode==0 || user.mode==3" class="form-group">
+							<label translate="steps.messages.EMP.MANAGER"></label> 
+							<select ng-model="manager" class="form-control selectpicker"
+							ng-options="m.firstName  + ' ' + m.lastName for m in managerList track by m.idEmp">
+						</select>
+						</div>
+						<div ng-show="user.mode==0 || user.mode==3" class="form-group">
+								<label translate="steps.messages.EMP.BU" ></label> 
+								<select ng-model="employer.bu" class="form-control selectpicker"
+								ng-options="b.label as b.label for b in buList">
+							</select>
+						</div>
+					<div class="form-group">
+						<label translate="steps.messages.EMP.DtDebut" ></label> <input style="font-family:Poppins-Regular;" type="date" class="form-control"
+							ng-model="employer.dateEntry">
+					</div>
+				</form>
+        </div>
+        <div class="modal-footer">                  
+            <button class="btn btn-default" ng-click="cancel()">{{"buttons.BTN.NO"| translate}}</button>
+			<button ng-show="user.mode==1"class="btn btn-primary" ng-click="updateEmployer()">{{"buttons.BTN.UPDATE"| translate}}</button>
+			<button ng-show="user.mode==3"class="btn btn-primary" ng-click="updateEmployerManager()">{{"buttons.BTN.UPDATE"| translate}}</button>
+        </div>
+        </div>

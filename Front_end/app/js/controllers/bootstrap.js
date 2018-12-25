@@ -309,8 +309,8 @@ app.controller('ModalDemoCtrl', ['$scope', '$uibModal', '$log','$state', functio
 
     $scope.section_modalDelete = function (idEmp) {	
       var modalInstance = $modal.open({
-        templateUrl: 'partials/employer/deleteSection.html',
-        controller: 'DeleteModal',
+        templateUrl: 'partials/employer/manager/deleteSection.html',
+        controller: 'DeleteModalManagerTeam',
         resolve: {
         items: function () {
           return $scope.items;
@@ -319,16 +319,70 @@ app.controller('ModalDemoCtrl', ['$scope', '$uibModal', '$log','$state', functio
           return idEmp;
          },
         }
-      });
-      
-    
+      });  
       modalInstance.result.then(function (selectedItem) {
         $scope.selected = selectedItem;
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
       };
+      
 
+      $scope.section_modalUpdateSessionOpned = function (idSession) {	
+        var modalInstance = $modal.open({
+          templateUrl: 'partials/session/updateOpenedSession.html',
+          controller: 'updateSession',
+          resolve: {
+          items: function () {
+            return $scope.items;
+          },
+          idSession: function () {
+            return idSession;
+           },
+          }
+        });  
+        modalInstance.result.then(function (selectedItem) {
+          $scope.selected = selectedItem;
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });
+        };
+        $scope.section_modalStartNweSession = function () {	
+          var modalInstance = $modal.open({
+            templateUrl: 'partials/session/startNewSession.html',
+            controller: 'newSession',
+            resolve: {
+            items: function () {
+              return $scope.items;
+            }
+            }
+          });  
+          modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+          }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+          });
+          };
+      //delete modal
+      $scope.section_modalDeleteEmployerByTeam = function (idEmp) {	
+        var modalInstance = $modal.open({
+          templateUrl: 'partials/employer/admin/deleteSection.html',
+          controller: 'DeleteModalManagerTeam',
+          resolve: {
+          items: function () {
+            return $scope.items;
+          },
+          idEmp: function () {
+            return idEmp;
+           },
+          }
+        });  
+        modalInstance.result.then(function (selectedItem) {
+          $scope.selected = selectedItem;
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });
+        };
       $scope.stepSave = function (data,numero) {
           var modalInstance = $modal.open({
               templateUrl: 'partials/confirstep.html',
@@ -352,8 +406,8 @@ app.controller('ModalDemoCtrl', ['$scope', '$uibModal', '$log','$state', functio
       };
       $scope.section_modalUpdate = function (idEmp) {
         var modalInstance = $modal.open({
-          templateUrl: 'partials/employer/updateSection.html',
-          controller: 'UpdateModal',
+          templateUrl: 'partials/employer/manager/updateSection.html',
+          controller: 'UpdateEmpManagerProfil',
           resolve: {
           items: function () {
             return $scope.items;
@@ -363,13 +417,31 @@ app.controller('ModalDemoCtrl', ['$scope', '$uibModal', '$log','$state', functio
            },
           }
         });
-      
         modalInstance.result.then(function (selectedItem) {
           $scope.selected = selectedItem;
         }, function () {
           $log.info('Modal dismissed at: ' + new Date());
         });
         };
+        $scope.section_modalUpdateEmployerByTeam = function (idEmp) {
+          var modalInstance = $modal.open({
+            templateUrl: 'partials/employer/admin/updateSection.html',
+            controller: 'UpdateEmpManagerProfil',
+            resolve: {
+            items: function () {
+              return $scope.items;
+            },
+            idEmp: function () {
+              return idEmp;
+             },
+            }
+          });
+          modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+          }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+          });
+          };
         $scope.section_modalApEmpl = function (idEmp) {	
           var modalInstance = $modal.open({
             templateUrl: 'partials/employer/apEmpViews.html',
@@ -448,7 +520,7 @@ app.controller('ModalDemoCtrl', ['$scope', '$uibModal', '$log','$state', functio
 
                 $scope.section_modalNewEmployers = function () {	
                   var modalInstance = $modal.open({
-                    templateUrl: 'partials/employer/newEmployerModale.html',
+                    templateUrl: 'partials/employer/manager/newEmployerModale.html',
                     controller: 'NewEmployersModal',
                     resolve: {
                     items: function () {

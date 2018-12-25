@@ -3,12 +3,13 @@
 
 	<table class="table test table-hover" ng-init="init()">
 		<thead>
+			<br>
 			<tr >
-				<th>#</th>
-				<th>libelle</th>
-				<th>type</th>
-				<th>level</th>
-				<th>desciption</th>
+					<th></th>
+					<th translate="steps.messages.EMP.SKILL_LABEL">Label</th>
+					<th translate="steps.messages.EMP.SKILL_TYPE">type</th>
+					<th translate="steps.messages.EMP.SKILL_LEVEL">level</th>
+					<th translate="steps.messages.EMP.SKILL_DISC">desciption</th>
 			</tr>
 		</thead>
 		<tbody ng-repeat="(id, sk) in softskils">
@@ -26,9 +27,9 @@
 				<td>{{ meaning.mean }}</td>
 					 <td>
 					
-			<input  ng-show="appEmp.mode==0" type="radio" name="{{ sk.label }}"  ng-checked="exist(meaning)"
+			<input  ng-show="appEmp.mode==0 && appEmp.show==0" type="radio" name="{{ sk.label }}"  ng-checked="exist(meaning)"
 			 ng-click="selectedVa(meaning)" required >
-			 <input  ng-show="appEmp.mode==1 || appEmp.mode==2"type="radio" name="{{ sk.label }}"  ng-checked="exist(meaning)"
+			 <input  ng-show="appEmp.mode==1 || appEmp.mode==2 || appEmp.show!=0"type="radio" name="{{ sk.label }}"  ng-checked="exist(meaning)"
 			 ng-click="selectedVa(meaning)" required disabled>
 			<!--  ng-checked="exist(meaning)" ng-click="toggleSelection(meaning)" -->
 					</td>

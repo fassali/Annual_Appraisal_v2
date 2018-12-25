@@ -18,8 +18,12 @@ public interface EmployeRepository extends JpaRepository<Employe, Long> {
     public Employe findByUsername (String username);
     @Query("select e from Employe e where e.manager = 'E'")
    	public List<Employe> findEmployers_WM();   
-    @Query("select e from Employe  e where e.team  = :team")
+    @Query("select e from Employe  e where e.team  = :team and e.remove  = 1 ")
     public List<Employe>  findEmployeByTeam(@Param("team")String team);
     @Query("select e from Employe  e where e.profil  = 'M' or e.profil  = 'AM'")
     public List<Employe>  getManagerList();
+    @Query("select e from Employe  e where e.manager.idEmp  = :idManager  and e.remove  = 1 ")
+    public List<Employe>  getManagerTeams(@Param("idManager") Long idManager);
+    @Query("select e from Employe  e where e.remove  = 1 ")
+    public List<Employe>  getEmployersNotDeleted();
 }

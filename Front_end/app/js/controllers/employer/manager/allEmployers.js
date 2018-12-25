@@ -6,25 +6,33 @@
          
             $scope.Checked=false;
             $rootScope.employersSelected=[];
-		EmployersDatasrv.getAllEmployersList()	
-		.then(function(data){
-            
-            EmployersDatasrv.editEmployer($rootScope.user.idEmp)
-            //	remove the user from the list
-		    .then(function(rep){
-            $scope.employer=rep.data;
-            for(var i = 0; i < data.length; i++){
-                if(data[i].idEmp==$scope.employer.idEmp){
-                    data.splice(i,1)
-                }
-            }
-            $scope.employers=data;
-            for(var j = 0; j < $scope.employers.length; j++){
+            $rootScope.user.profil=="M"
+		   EmployersDatasrv.getAllEmployersList()	
+		    .then(function(data){ 
+                for(var j = 0; j < $rootScope.user.managerTeam.length; j++){
+                    for(var i = 0; i < data.length; i++){
+                        if(data[i].idEmp==$rootScope.user.managerTeam[j].idEmp){                
+                            data.splice(i,1)
+                        }
+                    }
+                      
+                 }
+               EmployersDatasrv.editEmployer($rootScope.user.idEmp)
+               //remove the user from the list
+		       .then(function(rep){
+               $scope.employer=rep.data;
+               for(var k = 0; k < data.length; k++){
+                        if(data[k].idEmp==$scope.employer.idEmp){
+                            data.splice(k,1)
+                        } 
+             }
+            $rootScope.employers=data;
+            for(var j = 0; j < $rootScope.employers.length; j++){
                var appday=$scope.employers[j].dateEntry;
                var d = new Date(appday);
-                  $scope.day=d.getDate();
-                  $scope.month=d.getMonth()+1;
-                  $scope.year=d.getFullYear();
+                  $rootScope.day=d.getDate();
+                  $rootScope.month=d.getMonth()+1;
+                  $rootScope.year=d.getFullYear();
            }
         });
          

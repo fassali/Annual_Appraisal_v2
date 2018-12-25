@@ -5,9 +5,9 @@
 	<table class=" table table-striped" style="width:60%">
 		<thead>
 		<tr>
-			<th>#</th>
-			<th>Feedback on the management</th>
-			<th>Comments</th>
+			<th></th>
+			<th translate="steps.messages.EMP.FEEDBACK_ONMANAGEMENT">Feedback on the management</th>
+			<th translate="steps.messages.OBJ.COM"></th>
 
 		</tr>
 		</thead>
@@ -17,8 +17,8 @@
 			<td>{{fdb.feedBack.label}}</td>
 			<td>
 
-				<textarea ng-show="appEmp.mode==2"class="form-control rounded-0" rows="3" ng-model="fdb.comment" name="comment" ng-change="changed()" required></textarea>
-				<textarea ng-show="appEmp.mode==0"class="form-control rounded-0" rows="3" ng-model="fdb.comment" name="comment" ng-change="changed()" disabled></textarea>
+				<textarea ng-show="appEmp.mode==2 && appEmp.show==1"class="form-control rounded-0" rows="3" ng-model="fdb.comment" name="comment" ng-change="changed()" required></textarea>
+				<textarea ng-show="appEmp.mode==0 || appEmp.mode==1 ||appEmp.show!=0"class="form-control rounded-0" rows="3" ng-model="fdb.comment" name="comment" ng-change="changed()" disabled></textarea>
 
 			</td>
 		</tr>
@@ -33,8 +33,8 @@
 		</tfoot>
 	</table>
 	<form>
-			<div ng-show="appEmp.mode==2"class="form-group well" style="border: 1px">
-			  <label for="comment">Additional feedback:</label>
+			<div ng-show="appEmp.mode==2 && appEmp.show==1"class="form-group well" style="border: 1px">
+			  <label for="comment" translate="steps.messages.EMP.ADD_FEEDBACK">Additional feedback:</label>
 			  <textarea class="form-control" rows="5" id="comment"></textarea>
 			</div>
 		  </form>

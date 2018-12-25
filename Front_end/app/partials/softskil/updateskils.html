@@ -29,11 +29,11 @@
 				</div>
 				<br>
 				<div class="row">
-				<label class="col-md-2">type </label>
+				<label class="col-md-2" translate="steps.messages.EMP.SKILL_TYPE">type </label>
 				<div class="col-md-6" style="text-align: center;">
 							<label>Soft Skils</label> <input type="radio"
 						ng-model="skils.code" value="soft">
-						<label>Managerial Skils</label>
+						<label translate="steps.messages.EMP.MANAGER_SKILLS">Managerial Skils</label>
                          <input type="radio"
 						ng-model="skils.code" value="managerial">
 						</div>
@@ -44,21 +44,21 @@
 		<div class="col-md-12" style="text-align: center;">
 
 						<button class="btn" ng-click="testsmodal(skils)">
-							ajouter
+							{{"buttons.BTN.ADD"|translate}}
 						</button>
 
 						<button type="submit" class="btn btn-success"
 						type="button"
-						ng-click="modifier()">modifier</button>
+						ng-click="modifier()">{{"buttons.BTN.EDIT"|translate}}</button>
 		</div>
 		</div>
 		<div class="row">
 		<table class="table table-borderless table-striped table-earning col-md-11">
 		<thead>
 			<tr>
-				<th>level</th>
-				<th>desciption</th>
-				<th>action</th>
+				<th translate="steps.messages.EMP.SKILL_LEVEL">level</th>
+				<th translate="steps.messages.EMP.SKILL_DISC">desciption</th>
+				<th translate="steps.messages.EMP.ACT">action</th>
 			</tr>
 		</thead>
 		<tbody >
@@ -98,7 +98,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title" ng-show="modeNew"> New Level</h4>
+          <h4 class="modal-title" ng-show="modeNew" > New Level</h4>
           <button type="button" class="close" data-dismiss="modal" ng-click="resetLevel()">&times;</button>
         </div>
         

@@ -3,13 +3,13 @@
   <br><br><br>
   <div class="row" style="margin-left: 1%">
       <div class="col-md-4">
-        <label style="font-size: 12px;">BU:&nbsp&nbsp&nbsp&nbsp</label><br>
+        <label style="font-size: 12px;" translate="steps.messages.EMP.BU">BU:&nbsp&nbsp&nbsp&nbsp</label><br>
         <input style="background-color: rgb(221, 215, 215);font-size: 13px;border: none" ng-model="bu" disabled/><br></div>
       <div class="col-md-4"> 
-        <label style="font-size: 13px;">Division/Team:</label><br>
-        <input style="background-color: rgb(221, 215, 215);font-size: 15px;border: none" ng-model="team" disabled/><br></div>
+        <label style="font-size: 13px;" translate="steps.messages.EMP.DIVISION" >Division/Team:</label><br>
+        <input style="background-color: rgb(221, 215, 215);font-size: 15px;border: none;width: 80%" ng-model="team" disabled/><br></div>
       <div class="col-md-4">
-          <label style="font-size: 13px;">Objectives applicable on year:</label><br>
+          <label style="font-size: 13px;" translate="steps.messages.EMP.FIRSTPAGE_TITLE">Objectives applicable on year:</label><br>
           <input style="background-color: rgb(221, 215, 215);font-size: 15px;border: none" ng-model="session" disabled /><br>
       </div>
     </div>
@@ -21,29 +21,27 @@
     <div style="background-color:rgb(255, 255, 255);margin-top: 1%;margin-left: -11%;margin-block-end: -1%;margin-block-start: 2%">
     <div class="row" style="margin-left: 10%">
       <div class="col-sm-6">
-          <label style="font-size: 13px;margin-left: 1%">Appraisal date:</label>
+          <label style="font-size: 13px;margin-left: 1%" translate="steps.messages.ANN.DATE">Appraisal date:</label>
           <label style="color: rgb(75, 116, 230); font-size: 13px;">{{dayAnn}}/{{monthAnn}}/{{yearAnn}}</label>
            <br><br> 
-        <h6 style="font-size: 15px;"><b>&nbspEmployer</b></h6><br>
-				<label style="font-size: 13px;">&nbspLast Name:</label>
+        <h6 style="font-size: 15px;" translate="steps.messages.EMP.EMPLOYER_STEP"><b>&nbspEmployer</b></h6><br>
+				<label style="font-size: 13px;" translate="steps.messages.EMP.LastNAME">&nbspLast Name:</label> {{appEmp.show}}
 				<label style="font-size: 15px;">&nbsp{{employer.lastName}}</label><br> 
-				<label style="font-size: 13px;">&nbspFirst Name:</label>
-				<label style="font-size: 15px;">&nbsp{{employer.firstName}}</label><br>
-				<label style="font-size: 13px;">&nbspPosition:</label>
+				<label style="font-size: 13px;" translate="steps.messages.EMP.FIRSTNAME">&nbspFirst Name:</label>
+				<label style="font-size: 15px;" >&nbsp{{employer.firstName}}</label><br>
+				<label style="font-size: 13px;" translate="steps.messages.EMP.POSITION">&nbspPosition:</label>
 				<label style=" font-size: 15px;">&nbsp{{employer.position}}</label><br>
-				<label style="font-size: 13px;">&nbspN+2:</label>
-				<label style="font-size: 15px;"></label><br>
-				<label style="font-size: 13px;">&nbspStart date in this position:</label>
+				<label style="font-size: 13px;"  translate="steps.messages.ANN.STARTDATE">&nbspStart date in this position:</label>
 				<label style="font-size: 15px;">&nbsp{{date}}</label><br><br><br>
 			</div>
       <div class="col-sm-6">
           <br><br><br>
-      <h6 style="font-size: 15px;"><b>&nbspManager</b></h6><br>
-                <label style="font-size: 13px;">Last Name:</label>
+      <h6 style="font-size: 15px;" translate="steps.messages.EMP.MANAGER"><b>&nbspManager</b></h6><br>
+                <label style="font-size: 13px;" translate="steps.messages.EMP.LastNAME">Last Name:</label>
                 <label style="font-size: 15px;">&nbsp{{manager.lastName}}</label><br> 
-                <label style="font-size: 13px;">First Name:</label>
+                <label style="font-size: 13px;" translate="steps.messages.EMP.FIRSTNAME">First Name:</label>
                 <label style="font-size: 15px;">&nbsp{{manager.firstName}}</label><br> 
-                <label style="font-size: 13px;">Position:</label>
+                <label style="font-size: 13px;" translate="steps.messages.EMP.POSITION">Position:</label>
                 <label style="font-size: 15px;">&nbsp{{manager.position}}</label><br><br><br>  
       </div>   
       </div>  

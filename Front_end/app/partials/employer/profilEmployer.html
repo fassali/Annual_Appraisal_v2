@@ -1,69 +1,55 @@
 <link rel="stylesheet" type="text/css" href="css/profilEmployer.css">
-
-
-
- 
 <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/profilEmployer.css">
-
-	<div class="row">
-            <div class="col-md-2">
-                        
-                    </div>
-                      <div class="col-md-8">
-                        <div class="profile-head" style="font-family: Poppins-Regular;">
-							    <br><br>
-                                    <h5 style="font-size: 35px"><center>
-                                        {{first}}&nbsp{{last}}
-                                    </center></h5>
-                                    
-                       
-                        </div>
-                    </div>
-                    </div>
+	
 <div class="container-contact100">
-		<div class="wrap-contact100">
 
+		<div class="wrap-contact100">
+				<img style="margin-left: 41%" ng-if="app.type == 'general'" src="data/profile/profile.png" alt="user-image"
+				class="img-circle img-inline"/>
+			<span class="profile-status available"></span>
+						<h5 style="font-size: 35px"><center>
+							{{first}}&nbsp{{last}}
+						</center></h5>
 			<form class="contact100-form" name="employerForm">
          <br> 
 				<div class="wrap-input100 validate-input">
-					<span class="label-input100">First Name:</span>
+					<span class="label-input100" translate="steps.messages.EMP.FIRSTNAME">First Name:</span>
 					<input class="input100" type="text" name="firstName" ng-model="employerProfil.firstName" >
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 validate-input" data-validate = "Last Name is required">
-					<span class="label-input100">Last Name:</span>
+					<span class="label-input100" translate="steps.messages.EMP.LastNAME">Last Name:</span>
 					<input class="input100" type="text" name="lastName" placeholder="Enter last name" ng-model="employerProfil.lastName" >
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 validate-input"
 					data-validate="Email is required ">
-					<span class="label-input100">Email:</span> <input
+					<span class="label-input100" translate="steps.messages.EMP.EMAIL">Email:</span> <input
 						class="input100" type="email" name="email"
 						placeholder="Enter last name" ng-model="employerProfil.email" disabled>
 						 <span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 validate-input" data-validate = "Position is required">
-					<span class="label-input100">Position:</span>
+					<span class="label-input100" translate="steps.messages.EMP.POSITION">Position:</span>
 					<input class="input100" type="text" name="position" placeholder="Enter position" ng-model="employerProfil.position" disabled>
 					<span class="focus-input100"></span>
 				</div>
               <div class="wrap-input100 validate-input" data-validate = "The employer Team is required">
-					<span class="label-input100">Team:</span>
+					<span class="label-input100" translate="steps.messages.EMP.TEAM">Team:</span>
 					<input class="input100" type="text" name="team" placeholder="Enter the employer team" ng-model="employerProfil.team" disabled>
 					<span class="focus-input100"></span>
 				</div>
               <div class="wrap-input100 validate-input" data-validate = "The employer Team is required">
-					<span class="label-input100">Start date:</span>
+					<span class="label-input100" translate="steps.messages.EMP.STARDATE">Start date:</span>
 					<input class="input100" type="text"  ng-model="dateStart" disabled>
 					<span class="focus-input100"></span>
 				</div>
 				<br>
                 <br>
               <div class="wrap-input100 validate-input" data-validate = "The employer Team is required">
-					<span class="label-input100">Manager:</span>
+					<span class="label-input100" translate="steps.messages.EMP.EMP_MANAGER">Manager:</span>
 					<input class="input100" type="text" name="dateEntry"  ng-model="managerName" disabled>
 					<span class="focus-input100"></span>
 				</div>
@@ -71,7 +57,7 @@
 				<div class="container-contact100-form-btn">
 					<button class="contact100-form-btn" data-title="Update" data-toggle="modal" ng-click="section_modalUpdateProfil()">
 						<span>
-							Update
+							{{"buttons.BTN.UPDATE" | translate}}
 							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
 						</span>
 					</button>

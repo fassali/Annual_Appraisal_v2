@@ -6,14 +6,14 @@
     "APP.ALLTEAMS": "  Equipes",
     "APP.SETTING": "  Paramètrage",
     "APP.SKILS":"Compétences",
-    "APP.NEWEMPLOYER":"Nouvel employé",
+    "APP.NEWEMPLOYER":"Nouvel employé", 
     "App.GESTIONEMPLOYER":"Gestion d'employés",
     "APP.FEEDBACK":"Rétroactions",
     "APP.SESSION":"Session",
     "APP.SKILSMANAGEMENT":"Gestion des compétences",
     "APP.EMPLOYERMANAGEMENT":"Gestion des employés",
     "APP.FEEDBACKMANAGEMENT":"Gestions des rétroactions",
-    "APP.STARTSESSION":"   Démarrer une session",
+    "APP.STARTSESSION":"Démarrer une session",
     "APP.FORMAT_PDF":"Exporter en PDF",
     "APP.PRINT":"Imprimer"
 
@@ -50,12 +50,63 @@
       "EMP.ANN_TITLE":"Étapes d'évaluation annuelle",
       "EMP.EMPLOYER_STEP":"Employeur",
       "EMP.LASTOBJ_STEP":"Derniers_Objectifs",
-      "EMP.COMP_STEP":"Compétence",
+      "EMP.COMP_STEP":"Compétences",
       "EMP.SOFT_STEP":"Compétences_Générales",
       "EMP.SYN_STEP":"Synthèse",
       "EMP.FEEDBACK_STEP":"Rétroaction",
-      "EMP.WISH_STEP":"Voeux"
+      "EMP.WISH_STEP":"Voeux",
+      "EMP.MANAGER_STEP":"Gestion",
+      "EMP.DIVISION":"Division / Equipe",
+      "EMP.FIRSTPAGE_TITLE":"Objectifs applicables à l'année:",
+      "ANN.DATE":"Date d'évaluation",
+      "ANN.STARTDATE":"Date de début à ce poste :",
+      "EMP.PRO_SOFT":"Compétences professionnelles",
+      "EMP.SKILL_MEAN":"Sens",
+      "EMP.SKILL_RATING":"Évaluation",
+      "EMP.SKILL_LABEL":"Label",
+      "EMP.SKILL_TYPE":"Type", 
+      "EMP.SKILL_LEVEL":"Niveau",
+      "EMP.SKILL_DISC":"Description",
+      "EMP.MANAGER_SKILLS":"Compétences de gestion",
+      "EMP.WISHES":"Souhait de l'employé",
+      "EMP.MANAGER_OPINION":"Opinion du gérant",
+      "EMP.SYN":"Synthèse globale",
+      "EMP.STRENGHTS":"Points forts",
+      "EMP.IMPROVE":"A améliorer",
+      "EMP.CHOOSE_ADD":"Ajouter un nouvel employeur",
+      "EMP.CHOOSE":"Ajouter à mon équipe",
+      "EMP.FIRSTNAME":"Nom :",
+      "EMP.LastNAME":"Prénom :",
+      "EMP.EMAIL":"Email :",
+      "EMP.POSITION":"Position :",
+      "EMP.EMP_MANAGER":"Manager :",
+      "EMP.STARDATE":"Date de début :",
+      "EMP.ADMIN_PROFIL":"Administrateur",
+      "EMP.CHOOSE_TEAM":"Choisissez l'équipe de l'employeur",
+      "EMP.CHOOSE_MANAGER":"Choisissez le manager de l'employeur",
+      "EMP.CHOOSE_BU":"Choisissez l'Unité opérationnelle d'Employeur",
+      "EMP.MODIFICATION":"Modifications",
+      "EMP.SAVE_MODIFICATIONS":"Voulez-vous enregistrer vos modifications ?",
+      "EMP.ADD_NEWEMP":"Le nouvel employeur est ajouté avec succès!",
+      "EMP.UPDATE_MPROFIL":"Les informations ont été modifiées avec succès!!",
+      "EMP.DELETE_MPROFIL":"L'employeur a été supprimé avec succès!!",
+      "EMP.ADD_EMPMANAGER":"You had added the new employers to your team successfully!!",
+      "EMP.TEAMLIST_MPTY":"La list des employés de cette equipe est vide maintenant.Vous devez ajouter des nouveaux employés à l'équipe si vous voulez l'accédez",
+      "EMP.NEWFEEDBACK":"Nouvelle  rétroaction",
+      "EMP.FEEDBACK_ONMANAGEMENT":"Rétroactionons sur la gestion",
+      "EMP.ADD_FEEDBACK":"Rétroaction supplémentaire :",
+      "SE.CLOSED":"Fermée",
+      "SE.ENCOURS":"Overte",
+      "EM.OPEN_SESSION":"Ouvrir",
+      "EMP.CLOSE_SESSION":"Fermer",
+      "Emp.START_SESSION":"Démarer",
+      "SE.MSG_CLOSESESSION":"Vous avez fermé la session avec succès!!",
+      "SE.MSG_OPENSESSION":"Vous avez démarré la nouvelle session avec succès!!"
 
+     
+
+      
+      
      
        
 
@@ -78,7 +129,15 @@
     "BTN.ADD_OBJ":"Ajouter un objectif",
     "BTN.ANN_APP":"Evaluation annuelle",
     "BTN.SESSION_ENCOURS":"Continuer",
-    "BTN.SESSION_START":"Commencer"
+    "BTN.SESSION_START":"Commencer",
+    "BTN.SAVE":"Enregistrer",
+    "BTN.ADD":"Ajouter",
+    "BTN.EDIT":"Modifier",
+    "BTN.NEW":"Nouveau",
+    "BTN.CREATE":"Créer",
+    "BTN.FINISH":"Terminer"
+    
+    
     
     
 
@@ -87,7 +146,11 @@
     "MSG.UPDATE.SUCC" : "modification effectuee avec succès"
   },
   "placeholder": {
-    "P.SEARCH" : "Chercher"
+    "P.SEARCH" : "Chercher",
+    "P.FIRST_NAME":"Enterez le nom",
+    "P.LAST_NAME":"Entrez le nom de famille",
+    "P.EMAIL":"Enterez l'Email",
+    "P.POS":"Enterez la position"
   },
   "modals":{
     "delete":{
@@ -97,10 +160,21 @@
       "MOD.DELETE_OBJ":"Êtes-vous sûr de vouloir supprimer cet objectif?"
     },
     "update":{
-      "MOD.MSG":"Modifier les informations de  :"
+      "MOD.MSG":"Modifier les informations de  :",
+      "MOD.PROFIL":"Changer mes informations",
+      "MOD.CONFIRM_PROFIL":" Êtes-vous certain de vouloir modifier vos informations ?"
     },
     "apEmployer":{
       "MOD.SESSION":"Liste des sessions"
+    },
+    "session":{
+      "SE.UPDATE_SESSIONCLOSED":"Ouverir d'une session cloturée",
+      "SE.UPDATE_SESSIONOPENED":"Fermer une session ouverte",
+      "SE.UPDATE_STARTSESSION":"Démarer une nouvelle session",
+      "SE.MSG_SESSIONOPENED":"Êtes-vous sûr de vouloir fermer cette session ??",
+      "SE.SESSION":"session",
+      "SE.MSG_SESSIONCLOSED" :"Cette session est fermée, êtes-vous sûr de vouloir l'ouvrir à nouveau??",
+      "SE.MSG_SESSIONSTART":"Vous allez commencer une nouvelle session"
     }
   }
 }

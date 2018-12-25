@@ -1,15 +1,87 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Dashboard'; ">
+        <section class="box nobox margin-top-15 margin-bottom-0">
+            <div class="content-body">
+                <div class="col-lg-12">
+                    <section class="box ">
+                            <div class="alert alert-success margin-top-5" ng-show="closeSession==true">
+                                    <span translate="steps.messages.SE.MSG_CLOSESESSION"></span>
+                            </div>   
+                            <div class="alert alert-success margin-top-5" ng-show="addNewSession==true">
+                                    <span translate="steps.messages.SE.MSG_OPENSESSION"></span>
+                            </div> 
+                            
+                        <header class="panel_header">
+                            <h2 class="title pull-left">{{ "modals.apEmployer.MOD.SESSION" | translate }}</h2>              
+                        </header>
+                        
+                        
+                       
+                        <div  style="width: 80%;margin-left:13%;"class="content-body padding-bottom-0">
+                            <div class="row">
+                                   
+                                <div class="clearfix"></div><br>
+                                <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                                    <table class="table table-striped" ui-jq="footable" data-filter="#filter" data-page-size="5" class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th translate="dashboard.APP.SESSION">
+                                                Session
+                                            </th>
+                                            <th translate="steps.messages.ANN.STATUS">
+                                               Status
+                                            </th>                                                               
+                                            <th translate="steps.messages.EMP.ACT">
+                                           <center>Action</center>
+    
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="s in sessions">
+                                            <td>{{$index+1}}</td>
+                                            <td>{{s.label}}</td>
+                                            <td>
+                                                <span ng-show="s.cloture==true"translate="steps.messages.SE.CLOSED"></span>
+                                                <span ng-show="s.enCours==true"translate="steps.messages.SE.ENCOURS"></span>
+                                                <span ng-show="s.start==true">------</span>
 
-<div class="container">
-
-    <table>
-        <tr>
-            <td>
-                <button type="sublit" class="btn btn-xs btn-warning" ng-click="startNewSess()">
-                    <span class="glyphiconglyphicon-trash"></span>Start New Session</button>
-            </td>
-        </tr>
-    </table>
-    <div class="alert alert-success margin-top-5" ng-show="msgSuccess">{{msgSuccess}}</div>
-    <div class="alert alert-danger margin-top-5" ng-show="msgError">{{msgError}}</div>
-
-</div>
+                                            </td>                                          
+                                            <td>
+                                                
+                                                    <span ng-show="s.cloture==true"><i class="fa fa-lock" style="margin-left: 10%" ></i></span>                                  
+                                                <button ng-show="s.enCours==true" style="border: none" class="label label-secondary" ng-click="section_modalUpdateSessionOpned(s.idAnn)">
+                                                    <i class="fa fa-lock" ></i><span translate="steps.messages.EMP.CLOSE_SESSION"></span></button>
+                                                    <button ng-show="s.start==true" style="border: none" class="label label-success" ng-click="section_modalStartNweSession()">
+                                                    <i class="fa fa-play" ></i><span translate="steps.messages.Emp.START_SESSION"></span></button>  
+                                            </td>
+                                        </tr>                                 
+                                        </tbody>
+                                        <tfoot class="hide-if-no-paging">
+                                        <tr>
+                                            <td colspan="5" class="text-center">
+                                                <ul class="pagination"></ul>
+                                            </td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </section>
+                </div>
+    
+            </div>
+        </section>
+     
+        <div class="clearfix"></div>
+    
+    
+        <div class="clearfix"></div>
+    
+        <div class="clearfix"></div>
+    
+    
+    </div>
+    

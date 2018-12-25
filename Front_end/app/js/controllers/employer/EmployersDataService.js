@@ -69,7 +69,7 @@
        	 return $http.put("http://localhost:8080/employer/"+idEmp,employer)
             .then(function(response){
 				
-                console.log(response.data)
+                
             }), function (err) {
 				
                     console.log(err);
@@ -165,7 +165,6 @@
 				return $http.put("http://localhost:8080/employersSelect/"+idEmp,employers)
 				.then(function(response){
 					
-					console.log(response.data)
 				}), function (err) {
 					
 						console.log(err);
@@ -176,7 +175,6 @@
 				return $http.put("http://localhost:8080//affectEmployer/"+idManager,employer)
 				.then(function(response){
 					
-					console.log(response.data)
 				}), function (err) {
 					
 						console.log(err);
@@ -214,7 +212,7 @@
 			this.EmployersListByTeams=function(team){
 				var promise1=$http({
 					method: 'GET',
-					url: "http://localhost:8080/employersList/"+team
+					url: "http://localhost:8080/employersListByTeam/"+team
 					});
 				var promise2=promise1.then(function(response){
 					return response.data;
@@ -250,6 +248,20 @@
 				});
 			 return promise2;
 			}
+
+		//get manager team list
+		this.getManagersTeamList=function(idManager){
+			var promise1=$http({
+				method: 'GET',
+				url: "http://localhost:8080/managerTeams/"+idManager
+				});
+			var promise2=promise1.then(function(response){
+				return response.data;
+			},function(err){
+				console.log(err);
+			});
+		 return promise2;
+		}
 			
 
 	})

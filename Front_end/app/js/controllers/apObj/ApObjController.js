@@ -2,7 +2,7 @@
 
 	var app = angular.module('app');
 	app.controller("ApObjController", function($scope, $rootScope, $http,
-			ApObjDatasrv, EmployersDatasrv,AppEmployerDatasrv, $window, $compile, $interval,$rootScope) {
+		ApObjDatasrv, EmployersDatasrv,AppEmployerDatasrv, $window, $compile, $interval,$rootScope) {
 		$scope.count = 0;
         $rootScope.objs=[];
         $rootScope.page = [];
